@@ -1,0 +1,26 @@
+.ZCY-eevee-comp-tabline{
+  ul{
+    li{
+     display: inline-block;
+      padding: 6px 11px;
+      a{
+        color: #ffffff;
+        font-size: 14px;
+        .line-border-box{
+          display: inline-block;
+          height: 9.6px;
+          span{
+            display: block;
+            height: 1px;
+            border-bottom: 2px solid #ffffff;
+            width: 6px;
+            margin-bottom: 2px;
+          }
+        }
+      }
+      &.active{
+        background: #0876FF;
+      }
+    }
+  }
+}

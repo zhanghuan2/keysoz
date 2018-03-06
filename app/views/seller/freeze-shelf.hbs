@@ -1,0 +1,22 @@
+{{#partial "realTitle"}}冻结商品管理{{/partial}}
+{{#partial "realBody"}}
+  {{#inject "common/breadcrumb"}}
+    {
+      "breadcrumb":
+      [{
+        "crumb": "商品管理",
+        "url": "#"
+      },
+      {
+        "crumb": "冻结商品管理",
+        "url": "#"
+      }]
+    }
+  {{/inject}}
+  {{#inject "seller/shelf_item" true}}
+  {
+    "status": "-2"
+  }
+  {{/inject}}
+{{/partial}}
+{{> user_layout}}

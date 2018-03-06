@@ -1,0 +1,164 @@
+@import "compass/css3/inline-block";
+@import "pokeball/theme";
+@import "compass/css3/box-sizing";
+
+$color-border: #eee;
+
+.tax-hall-category-search {
+  border-bottom: 0;
+
+  .navbar-collapse {
+    width: 205px;
+  }
+
+  .navbar-item{
+    height: 40px;
+    a{
+      line-height: 15px;
+      @include inline-block(middle);
+      line-height: 15px;
+      height: 16px;
+      padding: 11px 0;
+      font-weight: bold;
+      vertical-align: text-bottom;
+      span{
+        @include inline-block(middle);
+
+        margin-top: 1px;
+      }
+    }
+  }
+  .navbar-icon {
+    float: right;
+    padding: 2px 0;
+  }
+  .home-catgeory-show:hover {
+    background-color: $color-primary !important;
+  }
+
+  .all-category-show {
+    i {
+      float: right;
+      margin-top: 17px;
+    }
+  }
+  .navbar-desc {
+    @include inline-block(middle);
+    width: 205px;
+    text-align: left;
+    line-height: 16px;
+    font-size: 14px;
+    background: #016AE6;
+    a {
+      padding: 0 15px !important;
+      color: white;
+    }
+  }
+  .home-channel {
+    border: 1px solid #016AE6;
+    border-top: 0;
+    background-color: #fff;
+    min-height: 40px;
+    position: relative;
+    width: 205px;
+    text-align: left !important;
+    line-height: 12px;
+    z-index: 998;
+    height: 450px;
+
+    .category-li{
+      position: relative;
+      height: 33px;
+      border-width: 0;
+      min-height: 20px;
+      padding: 0 15px;
+      background-color: #fff;
+      &:hover {
+        color: #197AFF;
+        .category-icon{
+          color: #197AFF;
+        }
+        .parent-category{
+          a {
+            color: #197AFF;
+          }
+        }
+      }
+    }
+    .category-li-disable{
+      position: relative;
+      height: 33px;
+      border-width: 0;
+      min-height: 20px;
+      padding: 0 15px;
+      background-color: #fff;
+      .category-icon{
+        color: #a5acb8;
+      }
+      .parent-category a {
+        color: #a5acb8;
+      }
+      &:hover {
+        background-color: #fff;
+        color: #3D4C65;
+        .category-icon{
+          color: #3D4C65;
+        }
+      }
+    }
+
+    .child-category {
+      padding: 2px 10px 2px 0;
+      @include inline-block(middle);
+      line-height: 12px;
+      font-size: 14px;
+      color: #24344E;
+    }
+    .category-logo {
+      height: 33px;
+      float: left;
+
+      .category-icon{
+        padding: 11px 21px 10px;
+        vertical-align: bottom;
+        float: left;
+        font-size: 18px;
+        color: #fff;
+        font-weight: normal;
+      }
+    }
+    .parent-category{
+      font-size: 16px;
+      line-height: 14px;
+      float: left;
+      padding: 9px 10px 8px 0;
+      width: 174px;
+
+      a {
+        line-height: 16px;
+        font-size: 14px;
+        float: left;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 174px;
+        padding: 0;
+      }
+
+      i{
+        float: right;
+      }
+    }
+    .children-category{
+      float: left;
+      line-height: 12px;
+      height: 16px;
+      padding: 0px;
+      overflow: hidden;
+      width: 130px;
+    }
+  }
+
+  .active{
+    display: block;
+  }
+}

@@ -1,0 +1,74 @@
+<div class="trade-manage change-confirm-book modal" id='confirmBookModal'>
+  <div name="{{json data}}"></div>
+  <div class="modal-header">关联采购计划
+    <a href="javascript:;" class="close">&times;</a>
+  </div>
+  <div class="modal-body"> 
+    <div class="pull-right" style='margin-bottom: 10px;'>
+      <label><div><a class="js-add-new-pay btn btn-info btn-primary">添加采购计划</a></div></label>
+    </div>
+    <div class='confirmModalContent'>
+      <div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th width="12%">采购计划文号</th>
+              <th width="10%">采购类目</th>
+              <th width="12%">可用金额(元)</th>
+              <th width="10%">可用数量</th>
+              <th width="12%">本次使用数量</th>
+              <th width="12%">本次使用金额(元)</th>
+              <th width="15%">关联商品</th>
+              <th width="5%">状态</th>
+              <th width="6%" class="hide">状态</th>
+              <th width="6%" class="td-operation">操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each data.orderPayInfos}}
+              {{#with orderPay}}
+                {{#equals paidType 2}}
+                {{else}}
+                  <tr data-id="{{id}}">
+                    <td class="js-confirmationname selected-confirmationid" data-confirmationid="{{confirmationId}}">{{confirmationNo}}</td>
+                    <td class="js-gpcatalogname" data-gpcatalogid="{{categoryCode}}">{{category}}</td>
+                    <td class=""><span class="price js-availableaccount">{{../_CURRENCY_}}{{formatPrice remainMoney}}</span></td>
+                    <td class="js-availablequantity">{{remainQuantity}}</td>
+                    <td class="js-quantity">{{#if quantity}}{{quantity}}{{else}}0{{/if}}</td>
+                    <td class=""><span class="price js-fee">{{../_CURRENCY_}}{{#if fee}}{{formatPrice fee}}{{else}}0{{/if}}</span></td>
+                    {{!-- <td class="js-expireddate">{{expiredDate}}</td> --}}
+                    <td class="js-control-black-a"><a class="js-show-pay-item-list">商品列表({{#if ../itemTypeCnt}}{{../itemTypeCnt}}{{else}}0{{/if}})</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="js-show-pay-unbind-item-list">添加商品</a>
+                    </td>
+                    <td class="js-effect-black-a">{{#equals isInvalidConfirm "true"}}无效{{/equals}}{{#equals isInvalidConfirm "false"}}有效{{/equals}}</td>
+                    <td class="js-status-black-a hide">{{#equals isNewCreate "false"}}老{{/equals}}{{#equals isNewCreate "true"}}新{{/equals}}</td>
+                    <td><a class="js-delete-pay-item">删除</a>
+                    </td>
+                  </tr>
+                {{/equals}}
+              {{/with}}
+            {{else}}
+              <tr><td colspan="9" class="center-text">无可展示信息</td></tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+      <div class="pur-all-payments">
+        本次总使用情况
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <td width="33%">已关联采购计划总额(元)：<span class="price currency" data-money="{{data.planAmount}}">{{_CURRENCY_}}{{formatPrice data.planAmount}}</span></td>
+              <td width="33%">计划外资金总额(元)：<span class="price currency" data-money="{{data.unplanAmount}}">{{_CURRENCY_}}{{#if data.unplanAmount}}{{formatPrice data.unplanAmount}}{{else}}0{{/if}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+              </td>
+              <td width="34%">订单单总额(元)：<span class="price currency order-total-price">{{_CURRENCY_}}</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-info btn-primary js-confirm-submit">确认</button>
+    <!--<button class="btn btn-info btn-primary js-cancel-submit">取消</button>-->
+  </div>
+</div>

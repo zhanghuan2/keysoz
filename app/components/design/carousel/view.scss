@@ -1,0 +1,21 @@
+@import "compass/css3/inline-block";
+
+.carousel-container {
+  .carousel-control {
+    display: none;
+
+    &.left {
+      left: 0;
+    }
+
+    &.right {
+      right: 0;
+    }
+  }
+
+  &:hover {
+    .carousel-control {
+      @include inline-block(middle);
+    }
+  }
+}

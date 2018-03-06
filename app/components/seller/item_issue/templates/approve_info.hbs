@@ -1,0 +1,38 @@
+<div class="form-section section-top-bottom clearfix">
+  <div class="section-title pull-left">认证信息</div>
+  <div class="pull-left section-content clearfix">
+    <div class="control-group">
+      <label class="group-title"><b class="required">*</b>证明材料：</label>
+      <div class="image-area group-content">
+        <label style="margin: 6px;">图片类型JPG，PNG，JPEG，最大10MB，证明材料为厂家提供的盖章证明，官网参数截图，专业网站参数截图，带商品参数信息的外包装或铭牌信息。四者提供一个即可，但是提交属性与证明图片内容必须一致</label>
+        <ul class="js-images-list clearfix js-approve-info">
+          {{#if authImages}}
+            {{#each authImages}}
+              <li class="pull-left image-container js-item-image-container js-item-image">
+                <img src="{{url}}" alt="{{name}}" data-src="{{url}}" data-name="{{name}}"/>
+                <div class="delete-img"><i class="icon-zcy icon-shanchu js-delete-image"></i></div>
+                <span class="image-operate">
+                  <i class="icon-mewtwo icon-mewtwo-left-arrow js-move-image" data-direct="left"></i>
+                  <i class="icon-zcy icon-edit js-upload-image"></i>
+                  <i class="icon-mewtwo icon-mewtwo-right-arrow js-move-image" data-direct="right"></i>
+                </span>
+              </li>
+              {{#if @last}}
+                {{#gt @index 3}}
+                {{else}}
+                  <li class="pull-left image-container image-end empty js-item-image js-add-approve-info">
+                    <span class="image-tip-add">+</span>
+                  </li>
+                {{/gt}}
+              {{/if}}
+            {{/each}}
+          {{else}}
+            <li class="pull-left image-container image-end empty js-item-image js-add-approve-info">
+              <span class="image-tip-add">+</span>
+            </li>
+          {{/if}}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

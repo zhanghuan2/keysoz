@@ -1,0 +1,42 @@
+<div class="sr-timeline ml-xl mt zcy-timeline">
+  {{#each _DATA_}}
+    <div class='sr-row trans-info down'>
+      {{#ifCond @index ">" 0}}<div class='sr-line line-solid'></div>{{/ifCond}}
+      <div class='sr-dot dot-success'></div>
+      <label class="ml mr">{{createAt}}</label>
+      <label class="ml mr" title="{{creatorOrg}}" style="width: 100px;">{{creatorOrg}}</label>
+      <label class="ml mr" title="{{creatorName}}" style="width: 100px;">{{creatorName}}</label>
+      {{#equals auditResult "SUBMIT_FIRST_AUDIT"}}
+        {{#equals type 0}}
+          <label class="ml mr" title="{{auditResult}}" style="width: 120px;">商品上架申请</label>
+        {{/equals}}
+        {{#equals type 1}}
+          <label class="ml mr" title="{{auditResult}}" style="width: 120px;">价格上涨申请</label>
+        {{/equals}}
+      {{/equals}}
+      {{#equals auditResult "FIRST_AUDIT_APPROVE"}}
+        <label class="ml mr" title="{{auditResult}}" style="width: 120px;">初审通过</label>
+      {{/equals}}
+      {{#equals auditResult "FIRST_AUDIT_REJECT"}}
+        <label class="ml mr" title="{{auditResult}}" style="width: 120px;">初审不通过</label>
+      {{/equals}}
+      {{#equals auditResult "FINAL_AUDIT_APPROVE"}}
+        <label class="ml mr" title="{{auditResult}}" style="width: 120px;">终审通过</label>
+      {{/equals}}
+      {{#equals auditResult "FINAL_AUDIT_REJECT"}}
+        <label class="ml mr" title="{{auditResult}}" style="width: 120px;">终审不通过</label>
+      {{/equals}}
+      {{#equals auditResult "FREEZE"}}
+        <label class="ml mr" title="{{auditResult}}" style="width: 120px;">商品冻结</label>
+      {{/equals}}
+      {{#equals auditResult "UNFREEZE"}}
+        <label class="ml mr" title="{{auditResult}}" style="width: 120px;">商品解冻</label>
+      {{/equals}}
+      {{#equals auditResult "CANCEL_AUDIT"}}
+        <label class="ml mr" title="{{auditResult}}" style="width: 120px;">撤消审核</label>
+      {{/equals}}
+
+      <label class="ml mr" title="{{auditResult}}" style="width: 120px;">{{auditComment}}</label>
+    </div>
+  {{/each}}
+</div>

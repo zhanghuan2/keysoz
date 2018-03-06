@@ -1,0 +1,148 @@
+{{#each otherAttrs}}
+    <div class="form-section clearfix">
+      <div class="section-title">
+        {{#equals group "USER_DEFINED"}}自定义属性{{else}}{{group}}{{/equals}}
+      </div>
+      <div class="pull-left section-content">
+        <div class="category-attribute attribute-area js-attribute-area">
+          <ul class="attribute-list clearfix attribute-data"
+              id="js-category-attribute-list"
+              {{#if otherAttributeWithRules}}
+                data-attr="{{json otherAttributeWithRules}}"
+              {{/if}}>
+            {{#if otherAttributeWithRules}}
+              {{#each otherAttributeWithRules}}
+              <li class="pull-left js-category-attr attr-show-li" data-attr="{{json ..}}">
+                <div class="control-group">
+                  <label class="group-title hint--top" title="{{attributeRule.attrKey}}" aria-label="{{attributeRule.attrKey}}">
+                    <span class="group-line-title">
+                    {{#equals attributeRule.attrMetasForK.REQUIRED "true"}}
+                      <b class="required">*</b>
+                    {{/equals}}
+                    {{attributeRule.attrKey}}：
+                    </span>
+                  </label>
+                  <div class="group-content">
+                    {{#if readOnlyBySeller}}
+                      <div class="js-category-attr-input category-attr-input" data-key="{{attributeRule.attrKey}}" data-type="STRING" data-required="false">
+                        <input data-status="{{../../item.status}}" type="text" class="js-group-item" value="{{attrVal}}"
+                          data-group="{{attributeRule.group}}" data-key="{{attributeRule.attrKey}}"
+                          {{#of attributeRule.attrMetasForK.VALUE_TYPE "STRING,DATE"}}{{else}}
+                            data-unit="{{splitter attributeRule.attrMetasForK.VALUE_TYPE '_' 1}}"
+                          {{/of}} required readonly
+                          {{#equals attributeRule.attrMetasForK.IMPORTANT "true"}}
+                            {{#equals item.status "1"}}
+                              {{#equals item.tags.vaccine "1"}}
+                                data-tag="vaccine" disabled
+                              {{/equals}}
+                            {{/equals}}
+                          {{/equals}}
+                        />
+                      </div>
+                    {{else}}
+                      <div class="dropdown clearfix js-category-attr-input" data-key="{{attributeRule.attrKey}}"
+                        {{#if attributeRule.attrMetasForK}}
+                          data-type="{{attributeRule.attrMetasForK.VALUE_TYPE}}"
+                          data-required="{{attributeRule.attrMetasForK.REQUIRED}}"
+                        {{else}}
+                          data-type="STRING"
+                          data-required="false"
+                        {{/if}}>
+                        <span class="dropdown-selector">
+                          <input type="text" class="js-group-item" {{#if attrVal}} value="{{attrVal}}" {{/if}} autocomplete="off" data-parent=".dropdown-selector" placeholder="请选择" readonly="readonly" name="{{attributeRule.group}}-{{attributeRule.attrKey}}"
+                          data-key="{{attributeRule.attrKey}}" {{#equals attributeRule.attrMetasForK.REQUIRED "true"}}required{{/equals}}
+                          {{#if attributeRule.attrMetasForK}}
+                            data-group="{{attributeRule.group}}"
+                            {{#of attrMetasForK.VALUE_TYPE "STRING,DATE"}}{{else}}
+                              data-unit="{{splitter attributeRule.attrMetasForK.VALUE_TYPE '_' 1}}"
+                            {{/of}}
+                          {{else}}
+                            data-group="USER_DEFINED"
+                          {{/if}}
+                          {{#equals attributeRule.attrMetasForK.IMPORTANT "true"}}
+                            {{#equals item.status "1"}}
+                              {{#equals item.tags.vaccine "1"}}
+                                 data-tag="vaccine" disabled
+                              {{/equals}}
+                            {{/equals}}
+                          {{/equals}}>
+                          <span class="caret"></span>
+                        </span>
+                        <div class="dropdown-content">
+                          <ul class="dropdown-menu">
+                            <li class="js-dropdown-item js-attr-val" data-val="">
+                              <span class="empty">请选择</span>
+                            </li>
+                            {{#if attributeRule.attrVals}}
+                              {{#each attributeRule.attrVals}}
+                                <li class="js-dropdown-item js-attr-val" data-val="{{this}}">
+                                  <span>{{this}}</span>
+                                </li>
+                              {{/each}}
+                            {{else}}
+                              {{#if attrVal}}
+                                <li class="js-dropdown-item js-attr-val" data-val="{{attrVal}}">
+                                  <span>{{attrVal}}</span>
+                                </li>
+                              {{/if}}
+                            {{/if}}
+                          </ul>
+                          {{#if attributeRule.attrMetasForK}}
+                            {{#equals attributeRule.attrMetasForK.USER_DEFINED "true"}}
+                              <div class="dropdown-append input-group input-group-append">
+                                <input type="text" class="js-dropdown-item-append-text js-attr-val-input">
+                                <span class="input-group-btn pull-right">
+                                  <button class="btn btn-info js-dropdown-item-append" type="button">添加</button>
+                                </span>
+                              </div>
+                            {{/equals}}
+                          {{else}}
+                            <div class="dropdown-append input-group input-group-append">
+                              <input type="text" class="js-dropdown-item-append-text js-attr-val-input">
+                              <span class="input-group-btn pull-right">
+                                <button class="btn btn-info js-dropdown-item-append" type="button">添加</button>
+                              </span>
+                            </div>
+                          {{/if}}
+                        </div>
+                      </div>
+                      {{#if attributeRule.attrMetasForK}}
+                        {{#of attributeRule.attrMetasForK.VALUE_TYPE "STRING,DATE"}}{{else}}
+                          <span class="attr-unit-show">&nbsp;{{splitter attributeRule.attrMetasForK.VALUE_TYPE '_' 1}}</span>
+                        {{/of}}
+                      {{/if}}
+                    {{/if}}
+                    {{#equals attributeRule.attributeRule.attrMetasForK.IMPORTANT "true"}}
+                      {{#equals item.tags.vaccine "1"}}
+                        <span class="sku-attr-status">
+                        &nbsp;
+                          <i class="icon-mewtwo icon-mewtwo-info-fill"></i>
+                          <i class="icon-mewtwo icon-mewtwo-success-fill active hide"></i>
+                        <span class="sku-attr-show">&nbsp;关键属性</span>
+                        </span>
+                      {{else}}
+                        {{#equals isVaccine 1}}
+                          <span class="sku-attr-status">
+                            &nbsp;
+                            <i class="icon-mewtwo icon-mewtwo-info-fill"></i>
+                            <i class="icon-mewtwo icon-mewtwo-success-fill active hide"></i>
+                            <span class="sku-attr-show">&nbsp;关键属性</span>
+                          </span>
+                        {{/equals}}
+                      {{/equals}}
+                    {{/equals}}
+                  </div>
+                </div>
+              </li>
+              {{/each}}
+            {{/if}}
+          </ul>
+          {{#equals group "USER_DEFINED"}}
+            <div class="new-attribute-area">
+              <a id="js-extend-attribute" class="js-attribute-new label-align-btn" href="javascript:void(0);">添加属性</a>
+            </div>
+          {{/equals}}
+        </div>
+      </div>
+    </div>
+{{/each}}

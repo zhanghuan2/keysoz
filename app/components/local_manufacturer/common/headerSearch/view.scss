@@ -1,0 +1,102 @@
+@import "compass/css3/inline-block";
+@import "compass/css3/box-sizing";
+@import "pokeball/theme";
+
+.manufacturer-sites-header{
+
+  .supplier-info-block {
+    display: inline-block;
+    width: 310px;
+    float:left;
+    margin-top:10px;
+    img.manufacture-name {
+      height: 37px;
+      width: auto;
+    }
+  }
+
+  padding: 25px 0 25px 0;
+  height: 100px;
+
+  .form-search{
+    width: 540px;
+    float:right;
+    margin: 0;
+    display: inline-block;
+    vertical-align: text-bottom;
+
+    .search-input{
+      padding-left: 27px !important;
+      width: 380px;
+      height: 40px;
+      display: none;
+      background: #FFFFFF;
+      border: 2px solid #474E56;
+      &:focus {
+        border: 1px solid #016AE6;
+      }
+    }
+    .search-input.active{
+      @include inline-block(bottom);
+    }
+    #search-button{
+      width: 72px;
+      height: 40px;
+      background: #474E56;
+      font-size: 16px;
+      padding: 0;
+      text-align: center;
+      line-height: 40px;
+    }
+    #search-button-all{
+      margin-left: 10px;
+      width: 72px;
+      height: 40px;
+      background: #474E56;
+      font-size: 16px;
+      padding: 0;
+      text-align: center;
+      line-height: 40px;
+      display: none;
+    }
+  }
+
+  .input-search{
+    position: relative;
+
+    .icon-search {
+      position: absolute;
+      left: 5px;
+      top: 10px;
+      font-size: 20px;
+      color: #9B9B9B;
+    }
+  }
+
+  .search-hot{
+    ul{
+      list-style: none;
+      li{
+        @include inline-block(middle);
+        font-size: 13px;
+        span{
+          font-size: 12px;
+        }
+        a{
+          font-size: 12px;
+          color: $navy;
+          margin: 0 8px;
+          &:hover{
+            text-decoration: underline;
+          }
+          &.red {
+            color: $color-danger;
+          }
+          &.bold {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}

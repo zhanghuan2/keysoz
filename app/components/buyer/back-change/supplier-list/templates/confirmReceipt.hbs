@@ -1,0 +1,92 @@
+<div class="modal confirmReceipt">
+  <div class="modal-header">
+    <h2>商品发货</h2>
+  </div>
+  <div class="delivery-items" >
+    <div class="modal-body clearfix">
+      <div class="panel">
+        <div class="panel-header" style="font-size:14px;">
+          采购人收货地址
+        </div>
+        <div class="panel-body" data-deliverid="{{_DATA_.deliverId}}">
+          {{#each _DATA_.deliverys}}
+          <div>
+            <input type="radio" class="input-radio" checked name="address" />
+            <span class="returnOrder" style="display:none;">{{returnOrderId}}</span>
+            <span data-provinceid="{{provinceId}}">{{province}}</span>
+              <span data-cityid="{{cityId}}">{{city}}</span>
+              <span class="js-get-regionid" data-regionid="{{regionId}}" data-id="{{id}}">{{region}}</span>
+              <span data-streetid="{{streetId}}">{{stree}}</span>
+              {{detail}}&nbsp;&nbsp;&nbsp;&nbsp;
+              邮编:{{zip}}&nbsp;&nbsp;&nbsp;&nbsp;
+              {{receiver}}&nbsp;&nbsp;&nbsp;&nbsp;{{mobile}}
+          </div> 
+          {{/each}}
+          <h4 style="font-weight:400;font-size:14px;">选择发货单商品</h4>
+          <div>
+          <label class="required">*</label>
+          <span>发货仓库：</span>
+          <select name="warehouse" class="warehouse" value=""  id="" required >
+            <option value="" disabled >请选择</option>
+          </select>
+          </div>
+        </div>
+      </div>
+      
+      <table class="table  center-tex delivery-item-table">
+        <thead>
+          <tr>
+            <th width="30"></th>
+            <th class="left-text" width="200"> <span class="">商品</span> </th>
+            <th width="100">商品编号</th>
+            <th width="100">单价(元)</th>
+            <th>待发货数量</th>
+            <th width="120">发货数量</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{!-- {{#each _DATA_.data}} --}}
+            {{#each _DATA_.deliveryItems}}
+            <tr class="item-tr" data-id="{{id}}" data-skuid="{{skuId}}" data-itemid={{itemId}}>
+              <td class="check"><input type="checkbox" class="js-select-item input-checkbox" /></td>
+              <td class="left-text" title="{{itemName}} ({{itemCode}})">
+                <span>{{itemName}}</span><span>({{itemCode}})</span>
+              </td>
+              <td>{{itemId}}</td>
+              <td><span class="price">{{formatPrice skuPrice}}</span></td>
+              <td>{{waitDeliveryQuantity}}</td>
+              <td>
+                <div class="input-amount" data-min="0" data-max="{{quantity}}">
+                  <a href="javascript:void(0);" class="minus" >-</a>
+                  <input type="number" class="count-number" value="0" data-old="{{quantity}}" data-init="{{quantity}}" data-current-count="0">
+                  <a href="javascript:void(0);" class="plus">+</a>
+                </div>
+              </td>
+            </tr>
+          {{else}}
+            <tr><td colspan="6" class="center-text">无可展示信息</td></tr>
+          {{/each}}
+        </tbody>
+      </table>
+      <div>
+        <h4 style="font-weight:400;font-size:14px;">选择物流信息</h4>
+          <div>
+            <label class="required">*</label>
+            <span>物流公司：</span>
+            <select name="logisticsCompany" class="logisticsCompany" value=""  id="" required >
+              <option value="" disabled >请选择</option>
+            </select>
+            <label class="required">*</label>
+            <span>运单号：</span>
+            <input type="text" class="shipmentNo" required />
+          </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <div class="modal-footer-option">
+        <button class="btn btn-info btn-medium close">取消</button>
+        <button class="btn btn-primary btn-medium js-confirmReceipt-submit">确定</button>
+      </div>
+    </div>
+  </div>
+</div>

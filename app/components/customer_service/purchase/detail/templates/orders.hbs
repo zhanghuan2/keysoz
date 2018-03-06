@@ -1,0 +1,37 @@
+{{#each orders.data}}
+  <tr>
+    <td>
+      <a
+        {{#equals _USER_.currentCategory 99}}
+        href="/customer/order/detail?orderId={{id}}"
+        {{else}}
+          {{#equals orderType 0}}
+        href="/customer/order/netsuper-detail?orderId={{id}}"
+          {{/equals}}
+          {{#equals orderType 1}}
+        href="/customer/order/netsuper-detail?orderId={{id}}"
+          {{/equals}}
+          {{#equals orderType 2}}
+        href="/customer/order/vaccine-detail?orderId={{id}}"
+          {{/equals}}
+          {{#equals orderType 3}}
+        href="/customer/order/blocktrade-detail?orderId={{id}}"
+          {{/equals}}
+        {{/equals}}
+      >{{id}}</a>
+    </td>
+    <td><label>{{supplierName}}</label></td>
+    <td><label class="price">{{formatPrice fee}}</label></td>
+    <td><label>{{formatDate createdAt}}</label></td>
+    <td class="text-right">
+      {{#equals status 0}}<label class="text-success">等待处理</label>{{/equals}}
+      {{#equals status 1}}<label class="text-success">已接收，待发货</label>{{/equals}}
+      {{#equals status 2}}<label class="text-success">部分发货</label>{{/equals}}
+      {{#equals status 3}}<label class="text-success">全部发货，待确认收货</label>{{/equals}}
+      {{#equals status 4}}<label class="text-success">已确认收货，待验收</label>{{/equals}}
+      {{#equals status 5}}<label class="text-success">已验收，待结算</label>{{/equals}}
+      {{#equals status 6}}<label class="text-success">启动结算</label>{{/equals}}
+      {{#equals status 7}}<label class="text-muted">已结算，交易完成</label>{{/equals}}
+    </td>
+  </tr>
+{{/each}}

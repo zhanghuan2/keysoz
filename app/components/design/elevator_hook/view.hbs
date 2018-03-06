@@ -1,0 +1,8 @@
+{{#component "elevator-hook js-comp"}}
+  <div class="elevator-item js-elevator-hook-item" data-name="{{#if floorName}}{{floorName}}{{/if}}" data-icon="{{#if floorIcon}}{{floorIcon}}{{/if}}" data-id="js-elevator-hook-{{floorName}}" {{#if _DESIGN_MODE_}}data-design="true"{{/if}}>
+    <div class="elevator-header">
+      {{#if floorIcon}}<i class="icon-zcy {{floorIcon}}" style="color: {{iconColor}}"></i>{{/if}}
+      <span style="font-size: {{#if fontSize}}{{fontSize}}{{else}}24px{{/if}}">{{#if floorName}}{{floorName}}{{else}}标题{{/if}}</span>
+    </div>
+  </div>
+{{/component}}

@@ -1,0 +1,60 @@
+{{#component "item-publish-with-item"}}
+  <p style="display: none;">{{json this}}</p>
+  {{#equals _DATA_.item.tags.vaccine "1"}}
+    <!-- 疫苗商品没有网超协议-->
+    <input type="hidden" class="js-item-tags-vaccine" value="{{_DATA_.item.tags.vaccine}}">
+    <input type="hidden" name="isVaccine" value="{{_DATA_.item.tags.vaccine}}">
+  {{else}}
+     {{#equals supperPro true}}
+       <input type="hidden" class="isSupperPro" name="isSupperPro" value="true">
+       {{else}}
+          {{> component:seller/item_check_detail/other_templates/shop_agreenment}}
+     {{/equals}}
+  {{/equals}}
+  {{#with _DATA_}}
+    {{> component:seller/item_publish/common/other_templates/base_info}}
+  {{/with}}
+  {{#if _DATA_.otherAttrs}}
+    {{#each _DATA_.otherAttrs}}
+      {{#equals group "普通属性"}}
+        {{> component:seller/item_publish/common/other_templates/default_attrs attrGroup="普通属性,SPU,USER_DEFINED"}}
+      {{else}}
+        {{#of group "服务信息,政策信息"}}
+          {{> component:seller/item_publish/common/other_templates/other_attrs attrGroup="服务信息,政策信息"}}
+        {{else}}
+          {{#of group "USER_DEFINED"}}
+          {{else}}
+            {{> component:seller/item_publish/common/other_templates/attrs_temp}}
+          {{/of}}
+        {{/of}}
+      {{/equals}}
+    {{/each}}
+  {{else}}
+  {{/if}}
+
+  {{#isEmpty _DATA_.skuAttrs}}
+  {{else}}
+    {{#with _DATA_}}
+      {{> component:seller/item_publish/common/other_templates/sku_attrs spuId=item.spuId}}
+    {{/with}}
+  {{/isEmpty}}
+
+  {{#with _DATA_}}
+    {{> component:seller/item_publish/common/other_templates/price_stock skuAndStocks=skuAndStocks isVaccine=item.tags.vaccine}}
+  {{/with}}
+
+  {{#of _USER_.currentCategory '99,03'}}
+    {{#equals _DATA_.item.status '5'}}
+      <div class="form-section clearfix js-item-check-operation">
+        <div class="section-title">解冻审核</div>
+        <div class="pull-left section-content no-bg">
+          <div class="btn-box clearfix">
+            <div class="btn btn-smallest btn-primary js-btn-agree" data-id="{{_DATA_.item.id}}">通过</div>
+            <div class="btn btn-smallest btn-primary js-btn-refuse" data-id="{{_DATA_.item.id}}">拒绝</div>
+          </div>
+        </div>
+      </div>
+    {{/equals}}
+  {{/of}}
+
+{{/component}}

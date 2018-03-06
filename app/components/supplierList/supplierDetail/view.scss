@@ -1,0 +1,78 @@
+.component-supplierDetail{
+  .detail-box{
+    background-color: rgb(247,247,247);
+  }
+  .content-left,.content-right{
+    display:inline-block;
+  }
+  .content-left{
+    padding: 10px 20px;
+    color: #fff;
+    width: 23.4%;
+    vertical-align: top;
+    height: 100%;
+    background: url(/lunatone/assets/images/other-images/shopBG.png);
+    filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+    -moz-background-size:100% 100%;
+    background-size:100% 100%;
+    p{
+      &.title{
+        font-size: 18px;
+        margin: 10px 0 5px 0;
+        font-weight: bolder;
+      }
+    }
+  }
+  .content-right{
+    width: 75%;
+    height: 100%;
+    padding: 20px 0 10px 52px;
+    ul{
+      height: 94%;
+      li{
+        display: inline-block;
+        width:43%;
+        vertical-align: top;
+        height: 100%;
+        &:first-child{
+          width: 56%;
+          border-right:1px solid #E7E9EA;
+        }
+        &:last-child{
+          padding-left: 60px;
+        }
+        table{
+          border-collapse: separate;
+          border-spacing: 5px;
+          font-size: 13px;
+          tr{
+            td:first-child{
+              color:#666666;
+              text-align:right;
+            }
+          }
+        }
+        p.msg-title{
+          font-size: 16px;
+          color: black;
+        }
+        p.yyzz-title{
+          font-size: 13px;
+        }
+      }
+    }
+    .down-img{
+      display: block;
+      width: 120px;
+      height: 150px;
+      margin-bottom: 20px;
+    }
+  }
+  .overflow-hidden{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: inline-block;
+    width: 300px;
+  }
+}

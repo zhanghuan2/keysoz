@@ -1,0 +1,46 @@
+.component-goods-category-tree {
+  width: 100%;
+  clear: both;
+  .left {
+    width: 230px;
+    margin-right: 12px;
+    float: left;
+  }
+  .right {
+    float: left;
+    width: 955px;
+    .list-more {
+      width: 690px !important;
+    }
+    .product {
+      margin: 0 10px 15px 0;
+    }
+    .otherAttrSearch {
+      width: 830px !important;
+    }
+  }
+  .full-right {
+    .fix-nav-bar {
+      width: 100%;
+      .filter-activity {
+        width: 1200px;
+      }
+    }
+    .goods-search-list {
+      width: 1200px;
+      margin: 0 auto;
+    }
+    .list-more {
+      width: 930px !important;
+    }
+    .product {
+      margin: 0 15px 15px 0;
+    }
+    .otherAttrSearch {
+      width: 1075px !important;
+    }
+  }
+}
+
+
+

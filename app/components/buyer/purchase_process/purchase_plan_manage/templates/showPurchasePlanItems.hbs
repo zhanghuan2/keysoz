@@ -1,0 +1,104 @@
+<div class="modal pur-modal">
+  <p style="display: none;">{{json this}}</p>
+  <div class="modal-header">
+    <h2>
+      {{#equals isModify 1}}
+        修改已关联确认书的商品
+      {{else}}
+        添加关联确认书的商品
+      {{/equals}}
+    </h2>
+  </div>
+  <div class="payments-info" style="padding:20px;">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th width="180"><span class="">采购计划文号</span></th>
+        <th width="180">采购类目</th>
+        <th width="100">可用金额(元)</th>
+        <th width="80">可用数量</th>
+      </tr>
+      </thead>
+      <tbody>
+      {{#with planInfo}}
+        <tr class="item-tr">
+          <td data-confirmationid="{{confirmationId}}">{{confirmationName}}</td>
+          <td data-gpcatalogid="{{gpCatalogId}}">{{gpCatalogName}}</td>
+          <td><span class="price currency js-available-amount" data-total="{{availableAccount}}">{{formatPrice availableAccount}}</span></td>
+          <td><span class="js-available-count" data-count="{{availableQuantity}}">{{#equals availableQuantity -1}}不限{{else}}{{availableQuantity}}{{/equals}}</span></td>
+        </tr>
+      {{/with}}
+      </tbody>
+    </table>
+  </div>
+  <div class="requisition-items">
+      <div class="modal-body clearfix">
+        <div><strong><span class="req-title">需求商品</span></strong></div>
+        <table class="table center-tex requisition-items-table">
+          <thead>
+          <tr>
+            {{#equals isModify 1}}
+              <th style="display: none;"></th>
+            {{else}}
+              <th width="24"></th>
+            {{/equals}}
+            <th width="226"> <span class="">商品</span> </th>
+            <th width="100">商品编号</th>
+            <th width="100">供应商</th>
+            <th width="100">单价(元)</th>
+            <th width="70">已关联确认书数量</th>
+            <th width="70">未关联确认书数量</th>
+            <th width="130">关联确认书数量</th>
+          </tr>
+          </thead>
+          <tbody>
+          {{#each items.data}}
+            <tr class="item-tr" data-id="{{skuId}}" data-item-id={{itemId}}>
+              {{#equals ../isModify 1}}
+                <td style="display: none;">
+                  <input type="checkbox" class="js-select-item input-checkbox" checked>
+                </td>
+              {{else}}
+                <td width="24" class="check"><input type="checkbox" class="js-select-item input-checkbox"></td>
+              {{/equals}}
+              <td class="left-text"><span><span>{{itemName}}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sku-attrs">{{#each skuAttr}}{{@key}}:{{this}}&nbsp;&nbsp;{{/each}}</span></span></td>
+              <td>{{itemId}}</td>
+              <td>{{shopName}}</td>
+              <td><div><span class="price item-price js-item-price" data-price="{{skuPrice}}">{{formatPrice skuPrice}}</span></div></td>
+              <td>{{#if currentCount}}{{currentCount}}{{else}}0{{/if}}</td>
+              <td>
+                <span class="js-unbind-item-count" data-unbind-count="{{unbindPayCount}}" data-binded-count="{{currentCount}}" data-count="0">
+                  {{#if unbindPayCount}}{{unbindPayCount}}{{else}}0{{/if}}
+                </span>
+              </td>
+              <td>
+                <div class="input-amount" data-min="0" data-max="{{unbindPayCount}}">
+                  <a href="javascript:void(0);" class="minus {{#equals currentCount 0}}disabled{{/equals}}" >-</a>
+                  <input type="number" class="count-number" value="{{currentCount}}">
+                  <a href="javascript:void(0);" class="plus {{#equals currentCount subItemCount}}disabled{{/equals}}">+</a>
+                </div>
+              </td>
+            </tr>
+          {{else}}
+            <tr><td colspan="8" class="text-center">无可展示信息</td></tr>
+          {{/each}}
+          </tbody>
+        </table>
+        <div class="selected-pagination pagination-danger"></div>
+      </div>
+      <div class="modal-footer">
+        <div class="modal-footer-option">
+          <button class="btn btn-info btn-medium close">取消</button>
+          <button class="btn btn-primary btn-medium js-plan-items-submit">确定</button>
+        </div>
+        <div style="float: left; line-height:40px;">
+          {{#equals isModify 1}}
+          {{else}}
+            <label for="select-batch"><input type="checkbox" id="select-batch" class="js-batch-select input-checkbox">全选</label>
+          {{/equals}}
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <label class="js-select-item-info"></label>
+        </div>
+      </div>
+  </div>
+</div>

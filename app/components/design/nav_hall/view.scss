@@ -1,0 +1,61 @@
+@import "compass/css3/inline-block";
+@import "pokeball/theme";
+@import "compass/css3/box-sizing";
+
+$width: 200px;
+
+.nav-hall {
+  .nav-categorys {
+    background: #F4F3F4;
+    padding: 10px 0;
+    .category-li {
+      position: relative;
+      padding-left: 16px;
+      height: 30px;
+      line-height: 30px;
+      list-style: none;
+      color: #24344E;
+      &:hover {
+        background: #197AFF;
+        color: #FFF;
+      }
+
+      .child-category {
+        font-size: 14px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+    .nav-categorys-container {
+      padding: 0;
+    }
+
+    .expand-panel {
+      &.disappear {
+        display: none;
+      }
+      .expand-category {
+        position: absolute;
+        padding: 5px 15px 30px;
+        top: 0;
+        width: 720px;
+        z-index: 999;
+        border: 1px solid #ccc;
+        background: #fff;
+        box-shadow: 0 0 5px #ddd;
+        li {
+          height: 42px;
+          line-height: 42px;
+          float: left;
+          padding: 0 10px;
+          list-style: none;
+          font-weight: bold;
+          a {
+            color: #666;
+          }
+        }
+      }
+    }
+  }
+}

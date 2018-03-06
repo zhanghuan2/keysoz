@@ -1,0 +1,27 @@
+{{#component "component-headerSearch js-comp"}}
+  {{#equals searchType 1}}
+    <div class="newHeader-1">
+      <div class="eve-newConpont supplier-eve supplier-eve-msg">
+        {{inject "supplierList/supplierMsg" true}}
+      </div>
+      <div class="eve-newConpont supplier-eve supplier-eve-search">
+        {{inject "supplierList/supplierSearch" true}}
+      </div>
+    </div>
+  {{else}}
+    <div class="newHeader-2" style="margin-top: -12px;">
+      <div class="eveComponts-text">
+        <div class="text-content">
+          <span style="color: rgb(35, 68, 78); font-family: 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, SimSun, 宋体, 'WenQuanYi Micro Hei', 'Helvetica Neue', Arial, Tahoma, sans-serif; font-size: 18px; font-weight: bold;">电子卖场</span>
+        </div>
+      </div>
+      <div class="eve-newConpont" style="width: 673px;display:inline-block">
+        {{inject "common/header" true}}
+
+      </div>
+    </div>
+
+  {{/equals}}
+
+
+{{/component}}

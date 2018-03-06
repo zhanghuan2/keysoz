@@ -1,0 +1,28 @@
+{{#component "js-comp shop-cart"}}
+  <input class="count-query-url" value="{{queryCountUrl}}" type="hidden">
+  <input class="shop-cart-tags" value="{{json _TAGS_}}" type="hidden">
+  <a
+    {{#if _USER_}}
+      {{#if defaultLink}}
+        href="/{{defaultLink}}"
+      {{else}}
+        {{#equals _TAGS_.blocktrade 1}}
+         href="/carts/supperProCart"
+        {{else}}
+          href="/cart"
+        {{/equals}}
+      {{/if}}
+    {{else}}
+      href="/login"
+    {{/if}}
+  >
+    <div class="js-goto-mycart">
+      <i class="icon-zcy icon-cart pull-left"></i>
+      <span class="font-14">购物车</span>
+      {{#if _USER_}}
+        <strong id="js-cart-count"></strong>
+      {{/if}}
+    </div>
+  </a>
+{{/component}}
+

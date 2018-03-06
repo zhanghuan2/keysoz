@@ -1,0 +1,50 @@
+.zcy-address-multiple {
+
+  .zcy-address-multiple-select-selection {
+    border: 1px solid #ccc;
+    width: 280px;
+  }
+
+  .zcy-address-multiple-checked-list {
+    float: left;
+    li {
+      background-color: #f7f7f7;
+      margin: 3px;
+      padding: 3px;
+      cursor: default;
+      float: left;
+      border-radius: 3px;
+
+      .icon-guanbi {
+        cursor: pointer;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .dropdown-content {
+    background-color: #F9F9F9;
+    width: 420px;
+  }
+
+  .zcy-address-multiple-selection-list {
+    padding: 10px;
+    li {
+      width: 80px;
+      float: left;
+    }
+    label {
+      width: auto;
+    }
+  }
+
+  .zcy-address-multiple-checkbox {
+    margin-right: 4px;
+  }
+
+  .zcy-address-multiple-input {
+    width: 50px;
+    float: left;
+    border: none;
+  }
+}

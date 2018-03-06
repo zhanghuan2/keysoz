@@ -1,0 +1,88 @@
+.brand-creat-warp {
+  margin-bottom: 30px;
+  table{
+      tr td.text-center{
+          width: 50px;
+      }
+  }
+  
+}
+.item-publish {
+  margin: 30px 0;
+}
+.bd-log-warp {
+  .log-box {
+    width: 90%;
+    padding:20px 30px;
+    ul{
+      padding: 0;
+      margin: 0;
+      li {
+        list-style: none;
+        padding: 10px 0 10px 50px;
+        position: relative;
+        font-size: 12px;
+        color:#666;
+        div {
+          display: inline-block;
+          float: left;
+        }
+        .log-time{
+          width: 150px;
+        }
+        .log-company {
+          width: 95px;
+        }
+        .log-name {
+          width: 110px;
+        }
+        .log-message {
+          width: 120px;
+        }
+        .log-explain {
+          width: 200px;
+        }
+        div[data-type="0"] {
+          color: #55C857;
+        }
+        div[data-type="1"] {
+          color: #FC832A;
+        }
+        span.mark {
+          display: block;
+          width: 10px;
+          height: 10px;
+          border: solid 1px #CCD0D6;
+          border-radius: 50%;
+          position: absolute;
+          top: 14px;
+          left: 20px;
+          background: #fff;
+          &:after {
+            content: '';
+            display: block;
+            width: 2px;
+            height: 29px;
+            position: relative;
+            top: 8px;
+            left: 3px;
+            background-color: #ccd0d6;
+          }
+        }
+        &:last-child {
+          span.mark {
+            border: solid 1px #2D88CD;
+            background: #2D88CD;
+            &:after {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.auditing-result{
+    margin-bottom: 10px;
+}

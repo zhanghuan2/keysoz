@@ -1,0 +1,76 @@
+@import "compass/css3/inline-block";
+@import "pokeball/theme";
+
+div.pur-detail-requisition-items{
+  //width: 990px;
+  background-color: #FFFFFF;
+  //padding: 15px;
+  margin: 0;
+  table{
+    //width: 960px;
+    thead{
+      tr{
+        background-color: #F7F7F7;
+        color: #9F9F9F;
+        th{
+          text-align: left;
+          border: 1px solid $color-border;
+          border-width: 0 0 1px 0;
+          &:first-child{
+            border-width: 0 0 1px 1px;
+          }
+          &:last-child{
+            border-width: 0 1px 1px 0;
+            text-align: right;
+          }
+        }
+      }
+    }
+    tbody{
+      tr{
+        border: 1px solid #e7e9ea;
+        td{
+          text-align: left;
+          border-width: 0 0 1px 0;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          &:first-child{
+            border-width: 0 0 1px 1px;
+          }
+          &:last-child{
+            border-width: 0 1px 1px 0;
+            text-align: right;
+          }
+          .sku-attrs{
+            color: #BBB;
+          }
+        }
+        &.first-level-tr{
+          border-width: 0 0 1px 2px;
+        }
+        &.second-level-tr{
+          display: none;
+        }
+      }
+    }
+  }
+  .price, .currency{
+    color: #FE7800;
+  }
+  .no-href{
+    color: #9E9E9C;
+  }
+  .red-text{
+    color: #FF2300;
+  }
+  .list-pagination {
+    text-align: right;
+    margin: 10px 0 10px 0;
+  }
+}
+.req-title {
+  @include inline-block(middle);
+  font-size: 14px;
+  margin-bottom: 10px;
+  font-family: "Microsoft YaHei","Hiragino Sans GB","WenQuanYi Micro Hei", sans-serif;
+}

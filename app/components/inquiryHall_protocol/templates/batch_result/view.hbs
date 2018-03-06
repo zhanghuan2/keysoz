@@ -1,0 +1,53 @@
+{{#component "component-inquiry-detail-good js-comp"}}
+{{!-- 
+{
+  "total":总条数,
+  "resultList":[{
+    "purchaser":"采购单位", 
+    "tradeBrandMode":"成交品牌型号",
+    "tradeNumber":交易数量,
+    "tradeStatus":"成交状态",
+    "dealPrice":成交单价,
+    "dealTotalPrice":成交总价,
+    "supplier":"成交供货商",
+    "tradeResult":"成交结果公告ID"
+  }
+} 
+--}}
+<section>
+  <h2>成交结果信息</h2>
+  <table class="table table-fixed" style="margin-top: 20px">
+    <thead>
+      <tr>
+        <th>序号</th>
+        <th>采购单位</th>
+        <th>成交品牌型号</th>
+        <th>数量</th>
+        <th>状态</th>
+        <th>成交单价(元)</th>
+        <th>成交总价(元)</th>
+        <th>优惠率(%)</th>
+        <th>成交供货商</th>
+        <th>结果公告</th>
+      </tr>
+    </thead>
+    <tbody id="resultList" class="bgc-clear">
+      {{#each resultList}}
+      <tr>
+        <td>{{add @index 1}}</td>
+        <td>{{purchaser}}</td>
+        <td>{{dealItemBrand}}/{{dealItemModel}}</td>
+        <td>{{dealQuantity}}</td>
+        <td>{{requireStateName}}</td>
+        <td>{{formatPrice dealPrice}}</td>
+        <td>{{formatPrice dealTotalPrice}}</td>
+        <td>{{discountRate}}</td>
+        <td>{{dealSupName}}</td>
+        <td>{{#if detailLinkId}}<a id="resultDetail" href="/lasvegas/protocolhall/{{#equals requireState 75}}cancel{{else}}result{{/equals}}?anNouncementId={{detailLinkId}}">详情</a>{{/if}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+    <tr class="hide"><td colspan="10" style="text-align:center"><a id="loadMoreResult" data-total="{{total}}" data-page="1" data-announcement-id="{{anNouncementId}}">显示更多</a></td></tr>
+  </table>
+</section>
+{{/component}}

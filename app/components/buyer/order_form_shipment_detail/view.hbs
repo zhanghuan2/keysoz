@@ -1,0 +1,190 @@
+{{#component "order-form-shipment-detail trade-manage js-comp clearfix"}}
+  <div class="item-list-total" data-list-total="{{_DATA_.shipmentItems.total}}"></div>
+  {{!-- {{json this}} --}}
+  <div class="t-breadcrumb">
+    <label>订单管理</label>
+    <label> / </label>
+    <a href="/buyer/orders">订单列表</a>
+    <label> / </label>
+    <a
+      {{#equals _USER_.currentCategory 99}}
+      href="/customer/order/detail?orderId={{_DATA_.shipment.orderId}}"
+      {{else}}
+        {{#equals _DATA_.shipmentItemExts.data.0.orderType 0}}
+      href="/customer/order/netsuper-detail?orderId={{_DATA_.shipment.orderId}}"
+        {{/equals}}
+        {{#equals _DATA_.shipmentItemExts.data.0.orderType 1}}
+      href="/customer/order/netsuper-detail?orderId={{_DATA_.shipment.orderId}}"
+        {{/equals}}
+        {{#equals _DATA_.shipmentItemExts.data.0.orderType 2}}
+      href="/customer/order/vaccine-detail?orderId={{_DATA_.shipment.orderId}}"
+        {{/equals}}
+        {{#equals _DATA_.shipmentItemExts.data.0.orderType 3}}
+      href="/customer/order/blocktrade-detail?orderId={{_DATA_.shipment.orderId}}"
+        {{/equals}}
+      {{/equals}}
+    >订单详情</a>
+    <label> / </label>
+    <label class="active">发货单详情</label>
+  </div>
+  <div class="order-form-shipment-detail-body">
+    <div class="trade-panel">
+      <div class="trade-panel-top">
+        <div class="trade-panel-title">物流信息</div>
+      </div>
+      <div class="trade-panel-body">
+        {{!-- <div class="shipment-title shipment-info-title"><strong>物流信息</strong></div>
+        <hr> --}}
+        <div class="logistics-info">
+          <div class="timeline clearfix">
+            <table class="time-line">
+              {{#each _DATA_.richStepMap}}
+                <tr class="time-line">
+                  <td class="first"><div class="point success {{#if @first}}first{{/if}} {{#if @last}}{{#equals hasInnerLast null}}last{{/equals}}{{/if}}"></div></td>
+                  <td><strong>{{@key}}</strong></td>
+                  {{#with this}}
+                  <td><strong>
+                  {{#equals week 1}}周一{{/equals}}
+                  {{#equals week 2}}周二{{/equals}}
+                  {{#equals week 3}}周三{{/equals}}
+                  {{#equals week 4}}周四{{/equals}}
+                  {{#equals week 5}}周五{{/equals}}
+                  {{#equals week 6}}周六{{/equals}}
+                  {{#equals week 7}}周日{{/equals}}
+                  </strong></td>
+                  {{#each expressSteps}}
+                  {{#if @first}}
+                    <td>{{formatDate time}}</td>
+                    <td>{{#equals facilityName null}}{{else}}[{{facilityName}}]{{/equals}} {{desc}}</td>
+                    <td class="time-line">{{comment}}</td>
+                  {{/if}}
+                  {{/each}}
+                  {{/with}}
+                </tr>
+                {{!-- 在第一层的最后一个对象中加入一个变量 --}}
+                {{#if @last}}{{#assign "outLast"}}outLast{{/assign}}{{/if}}
+                {{!-- {{json hasInnerLast}} --}}
+                {{#with this}}
+                {{#each expressSteps}}
+                {{#if @first}}{{else}}
+                {{#if @last}}{{#assign "hasInnerLast"}}hasInnerLast{{/assign}}{{/if}}
+                <tr class="time-line">
+                  <td class="first"><div class="point success {{#if @last}}{{#equals outLast "outLast"}}last{{/equals}}{{/if}}"></div></td>
+                  <td></td>
+                  <td></td>
+                  <td>{{formatDate time}}</td>
+                  <td>{{#equals facilityName null}}{{else}}[{{facilityName}}]{{/equals}} {{desc}}</td>
+                  <td class="time-line">{{comment}}</td>
+                </tr>
+                {{/if}}
+                {{/each}}
+                {{/with}}
+              {{else}}
+              <tr class="time-line">
+                <td colspan="7">无物流数据</td>
+              </tr>
+              {{/each}}
+            </table>
+          </div>
+        </div>
+        {{!-- <div class="shipment-title"><strong>收货地址</strong></div> --}}
+        <hr>
+        <div class="addr-info">
+          <label class="desc-text">收货地址：</label><label>{{#with _DATA_.delivery}}
+          {{province}}{{city}}{{region}}{{detail}}({{receiver}} 收) &nbsp;&nbsp;&nbsp;&nbsp;{{mobile}}
+          {{/with}}</label>
+        </div>
+      </div>
+    </div>
+    <div class="trade-panel">
+      <div class="trade-panel-top">
+        <div class="trade-panel-title">物流信息</div>
+      </div>
+      <div class="trade-panel-body">
+        {{!-- <div class="shipment-title"><strong>物流信息</strong></div> --}}
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              {{!-- <th width="33%">发货方式</th> --}}
+              <th width="50%">物流公司</th>
+              <th width="50%">运单号</th>
+            </tr>
+          </thead>
+          <tbody>
+          {{#with _DATA_.shipment}}
+              <tr>
+                {{!-- <td>{{shipmentType}}</td> --}}
+                <td>{{expressName}}</td>
+                <td>{{shipmentNo}}</td>
+              </tr>
+          {{/with}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="trade-panel">
+      <div class="trade-panel-top">
+        <div class="trade-panel-title">发货商品清单</div>
+      </div>
+      <div class="trade-panel-body">
+        {{!-- <div class="shipment-title"><strong>发货商品清单</strong></div> --}}
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th width="50%">商品</th>
+              <th width="10%">商品编号</th>
+              <th width="10%">单价</th>
+              {{#if _DATA_.shipmentItemExts.data.0}}
+                {{#equals _DATA_.shipmentItemExts.data.0.orderType 1}}
+                  <th width="15%">主/配件</th>
+                {{else}}
+                  <th width="15%">锁定仓库</th>
+                  <th width="10%">发货仓库</th>
+                {{/equals}}
+              {{else}}
+                <th width="15%">锁定仓库</th>
+                <th width="10%">发货仓库</th>
+              {{/if}}
+              <th width="5%">数量</th>
+            </tr>
+          </thead>
+          <tbody>
+          {{#each _DATA_.shipmentItemExts.data}}
+              <tr>
+                <td>
+                  <div><a href="/buyer/trading-snapshot?orderId={{orderId}}&skuId={{skuId}}">{{itemName}}</a></div>
+                  <span class="sku-attrs">{{#each attributeMap}}{{this}}&nbsp;&nbsp;{{/each}}</span>
+                </td>
+                <td>{{itemId}}</td>
+                <td class="price">
+                  <span class="price">
+                    {{../_CURRENCY_}}
+                    <span class="order-subtotal">{{formatPrice skuPrice}}</span>
+                  </span>
+                </td>
+                {{#equals orderType 1}}
+                  <td>{{#equals isMaster true}}主商品{{else}}配件{{/equals}}</td>
+                {{else}}
+                  <td>
+                      {{#each lockWarehouses}}{{lockWarehouseName}}&nbsp;{{/each}}
+                  </td>
+                  <td>{{shipWarehouseName}}</td>
+                {{/equals}}
+                <td>
+                  {{#ifCond reissueQuantity ">" 0}}
+                    {{reissueQuantity}}
+                  {{else}}
+                    {{quantity}}
+                  {{/ifCond}}
+                </td>
+              </tr>
+          {{/each}}
+          </tbody>
+        </table>
+        <div class="list-pagination pagination-danger"
+            data-size="{{#if pageSize ~}}{{pageSize}}{{else}}20{{~/if}}"
+          data-total="{{_DATA_.total}}"></div>
+      </div>
+    </div>
+  </div>
+{{/component}}

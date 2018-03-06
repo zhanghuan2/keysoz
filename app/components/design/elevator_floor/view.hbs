@@ -1,0 +1,51 @@
+{{#component "elevator-floor js-comp"}}
+  <div class="hide">{{json}}</div>
+  <div class="floor-item js-floor-item" data-name="{{floorName}}" data-icon="{{floorIcon}}" data-id="js-floor-{{floorName}}" {{#if _DESIGN_MODE_}}data-design="true"{{/if}}>
+    <div class="floor-header">
+      <div class="floor-info">
+        <i class="icon-zcy {{floorIcon}}" style="color: {{iconColor}}"></i>{{floorName}}
+      </div>
+      <div class="floor-extend"></div>
+    </div>
+    <div class="floor-body clearfix">
+      <div class="floor-image">
+        <a href="{{#if mainUrl}}{{mainUrl}}{{else}}javascript:void(0);{{/if}}">
+          <img src="{{mainImg}}" alt="{{floorName}}" />
+        </a>
+      </div>
+      <div class="floor-products">
+        <ol class="products-list clearfix">
+          {{#each _DATA_.itemList}}
+            <li class="product-item clearfix">
+              <a href="/items/{{id}}?searchType=1">
+                <img class="product-image" src="{{cdnPath mainImage '330w'}}" alt="">
+                <div class="product-info">
+                  <p class="product-name">{{name}}</p>
+                  <p class="product-price">
+                    <span class="currency">￥{{formatPrice lowPrice 0}}</span>
+                  </p>
+                  <p class="product-sale">销量 {{#if saleQuantity}}{{saleQuantity}}{{else}}0{{/if}} {{extra.unit}}</p>
+                </div>
+              </a>
+            </li>
+          {{/each}}
+        </ol>
+      </div>
+      <div class="floor-brands">
+        <p class="brands-title">精选品牌</p>
+        <ol class="brand-list clearfix">
+          {{#each _DATA_.brandList}}
+            <li class="brand-item">
+              <a href="/eevees/search?bid={{id}}">
+                <p>
+                  <img src="{{logo}}" alt="" />
+                </p>
+                <p class="brand-name">{{name}}</p>
+              </a>
+            </li>
+          {{/each}}
+        </ol>
+      </div>
+    </div>
+  </div>
+{{/component}}

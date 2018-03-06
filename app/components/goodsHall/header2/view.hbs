@@ -1,0 +1,49 @@
+{{#component "sites-header js-comp"}}
+  <form class="form form-search" type="get" id="form-search" action="{{_HREF_.main}}/hall/search" data-hrefbase="{{_HREF_.main}}" style="width:{{width}}px;">
+    {{#equals position "up"}}
+      {{#if hotwords}}
+      <div class="search-hot">
+        <ul class="search-hot-ul">
+          <li><span>{{i18n "Popular searches " bundle="all_mix"}}:</span></li>
+          {{#each hotwords}}
+            <li><a href="{{_HREF_.main}}/search?q={{urlEncode this "utf-8"}}" target="_blank">{{this}}</a></li>
+          {{/each}}
+        </ul>
+      </div>
+      {{else}}
+      <div class="search-hot">
+        <ul class="search-hot-ul js-hotword">
+        </ul>
+      </div>
+      {{/if}}
+    {{/equals}}
+    <fieldset>
+      <div class="input-group input-group-append input-search">
+        {{#unless itemId}}
+          {{#if shopId}}<input type="hidden" name="shopId" value="{{shopId}}">{{/if}}
+        {{/unless}}
+        <i class="icon-zcy icon-search"></i>
+        <input type="text" name="q" class="search-input items-suggest active" value="{{q}}" autocomplete="off" placeholder="输入您要搜索的商品"><span class="input-group-btn">
+          <button class="btn btn-primary btn-medium" id="search-button" type="submit">搜协议商品</button>
+        </span>
+      </div>
+    </fieldset>
+    {{#ifCond position "!=" "up"}}
+      {{#if hotwords}}
+      <div class="search-hot">
+        <ul class="search-hot-ul">
+          <li><span class="title">{{i18n "Popular searches " bundle="all_mix"}}:</span></li>
+          {{#each hotwords}}
+            <li><a href="{{_HREF_.main}}/search?q={{urlEncode this "utf-8"}}" target="_blank">{{this}}</a></li>
+          {{/each}}
+        </ul>
+      </div>
+      {{else}}
+      <div class="search-hot">
+        <ul class="search-hot-ul js-hotword">
+        </ul>
+      </div>
+      {{/if}}
+    {{/ifCond}}
+  </form>
+{{/component}}

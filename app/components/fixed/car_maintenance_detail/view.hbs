@@ -1,0 +1,242 @@
+{{#component "component-car-maintenance-detail js-comp"}}
+	<div class="hide">{{json}}</div>
+	<div class="fixed-car-maintenance-detail">
+    <div class="fixed-protocol">
+      <div class="fixedpro-info">
+        <div class="fixedpro-left">
+          <div class="fixedpro-logo">
+            <img src="{{cdnPath _DATA_.logoPath}}" alt="{{_DATA_.supplierName}}">
+          </div>
+          <div class="fixedpro-summary" data-supplierid="{{_DATA_.supplierId}}">
+            <p><span style="float: left">企业名称</span><span class="summay-val" title="{{_DATA_.supplierName}}">{{_DATA_.supplierName}}</span></p>
+            <p><span style="float: left">地址</span><span class="summay-val" title="{{_REPAIRAGENTINFO_.0.addrProvinceName}} {{_REPAIRAGENTINFO_.0.addrCityName}} {{_REPAIRAGENTINFO_.0.addrRegionName}} {{_REPAIRAGENTINFO_.0.bizAddress}}">{{_REPAIRAGENTINFO_.0.addrProvinceName}} {{_REPAIRAGENTINFO_.0.addrCityName}} {{_REPAIRAGENTINFO_.0.addrRegionName}} {{_REPAIRAGENTINFO_.0.bizAddress}}</span></p>
+            <p><span style="float: left">联系人</span><span class="summay-val" title="{{_DATA_.coordinator}}">{{_DATA_.coordinator}}</span></p>
+            <p><span style="float: left">联系电话</span><span class="summay-val" title="{{_DATA_.cellphone}}">{{_DATA_.cellphone}}</span></p>
+            <p><span style="float: left">类型</span><span class="summay-val">{{_DATA_.supplierTypeName}}</span></p>
+          </div>
+        </div>
+        <div class="fixedpro-right">
+          <!--<div class="protcolscore-comp">-->
+          <!--<p class="protcolscore-result">客户满意</p>-->
+          <!--<p>-->
+          <!--<input name="rating" type="radio" class="star">-->
+          <!--<input name="rating" type="radio" class="star">-->
+          <!--<input name="rating" type="radio" class="star">-->
+          <!--<input name="rating" type="radio" class="star" checked="checked">-->
+          <!--<input name="rating" type="radio" class="star">-->
+          <!--</p>-->
+          <!--</div>-->
+          <div class="customer-satisfaction">
+            <p><span class="cussatif-key">车辆数</span><span class="cussatif-val">{{#if
+                _STATISTICS_.vehicleSum}}{{_STATISTICS_.vehicleSum}}{{else}}0{{/if}}辆</span></p>
+            <p><span class="cussatif-key">维修费用总计</span><span class="cussatif-val car-amount">{{#if
+                _STATISTICS_.totalAmount}}{{formatBudgetAmount
+                _STATISTICS_.totalAmount 2}}{{else}}0{{/if}}</span>万元</p>
+            <div class="supplier-web"><a href="{{_REPAIRAGENTINFO_.0.webAddress}}">进入供应商网站</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="fixedpro-content">
+        <div id="navbar" class="tab">
+          <ul class="tab-navs clearfix">
+            <li class="menuItem active" data-role="nav"><a href="#introduction" data-param="">机构介绍</a></li>
+            <li class="menuItem" data-role="nav"><a href="#repair-content">维修内容</a></li>
+            <li class="menuItem" data-role="nav"><a href="#fitting-price" data-param="">配件及价格</a></li>
+            <li class="menuItem" data-role="nav"><a href="#service-promise" data-param="">服务承诺</a></li>
+            <li class="menuItem" data-role="nav"><a href="#deal-record" data-param="">成交记录</a></li>
+          </ul>
+        </div>
+        <div class="tab-contents clearfix">
+          <div data-role="content" class="tab-content" id="introduction">
+            <div>
+              <h3>机构介绍</h3>
+              {{#gt (size _REPAIRAGENTINFO_) 0}}
+                {{#with _REPAIRAGENTINFO_.0}}
+                  <table class="table table-fixed">
+                    <tbody>
+                    <tr>
+                      <td width="15%">单位名称</td>
+                      <td width="40%" style="white-space: normal;">{{name}}</td>
+                      <td width="15%">邮政编码</td>
+                      <td width="30%">{{postcode}}</td>
+                    </tr>
+                    <tr>
+                      <td width="15%">单位地址</td>
+                      <td width="40%" style="white-space: normal;">{{addrDistrictName}}</td>
+                      <td width="15%">监督电话</td>
+                      <td width="30%">-</td>
+                    </tr>
+                    <tr>
+                      <td width="15%">法人代表</td>
+                      <td width="40%">{{legalPerson}}</td>
+                      <td width="15%">联系人</td>
+                      <td width="30%">{{contactPersonName}}</td>
+                    </tr>
+                    <tr>
+                      <td width="15%">注册资金</td>
+                      <td width="40%">{{registerCapital}}万</td>
+                      <td width="15%">联系电话</td>
+                      <td width="30%">{{contactPersonPhone}}</td>
+                    </tr>
+                    <tr>
+                      <td width="15%">经济性质</td>
+                      <td width="40%">{{bizNatureName}}</td>
+                      <td width="15%">职工总数</td>
+                      <td width="30%">{{employeeNum}}</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                {{/with}}
+              {{/gt}}
+              <h3>企业简介</h3>
+              <div class="enterpriseInfo">
+                {{{_REPAIRSERVICE_.enterpriseProfile}}}
+              </div>
+            </div>
+          </div>
+          <div data-role="content" class="tab-content" id="repair-content">
+            <div>
+              <h3>维修内容</h3>
+              <table id="repair-table" class="table table-fixed">
+                <tbody>
+                <tr>
+                  <td width="20%">
+                    <div>主修车型</div>
+                  </td>
+                  <td width="80%">{{_DATA_.majorVehicleType}}</td>
+                </tr>
+                <tr>
+                  <td width="20%">
+                    <div>特约车型</div>
+                  </td>
+                  <td width="80%">{{_DATA_.specialVehicleType}}</td>
+                </tr>
+                <tr>
+                  <td width="20%">
+                    <div>特色服务</div>
+                  </td>
+                  <td width="80%" style="overflow: auto;">{{{_REPAIRSERVICE_.traitService}}}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <div>
+              <h3>收费标准</h3>
+              <table id="expense-table" class="table table-fixed">
+                <tbody>
+                <tr>
+                  <td colspan="2" rowspan="2" class="bgc-center">收费标准</td>
+                  <td rowspan="3" class="bgc-center">质量保证里程或时间</td>
+                  <td>大修</td>
+                  <td>{{_DATA_.guarantee}}</td>
+                </tr>
+                <tr>
+                  <td>二级维护</td>
+                  <td>{{_DATA_.secondGuarantee}}</td>
+                </tr>
+                <tr>
+                  <td class="bgc-center">维修费优惠率</td>
+                  <td class="sty-center">{{formatPrice _DATA_.rate}}%</td>
+                  <td>一级维护、小修</td>
+                  <td>{{_DATA_.firstGuarantee}}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div data-role="content" class="tab-content" id="fitting-price">
+            <div>
+              <h3>配件及价格</h3>
+              <form id="fitting-form">
+                <div id="fitting-search">
+                  <div class="stopDefault">配件服务类型：
+                    <input type="text" name="accessoriesName" readonly>
+                    <input type="text" name="accessoriesTypeCode" hidden>
+                    <!--<span class="icon-zcy icon-trianglebottom triangleButton"></span>-->
+                    <div class="selectTree" id="partsSelect" hidden>
+                      <div class="selecttree" id="fitting-tree"></div>
+                    </div>
+                  </div>
+                  <label>配件/服务项目名称：
+                    <input type="text" name="name">
+                  </label>
+                  <span>
+                    <button type="submit" class="btn btn-small">搜索</button>
+                    <button type="reset" class="btn btn-small">重置</button>
+                  </span>
+                </div>
+                <div id="fitting-list">
+                  <table class="table table-fixed">
+                    <thead>
+                    <tr>
+                      <th width="15%">配件名称</th>
+                      <th width="15%">配件类型</th>
+                      <th width="12%">适用车辆</th>
+                      <th width="12%">型号规格</th>
+                      <th width="12%">单价(元)</th>
+                      <th width="10%">质保期</th>
+                      <th width="12%">产地</th>
+                      <th width="12%">来源</th>
+                    </tr>
+                    </thead>
+                    <tbody id="fitting-list-tbody">
+                    {{#each _REPAIRFITTING_.data}}
+                      <tr>
+                        <td>{{name}}</td>
+                        <td>{{accessoriesTypeName}}</td>
+                        <td>{{vehicleBrandName}}</td>
+                        <td>{{specifications}}</td>
+                        <td>{{formatPrice price}}</td>
+                        <td>{{guarantee}}</td>
+                        <td>{{productionPlace}}</td>
+                        <td>{{source}}</td>
+                      </tr>
+                    {{/each}}
+                    </tbody>
+                  </table>
+                  <div class="fixed-fitting-list-pagination">
+                    <div class="pagination" data-size="{{#if pageSize ~}}{{pageSize}}{{else}}10{{~/if}}"
+                         data-total="{{_REPAIRFITTING_.total}}"></div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div data-role="content" class="tab-content" id="service-promise">
+            <div>
+              <h3>服务承诺</h3>
+              <div class="servicePromiseInfo" style="overflow: hidden;">
+                {{{_REPAIRSERVICE_.servicePromise}}}
+              </div>
+            </div>
+          </div>
+          <div data-role="content" class="tab-content" id="deal-record">
+            <div>
+              <h3>成交记录</h3>
+              <div id="deal-record-list">
+                <table class="table table-fixed">
+                  <thead>
+                      <tr>
+                          <th width="25%">采购单位</th>
+                          <th width="40%">维修详情</th>
+                          <th width="15%">总价</th>
+                          <th width="20%">日期</th>
+                      </tr>
+                  </thead>
+                  <tbody id="deal-record-list-tbody">
+                  </tbody>
+                  <tfoot>
+                      <tr id="deal-record-pagination">
+                          <td class="record-pagination col-12" colspan='4' style='text-align:right;'>
+                          </td>
+                      </tr>
+                  </tfoot>
+              </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{{/component}}

@@ -1,0 +1,80 @@
+<div class="modal delivery-address-edit" {{#if id}}data-id="{{id}}"{{/if}}>
+  <div class="modal-header">
+    {{#if id}}修改收货地址{{else}}添加收货地址{{/if}}
+    <a href="javascript:void(0)" class="close">&times;</a>
+  </div>
+  <div class="modal-body">
+    <table class="address-table" {{#if id}}data-id="{{id}}" data-delivery-id="{{deliveryId}}"{{/if}} cellpadding="10px">
+      <tr>
+        <td><label class="pull-right"><span class="required">*</span>收货人：</label></td>
+        <td>
+          <input name="receiverName" type="text"
+                 placeholder="长度不超过25个字符" value="{{receiverName}}"
+                 checker-pattern="^[\u4E00-\u9FA5A-Za-z0-9_]{1,25}$"
+                 icon="false" required/>
+        </td>
+      </tr>
+      <tr>
+        <td><label class="pull-right"><span class="required">*</span>所在地区：</label></td>
+        <td class="address">
+          <select class="address-select" name="province" data-level='1' value="{{provinceCode}}" required>
+            <option value="">--选择省份--</option>
+          </select>
+          <select class="address-select" name="city" data-level='2' value="{{cityCode}}" required>
+            <option value="">--选择城市--</option>
+          </select>
+          <select class="address-select" name="region" data-level='3' value="{{regionCode}}" required>
+            <option value="">--选择区/县--</option>
+          </select>
+          <select class="address-select" name="street" data-level='4' value="{{streetCode}}">
+            <option value="">--选择街道--</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td><label class="pull-right"><span class="required">*</span>详细地址：</label></td>
+        <td>
+          <textarea name="details" max-length="100" rows="8"
+                    placeholder="建议您如实填写详细收货地址，例如街道名称，门牌号码，楼层和房间号等信息" checker-type="nonblank" icon="false"
+                    required>{{details}}</textarea>
+        </td>
+      </tr>
+      <tr>
+        <td><label class="pull-right">邮政编码：</label></td>
+        <td><input name="zip" type="text" placeholder="请输入邮政编码" value="{{zip}}"
+                   data-zcy-pattern="^[1-9][0-9]{5}$"
+                   data-showerror="输入无效"/>
+        </td>
+      </tr>
+      <tr>
+        <td><label class="pull-right">手机号码：</label></td>
+        <td><input name="mobile" type="text" placeholder="" value="{{mobile}}" checker-group="tel"
+                   checker-type="mobile" checker-text="false" icon="false"/></td>
+      </tr>
+      <tr>
+        <td><label class="pull-right">电话号码：</label></td>
+        <td>
+          <input name="areaCode" type="text" placeholder="区号" value="{{areaCode}}"/>
+          <input name="phone" type="text" placeholder="电话号码" value="{{phone}}" checker-pattern="^\d{7,8}$"
+                 checker-group="tel" checker-text="false" icon="false"/>
+          <input name="phoneExt" type="text" placeholder="分机" value="{{phoneExt}}"/>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><span class="hint-text">手机号码与固定电话必须输入其中一项。</span></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <input class="input-checkbox" type="checkbox" name="isDefault" {{#if isDefault}}checked{{/if}}>设为默认收货地址
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-info btn-medium close">取消</button>
+    <button class="btn btn-primary btn-medium save-address">保存</button>
+  </div>
+
+</div>

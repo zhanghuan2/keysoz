@@ -1,0 +1,2131 @@
+---
+Express: 特快
+Normal Mail: 通用邮箱
+Calculate by amount spent: 按金额计算
+Calculate by piece: 按件计算
+Import Item: 导入商品
+Item Import File: 商品导入文件
+Date & Time: 申请时间
+remark: 备注
+Upload File: 上传文件
+upload: 上传
+Please upload file: 请上传文件
+Records: 条记录
+From: 起
+To: 始
+Publish? All site changes will take effect after it is published. You can also choose to use the renoGSTed interface to publish a single page rather than the entire site.: 确认发布？发布后站点下所有页面的改动都将生效。也可以选择进入装修界面后发布单个页面而非整个站点。
+'Enable? Once enabled, shop will begin to use this display template, make sure you have complete the editing and publishing. ': 确认启用？启用后店铺将会即时开始使用此模板展现，请确保已经编辑和发布完成再进行启用。
+We will review this information, results are expected to be out within a week, you can also view the examination status by clicking Merchant enrollment: 我们会对此信息进行审核，预计1周内会有结果，您也可以通过点击商家入驻查看审核状态
+You are using an outdated browser, so you may not have experienced the best results, please click here to upgrade your browser.: 您正使用过时的浏览器，因此您可能体验不到最好的效果，请点击这里去升级您的浏览器。
+'Verification code has been sent. Please check. You can resend the verification code by clicking the button again if you have yet to receive the code for a long time ': 验证码已发送，请注意查收，如果长时间未收到，可以点击按钮重新获取验证码。
+'We cannot deliver to this address as it is not a covered delivery area, please change another address ': 亲,十分抱歉,您的地址不在配送范围内,无法送达哦,建议您更换收货地址
+'Freight template back to default after deleting existing template ': 运费模板删除后,绑定该运费模板的商品将默认启用默认运费模板计算规则
+Please input keywords separated by spaces between multiple keywords, supports up to 10 characters: 请输入商品关键字，多个关键字之间用空格分隔，最多支持10 个
+'Need to display the product number, product number separated by a space, up to 12 product number ': 需要展现的商品的编号，多个商品编号之间用空格分隔，最多12个
+This category has subcategories and cannot be delete, delete all subcategories before this operation: 该类目有子类目，不能删除，请删除所有子类目后再进行此操作
+Product No. xxx have more than one attributes and cannot participate in promotional price-cut event: 商品编号为xxx的商品拥有多个销售属性,不能参与直降活动
+Numbers, letters, characters, underline, symbols, up 80 characters: 数字、字母、汉字、下划线、小括号组成，最长80个字符
+Modify Store Information: 修改店铺信息+B2484B24B2469:B2499
+5-20 characters, 2 characters for 1 character of Mandarin, please do not fill in any email address and telephone number: 5~20字符,一个汉字为两个字符,勿填写邮箱、电话
+Tax registration number in length is XX, XX and XX: 税务登记号长度为 xx 位 xx 位或 xx 位
+'Area setting back to default after deleting existing area setting ': 删除该区域运费后,绑定该区域的商品将归于默认区域
+'You can resend the verification code by clicking the button again if you have yet to receive the code for a long time ': 如果长时间未收到,可以点击按钮重新获取验证码
+Verification email sent successfully, go to your mailbox, click on the link to verify: 验证邮件发送成功，请到您的邮箱中点击链接验证
+You have not selected area or has no area or you can set up: 您还没有选择地区或者已经没有地区可以设置了
+Store navigation bar, you can configure multiple product keywords for shopping guide: 店铺导航栏，可以配置多个商品关键字进行导购
+Supports up to 10 keywords, the excess will be ignored: 最多支持 10 个关键字，超出部分将被忽略
+You can click on the button below or enter to the Merchant Seller Center: 您可以点击下方按钮或者商家中心进入商家中心
+Templates may take some time to take effect, please continue other operations: 模板生效可能需要一定时间，请继续其他操作！
+Freight template numbers up to 45 characters: 运费模板由中英文数字组成,最多45个字符
+Supports up to 12 Product, the excess will be ignored: 最多支持 12 个商品，超出部分将被忽略
+Numbers, letters, characters, underscores, up to 50 characters: 数字、字母、汉字、下划线，最长50个字符
+Are you sure you Close an order, the order will be closed after closing: 您确定关闭订单吗,关闭之后该订单将关闭
+You are about to leave the page, unsaved changes will not be saved: 您正要离开该页面，未保存更改将不被保存
+'Please upload picture format of PNG or JPG less than 1MB ': 请上传小于1MB的PNG或JPG的图片
+Area not selected will be automatically assigned to default shipping calculation rules: 未选择的地区自动归于该默认运费规则计算
+After you save, all goods will follow the distribution area setting: 保存后店铺内所有商品都将遵循该配送区域
+Please enter the correct password (6-16 characters): 请输入正确的密码(6-16位任意字符)
+Goods under RM xxx (including), freight RM xxx: 商品不满xxx元(含),运费xxx元
+'Please confirm discounts are less than original price ': 请确认是否所有的直降价格都小于原价
+'Sensitive wordings detected, please edit and submit again ': 您的描述中有敏感词汇,请修改后提交
+'Display front end category like store category ': 类似店铺类目展示方式展示前台类目
+Will not receive coupons after you decide to disable it, disable: 您确定停用吗,停用之后将无法领券
+Please choose whether it can be used simultaneously with other coupon code: 请选择是否能与其他优惠码同时使用
+Dear customer, we already shipped out your products: 客官,我们已经给您八百里加急送出
+Cannot be restored after deleting, confirm delete?: 商品删除之后不可恢复，确认删除？
+Can be off-shelf after on-shelf, confirm put it on shelves?: 商品上架之后还可以下架，确认上架？
+Can be on-shelf after off-shelf, confirm put it off shelves?: 商品下架之后还可以上架，确认下架？
+'Sorry, you did not use any discount code ': 对不起,您没有任何可使用的优惠券
+Dear customer, your products has been gathered to the point center: 客官,您的货已经到当地集散中心了
+'Sorry, you have chose to use the discount code ': 对不起,您已默认使用商品优惠券
+'Display product in store in levels according to category ': 按分类以楼层形式展示店铺内商品
+Are you sure you publish it, effective immediately upon publication: 您确定发布吗,发布之后立即生效
+Are you sure to delete it, cannot be recovered after deleting: 删除之后无法恢复,确定删除吗?
+'Dear customer, welcome back, its wonderful with you around ': 亲爱的，欢迎回来，有你更美好。
+Are you sure you delete it, cannot be recovered after deleting: 您确定删除吗,删除之后无法恢复
+You have missed the time allowed for RMA: 亲,您已错过了申请售后的时间段
+The failed products was taken out from our site: 不争气(拒收)的货已被打入冷宫
+'Now you can start a whole new shopping experience ': 现在您可以开始全新的购物之旅
+You can fill in multiple items x comma-separated: 可以填多个商品x英文逗号分隔
+'Your browser does not support this action ': 您所使用的浏览器不支持此操作
+Username first and last character cannot be an underscore: 用户名首位和末位不能为下划线
+'Price cannot exceed total price of grouped items ': 价格不能大于组合商品原价总和
+Get GST invoice information available to the user: 获取用户可用的增值税发票信息
+Please enter the SPU ID, separated by commas: 请输入SPU的ID,逗号分隔
+Picture component cannot be set as empty: 图片组件不能将图片设置为空
+'Item is successfully added to cart ': 该商品已经成功添加到购物车
+The store info you submitted has been edited successfully: 您提交的店铺信息已修改成功
+Sub Account feature can be used to your role: 子账号可以使用所属角色功能
+'Please contact the seller for more information ': 请与商家联系以获取更多信息
+Please review the User Agreement and tick agree: 请先浏览用户协议并勾选同意
+'Password length must be in 6-16 characters ': 密码的长度必须是6~16位
+After published,business will operate with this template: 发布之后商家将会操作此模版
+'GST billing information update successful ': 您的增值税开票信息更新成功
+'Please check with merchants for exchange of item or repairs ': 换货或维修建议您和卖家协商
+'Unrated content will be rated 5 points at default ': 未打分的项目会默认为5分哦
+Select auto recommendation sortment: 选择自动推荐商品的排序方式
+'Your reviews will be helpful to other buyers ': 您的评价对其他买家很有帮助
+'After deletion order from will not be searchable  ': 确认后订单将不会被查询到
+'Now you can go back to shopping ': 现在您可以返回继续购物啦
+'You can only use xxx amount of discount code ': 您只能用xxx张该优惠券
+Click on pop-up button to reply: 点击按钮弹窗填写回复内容
+After confirmation platform will get involved in this transaction: 确认之后平台将介入此交易
+'Please enter amount not more than 99 ': 请输入最多2位小数的金额
+Freight template not more than 45 characters: 运费模板不超过45个字符
+Please enter the product ID, separated by commas: 请输入商品ID,逗号分隔
+Please enter the maximum number xxx sheets issued: 请输入最大发放数xxx张
+'Maximum not exceeding RMxxx ': 最多不能超过 xxx 元
+Can use 1 once order over xxx RMxxx: 订单每满xxx元可用一张
+Must be completed or check at least one: 项必须填写或勾选至少一项
+Please enter the quantity each person may receive xxx: 请输入每人限领数xxx张
+Description up to xxx characters: 描述信息最长xxx个字符
+After confirmation, please re-shipped to the buyer: 确认之后请重新发货给买家
+Red Deals Ecomm Sdn. Bhd: 杭州端点网络科技有限公司
+Only fill an integer between 1 to 5: 只能填写1~5之间的整数
+With each extra 1 piece, add extra RMxxx: 每增加1件,续费xxx元
+Templates may take some time to take effect: 模板生效可能需要一定时间
+'Item not found ': 没有找到您想要查询的商品
+Reacquire Code in xx seconds: xx 秒后重新获取验证码
+Please enter a category ID, separated by commas: 请输入类目ID,逗号分隔
+After you delete it cannot be restored, please be careful: 删除之后无法恢复,请慎重
+Your enrollment application has been approved: 您的入驻申请已经审核通过
+'Store not found ': 没有找到您想要查询的店铺
+'Verification code sent, please check ': 验证码已发送,请注意查收
+Sites may take some time to take effect: 站点生效可能需要一定时间
+Please enter a shop ID, separated by commas: 请输入店铺ID,逗号分隔
+'Recipient address is empty, please add address ': 收货地址为空,请添加地址
+Obtain mobile verification code in xxx sec: xxx秒后重新获取验证码
+'Please contact customer service to confirm refund amount ': 请与客服联系确定退款金额
+Upload to issue GST invoices: 上传后才能开具增值税发票
+'Your cart is empty ': 您的购物车中还没有商品
+Name must be in between 3 to 20 characters: 名称需要3~20个字符
+Your enrollment application has not been approved: 您的入驻申请还在审核中
+End immediately after stopping of events: 停止活动后活动立即结束
+Please click button below to go back to homepage: 请点击下方按钮返回首页
+It will enter the return process after consent: 同意之后将进入退货流程
+Please enter set price RMxxx: 请输入套餐价格xxx元
+Our staffs are rushing the progress for you: 热血工人正在爆发小宇宙
+You enrollment application has not been approved: 您的入驻申请审核不通过
+Are you sure you delete this area shipment: 您确定删除该区域运费吗
+Available for use once order over xxx pieces: 订单商品满xxx件可用
+Are you sure to save the delivery area setting: 您确定保存该配送区域吗
+It will enter the exchange process after consent: 同意之后将进入换货流程
+Address must be in 5-120 characters: 地址为5-120个字符
+'Choose the next step ': 您可以选择接下来的操作
+'You are now viewing the transaction overview ': 您现在查看的是交易快照
+Xxx cumulative sold pieces: 累计已售出 xxx 件
+User Management GST invoice information: 用户管理增值税发票信息
+We will review this information: 我们会对此信息进行审核
+'Each person can receive up to xxx ': 每人最多可领取xxx张
+This template will not exist after deleting: 删除之后将不存在此模版
+Are you sure you remove the freight template: 您确定删除该运费模板吗
+Xxx times were used in the discount code: 共使用了xxx次优惠码
+Please enter the correct phone number: 请输入正确的手机号码
+Please enter password in 6-16 characters: 请输入6到16位密码
+'Please enter email address in the correct format ': 请输入格式正确的邮箱
+Completion of shopping process upon the confirmation: 确认后将完成购物流程
+Please edit info before submitting again: 请修改信息后重新提交
+Our web admin starting to proceed the order: 掌柜的赶紧准备备货吧
+'Products in this area has sold old at the moment ': 当前区域此商品已售罄
+Postcode must be in 6 numbers: 邮政编码为6位纯数字
+'You must choose at least one category ': 您至少要选择一项权限
+Use comma separate for multiple IDs: 多个ID请用逗号分割
+'Are you sure you want to cancel request for refund ': 您确定撤销退款申请吗
+The carrier centre personel is working for you: 服务中心正在给您派活
+Are you sure the buyer reject the goods: 您确定买家拒绝收货吗
+'Application for RMA has closed ': 申请售后入口已经关闭
+After closing the order will be closed: 关闭之后该订单将关闭
+'Are you sure you want to cancel request for return ': 您确定撤销退货申请吗
+'Please enter the correct verification code ': 请输入正确的确认密码
+Name must be in between 2-25 characters: 姓名为2-25个字符
+'Please tick the product info you want ': 请选择商品信息
+Send verification code to set the countdown: 发送验证码设置倒计时
+Your account has not been registered: 亲,您的账户还未注册
+'Please click to confirm changes ': 修改完成后请点击确定
+'Waiting seller to verify on the RMA application ': 等待卖家审核售后申请
+Your product is getting to deliver: 马上要送到您的手中了
+Your phone has not been registered: 亲,您的手机还未注册
+After the refund can be manually operated refund: 退款后可手动操作退款
+Validate the success of creating tax increase invoice: 是否成功创建增税发票
+Uploaded file requires stamp: 上传文件均需加盖公章
+'Please enter phone number in 11 characters ': 请输入11位手机号码
+Due to different batches of products, vendors may have different packing list, please check the product first: 由于厂商产品批次不同
+Click here to view newest item details: 点此查看最新商品详情
+'Please enter landline number in the correct format ': 请输入正确的固定电话
+'xxx colleagues have bought this ': xxx位同事已购买
+'Password changed successfully ': 您的密码修改成功了
+Reacquire phone verification code: 重新获取手机验证码
+Store categories related resources: 店铺内类目相关资源
+You can use up xxx photos: 最多可使用xxx张
+Coupons will not be available after disabled: 停用之后将无法领券
+Please enter the freight template name: 请输入运费模板名称
+Refund and returned goods center related resources: 退货款中心相关资源
+Product display on four columns: 四栏的商品展示组件
+Please enter your real name: 请输入您的真实姓名
+Select the data source for the product: 为商品选择数据来源
+Not more than x characters: 不能超过20个汉字
+Please enter RMxxx value: 请输入面值xxx元
+Get the store freight template: 获取店铺内运费模板
+Are you sure you refund success Well: 您确定退款成功了嘛
+'Are you sure you want to reject ': 您确定买家要拒收吗
+'Are you sure payment was successful? ': 您确定支付成功了嘛
+'Obtaining information on GST ': 正在获取增值税信息
+Your request has been submitted successfully: 您的申请已提交成功
+Please enter the correct customer service number: 请输入正确服务电话
+支付宝simulation test page: 支付宝模拟测试页面
+Please enter a promotional description: 请输入促销描述信息
+xxx character: xxx 位任意字符
+'Please enter only numeric values ': 请输入正确的手机号
+'Please enter valid reasons for returns or refund ': 请输入退货/款原因
+'You have not actiGSTe your email address ': 您的邮箱还没有激活
+Your phone number updated successfully: 您的手机号更新成功
+The higher the number the higher the priority: 数字越大优先级越高
+Buyers have request for refund: 买家已提出退款申请
+Freight template has been created: 已经创建了运费模板
+Please select at least one product: 请至少选择一个商品
+支付宝simulation refund gateway: 支付宝模拟退款网关
+Product categories listed in the shop: 列出店铺内商品类目
+'No GST invoice information at the moment ': 暂无增值税发票信息
+'Still can enter xxx characters ': 还可以输入xxx字
+Set picture for recommendation items: 为推荐商品设置图片
+'Skip choosing category ': 发商品选择类目跳转
+'After the deactiGSTion, code will not be available ': 停用之后将无法领码
+Specify area deliver fee: 为指定区域设置运费
+Available for use once order over RMxxx: 订单满xxx元可用
+Publish related resources of products: 发布商品相关的资源
+'Username contain invalid characters ': 用户名包含非法字符
+'Please enter your mobile phone number ': 请输入您的手机号码
+RMA exchange application has been approved: 售后换货申请已通过
+A total of xxx sets combination packages: 共xxx套组合套餐
+'Username cannot be mobile phone number ': 用户名不能为电话
+'Limit for angpao xxx ': 红包限领xxx张
+Goods exceed RMxxx: 商品超过xxx元
+'Price reached certain amount ': 价格达到一定金额
+'Subaccount will not be available ': 子账号将不能登录
+Back end Category query subtree: 后台类目查询子树
+'System is processeing ': 系统正在努力处理
+Please enter the correct password: 请输入确认密码
+Confirm the same password twice: 确认密码两次相同
+Our product does not met to your requirements: 咱们的货不争气啊
+'Enter user password again ': 再次输入用户密码
+Customer service number cannot be empty: 服务电话不得为空
+Description xxx points: 商品描述xxx分
+Sales Related Resources: 交易管理相关资源
+Original price RMxxx: 原始价格xxx元
+Can not be restored after deleting: 删除之后无法恢复
+Are you sure to close order: 您确定关闭订单吗
+'Refund request approved ': 卖家同意退款
+Are you sure you agree to the return: 您确定同意退货吗
+Are you sure you refuse a refund: 您确定拒绝退款吗
+Pending buyer to confirm receipt: 等待买家确认收货
+'Set as default successful ': 设置默认地址成功
+Confirm enable the sub-account: 确认启用该子账号
+'_character left ': 还可以输入  字
+Please enter the coupon name: 请输入优惠券名称
+'Are you sure you want to delete order form? ': 您确定删除订单吗
+Confirm deactiGSTe the sub-account: 确认停用该子账号
+Front end category collapsable display: 前台类目伸缩展示
+Product management Related Resources: 商品管理相关资源
+Display all front end category: 前台类目完全展示
+Marketing Tools related resources: 营销工具相关资源
+Product preset standard description: 商品预置标准描述
+Are you sure you agree to a refund: 您确定同意退款吗
+Promotions basic information: 促销活动基本信息
+Check whether the password is the same: 检查密码是否相同
+Product quality xxx points: 商品质量xxx分
+Support the below payment platform: 支持以下支付平台
+Used to on store's site sidebar: 用于店铺页侧边栏
+Relations with other tools: 与其他工具关系
+Product category Related Resources: 商品分类相关资源
+Product Number (number): 商品编号（数字）
+Supported image formats: 支持的图片格式为
+Store search results list: 店铺搜索结果列表
+'Your payment is successful ': 您的付款已经成功
+Are you sure you reject the goods: 您确定拒绝收货吗
+Store Address cannot be empty: 店铺地址不得为空
+'Please enter recipient name ': 请输入收货人姓名
+Effective immediately after publishing: 发布之后立即生效
+The shop name has been registered: 该店铺名已被注册
+Logistics and distribution xxx points: 物流配送xxx分
+Store name cannot be empty: 店铺名称不得为空
+Homepage store recommended product list: 首页商品推荐列表
+Send this angpao to user: 给用户发送此红包
+Category must not contain /: 类目不能有“/”
+Store logo can not be empty: 店铺标识不得为空
+Confirm RMA return process: 确认售后退货收货
+Please enter a shop ID: 请输入店铺的ID
+Merchant Services xxx points: 商家服务xxx分
+Please enter a correct email: 请输入正确的邮箱
+'Username cannot be email address ': 用户名不能为邮箱
+'RMA is complete after confirmation ': 确认之后售后完成
+Sub order status and operations: 子订单状态及操作
+Business license can not be empty: 营业执照不得为空
+Coupon name and number: 优惠券名称及编号
+Please enter a new phone number: 请输入新手机号码
+Logistics Management Related Resources: 物流管理相关资源
+You must select at least one: 您至少要选择一项
+Applied to the page sidebar: 应用于页面侧边栏
+Total xxx coupon code: 共xxx张优惠码
+Seller sent Product details page: 卖家发商品详情页
+Store angpao management: 店铺红包发送管理
+Four columns Recommended product: 四栏列出推荐商品
+'Payment method selection at the moment ': 当前所选支付渠道
+'Order cancelled while making payment ': 待付款时取消订单
+Forward reverse order status: 扭转正向订单状态
+'Product categories and level display ': 分类楼层商品展示
+View after sales logistics information: 查看售后物流信息
+Accumulatively sold out xxx items: 累计售出xxx件
+No logistics info at the moment: 暂时没有物流信息
+Send xxx coupon: 送xxx张优惠劵
+'All items in store ': 店铺所有商品列表
+'This order has promotional info ': 此订单有优惠信息
+'Please enter the correct amount ': 请输入正确的张数
+Store management related resources: 店铺管理相关资源
+'Display seller''s profile ': 显示商家档案信息
+Product Details Description container: 商品详情描述容器
+Pending on seller to receive goods: 等待商家确认收货
+Total of xxx products: 共有xxx件商品
+Do not fill in with email, phone number: 勿填写邮箱，电话
+Total xxx coupons: 共xxx张优惠券
+This will not be restored: 此操作将不可恢复
+Change password interfaces: 修改用户密码接口
+Buyer shipping address management: 买家收货地址管理
+Get Logistics Company List: 获取物流公司列表
+Are you sure you agree for replacement: 您确定同意换货吗
+Store Product List Page: 店铺商品列表分页
+Are you sure you refused to return it: 您确定拒绝退货吗
+Sellers return and refund list: 卖家退货款列表
+Are you sure to delete it?: 您确定删除吗?
+Are you sure to put it off shelves?: 您确定下架吗？
+Are you sure to put it on shelves?: 您确定上架吗？
+'Please enter member account number ': 请输入会员账号
+Add to cart successful: 添加购物车成功
+快捷通simulation gateway: 快捷通模拟网关
+Required, cannot be empty: 必填 不得为空
+'This item has not been listed ': 此商品还未上架
+'Choose or upload picture ': 选择或上传图片
+Please choose valid dates: 请选择有效日期
+'Open when needed ': 等需要了再打开
+No freight template: 还没有运费模板
+'I have read and agree ': 我已阅读并同意
+This item is suspend: 此商品已被冻结
+Coupons generated content: 生成优惠码内容
+Seller service _points: 商家服务  分
+United States currency refund: 国美币妥投退款
+Product Details Main Information: 商品详情主信息
+'Please enter item name ': 请输入商品名称
+'Refund pending for merchants approval ': 退款待卖家审核
+'Item serial number in Store ': 店铺内商品编号
+Please enter a site name: 请输入站点名称
+General taxpayer certificate: 一般纳税人证书
+Please fill in the category name: 请填写类目名字
+Total xxx items: 共xxx件商品
+'Discount code adding failed ': 优惠劵加载失败
+'Returns pending for merchants approval ': 退货待卖家审核
+Please choose other item: 请选择其他商品
+'List non categorized merchandise ': 列出未分类商品
+'Search Navigation in store ': 店铺内搜索导航
+Confirm receipt and shipment out: 确认收货并发货
+Return application has been approved: 退货申请已通过
+Please enter the proposal name: 请输入方案名称
+Get phone verification code: 获取手机验证码
+'Username have been taken ': 该用户名已存在
+Refund Request Rejected: 退款要求被拒绝
+Please fill in the non-zero integer: 请填写非零整数
+Click the pop-up box to send coupons: 点击弹出送券框
+A certified copy of the registration tax: 税务登记证副本
+Promotion coupon management: 赠送优惠券管理
+Buyers returned goods list: 买家退货款列表
+GST billing information: 增值税开票信息
+Already reRequest for RMA: 已重新申请售后
+Please enter event name: 请输入活动名称
+支付宝simulation gateway: 支付宝模拟网关
+Order payment details page: 订单支付详情页
+'Please enter employee''s name ': 请输入员工姓名
+Business Centre sidebar: 商家中心侧边栏
+This is a big package: 这是一个大礼包
+Please select Deadline: 请选择截止日期
+Total xxx records: 共xxx条记录
+'Please enter buyer''s nickname ': 请输入买家用户名
+Coupon management component: 优惠券管理组件
+'This number has been registered ': 该手机号已注册
+Please select a start date: 请选择开始日期
+Mouse-over from the Store Level: 店铺层鼠标划出
+Return Request Rejected: 退货申请已拒绝
+'Password do not match ': 两次密码不相同
+Please enter your order number: 请输入订单编号
+Priced according to the National Pricing Law??: 根据国家价格法
+About xxx of products: 约xxx个商品
+Please enter a domain name: 请输入站点域名
+Under One category logical: 下一级类目逻辑
+Send xxx gift: 送xxx件礼品
+Delivery _points: 物流配送  分
+The seller has to confirm receipt: 卖家已确认收货
+Please enter the reasons for futsal: 请输入拒绝理由
+'Request for refund rejected ': 退款申请被拒绝
+Only supports exclusive: 暂时只支持互斥
+'Request for return rejected ': 退货申请被拒绝
+'Back to editting cart ': 返回修改购物车
+'View category in store ': 店铺内分类查看
+Please enter the promotional name: 请输入促销名称
+Obtain mobile verification code: 获取手机校验码
+Enter Category name: 你当前选择的是
+'Seller sub account management ': 商家子账号管理
+Select at least one: 至少要选择一个
+Need binded email: 需要绑定的邮箱
+Send merchandise category component: 发商品类目组件
+Mouse-in to the Store Level: 店铺层鼠标进入
+'Please enter item serial number ': 请输入商品编号
+'Refund request has been submitted ': 退款申请已提交
+'Please enter landline number ': 请输入固定电话
+'Logistics info from ': 物流信息来源于
+'Item description _points ': 商品描述  分
+Please enter a credit note number: 请输入退款单号
+Please select an end date: 请选择结束日期
+'Mobile number cannot be empty ': 手机号不得为空
+Item in cart: 购物车中的商品
+The email has been registered: 该邮箱已被注册
+You can fill multiple items: 可以填多个商品
+'Returns request has been submitted ': 退货申请已提交
+Please enter event title: 请输入活动标题
+Return to receive a refund: 收到退货去退款
+'User name cannot be empty ': 用户名不能为空
+Please enter the template name: 请输入模版名称
+Please enter street address: 请输入街道地址
+Please enter the freight template: 请输入运费模板
+'Category management in store ': 店铺内分类管理
+'Please enter user''s name ': 请输入用户名称
+'Quality of product _points ': 商品质量  分
+Normal orders page: 普通订单下单页
+'Please enter refund amount ': 请输入退款金额
+'You can refresh to try again ': 您可以刷新重试
+Transaction complete in 7 days: 交易完成7天内
+Displaying the number of rows: 显示多少行商品
+Please enter the tracking number: 请输入运单号码
+Customer paid the payment: 客官付好银子了
+'and wait for the seller to refund you ': 并等待卖家退款
+'Please enter email address ': 请输入邮件地址
+Please continue other operations: 请继续其他操作
+Delivery status: 地点和跟踪进度
+Create product pages: 创建商品页面
+Adding more levels: 添加更多级别
+'Insufficient product in inventory ': 商品库存不足
+Order completion time: 订单完成时间
+Account of financial reconciliation: 账期财务对账
+'See all items ': 查看所有商品
+Recommended upload size: 建议上传尺寸
+'Reward to deduct delivery fee ': 奖励运费扣还
+Store Products: 店铺商品管理
+Merchant Accounts Details: 商家账务明细
+'Username is available ': 该用户名可用
+'All items category ': 全部商品分类
+The relationship between the rule: 规则之间关系
+'Buyers cancelled order ': 买家取消订单
+Refuse on after sales return: 拒绝售后退货
+Are you sure to publish it: 你确定发布此商品
+'Edit Profile ': 修改个人信息
+'This item has been deleted ': 此商品已删除
+Events suitable for buyer: 活动适用买家
+Various promotions: 各种优惠活动
+'Based on applicable rules ': 根据适用规则
+Are you sure to delete it: 您确定删除吗
+Logistics Information Input: 物流信息录入
+'Submit changed password ': 提交修改密码
+Rendering Package Information: 渲染包装信息
+Back end Category query: 后台类目查询
+Password change failed: 修改密码失败
+Sellers Order Details: 卖家订单详情
+Edit product information: 编辑
+Merchandise: 输入类目名称
+Change phone number: 更换手机号码
+Pending completion of return: 等待完成退货
+'Seller Angpao Management ': 商家红包管理
+RMA reject reasons: 售后拒绝理由
+RMxxx value: 面值xxx元
+Retrieve password success: 找回密码成功
+Enter company search: 输入公司搜索
+View Product Information: 查看商品信息
+Store template management: 店铺模版管理
+'Go back to order center ': 返回订单中心
+View Delivery Area: 查看配送区域
+Free Gift Event Management: 有礼活动管理
+Promotional event statistics: 优惠活动统计
+Automatic audit approved: 自动审核通过
+Angpao conditions of use: 红包使用条件
+'Total _ item ': 共  件商品
+'Please enter the priority level ': 请输入优先级
+Limit xxx people: 限领xxx人
+'Please enter username ': 请输入用户名
+Re-apply for a replacement: 重新申请换货
+'Merchants review chart ': 商家评价列表
+'colleague have bought this ': 位同事已购买
+'Combination packages setting ': 组合套餐设置
+View order details: 查看订单详情
+Billing period start time: 帐期开始时间
+'Binding email failed ': 绑定邮箱失败
+Promotional Product information: 促销商品信息
+Default expand: 前台默认展开
+Merchant rebate amount: 商家返利金额
+Your current location: 您当前的位置
+GST Templates: 增票信息模板
+'Seller cancelled order ': 卖家取消订单
+Wait for a refund arrival: 等待退款到账
+Business Marketing expenses: 商家营销支出
+Buyers request for RMA: 买家申请售后
+Buyer-owned company: 买家所属公司
+Setting the style: 设定选中样式
+Buyers request for a refund: 买家要求退款
+Comma-separated: 英文逗号分隔
+Brand List carousel: 品牌列表轮播
+Shipping Addresses: 收货地址管理
+Email can not be empty: 邮箱不得为空
+The shop name is available: 该店铺名可用
+Edit product details: 编辑商品详情
+'Enter user''s name ': 输入用户名称
+'You have xxx discount code ': 您有xxx张
+Last modified: 最后编辑时间
+'Submit review reply ': 提交评价回复
+Please enter coupon code: 请输入优惠码
+Remove delivery rules: 删除运费规则
+Payment channel configuration: 支付渠道配置
+Are you sure you stop it: 您确定停止吗
+Confirm after sales receipt of goods: 确认售后收货
+'Merchant pay the amount ': 商家打款金额
+Sellers Close orders: 商家关闭订单
+PC-side Store: 电脑端站点
+Buyers Close orders: 买家关闭订单
+Angpao Basic Information: 红包基本信息
+New Free Gift Events: 新建有礼活动
+Add a shipping address: 添加收货地址
+'Product details cached ': 商品详情快照
+Start with single order: 单个订单开始
+Four columns Featured Products: 四栏推荐商品
+Events Scope: 活动适用范围
+Last signed in time: 最近登录时间
+My Profile Management: 个人资料管理
+'Binding email successful ': 绑定邮箱成功
+Package purchases status: 套餐购买情况
+Remove freight template: 删除运费模版
+Are you sure to enable it: 您确定启用吗
+Freight template list: 运费模板列表
+See Logistics Information: 查看物流信息
+Single order end: 单个订单结束
+'Show password strength ': 显示密码强度
+'Problem with logistics ': 物流出现问题
+Configure payment channels: 配置支付渠道
+Freight template management: 运费模板管理
+'Password cannot be empty ': 密码不得为空
+Deadline: 截止日期
+Rich Text Editor: 富文本编辑器
+Refund Order Number: 退款订单编号
+Buyers reject: 买家拒绝收货
+Please enter phone number: 请输入手机号
+Homepage layer components: 首页楼层组件
+Comments on Related Resources: 评论相关资源
+Delivery Area Management: 配送区域管理
+'Please enter logistics info ': 输入快递信息
+Edit the distribution area: 修改配送区域
+Default freight template: 默认运费模板
+'User agreement ': 用户注册协议
+Change password success: 修改密码成功
+Upload LOGO: 上传LOGO
+Are you sure you want to continue: 您确定要继续
+'Verification Timeout ': 商家审核超时
+Creating freight template: 创建运费模板
+'User binded email ': 用户绑定邮箱
+Re-apply Return: 重新申请退货
+'Fill in the store information ': 填写店铺资料
+Email verification failed: 邮箱验证失败
+Filter order status: 筛选订单状态
+Agree on after sales return: 同意售后退货
+'Use xxx discount code ': 使用xxx张
+Update freight template: 更新运费模板
+New Promotions: 新建优惠活动
+'Reason for returns/refund ': 退货/款原因
+Internet marketing discount: 平台营销贴现
+Delivery Area page: 配送区域页面
+Delivery address template: 配送地址模板
+Refund the amount: 妥投退款金额
+Issue invoice?: 是否开具发票
+Freight template name: 运费模板名称
+Edit Category: 重新修改类目
+Re-apply for a refund: 重新申请退款
+Choose address: 选择收货地址
+Re-apply the RMA: 重新申请售后
+More Recommended Components: 更多推荐组件
+'Sending verification code ': 验证码发送中
+Create delivery rules: 创建运费规则
+Mobile number or email address: 手机或者邮箱
+Returns / refunds information: 退货/款信息
+Category page: 商品分类页面
+Are you sure you want to delete: 您确定要删除
+Buyers Order List: 买家订单列表
+Freight template configuration: 运费模板配置
+Payment platform commission: 支付平台佣金
+New freight template: 新建运费模板
+Are you sure you disable it: 您确定停用吗
+First category codes: 一级品类代码
+'Fill in account info ': 填写帐号信息
+'Enrollment Status Check ': 入驻状态查询
+'Submit site info ': 提交站点信息
+'Fill in basic informations ': 填写基本信息
+Store Product List: 店铺商品列表
+Publish product pages: 发布商品页面
+Please select valid: 请选择时间
+Please enter ages: 请输入年龄段
+'Marketing plan details ': 促销方案详情
+Angpao retrieving data: 红包领取数据
+'Edit invoice info ': 修改开票信息
+All trading status: 全部交易状态
+Send coupons applications: 发送赠券申请
+'Confirm order info ': 确认订单信息
+View business license: 查看营业执照
+'check your order ': 查看您的订单
+List products: 出售中的商品
+Create Delivery Area: 创建配送区域
+Maximum frequency of use: 最大使用次数
+Campaign Management: 营销活动管理
+'Set as default address ': 设为默认地址
+'Enter password again ': 再次输入密码
+'Buyers review chart ': 买家评价列表
+Are you sure you received the product: 您确定收货吗
+Promotional price cut management: 促销直降管理
+View approval status: 查看审核状态
+'This item has been removed from list ': 此商品已下架
+Add personal information: 补充个人信息
+'Returns rejected ': 卖家拒绝退货
+Package purchases quantity: 套餐购买次数
+Promotional price cut details: 促销直降详情
+Please enter number: 请输入的数字
+Single picture less than: 单个图片小于
+Select an event type: 选择事件类型
+Buyers Request for return: 买家申请退货
+xxx discount: 打xxx折扣
+To go to Seller Center: 前往商家中心
+Buyers order details: 买家订单详情
+Store List Platform: 平台店铺列表
+Authority resource container: 权限资源容器
+Update Delivery Area: 更新配送区域
+'Refund rejected ': 卖家拒绝退款
+Update delivery rules: 更新运费规则
+Basic merchandise Information: 商品基本信息
+Waiting platform intervention: 等待平台介入
+'Own delivery by seller ': 商家自行送货
+Store recommended product: 店铺商品推荐
+Back Categories: 后台类目管理
+'Pending for seller to deliver ': 等待商家发货
+'List all merchandise ': 列出所有商品
+'Delivery area setting ': 配送区域设置
+Combination packages management: 组合套餐管理
+Store Information Management: 店铺信息管理
+'Pending payment from buyer ': 等待买家付款
+Back to order list: 返回订单列表
+Product Details Description: 商品详情描述
+Brand exclusive area: 品牌专享区
+'Please add remark ': 请输入备注
+Product Coupons: 商品优惠码
+Edit phone number: 编辑手机号
+Please enter a name: 请输入名称
+Third party commissions: 第三方佣金
+Return Completed: 退货已完成
+'Return and refund info ': 退货款信息
+'Now you can ': 现在您可以
+Please return the goods: 请寄回商品
+Calculate according to amount spent: 根据消耗量计算
+Coupon Management: 优惠券管理
+Export order is: 导出订单为
+Our warehouse keeper was received the order: 工厂已接单
+Please enter the nominal value: 请输入面值
+User new password: 用户新密码
+Issued Number: 已发放数量
+Disable Coupons: 停用优惠券
+Sub order operations: 子订单操作
+Go create it: 快去创建吧
+Automatic or manual: 自动或手动
+Use new address: 使用新地址
+Get province list: 获取省列表
+Customer rejected to receive the item: 客官拒签收
+Merchant coupons: 商家优惠劵
+Customization Tool: 自定义工具
+Merchant Coupons: 商家优惠券
+'Refund successful ': 退款已成功
+Set new password: 设置新密码
+'Category in store ': 店铺内类目
+'Go to actiGSTe ': 马上去激活
+'Add to cart ': 加入购物车
+Publish Coupons: 发布优惠券
+'Verify email ': 验证邮箱
+Product details page: 商品详情页
+'Continue sending products ': 继续发商品
+'Create sub account ': 新建子账号
+RMA complete: 售后已完成
+'Application rejected ': 申请被拒绝
+'_ discount code ': 张该优惠券
+Decline to search: 不加入搜索
+Please enter postcode: 请输入邮编
+'Sub order selling price ': 子订单售价
+Distributions not allowed: 不允许分销
+Order amount reach RMxxx: 满xxx元
+Application has been approved: 申请已通过
+'Discount code management ': 优惠码管理
+Givaway set code: 设置码赠送
+The maximum number of payment: 最大发放数
+'Add sub category ': 添加子分类
+Categorise product: 为商品分类
+Use coupon code: 优惠码使用
+'Return and Exchange Goods Center ': 退换货中心
+No result: 后面不知道
+'Please wait for refund  ': 请等待退款
+'Sub account management ': 子账号管理
+A replacement has been completed: 换货已完成
+'Please enter whole number ': 请输入整数
+Please enter the email: 请输入邮箱
+Remove this level: 删除此级别
+Please select a date: 请选择日期
+Add a new category: 添加新分类
+Search within store: 店铺内搜索
+Get City List: 获取市列表
+Please enter the product: 请输入商品
+Merchant Promotions Code: 商家优惠码
+'Angpao valid date ': 红包有效期
+'Enter quantity ': 请输入张数
+Application Rejected: 申请已拒绝
+'Listing of products ': 商品上下架
+Enter price cut: 输入直降价
+Bit arbitrary character: 位任意字符
+Use Discount code: 使用优惠券
+'User old password ': 用户旧密码
+'Please wait ': 请耐心等待
+GST invoice: 增值税发票
+Trading total refund: 交易总退款
+Price (RM): 价格（元）
+Coupons Tools: 优惠码工具
+Coupon platform: 平台优惠码
+Deduct xxx yuan: 减xxx元
+Shop Coupons: 店铺优惠券
+Limit the quantity of usage: 每人限领数
+Order item reach xxx pieces: 满xxx件
+Sent Number: 已发送数量
+Coupon Code: 优惠券编号
+Value (RM): 面值（元）
+Tax Registration Number: 税务登记号
+Get Zone List: 获取区列表
+Returns: 退货款中心
+Remove Coupons: 删除优惠券
+New Coupons: 新建优惠券
+Daily Summary: 商家日汇总
+Shipped by Seller: 卖家收货
+My Coupons: 我的优惠券
+'Discount code chart ': 优惠券列表
+Categorized merchandise: 已分类商品
+New phone number: 新手机号码
+Coupon Image: 优惠券图片
+Enter phone number: 输入手机号
+Buyers ages: 买家年龄段
+'Please sign in again ': 请重新登录
+Coupon Type: 优惠券类型
+This email is available: 该邮箱可用
+System administrator: 系统管理员
+'Cart status ': 购物车状态
+Pending replacement: 换货待处理
+'Setup sub account ': 设置子账号
+PC-site Store: PC端店铺
+Total Order Status: 总订单状态
+Please enter your name: 请输入姓名
+Coupon Settings: 优惠券设置
+Payment made?: 打款与否
+'Please enter nickname ': 请输入昵称
+'Store Level Homepage ': 首页店铺层
+Activities Deadline: 活动截止期
+Send Coupons: 发送优惠券
+Platform coupons: 平台优惠券
+Total price (RM): 总价
+Confirm the new password: 确认密码
+Mobile site Store: 手机端站点
+Used amount: 已使用数量
+'Listed products': 上架的商品
+Coupons relationship: 优惠码关系
+'User do not exist ': 用户不存在
+Get provinces: 获取省市区
+'Enrollment under review ': 入驻审核中
+My shopping cart: 我的购物车
+Promotions Code Name: 优惠码名称
+Please fill in product: 请填写商品
+Discount code gift: 优惠码赠送
+Use discount code: 使用优惠码
+Packages valid date: 套餐有效期
+Buyers Shipped: 买家已发货
+Customer was received the item: 客官已签收
+Non categorized merchandise: 未分类商品
+'Navigation in store ': 店铺内导航
+'frozen': 已冻结
+After refund: 妥投后退款
+Please select a time: 请选择一个时间
+Refund completed: 退款已完成
+Coupons type: 优惠码类型
+'Sub order quantity ': 子订单数量
+Enter the verification code: 输入验证码
+Product not selected: 未选择商品
+'Please enter phone ': 请输入手机
+Update Coupons: 更新优惠券
+'Already applied for RMA ': 已申请售后
+Please enter your password: 请输入密码
+Marketing sidebar: 营销侧边栏
+Coupons settings: 优惠码设置
+'Check cart ': 查看购物车
+Valid dates: 有效期
+'Payment successful ': 付款成功
+'Total quantity  ': 共  件
+Confirm Password: 确认密码
+'Register now ': 立即注册
+Password: 修改密码
+'Reward type ': 奖惩类型
+Buyer Company: 买家公司
+Second category: 二级类目
+Delivery speed: 发货速度
+Event ended: 活动结束
+'Enable? ': 是否启用
+'Batch online/listing ': 批量上架
+Electronic invoice: 电子发票
+Seller Reply: 商家回复
+'Delivery company ': 快递公司
+My Profile: 个人资料
+Submitted successfully: 发送成功
+'My account ': 我的帐号
+Event status: 活动状态
+Current status: 当前状态
+Seller info: 商家信息
+Sellers rejected: 卖家拒收
+Product main search: 商品主搜
+'Store info ': 店铺信息
+Merchant rebates: 商家返利
+Create a Store: 创建店铺
+Marketing Management: 营销管理
+Listed time: 上架时间
+Anonymous User: 匿名用户
+'Shop age ': 创店时间
+Template management: 模版管理
+All Products: 所有商品
+Reward Amount: 奖惩金额
+Product quality: 商品质量
+Promotions Conditions: 优惠条件
+Select Image: 选择图片
+Order close: 订单关闭
+'Confirm info ': 确认信息
+Third category: 三级类目
+Not more than words: 不超过字
+'Cancel return ': 撤销退货
+Lead Time: 妥投时间
+Contact number: 联系电话
+New price cut promotion: 新建直降
+'Price cut management ': 直降管理
+Master contract number: 主合同号
+Click here to get: 点此获取
+Product deleted: 商品删除
+Search results: 查询结果
+Service attitude: 服务态度
+All Sites: 全部站点
+'Normal invoice ': 普通发票
+Creating Product: 创建商品
+Products: 商品管理
+Account information: 账户信息
+'Enrollment examination ': 入驻审核
+Enter store: 进入店铺
+GST information: 增票信息
+'Price reduced ': 价格减少
+xxx points: xxx分
+Owned company: 所属公司
+Fourth category: 四级类目
+'Image link ': 图片链接
+'Notice ': 温馨提示
+'My Profile ': 个人信息
+Product Search: 商品搜索
+'Free registration ': 免费注册
+Calculated by the piece: 按计量单位计费
+'Add us to favourite ': 收藏我们
+Mobile number: 手机号码
+Category same name: 类目重名
+'Specifically, see ': 具体请见
+'Event management ': 活动管理
+Bank account: 银行帐号
+Registration success: 注册成功
+End Date: 结束日期
+Stop event: 停止活动
+'Cancel refund ': 撤销退款
+'Product review ': 商品评价
+Refund Management: 退款管理
+Description info: 描述信息
+'Delete order form ': 删除订单
+Save merchandise: 保存商品
+Refund information: 退款信息
+Cash on delivery: 货到付款
+Order review: 订单评价
+Event stops: 活动停止
+Event begin: 活动开始
+Event Title: 活动标题
+Merchant Services: 商家服务
+Dynamic Rating: 动态评分
+Receivable: 实付货款
+Platform commission: 平台佣金
+Template name: 模版名称
+'You are lost ': 您迷路了
+'Product serial number ': 商品编码
+Street address: 街道地址
+Time of occurrence: 发生时间
+'Tight inventory ': 库存紧张
+Case descriptions: 事件描述
+'Role name ': 角色名称
+New Products: 新品推荐
+Data Sources: 数据来源
+'Product details ': 商品详情
+Product Title: 商品标题
+Site Configuration: 站点配置
+Angpao type: 红包类型
+Effective Date: 有效日期
+'Invoice  information ': 发票信息
+'Skip submission ': 提交跳转
+Settings Selected: 设置已选
+View summary: 查看汇总
+Order information: 订单信息
+Review reply: 评价回复
+Billing Information: 开票信息
+Buyer Name: 买家名称
+Reasons for refusal: 拒绝理由
+Section title: 栏目标题
+'RenoGSTion info ': 装修信息
+Set birthday: 设置生日
+Other fee: 其他费用
+Additional information: 补充说明
+See details: 查看详情
+Seller's name: 卖家名称
+Edit profile picture: 编辑头像
+Return success: 退货成功
+Logistics company: 物流公司
+'Confirm category ': 确定类目
+'also can go ': 也可以去
+'Transaction flow ': 交易流水
+'Original price ': 原价
+Check Reward: 查看奖惩
+Buyers sex: 买家性别
+Default address: 默认地址
+Refund successfully: 退款成功
+'Amount received ': 实收金额
+Buyers rejected: 买家拒收
+Use Number: 使用数量
+Starting time: 开始时间
+Personal invoice: 个人发票
+'Tax increase information ': 增税信息
+Order Details: 订单明细
+Export orders: 导出订单
+View Logistics: 查看物流
+'Minimum price ': 价格最小
+'Edit error ': 修改出错
+'Combination packages ': 组合套餐
+'Invoice title ': 发票抬头
+Template Configuration: 模版配置
+Unknown error: 未知故障
+Return completed: 退货完成
+Multi-level Promotions: 多级优惠
+'User''s name ': 用户名称
+Send coupons: 发优惠券
+'Welcome to register ': 欢迎注册
+'Release time ': 发布时间
+Angpao name: 红包名称
+Add: 加
+Template Types: 模版类型
+Automatic recommendation: 自动推荐
+Audit passed: 审核通过
+'Selected area ': 已选区域
+'Comment ': 说点啥吧
+Promotions type: 优惠类型
+Add a role: 添加角色
+Expand All: 全部展开
+'Seller center ': 商家中心
+Manual settings: 手动设置
+Related documents: 相关证件
+Courtesy type: 有礼类型
+Start Date: 起始日期
+Brand: 商品品牌
+'Free gift management ': 有礼管理
+Edit Store: 编辑店铺
+Company invoice: 公司发票
+'Category management ': 分类管理
+Merchant angpao: 商家红包
+Various conditions: 各种条件
+Recipient address: 收货地址
+Shipping: 物流管理
+Packages info: 套餐详情
+Payment methods: 付款方式
+'Request for exchange ': 申请换货
+New Tools: 新建工具
+View details: 查看明细
+'Scope ': 适用范围
+All buyers: 全部买家
+Created At: 创建日期
+End Time: 结束时间
+Successfully modified: 修改成功
+Free Gift Activities: 有礼活动
+Product number: 宝贝数
+User password: 用户密码
+'Batch offline/unlist ': 批量下架商品
+Your profile picture: 您的头像
+Failed to send: 发送失败
+Email number: 邮箱号码
+'Delivery info ': 快递信息
+'Buy now ': 立即购买
+Create a site: 创建站点
+Business license: 营业执照
+Quantity of transactions: 交易笔数
+'Associated account ': 账户关联
+Detail information: 详情信息
+Regional: 所在地区
+Payables: 应付货款
+'Submission successful ': 提交成功
+Accounts details: 账务明细
+'Buyers message ': 买家留言
+The remaining amount: 剩余数量
+Programme name: 方案名称
+Close Order: 关闭订单
+Angpao details: 红包详情
+'Maximum price ': 价格最大
+'Leave a comment ': 发表评价
+Collapse: 全部收起
+Event Type: 事件类型
+'Fill in email ': 填写邮箱
+User review: 用户评价
+'Submit again ': 重新提交
+Refund complete: 退款完成
+Exchange success: 交换成功
+The actual paid payment: 实收货款
+Orders: 订单管理
+Reject Reason: 拒绝原因
+Templates: 运费模板
+Unlisted products: 下架商品
+'Transaction serial number ': 交易编号
+'Set name ': 套餐名字
+Comment date: 评论日期
+'Popular searches ': 热门搜索
+Retrieved time: 领取时间
+The amount of goods: 产品数量
+Everyday time limit: 每天限时
+Genuine security: 正品保障
+'Role management ': 角色管理
+Store Address: 店铺地址
+Clear homepage: 清除首页
+'Invoice type ': 发票类型
+'Sub account ': 个子账号
+Payment time: 支付时间
+Registered address: 注册地址
+'Category ': 所属类目
+Failed to pay: 支付失败
+Package name: 套餐名称
+'Send request ': 发送请求
+Authentication fails: 验证失败
+'Delivery number ': 快递单号
+Confirm receipt: 确认收货
+comma-separated: 逗号分隔
+Product name: 商品名称
+Online Payment: 在线支付
+'Confirm order ': 订单确定
+Remove Site: 删除站点
+Sales: 销量
+'Merchant enrollment ': 商家入驻
+Refuse refund: 拒绝退款
+Bind email: 绑定邮箱
+'Renewal time ': 更新时间
+Continue submit: 继续提交
+Promotions: 优惠活动
+Electronic business platform: 电商平台
+'Purchase quantity ': 购买数量
+Angpao Serial number: 红包编码
+'Transaction overview ': 交易快照
+Registered phone number: 注册电话
+'Payment status ': 打款状态
+Delivery Method: 运送方式
+Event Photos: 活动图片
+Refund: 退款
+'User center ': 用户中心
+Store Logo: 店铺标识
+Image Carousel: 图片轮播
+Logistics info: 物流信息
+Merchant Name: 商家名称
+Upload profile picture: 上传头像
+Reviews: 评价管理
+Order amount: 订单金额
+Edit product: 修改商品
+Refuse to return: 拒绝退货
+'Bank account number ': 银行账号
+Number of Products: 商品数量
+Product List: 商品列表
+'Publish product ': 发布商品
+'Invoicing ': 开具发票
+Amount receivable: 应收金额
+Bill amount: 账单金额
+Most Popular Ranking: 最热排行
+Platform angpao: 平台红包
+Cannot be empty: 不得为空
+Formula: 计算公式
+Summary Information: 汇总信息
+Change date: 修改日期
+Angpao Base Price: 红包面额
+Tool Name: 工具名称
+Pricing: 计价方式
+'Payment amount ': 支付金额
+Fixed delivery fee: 固定运费
+Order time: 订单时间
+Street information: 街道信息
+First freight amount: 首件运费
+Tool Status: 工具状态
+Category Name: 你当前选择的是
+'Order center ': 订单中心
+Event name: 活动名称
+Packing list: 包装清单
+'Delivery area ': 配送区域
+My Order: 我的订单
+'Landline ': 固定电话
+Subscribe?: 是否订阅
+Embedded image: 嵌入图片
+Promotions range: 优惠范围
+Display full size of photo: 展示大图
+Start date: 开始日期
+Logistics: 物流配送
+Categories: 关键字
+Please select province: 请选择省
+Upload pictures: 上传图片
+'Price cut promotion ': 直降促销
+Check price: 检查价格
+Batch delete: 删除选中商品
+Real name: 真实姓名
+Binding success: 绑定成功
+Points Awarded: 赠送积分
+Refund No.: 退款单号
+'View Store ': 店铺查看
+Tracking numbers: 运单号码
+'Store angpao ': 店铺红包
+'Time for sale to go offline ': 下架时间
+Confirm changes: 确认修改
+New Package: 新建套餐
+'Retrieve password ': 找回密码
+I have paid: 我已支付
+'Welcome to ': 欢迎来到
+'Enter password ': 输入密码
+Trade receivables: 应收货款
+'Store name ': 店铺名称
+Operate refund: 操作退款
+Edit address: 修改地址
+Batch classification: 批量分类
+Allow distribution: 允许分销
+Store: 店铺
+'Refund details ': 退款明细
+'Set price ': 套餐价格
+Freight Template: 运费模版
+User detail: 用户资料
+'Employee name ': 员工姓名
+Summary Date: 汇总日期
+Save area: 保存区域
+Successfully enrolled: 入驻成功
+'Copyrights reserved ': 版权所有
+Payment method: 支付方式
+Site Name: 站点名称
+Confirm order: 确定订单
+Agree to refund: 同意退款
+Page top ads: 页顶广告
+Re-apply: 重新申请
+Replace Image: 替换图片
+Retrieved number: 领取数量
+'Display quantity ': 显示数量
+Request for refund: 申请退款
+Transaction complete: 交易完成
+Green security: 绿色保障
+'Manually cancel ': 手动取消
+Four columns window: 四栏窗口
+Transaction time: 成交时间
+Service line: 服务电话
+Submit order: 提交订单
+Rule Definition: 规则定义
+Package Product: 套餐商品
+Refund Amount: 退款金额
+Buyer type: 买家类型
+Tool Description: 工具描述
+'Verification successful ': 验证成功
+'Back to sign in ': 返回登录
+'New Event ': 新建活动
+Users rejected: 用户拒收
+Bank: 开户银行
+'Order total ': 订单总额
+'Start shopping ': 开始购物
+Tools range: 工具范围
+'Total sold ': 总计售出
+Component settings: 组件设置
+Payment type: 支付类型
+'Change email ': 更换邮箱
+Reward Details: 奖惩详情
+Platform rake: 平台抽佣
+Industry number: 行业编号
+Tool Type: 工具类型
+Trading Success: 交易成功
+Platform rebates: 平台返利
+First category: 一级类目
+Pricing Rules: 计费规则
+Confirm release: 确认发布
+'Published successfully ': 发布成功
+Company Name: 公司
+Applicable sellers: 适用卖家
+'No sub category ': 无子类目
+Create Template: 创建模版
+Business income: 商家收入
+'Angpao total ': 红包总量
+Coupons name: 优惠券名
+Product Category: 商品类目
+'Seller Center ': 商户中心
+Marketing Tools: 营销工具
+Click here to view: 点此查看
+Site Management: 站点管理
+Usage time: 使用时间
+'Show more ': 显示更多
+Industry/category: 所属行业
+Role descriptions: 角色描述
+'Continue shopping ': 继续购物
+Reward methods: 优惠方式
+'Brand recommendation ': 品牌推荐
+'Price reduction ': 减少价格
+Logistics return: 物流退回
+All network buyers: 全网买家
+Product description: 商品描述
+View Product: 查看商品
+Applicable Product: 适用商品
+Settlements: 结算管理
+Forgot password: 忘记密码
+Normal Promotions: 普通优惠
+Audit dismissed: 审核驳回
+'My reviews ': 我的评价
+Join Search: 加入搜索
+'Create now ': 现在创建
+'Pending refund ': 等待退款
+Order No: 订单编号
+Pay the compensate first: 先行赔付
+Type of promotion: 促销类型
+Tools category: 工具类别
+Comments status: 评论状态
+Financial Management: 财务管理
+Set as Default: 设为默认
+'Reward serial number ': 奖罚编号
+Shop Member: 店铺会员
+Retrieve success: 找回成功
+'Tools management ': 工具管理
+Rejection: 拒绝收货
+Rendering Comments: 渲染评论
+Agree to return: 同意退货
+Authorities: 权限管理
+Product category: 商品分类
+Standard product details: 标品详情
+'My wallet ': 我的红包
+Category: 类目
+Select City: 请选择市
+The posting date: 出账日期
+Payment channels: 支付渠道
+Sort by: 排序方式
+Back to homepage: 返回首页
+Save changes: 保存更改
+Request for return: 申请退货
+Check Refund: 查看退款
+'Angpao status ': 红包状态
+Publish Site: 发布站点
+'Case name ': 事件名称
+Conditions of Use: 使用条件
+Your product has been shipped out!: 发货啦
+Returning in process: 退货中
+'Not replied ': 未回复
+Reference Price: 参考价
+Replied: 已回复
+'Please sign in ': 请登录
+Invoice number: 发票号
+'Price ': 价 格
+Please wait: 请等待
+'Event ': 个活动
+'Username ': 用户名
+Total sales: 总销量
+To be published: 待发布
+'USD ': 国美币
+'Please use ': 请使用
+Placeholder: 占位符
+Creator: 创建人
+Alipay: 支付宝
+'Orders quantity ': 订单数
+'Do not edit ': 不修改
+'Sold ': 已销售
+Subscribed: 已订阅
+Sub order: 子订单
+Delivery fee: 运费
+Listed for sale: 出售中
+'Go to registration ': 去注册
+'Unfortunately ': 很遗憾
+Inactive: 未激活
+The actual amount has been paid: 实付款
+No more than: 不超过
+'Seller name ': 卖家名
+'Go to reject refund ': 去退款
+'Paid ': 已打款
+Money center: 款中心
+'Next step ': 下一步
+'Please skip to ': 请跳转
+Priority level: 优先级
+Custom: 自定义
+Not authorised: 无权限
+Published: 已发布
+"?????": 日日顺
+'Oops, something went wrong ': 出错啦
+Exchange in process: 换货中
+Checkout: 去结算
+Discounted: 已优惠
+Enabling: 启用中
+Effective now: 已生效
+Navigation Bar: 导航栏
+Not categorized: 未分类
+Ineffective: 未生效
+Order number: 订单号
+x item(s): " 项"
+Coupon: 优惠劵
+Not chosen yet: 未选择
+Deliver to: 运送到
+'Recipient ': 联系人
+Keywords: 关键字
+'Pay now ': 去支付
+Statement: 对账单
+Cancelled: 已取消
+'Removed from catalog  ': 已下架
+Old password: 旧密码
+'Deliver to ': 送货至
+'Tips ': 小贴士
+When enabled: 启用后
+Login box: 登录框
+New Password: 新密码
+Shopping cart: 购物车
+Selected: 已选择
+Platform ticket: 平台券
+Unpublished: 未发布
+'Not supported ': 不支持
+Search Box: 搜索框
+By Category: 按类目
+Not Listed: 未上架
+'Not paid ': 未打款
+Location: 所在地
+Promo Code: 优惠码
+Municipalities: 直辖市
+Verification Code: 验证码
+Please select: 请选择
+Total Orders: 总订单
+Pending: 待审核
+Already reviewed: 已评价
+Not Enabled: 未启用
+'You only have ': 您只有
+Invoicing: 开发票
+'Selected ': 已选中
+Price cuts value: 直降价
+After the deactiGSTion: 停用后
+'Checking ': 校验中
+'Phone number ': 手机号
+'Total price ': 总价
+'Brand ': 品牌
+Normal: 普通
+Number of sheets: 张数
+'Night ': 晚上
+Fragment: 片段
+New items: 新品
+'Select all ': 全选
+Subscription: 订阅
+One row: 一行
+All: 全部
+Domain name: 域名
+Home page: 首页
+Seller: 卖家
+View: 查看
+Path: 路径
+Editor: 编辑
+Confirm: 确定
+Gift: 礼品
+Status: 状态
+'Options ': 多选
+Free shipping: 包邮
+Save: 保存
+Fail: 失效
+Order form: 订单
+Phone number: 电话
+'Angpao ': 红包
+Product: 商品
+Remark: 备注
+more: 更多
+RenoGSTion: 装修
+'Evening ': 下午
+Video: 视频
+Writing: 文字
+'Add ': 添加
+Attributes: 属性
+Rendering: 渲染
+Subject: 事由
+Platform: 平台
+Expired: 过期
+Price: 价格
+Discard: 废弃
+Close: 关闭
+Full cut: 满减
+Submit: 提交
+City: 城市
+Name: 名称
+No.: 序号
+'Exit ': 退出
+Reward: 奖惩
+Subtotal: 小计
+'Publish ': 发布
+Snail mail: 平邮
+Disabled: 停用
+'Unit price ': 单价
+Distribution: 分销
+Move: 移动
+'Inventory ': 库存
+User: 用户
+'Create new ': 新建
+Reason: 审核原因
+RMA: 返回商品授权
+Agree: 同意
+'Deduction ': 扣还
+'Review ': 评价
+Exclusive: 互斥
+Sequence: 排序
+Export: 导出
+'Register ': 注册
+Picture: 图片
+'Nickname ': 买家昵称
+Pay: 付款
+Suspended: 停发
+Overview: 概览
+'Password ': 密码
+Packages: 套餐
+Default: 默认
+Preview: 预览
+Title: 标题
+Inline: 内嵌
+Sign out: 登出
+Format: 格式
+'Merchant ': 商户
+'Main page ': 主页
+'Non at the moment ': 暂无
+Two rows: 两行
+Billing period: 帐期
+Remove: 清除
+Coexist: 共存
+ActiGSTe: 激活
+'Role ': 角色
+'Email ': 邮箱
+'Unlist ': 下架
+Collect: 收藏
+Or full: 或满
+'Types ': 类型
+'Search ': 筛选
+Options: 选项
+Buyers: 买家
+Enable: 启用
+Amount: 货款
+Sex: 性别
+Quantity: 数量
+Negative number: 负数
+'Total ': 总额
+'Valid ': 有效
+Three rows: 三行
+Increase: 增加
+'Activities ': 活动
+Cancel: 取消
+Zip Code: 邮编
+'Amount ': 金额
+Support: 支持
+Landed: 登陆
+Delete: 删除
+Deliver: 发货
+'Serial number ': 编号
+Filter: 搜索
+Page: 页面
+Judge: 判断
+Par value: 面值
+Rates: 费率
+'According to ': 根据
+'Pay ': 支付
+Template: 模板
+Invite: 邀请
+Hot selling: 热销
+Area: 地区
+A positive number: 正数
+Refuse: 拒绝
+'Morning ': 早上
+'Case ': 事件
+'Optional ': 选填
+'Must be filled ': 必填
+'Operation ': 操作
+Area Code: 区号
+Transaction: 交易
+'Afternoon ': 中午
+Return: 退货
+Edit: 修改
+Date: 时间
+Birthday: 生日
+Time: Time
+Reply: 回复
+Listed: 上架商品
+Tips: 提示
+Description: 描述
+'Extension ': 延期
+Full name: 姓名
+'Company name ': 公司
+'Address ': 地址
+'Sign in ': 登录
+Detail: 详情
+Express delivery: 快递
+'Personal ': 个人
+Ceiling: 吊顶
+'Yes ': 是
+'Good ': 好
+Less: 减
+Male: 男
+'Weak ': 弱
+'Strong ': 强
+'No': 单号
+'Medium ': 中
+Receive: 收
+RM: RM
+'Non ': 无
+Female: 女
+Province: 省
+Total: 共
+Code: 码
+character: 字
+Example: 例
+Full: 满
+'item ': 商品
+Exchange: 换货
+Refund reason: 退换货理由
+Buyer Infos: 买家信息
+Wait Return: 退货待处理
+Wait Buyers Deliver: 等待买家发货
+Wait Seller Receive: 等待卖家收货
+Check fail: 审核失败
+Settlement Record: 账务记录
+records: 条记录
+Settlement Date: 结算日期
+Number: 号
+Third Party: 第三方
+Internal: 内部
+Order Merged?: 是否合并订单
+Wechat: 微信
+CCB: 建行
+CCBapp: 建行客户端
+Points: 积分
+Settlement: 结算
+Pre-sale: 预售
+Intervention: 介入
+" waiting for ": 等待
+Platform Marketing expenses: 平台营销支出
+Exclusive Coupons: 专享优惠
+To be settled: 待结算
+Settling: 结算中
+Settled: 已结算
+To be Confirmed: 待确认
+Confirmed: 已确认
+Promotion Info: 促销信息
+Minimum Discount: 最低折扣
+Less then 10 characters: 数字、字母、汉字、下划线、小括号组成，最长10个字符
+Discount should be an integer: 折扣应为整数
+Promotion picture: 宣传图
+Small picture: 小图
+'Recommended Size of Picture ': 图片尺寸推荐
+Size Management: 尺码管理
+Create Size Rule: 新建尺码规范
+Modify: 修改
+Product ID: 商品ID
+Unlisted time: 下架时间
+" is successful, ": 已经成功，
+handle the refund: 处理退款
+'Go back to ': 返回
+Message: 消息
+My Return: 我的退货款订单
+Still can type: 还可以输入
+Your description has bad words, please edit and submit: 您的描述含有敏感词汇,请输入后提交
+Order: 订单
+can use: 使用
+per: 每满
+can use one: 可以使用一张
+Set read: 设为已读
+Show all messages: 显示所有消息
+'Your has no ': 您还没有
+'unchecked ': 未读
+messages: 消息
+Phone No: 手机号
+'Your current category is: ': '你当前选择的是:'
+With: 带
+Size Rule: 尺码规格
+Setting: 设置
+Haven not set yet...: 还未设置...
+Select selling attribute: 选择销售属性
+Please select an attribute to upload a related picture: 只允许针对一种属性上传图片，请选择需要上传图片的属性
+Select Size Rule: 选择尺码规范
+Size Rule of Store: 店铺尺码规范
+Size Rule of Reddeals: RedDeals尺码规范
+View Size Rules: 查看尺码规范
+Use: 使用
+coupons: 张优惠券
+'You can use up ': 最多可使用
+Limited Each Person: 限领/人
+item(s): 件商品
+Created at: 创建日期
+Returning: 已进入退货款流程
+Sale tax: 消费税
+changed: 改
+Return Address: 退货地址
+View Return Address: 查看退货地址
+Merchant receiving information: 商家收货信息
+Promo code recipients records: 优惠码领用记录
+Face value/Discount: 面值/折扣
+At a discount: 折扣
+fold: 折
+item: 商品
+No threshold: 无门槛
+Orders with: 订单满
+The whole shop: 全店
+Specify the commodity: 指定店
+Model: 模版
+is Default: 是否默认
+Set Default: 设为默认
+Are you sure?: 您确定要继续？
+Are you sure you want to set as default?: 您确定要设为默认?
+Create Folder: 新建文件夹
+Image Selector Note: 上传的图片支持 PNG, JPG, GIF 等格式, 最大不超过 1MB, 或者从你自己的图库中选择想要的图片, 选中后再点击确定
+Enter picture URL: 你也可以直接输入图片地址来使用图片
+Upload: 上传图片
+Enter Folder Name: 请输入名称
+Compulsory Field: 店铺名称不得为空
+Unlisted: 下架的商品
+Products listed for sales: 店铺商品列表
+Unsorted Products: 未分类商品
+Sorted Products: 已分类商品
+Change Password: 修改密码
+Current Password: 旧密码
+Verify Password: 确认新密码
+Enter current password: 用户旧密码
+Enter new password: 用户新密码
+Retype new password: 请再次输入密码
+Recipient Address: 收货地址
+Edit Password: 更改密码
+Add an Address: 添加地址
+Add Products via Upload: 商品导入
+Import: 导入商品
+total（xxx）application: 共(xxx)条
+Menu Editor: 类目管理
+Save Changes: 保存更改
+Add New Tab: 添加新分类
+Menu Settings: 菜单设置
+Tabs: 分类
+Menu Tabs: 批量分类
+Tab Title: 分类名称
+Actions: 操作
+Freight of default area: 默认地区运费
+Delivery fee of area: 为指定区域设置运费
+freight costs: 运费
+Search: 搜 索
+Clear: 清空
+Username: 用户名
+Real Name: 真实姓名
+Add More Products: 继续发商品
+Categorize Product: 为商品分类
+Add Sub Tab: 添加子分类
+Products On Shelf: 已上架商品
+Order Total: 总价
+freight is: 运费是
+Price between: 价格区间
+Every Piece Increased: 每增加
+Cost increase: 花费增加
+Add to Cart: 添加购物车成功
+Item added to cart successfully: 该商品已经成功添加到购物车
+'Check to Cart ': 查看购物车
+'Continue Shopping ': 继续购物
+Phone no: 手机号
+Street Address: 街道地址
+Postcode: 邮编
+region: 区域
+Enter postcode: 请输入邮编
+Template Type: 模版类型
+Copy Template: 复制模板
+Type: 类型
+Source template: 源模版
+Target template: 目标模板
+File can not be empty: 文件不能为空
+Please enter the current password: 请输入原密码
+Please enter a new password: 请输入新密码
+unit_measurement: 计量单位
+Customer Address: 买家地址
+Customer Remark Message: 买家留言
+Go to My Cart: 查看购物车
+Coupon Name: 优惠券名称
+Value on Coupon: 优惠券价格
+Total Budget Allocated: 最大发放数
+Limit of Usage Per Coupon: 优惠券限额
+Eligible with purchase of: 可以购买
+Fill in a number greater than 0: 请填写非零整数
+Please enter value: 请输入名称
+Limit of usage per order: 每个订单最多可用
+One person most take 5: 每人取5张
+Please enter integer: 请填写整数
+Most two decimal: 最多2位小数
+in one order: 可以使用
+items: 件
+'Most two decimal ': 最多2位小数
+Limited Per Customer: 每人限领
+Amount Issued: 已发放数量
+Amount Used: 已使用数量
+Min: 最小
+Max: 最大
+Value: 值
+Please select a valid date: 请选择有效期
+Delisted: 下架商品
+Unsorted: 未分类
+Company Shipped Wrong Product or Size: 发错商品
+No Reasons for Return or Exchange: 无理由退换货
+Logistics Error: 配送产生问题
+Incomplete Accessories: 附件不全
+Assembly Error: 安装原因
+Product Does Not Match Description on Website: 收到实际商品与描述不符
+Product Quality issues: 商品质量问题
+Accessories Error: 配件原因
+Product Damaged: 开箱残
+Others: 其他
+Postcode must be in 5 numbers: 邮编必须为5为数字
+Date&Time: 订单时间
+View Details: 查看详情
+Apply Time: 申请时间
+Site changes will take effect after it is published.You can use the editor to publish a single page or the entire site.: 确认发布？发布后站点下所有页面的改动都将生效。也可以选择进入装修界面后发布单个页面而非整个站点。
+Template will be applied to the store once activated.Please ensure that you have completed all actions in the editor.: 确认启用？启用后店铺将会即时开始使用此模板展现，请确保已经编辑和发布完成再进行启用。
+Please upload in JPG or PNG format at up to 1MB: 请上传小于1MB的PNG或JPG的图片
+Upload in JPG or PNG format at up to 1MB: 上传小于1MB的PNG或JPG的图片
+Unspecified areas will be calculated through a default shipping fee: 未选择的地区自动归于该默认运费规则计算
+Product(s) can not be restored once deleted.: 商品删除之后不可恢复，确认删除？
+Sorry,you did not use any discount code: 对不起，您没有任何可使用的优惠卷
+Maximum not exceeding RM: 最多不能超过 xxx 元
+Password changed successfully: 您的密码修改成功了
+Not more than: 不能超过
+Please enter the: 请填写
+characters: 汉字
+'Please enter a correct mobile number ': 请输入正确的手机号
+Please enter your mobile phone number: 请输入您的手机号码
+compulsory field: 店铺名称不得为空
+Do not fill in with email or phone no: 勿填写邮箱，电话
+'Username cannot be mobile phone no ': 用户名不能为电话号码
+Do you want to delete it?: 您确定删除吗？
+Rejected Refund Requests: 退款申请已拒绝
+Please enter buyer's username: 请输入买家用户名
+Rejected Return Requests: 退货申请已拒绝
+'Password don''t match ': 两次密码不相同
+'Request for return ': 退货申请
+Return and refund complete: 退货款完成
+Awaiting platform to refund: 等待平台退款
+Do you want to publish it: 您确定发布吗
+Edit Info: 编辑商品信息
+View Order Status: 查看订单详情
+Request Refund: 买家申请退款
+Request return and refund: 买家申请退货款
+Shipping Address: 收货地址管理
+Edit Details: 编辑商品详情
+Seller's Cancelled Orders: 卖家关闭订单
+PC Store: PC 端店铺
+Buyer's Cancelled Orders: 买家关闭订单
+Do you want to apply it: 您确定启用吗
+Upload Brand Logo: 上传LOGO
+Publish Product: Publish Product
+All Order Status: 全部交易状态
+'Confirm Order Info ': 确认订单信息
+re-enter password: 再次输入密码
+Re-enter password: 请再次输入密码
+Basic Product Information: 商品基本信息
+Pending for seller to deliver: 等待卖家发货
+Pending Delivery: 等待发货
+Awaiting seller to verify: 等待卖家审核
+Pending Payment: 等待买家付款
+Completed Returns: 退货成功
+Export to: 导出为
+Export Today's Order to: 导出当天的订单为
+Please enter the maximum number of payment: 请输入最大发放数
+Sub Account Settings: 子账号管理
+Please enter limit the quantity of usage: 每人限领数
+Delivered Orders: 发货
+'Cart Status ': 购物车状态
+Pending Exchange: 换货待处理
+Setup sub account: 设置子账号
+Mobile-site Store: 移动端店铺
+Paid?: 打款与否
+Total(RM): 总价（元）
+Mobile Store: 移动端店铺
+User do not exist: 用户不存在
+Rejected Return: 退款已完成
+Marketing: 营销
+Valid Dates: 使用有效期
+Second Category: 二级类目
+Profile: 店铺信息
+seller's store details: 店铺详细
+Third Category: 三级类目
+Fourth Category: 四级类目
+Save Product: 保存商品
+SKU No: 商品编码
+SKU Code: SKU编码
+Product Details: 商品详情
+'Product Details ': 商品详情
+Original Price: 原始价格
+Completed Refunds: 退款完成
+Store Editor: 店铺装修
+Shipping adddress: 物流管理
+Payment Method: 付款方式
+Delist: 下架
+Leave a Comment: 买家留言
+Completed Exchange: 换货成功
+Order Amount: 商品金额
+Store's Address: 店铺地址
+Product Name: 商品名称
+Merchant enrollment: 商家入驻
+Upload Profile Picture: 上传头像
+Upload Product: 发布商品
+cannot be empty: 不得为空
+Short Description: 包装清单
+Manage Returns: 退货管理
+My Returns: 我的退货
+Promotion: 促销
+Order settlement: 订单结算
+Refund No: 退款单号
+'Display Name ': 店铺名称
+Edit Address: 修改地址
+Store's: 店铺的
+Employee name: 员工姓名
+My Orders: 我的订单
+Request for Refunds: 申请退款
+User Rejected Goods: 用户拒收
+'Order Total ': 订单总额
+Payment Type: Payment Type
+Completed Orders: 交易成功
+First Category: 一级类目
+Order no: 订单编号
+Comfirmed Returns: 同意退货
+'My Wallet ': 我的红包
+Wallet: 钱包
+Request for Returns: 申请退货
+Sold Qty: 总销量
+'Item checkout ': 去结算
+Customer: 买家
+'Pay Now ': 去支付
+'Select All ': 全选
+Delivery Fee: 邮费
+Not required: 不需要
+Mormal Mail: 平邮
+Inventory: 库存
+Inventory Qty: 库存
+Qty: 数量
+Reasons: 原因
+"*RMA": 售后
+Nickname: 昵称
+Sign Out: 退出
+Apply: 激活
+Email: 邮箱
+Types: 类型
+Buyer: 买家
+Zip: 邮编
+Serial number: 编号
+Coupon value: 面值
+Date & Time Created: 创建时间
+in Process: 中
+Medium: 中间
+Handling return and refund: 退货款处理中
+Seller cancelled refund check: 商家关闭退款单
+Request failed: 申请拒绝
+Seller received: 卖家已收货
+Failed Returns: 审核失败
+Discount must be in whole number: 折扣应为整数
+Banner picture: 品牌图
+Thumbnail picture: 缩略图
+Recommended size is: 图片尺寸推荐
+Create Measurement Chart: 新建尺码规范
+Mark as Read: 设为已读
+Show All Messages: 显示所有消息
+'You have no ': 您还没有
+'unread ': 未读
+Messages: 消息
+My Messages: 消息
+Measurements: 大小
+Measurement Chart: 尺码规格
+Not Set...: 还未设置...
+Select Selling Attribute: 选择销售属性
+Measurement Charts: 选择尺码规范
+Store Measurement Charts: 店铺尺码规范
+Red Deals Measurement Charts: RedDeals尺码规范
+View Measurement Chart: 查看尺码规范
+Coupons: 优惠券
+Limit Per Customer: 限领/人
+Sale Tax: 消费税
+Sites: 站点管理
+Store template: 店铺模板管理
+Decoration: 装修
+Relative Link: 友情链接
+Register check: 注册校验
+Dear: 亲爱的
+Welcome back: 欢迎回来
+Friendly link: 友情链接
+Query your express delivery status: 快递查询
+Welcome to RedDeals: 欢迎来到RedDeals
+We will send you an email to verify your account: 请立即前往您的邮箱，如果没有找到，有可能在垃圾箱中
+'If still not found, please click the link to ': 如果还是没有，请点击此链接来
+Click here if the email is not found: 重新发送邮件
+Phone number is changing: 电话号码调整中
+Sales Data: 销售数据
+dashboard: 仪表盘
+Turnover: 成交额
+No of orders: 成交订单数
+No of buyers: 购买用户数
+Unit Price: 客单价
+Unique Visitor: uv
+Buy Rates: 转化率
+Yesterday: 昨天
+Lastweek: 最近7天
+Lastmonth: 近一个月
+Unpaid: 未付款
+Not delivered: 未发货
+Delivered: 已发货
+Deal: 已成交
+Today: 今日
+Sales Overview: 销售概览
+Orders Status: 订单状态
+No Reason: 未填写理由
+Wait Seller return product: 等待卖家寄回商品
+Refuse Receive: 拒收入库
+Deliver Again: 再次发货
+Wait Seller Receive Product: 等待卖家确认收货
+Wait Seller Check: 等待卖家确认
+Apply Exchange: 换货申请
+Contact name: 联系人姓名
+Contact address: 联系人地址
+Contact phone: 联系人电话
+Address Type: 地址类型
+Home: 住址
+Office: 工作地址
+Send Email: 发送邮件
+Email activation: 邮箱激活
+Email activation title: 您的邮箱还没有激活！
+Email activation content part1: 您之所以看着这个页面是因为你的邮箱还没有激活，请立即前往您的邮箱激活，如果没有找到激活邮件，有可能是在垃圾箱中；如果还是没有，请
+Email activation content part2: 重新发送激活邮件
+Please enter the title: 请输入标题
+Content: 内容
+Please tell us about your business information: 请介绍一下您的企业信息
+Required to fill up to 500 words: 必填 最多可以填500个字
+Feedback can not be empty: 反馈内容不能为空
+Please enter your e-mail: 请输入您的邮箱
+Phone: 手机
+Please enter your nickname: 请输入您的昵称
+You can fill up to 25 characters: 最多可以填25个字
+Other: 其他
+Please enter your company: 请输入您的公司
+You can fill up to 50 characters: 最多可以填50个字
+Email and mobile phones，they must fill in a: 邮箱和手机，必须填一个
+Image: 尺码图
+PC-site: PC端
+Mobile-site: 移动端
+in: 在
+RRP Price: 参考价
+Deal Price: 处理价
+amounting to: 金额为
+Request Order Cancellation: 等待退款
+Returns in Transit: 等待买家收货
+Failed Order Cancellation: 商家收购
+Return and refund successfully: 退货款成功
+Please enter the folder name: 请输入文件夹名称
+Please enter name: 请输入一个尺码规规范名称
+Birth Date: 生日
+Gender: 性别
+Customers: 买家
+Discount: 折扣
+discount: 折扣
+GST: 消费税
+Grand Total: 应付总额
+Add Products: 发布商品
+ID: 编号
+Order No.: 订单编号
+Product Management: 产品管理
+Product SPU: 产品SPU
+Create: 创建
+Action: 操作
+Connect an external: 对接外部
+Enter order number: 输入订单号
+You have missed the time to apply: 您已错过了申请的时间
+within 15 days: 15天之内
+Shop contact: 店铺联系人
+This information will be displayed when the user returns, for mail back to the goods, please fill in: 该信息会在用户退货时显示，用于邮寄回商品，请正确填写
+Discounted Price: 折扣价
+HotDeal Price: 特卖价
+Street,Building,etc...: 详细地址
+'description for returns/refund ': 退货款描述
+Order Confirmation: 订单确认
+Amount to Pay: 支付
+Go back to edit cart: 编辑购物车
+Brand Story: 品牌故事
+Last Week: 上周
+Last Month: 上月
+Manage Orders: 订单管理
+Order Summary: 订单总和
+Request Return: 申请退款
+Current Payment Channel: 支付渠道
+current payment channel: 支付渠道
+YY-MM-DD 00:00: YY-MM-DD 00:00
+List: 上架
+Set: 设置
+Select your shipping address: 选择你的收货地址
+New Shipping Address: 新的地址
+Shop: 店铺
+Any message for seller: 买家留言
+Pay Online: 线上支付
+System Measurements: 系统预设尺码
+Modify the logistics number: 修改物流单号
+Help: 帮助
+Tutorials: 指南
+Tutorials Online: 在线指南
+Please input remark before upload file. Once file uploaded, the form will be fully committed.: 上传文件之前，请输入评论。文件上传之后，评论将会被提交
+Style No: 款式编号
+'Note: the platform use promo code, the businessman coupon will not be able to use, please be informed that!': 注：平台优惠码使用后，商家优惠劵将无法使用，请知悉！
+Use Coupons: 使用优惠券
+Please input remark before upload file: 上传文件之前，请输入评论
+Once file uploaded, the form will be fully committed: 文件上传之后，评论将会被提交
+Download: 下载文件
+Applying: 申请中
+Audit Passed: 审核通过
+Audit Not Pass: 审核不通过
+total: 共
+application: 申请
+Sale Data: 销售数据
+Conversion rate: 转化率
+By Day: 按天
+By Week: 按周
+By Month: 按月
+Invalid email: 无效的邮箱
+Invaild phone number: 无效的手机号码
+You cannot use illegal characters: 不能使用非法字符
+Applicable: 适用
+Handsel: 送
+Sell at: 打
+Seller income: 商家收入
+Month commission: 月绩抽佣
+Month commission rate: 月绩抽佣扣点
+Shop name: 店铺名称
+Gst payable: gst盈利
+Settlement done time: 结算完成时间
+Deductibles: 支出
+Shipfee Ungst: 运费不含gst
+Product Price: 产品价格
+Seller Price: 商家小结
+Seller Gst: 商家gst补贴
+Reddeals Profit: 平台毛利
+Reddeals gp: 平台收益率
+Gst output: gst支出
+Gst input: gst收入
+Gst Payable: gst盈利
+Select: 选择
+Order Item details: 子订单明细
+Please enter zip code: 请输入邮编
+Today Deals: 本期特卖
+Upcomings: 即将推出
+Brands: 品牌大全
+Favorites: 收藏
+Change Shop: 编辑店铺
+Sites Center: 站点中心
+Login To: 登录
+Log in: 登录
+Forgot your password: 忘记密码
+Sign up now: 注册
+Login With Cooperation Website: 友情链接
+Account Profile: 用户账户
+Store Profile: 店铺账户
+Platform ticket un gst: 平台券不含gst
+After Sale: 售后
+Password should contain number and letter at least: 密码至少应该包含数字和字母
+Result Of Import Items: 导入商品结果
+SPU: SPU
+Item: 商品
+Fail reason: 失败原因
+Shipping Fee: 运费
+Item Import: 商品导入
+Sign in with: 第三方登录
+Login: 登录
+Item submit purchase requisition: 生成需求单
+Item cancel purchase requisition: 取消需求单
+Purchase requisition information: 需求单详情
+Return to modify a shopping cart: 返回修改购物车
+Item submit internal requisition: 提交需求申请
+Item submit purchase order: 生成预购单
+Submit purchase order: 提交预购单
+Purchase order total price: 预购单总额
+Item submit direct to purchase order: 直接生成预购单
+Item submit purchase requisition with others: 与其他需求合并下单
+ItemStatus: 商品状态
+SelectDate: 选购日期
+Shop min consumption: 最低下单限额（元）
+The consolidated price: 合计（元）
+Cart status: 购物车状态
+Batch delete requisitions: 删除选中需求单
+Batch reject requisitions: 拒绝选中需求单
+Invalid delete: 清除失效商品
+Continue to buy: 继续选购
+Low stocks: 库存不足
+My requisition detail: 需求单详情
+My requisition list: 需求单列表
+Requisition code: 需求申请单编号
+Who's requisition: 需求人
+'freight ': 运费
+Total munber: 总共
+Requisition(s) can not be restored once deleted: 需求单删除之后不可恢复，确认删除？
+Purchase requisition in three months: 三个月内需求单
+Purchase requisition in this year: 今年内需求单
+All status: 全部状态
+Has been submitted: 已提交/待处理
+Not submitted: 未提交
+Has been finished: 已受理
+Has been rejected: 已拒绝
+Has been canceled: 用户取消
+Input requisition code: 请输入申请单号
+Choice purchase requisitions: 选择需求单
+Confirm purchase order: 确定预购单
+Audit: 审核中
+Comfirm order: 确定订单
+Part of order processing: 订单处理环节
+Number of non relates addresses: 未关联地址数量
+Item list of requisition: 需求商品列表
+Requisition item: 需求商品
+Settlement information: 结算信息
+Budget information: 预算信息
+Product Images: 商品图片
+Email or Username: 邮箱或用户名
+Sku Code: sku 编码
+edit item detail: 编辑商品详情
+Platform Price: 平台自营价
+Password: 密码
+Product Code: 商品编码
+create: "创建"
+edit: "编辑"
+Select Category: "选择类目"

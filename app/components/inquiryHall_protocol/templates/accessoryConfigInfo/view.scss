@@ -1,0 +1,20 @@
+.protocol-accessory-config-info {
+  overflow-x:hidden;
+  .modal-body {
+    &:after {
+      display: block;
+      content: '';
+      overflow: hidden;
+      clear: both;
+      zoom: 1;
+    }
+    height:600px;
+    overflow-y: auto;
+  }
+  .price-info {
+    background-color: #f1f4f8;
+  }
+  .cursor-pointer {
+    cursor: pointer;
+  }
+}

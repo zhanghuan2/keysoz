@@ -1,0 +1,7 @@
+{{#component "uploadFile"}}
+<button class="btn btn-ghost btn-icon update-btn" type="button" style="width:90px;height:32px" onclick="$(this).next().click()">
+  <span class="icon-zcy icon-shangchuan mr" style="height:20px"></span>上传
+</button>
+<input type="file" name="files" style="display:none" class="btn-upload" data-size="{{size _FILE_DATA_}}" {{#if _REQUIRED_}}checker-type="uploadFile_required"{{/if}} icon="false">
+{{inject "common/uploadFile/download" _FILE_DATA_=_FILE_DATA_}}
+{{/component}}

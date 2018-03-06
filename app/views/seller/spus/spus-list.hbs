@@ -1,0 +1,18 @@
+{{#partial "realTitle"}}SPU申请{{/partial}}
+{{#partial "realBody"}}
+  {{#inject "common/breadcrumb"}}
+    {
+    "breadcrumb":
+    [{
+    "crumb": "商品管理",
+    "url": "#"
+    },
+    {
+    "crumb": "SPU申请",
+    "url": "#"
+    }]
+    }
+  {{/inject}}
+  {{inject "seller/spus/spu_list"}}
+{{/partial}}
+{{> user_layout}}

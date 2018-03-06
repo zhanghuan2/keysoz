@@ -1,0 +1,32 @@
+.order-form-create-success{
+  height: 300px;
+  width: 1000px;
+  margin:40px auto;
+  .create-success {
+    float: left;
+    padding: 0;
+    width: 371px;
+    height: 241px;
+  }
+  .success-info{
+    max-width: 580px;
+    margin-left: 40px;
+    float: left;
+    font-size: 14px;
+    line-height: 30px;
+    h2 img{
+      vertical-align: bottom;
+    }
+    .money {
+      color: #ff7900;
+      font-size: 16px;
+    }
+    .btn.btn-primary {
+      width: 120px;
+      height: 50px;
+      line-height: 50px;
+      font-size: 18px;
+      padding:0;
+    }
+  }
+}

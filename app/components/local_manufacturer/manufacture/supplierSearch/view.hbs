@@ -1,0 +1,16 @@
+{{#component "component-businessSearch js-comp"}}
+<div class="supplier-search">
+    <div class="search-wrap">
+        <label>企业搜索：</label>
+        <input type="text" name="business-name" class="search-input jSearchName" placeholder="输入企业名称进行搜索">
+        <button class="search-btn" id="jSearchSup" type="submit">{{#if searchBtn}}{{{searchBtn}}}{{else}}搜索{{/if}}</button>
+    </div>
+    <div class="label-search">
+        <label>企业称号：</label>
+        <span><input type="checkbox" name="labelType" class="input-checkbox" data-type="pzbzjzz">品字标浙江制造</span>
+        <span><input type="checkbox" name="labelType" class="input-checkbox" data-type="zjmpcp">浙江名牌产品</span>
+        <span><input type="checkbox" name="labelType" class="input-checkbox" data-type="lzh">老字号</span>
+        <span><input type="checkbox" name="labelType" class="input-checkbox" data-type="zjckmp">浙江出口名牌</span>
+    </div>
+</div>
+{{/component}}

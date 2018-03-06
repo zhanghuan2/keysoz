@@ -1,0 +1,12 @@
+<ul>
+  {{#each this}}
+    <li class="show-title" title="{{description}}">
+      {{label}}
+    </li>
+    <li class="show-content">
+      {{#equals type 'text'}}
+        <input type="text" name="{{name}}" value="{{defaultValue}}" />
+      {{/equals}}
+    </li>
+  {{/each}}
+</ul>

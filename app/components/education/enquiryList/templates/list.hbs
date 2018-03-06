@@ -1,0 +1,49 @@
+<tbody>
+  {{#each data}}
+  <tr {{#mod @index 2}}class="gray" {{/mod}}>
+    <td title="{{title}}">
+      {{#equals stateStr "报价中"}}
+      <a href="{{../hallDomain}}/inquiryhall/detail?announcementId={{announcementInquiryId}}" target="_blank">{{title}}</a>
+      {{else}}
+      <a href="{{../hallDomain}}/inquiryhall/result?inquiryId={{inquiryId}}" target="_blank">{{title}}</a>
+      {{/equals}}
+    </td>
+    <td>{{purchaser}}</td>
+    <td>{{districtSimpleName}}</td>
+    <td class="js-recent-only">
+      {{#if deliveryAddressRegion}}
+        {{deliveryAddressRegion}}
+      {{else}}
+        -
+      {{/if}}
+    </td>
+    {{#equals stateStr "报价中"}}
+    <td class="js-recent-only timer" data-time="{{timeDifference}}"></td>
+    {{else}}
+    <td class="js-recent-only" style="text-align: center;">-</td>
+    {{/equals}}
+    <td class="js-recent-only">已有报价数{{#if biddingSupQuantity}}{{biddingSupQuantity}}{{else}}0{{/if}}条</td>
+    <td>{{stateStr}}</td>
+    <td>
+      {{#equals stateStr "报价中"}}
+      <a href="{{../domain}}/api/inquiry/announcement/listQuote?inquiryId={{inquiryId}}&type={{inquiryType}}" target="_blank">报价</a>
+      {{else}}
+      <a href="{{../hallDomain}}/inquiryhall/detail?announcementId={{announcementInquiryId}}" target="_blank">查看</a>
+      {{/equals}}
+    </td>
+  </tr>
+  {{else}}
+  <tr>
+    <td colspan="8">
+      <div class="text-center">没有相关数据</div>
+    </td>
+  </tr>
+  {{/each}}
+</tbody>
+<tfoot>
+  <tr>
+    <td colspan="8">
+      <div class="js-pagination"></div>
+    </td>
+  </tr>
+</tfoot>

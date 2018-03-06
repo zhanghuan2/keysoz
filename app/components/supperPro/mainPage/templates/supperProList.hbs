@@ -1,0 +1,97 @@
+<ul class="supplier-list">
+  {{#equals _DATA_.total 0}}
+    <br/>
+    <br/>
+    <br/>
+    <h1 style="text-align: center">该标段下没有供应商。</h1>
+    <br/>
+    <br/>
+    <br/>
+  {{/equals}}
+  {{#each _DATA_.data}}
+    <li class="list-li">
+      <div class="supplier-title">
+        <img class="product-image" src="{{this.baseInfo.logoPath}}">
+        <div class="title-msg">
+          <p class="supplier-name-show" title="{{this.baseInfo.name}}">{{this.baseInfo.name}}</p>
+          <p style="color: #999;font-size: 12px;width: 184px;">联系电话：0571-56039827265</p>
+        </div>
+        <div class="title-content">
+          <ul>
+            <li>
+              <span>评价信息：</span>
+                  <span class="score-box">
+                    <span class="arrow-content js-supplier-avg-score-div" data-targetid="5">
+                      <span class="content-span js-target-name">供货</span>
+                       <span class="js-average-score js-supplier-avg-gh">
+                        {{this.evaluateTargetScoreStatistics.0.averageScore}}
+                         <i class="icon-zcy"></i>
+                        </span>
+                    </span>
+                    <span class="arrow-content js-supplier-avg-score-div" data-targetid="5">
+                      <span class="content-span js-target-name">服务</span>
+                    <span class="js-average-score js-supplier-avg-fw">
+                      {{this.evaluateTargetScoreStatistics.1.averageScore}}
+                      <i class="icon-zcy"></i>
+                    </span>
+                    </span>
+                    <span class="arrow-content js-supplier-avg-score-div" data-targetid="5">
+                      <span class="content-span js-target-name">价格</span>
+                    <span class="js-average-score js-supplier-avg-jg">
+                      {{this.evaluateTargetScoreStatistics.2.averageScore}}
+                      <i class="icon-zcy"></i>
+                    </span>
+                    </span>
+                    <span class="arrow-content js-supplier-avg-score-div" data-targetid="5">
+                      <span class="content-span js-target-name">质量</span>
+                    <span class="js-average-score js-supplier-avg-zl">
+                      {{this.evaluateTargetScoreStatistics.3.averageScore}}
+                      <i class="icon-zcy"></i>
+                    </span>
+                    </span>
+                    <input type="text" class="hide js-supplier-avg-save" name="js-supplier-avg-gh" value="{{this.evaluateTargetScoreStatistics.0.averageScore}}_{{this.evaluateWeightAverages.0.averageScore}}" />
+                    <input type="text" class="hide js-supplier-avg-save" name="js-supplier-avg-fw" value="{{this.evaluateTargetScoreStatistics.1.averageScore}}_{{this.evaluateWeightAverages.1.averageScore}}" />
+                    <input type="text" class="hide js-supplier-avg-save" name="js-supplier-avg-jg" value="{{this.evaluateTargetScoreStatistics.2.averageScore}}_{{this.evaluateWeightAverages.2.averageScore}}" />
+                    <input type="text" class="hide js-supplier-avg-save" name="js-supplier-avg-zl" value="{{this.evaluateTargetScoreStatistics.3.averageScore}}_{{this.evaluateWeightAverages.3.averageScore}}" />
+                  </span>
+            </li>
+            <li style="text-align: center">
+              <a class="btn btn-primary initShop" href="{{#if frontUrl}}{{frontUrl}}{{/if}}/search?shopId={{this.shopId}}&searchType=1&normal=3">进入店铺</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="img-box">
+        <a class="supplier-link">
+          <img class="product-image" {{#if this.item.mainImage}}src="{{this.item.mainImage}}"{{else}}src="/lunatone/assets/images/other-images/item_default.png"{{/if}}>
+          <div class="link-info hide" data-linkId="{{this.item.id}}">
+            <p class="info-p" title="{{this.item.name}}">{{this.item.name}}</p>
+          </div>
+        </a>
+        <div class="inline-block show-msg">
+          <ul>
+            <li>
+              <p>企业规模</p>
+              <p>{{this.baseInfo.enterpriseScale}}</p>
+            </li>
+            <li>
+              <p>下浮率</p>
+              <p>{{#equals this.minDecreaseRate this.maxDecreaseRate}}
+                {{formatPrice this.minDecreaseRate}}%
+              {{else}}
+                {{formatPrice this.minDecreaseRate}}% ~ {{formatPrice this.maxDecreaseRate}}%
+              {{/equals}}</p>
+            </li>
+            <li>
+              <p>经营模式</p>
+              <p>{{this.baseInfo.supplierType}}</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="hide supplier-mask">
+
+      </div>
+    </li>
+  {{/each}}
+</ul>

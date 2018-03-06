@@ -1,0 +1,33 @@
+{{#component "component-tax-hall-notice-wrapper jscomp"}}
+{{!-- 
+{
+
+}
+ --}}
+<section>
+  <div class="component-tax-hall-notice-wrapper">
+      
+      <div class="notice-header">
+        <span>{{title}}</span>
+        <a href="{{host}}{{moreUrl}}" target="_blank">查看更多</a>
+      </div>
+      <div class="notice-body">
+        <table>
+          <thead>
+            <tr class="notice-table-header">
+              <th>{{tableTitle}}</th>
+              <th>{{tableTime}}</th>
+            </tr>
+          </thead>
+          {{#equals title "最新竞价"}}
+          {{inject "tax-hall/announcement-index/announce-detail"}}
+          {{/equals}}
+          {{#equals title "采购结果"}}
+          {{inject "tax-hall/announcement-index/announce-result"}}
+          {{/equals}}
+        </table>
+      </div>
+      
+  </div>
+</section>
+{{/component}}

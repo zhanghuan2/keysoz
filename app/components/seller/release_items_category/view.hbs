@@ -1,0 +1,18 @@
+{{#component "release-items-category js-comp"}}
+  <input type="hidden" id="ptype" value="{{ptype}}">
+  <div class="component-header">
+    <span class="component-title">{{i18n "Add Products" bundle="all_mix"}}</span>
+  </div>
+  <div class="component-body">
+    <div class="category-list fixed-category"></div>
+    <div class="selected-category">
+      <span class="selected-category-span">
+        <span>{{i18n "Category Name" bundle="all_mix"}}:</span>
+        <span class="selected-path"></span>
+      </span>
+    </div>
+    <div class="button-submit">
+      <button class="btn btn-primary btn js-submit-spu" disabled>{{i18n "Confirm" bundle="all_mix"}}</button>
+    </div>
+  </div>
+{{/component}}

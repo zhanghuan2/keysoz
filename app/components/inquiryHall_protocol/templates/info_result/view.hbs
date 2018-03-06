@@ -1,0 +1,73 @@
+{{#component "component-protocol-info-result js-comp"}}
+{{!-- 
+{
+  "dealResultCode":成交结果代码, 
+  "dealFailResult":"成交失败结果",
+  "dealFailReason":"成交失败原因",
+} 
+--}}
+<section>
+  <h2>成交结果信息</h2>
+  {{#equals dealResultCode 0}}
+  <table class="table table-fixed table-fixed-ie8" style="margin-top: 20px">
+    <tbody>
+      <tr>
+        <td>结果</td>
+        <td>{{dealFailResult}}</td>
+        <td>失败原因</td>
+        <td>{{dealFailReason}}</td>
+      </tr>
+    </tbody>
+  </table>
+  {{else}}
+  <table class="table table-fixed table-fixed-ie8">
+    <tbody>
+      {{#equals requireTypeName '批量竞价-多品牌竞价'}}
+      <tr>
+        <td>成交品牌型号</td>
+        <td>{{dealItemBrand}}/{{dealItemModel}}</td>
+        <td>成交供应商</td>
+        <td>{{supplierName}}</td>
+      </tr>
+      <tr>
+        <td>联系地址</td>
+        <td colspan="3">{{supplierAddress}}</td>
+      </tr>
+      {{else}}
+      <tr>
+        <td>成交供应商</td>
+        <td>{{supplierName}}</td>
+        <td>联系地址</td>
+        <td>{{supplierAddress}}</td>
+      </tr>
+      {{/equals}}
+    </tbody>
+  </table>
+  <table class="table table-fixed" style="margin-top: 20px">
+    <thead>
+      <tr>
+        <th>商品名称</th>
+        <th>数量</th>
+        <th>成交单价(元)</th>
+        <th>成交总价(元)</th>
+        <th>优惠率(%)</th>
+        <th>配置信息</th>
+      </tr>
+    </thead>
+    <tbody class="bgc-clear">
+      <tr>
+        <td>{{dealItemName}}</td>
+        <td>{{quantity}}</td>
+        <td>{{formatPrice dealPrice}}</td>
+        <td>{{formatPrice dealTotalPrice}}</td>
+        <td>{{discountRate}}</td>
+        <td><a id="showDetail" data-protocol-id='{{protocolId}}' data-require-id="{{requirdId}}" data-single-shop-money="{{singleShopMoney}}" data-protocol-price="{{protocolPrice}}">详情</a></td>
+      </tr>
+    </tbody>
+  </table>
+  {{/equals}}
+  <div class="modal hide" style="width:1200px;" id="accessory-config-info-modal">
+    {{inject "inquiryHall_protocol/templates/accessoryConfigInfo"}}
+  </div>
+</section>
+{{/component}}

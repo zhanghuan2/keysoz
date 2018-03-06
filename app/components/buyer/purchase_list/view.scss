@@ -1,0 +1,142 @@
+@import "compass/css3/inline-block";
+@import "pokeball/theme";
+
+div.pur-list{
+  .page-body-option span {
+    color: #8c8c8c;
+  }
+  .pur-list-body{
+    //width: 990px;
+    min-height: 600px;
+    background-color: #FFFFFF;
+    padding: 15px;
+    margin: 0;
+
+    .search-table{
+      width: 100%;
+      background-color: #fff;
+      margin: 0 0 10px 0;
+      padding: 10px;
+      .search-row {
+        height: 44px;
+        line-height: 44px;
+        @media screen and (min-width: 1430px){
+          max-width: 1200px;
+          .search-label {
+            display: inline-block;
+            text-align: right;
+            width: 100px;
+          }
+        }
+        @media screen and (max-width: 1430px){
+          max-width: 1020px;
+          .search-label {
+            display: inline-block;
+            text-align: right;
+            width: 100px;
+            vertical-align: middle;
+            line-height: 20px;
+          }
+        }
+        .search-cell {
+          width: 180px;
+          text-align: left;
+          white-space: nowrap;
+          margin-right: 10px;
+          .money-input {
+            width: 120px;
+          }
+        }
+      }
+      .operation-row{
+        height: 44px;
+        line-height: 44px;
+        width: 100%;
+        .search-button {
+          float: right;
+        }
+      }
+      .time-interval-input {
+        display: inline-block;
+      }
+    }
+
+    table{
+      //width: 960px;
+      border-width: 0;
+      thead{
+        tr{
+          background-color: #F7F7F7;
+          color: #9F9F9F;
+          th{
+            text-align: left;
+            border: 1px solid $color-border;
+            border-width: 1px 0 1px 0;
+            &:first-child{
+              border-width: 1px 0 1px 1px;
+            }
+            &:last-child{
+              border-width: 1px 1px 1px 0;
+              text-align: right;
+            }
+            select{
+              background-color: #F7F7F7;
+              border-width: 0;
+              width: 120px;
+              color: #9F9F9F;
+            }
+            &.table-top-options{
+              border-width: 0 0 1px 0;
+              padding-left: 0;
+              padding-right: 0;
+            }
+          }
+          &.search-tr{
+            background-color: #FFFFFF;
+          }
+        }
+      }
+      tbody{
+        tr{
+          border: 1px solid #e7e9ea;
+          td{
+            text-align: left;
+            border-width: 0 0 1px 0;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            &:first-child{
+              border-width: 0 0 1px 1px;
+            }
+            &:last-child{
+              border-width: 0 1px 1px 0;
+              text-align: right;
+            }
+            .sku-price{
+              color: #BBB;
+            }
+            .item-subtotal{
+              display: none;
+            }
+          }
+          &.first-level-tr{
+            //border-width: 0 0 1px 2px;
+          }
+          &.second-level-tr{
+            display: none;
+          }
+        }
+      }
+    }
+    .price, .currency{
+      color: #FE7800;
+    }
+    .no-href{
+      color: #9E9E9C;
+    }
+  }
+  .list-pagination {
+    text-align: right;
+    padding: 0 15px 15px 0;
+    background-color: #FFFFFF;
+  }
+}

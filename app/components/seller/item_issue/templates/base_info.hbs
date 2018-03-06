@@ -1,0 +1,214 @@
+<div class="form-section section-top-bottom clearfix">
+  <div class="section-title pull-left">基本信息</div>
+  <input type="hidden" name="categoryId" {{#if item.categoryId}}value="{{item.categoryId}}" {{else}}value="{{categoryId}}"{{/if}}>
+  {{#if item}}
+    <input type="hidden" name="id" value="{{item.id}}">
+    <input type="hidden" name="spuAuditId" value="{{item.spuAuditId}}">
+    <input type="hidden" name="spuId" value="{{item.spuId}}">
+    <input type="hidden" name="status" value="{{item.status}}">
+  {{/if}}
+  <div class="pull-left section-content clearfix">
+
+    <div class="control-group">
+      <label class="group-title line-title">
+        <b class="required">*</b>
+        {{#equals ptype 5}}
+          SPU名称：
+        {{else}}
+          商品标题：
+        {{/equals}}
+      </label>
+      <div class="group-content">
+        <input type="text" id="input-name" class="input-text is-filled" name="name" maxLength="200"
+               style="width: 380px;"
+          {{#equals ptype 5}}
+               placeholder="请输入SPU名称：（建议品牌+型号+末级类目，如：联想X230笔记本电脑）"
+          {{else}}
+               placeholder="请输入商品名称"
+          {{/equals}}
+               value="{{item.name}}"
+               required/>
+        {{#equals ptype 4}}
+          <div><label style="margin-top: 10px;width: 100%;text-align: left; color: #666;">输入标题请务必填写上规格信息，例”精品大米
+            36KG/袋““精品大豆油 1L”</label></div>
+        {{/equals}}
+      </div>
+    </div>
+    {{#equals ptype 4}}
+      {{#unless item.id}}
+        <div class="control-group" style="line-height: 32px; margin-bottom: 0;">
+          <label class="group-title line-title"><b class="required">*</b>是否私有协议：</label>
+          <div class="group-content">
+            <label style="width: auto;"><input type="radio" name="privateProtocol" class="input-radio"
+                                               value="1">是</label>&nbsp;&nbsp;
+            <label style="width: auto;"><input type="radio" name="privateProtocol" class="input-radio"
+                                               value="0">否</label>
+          </div>
+        </div>
+      {{/unless}}
+    {{/equals}}
+
+    <div class="control-group">
+      <label class="group-title"><b class="required">*</b>商品图片：</label>
+      <div class="image-area group-content">
+        {{#equals ptype 5}}
+          <div style="margin: 6px;"><label>
+            请至少上传2张图片，格式为JPG、PNG、JPEG，单张图片少于3M，像素不少于800*800.<br>
+            1）真实商品实体，白色背景，图片清晰，不得出现除品牌LOGO以外的任何水印，不得为拼接图片，不得出现违反相关法律法规的内容，或与品牌、商品
+            无关的内容，如促销、夸大描述、外网导购等文字或图片说明；<br>
+            2）第一张：产品正面图，第二张：产品背面图，其他：自定义；<br>
+            3）对所使用的图片，供应商拥有合法使用权，不得侵犯他人的合法权利，当spu审核通过后，该图片将作为平台通用的建议图片，并授权其他供应商可以参考使用。
+          </label></div>
+        {{else}}
+          <p>请上传小于1MB的PNG或JPG的图片</p>
+        {{/equals}}
+          
+        <div class="main-image {{#unless item.mainImage}}empty{{/unless}} image-container js-main-image js-item-image"
+             id="js-item-main-image">
+          {{#if item.mainImage}}
+            <img src="{{item.mainImage}}" alt="">
+            <span class="image-operate">
+              <i class="icon-zcy icon-edit js-upload-image"></i>
+            </span>
+          {{else}}
+            <span class="image-tip-add">+</span>
+          {{/if}}
+          <input type="hidden" name="mainImage" value="{{item.mainImage}}">
+        </div>
+        <ul class="images-list js-images-list clearfix js-item-detail-images">
+          {{#if itemDetail.images}}
+            {{#each itemDetail.images}}
+              <li class="pull-left image-container js-item-image-container item-image js-item-image">
+                <img src="{{url}}" alt="{{name}}" data-src="{{url}}" data-name="{{name}}"/>
+                <div class="delete-img">
+                  <i class="icon-mewtwo icon-mewtwo-trash js-delete-image"></i>
+                </div>
+                <span class="image-operate">
+                  <i class="icon-mewtwo icon-mewtwo-left-arrow js-move-image" data-direct="left"></i>
+                  <i class="icon-zcy icon-edit js-upload-image"></i>
+                  <i class="icon-mewtwo icon-mewtwo-right-arrow js-move-image" data-direct="right"></i>
+                </span>
+              </li>
+              {{#if @last}}
+                {{#gt @index 3}}
+                {{else}}
+                  <li class="pull-left image-container image-end empty js-item-image js-add-other-image">
+                    <span class="image-tip-add">+</span>
+                  </li>
+                {{/gt}}
+              {{/if}}
+            {{/each}}
+          {{else}}
+            <li class="pull-left image-container image-end empty js-item-image js-add-other-image">
+              <span class="image-tip-add">+</span>
+            </li>
+          {{/if}}
+        </ul>
+      </div>
+    </div>
+
+    {{#equals ptype 5}}
+      <div class="control-group refer-price">
+        <label class="group-title line-title">
+          <b class="required">*</b>
+          行业参考价：
+        </label>
+        <div class="group-content">
+          <input type="text" id="input-referPrice" class="input-text is-filled" name="spuPrice" checker-pattern="^(\d+|\d+.\d{1,2})$", checker-text="输入不是数字" checker-icon="false"
+                 style="width: 380px;margin-right:20px;"
+                 placeholder="请输入行业参考价(单位元)"
+                 value="{{item.spuPrice}}"
+                 required/>
+          <i class="icon-zcy icon-warningfill js-refer-price-popover"></i>
+        </div>
+      </div>
+    {{else}}
+      <div class="control-group">
+        <label class="group-title line-title"><b class="required">*</b>商品代码(货号)：</label>
+        <div class="group-content">
+          <input type="text" id="input-itemCode" class="input-text" name="itemCode" maxLength="200"
+                 placeholder="请输入商品代码" value="{{item.itemCode}}" required/>
+          <i class="icon-zcy icon-warningfill js-item-code-popover"></i>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="group-title line-title">
+          {{#if item.isNetSuper}}
+            <b class="required">*</b>
+          {{else}}
+            {{#equals ptype "2"}}
+              <b class="required">*</b>
+            {{/equals}}
+            {{#equals ptype "6"}}
+              <b class="required">*</b>
+            {{/equals}}
+          {{/if}}
+          电商平台：
+        </label>
+        <div class="group-content">
+          <input type="text" class="input-text js-need-validated wd-300" name="selfPlatformLink"
+                 placeholder="请输入电商平台链接" value="{{item.extra.selfPlatformLink}}"
+                 pattern="^((https|http):\/\/)[^\s]+" {{#if item.isNetSuper}}required{{else}}{{#equals ptype
+                                                                                                       "2"}}required{{/equals}}{{#equals
+            ptype "6"}}required{{/equals}}{{/if}}/>
+          <p class="note">以http://或https://开头</p>
+        </div>
+      </div>
+
+      <div class="control-group last-line">
+        <label class="group-title line-title"><b class="required">*</b>产地：</label>
+        <div class="group-content line-h-32">
+          <input type="radio" name="limit" value="0"
+                 {{#if item.origin}}{{#equals item.origin.limit 0}}checked{{/equals}}{{else}}checked{{/if}}>
+          <span class="ml-xs text-muted">&nbsp;境内</span>&nbsp;&nbsp;
+          <input type="radio" name="limit" value="1"
+            {{#if item}}{{#equals item.origin.limit 1}}checked{{/equals}}{{/if}}>
+          <span class="ml-xs text-muted">&nbsp;境外</span>
+          <div class="b-hide limit-0"
+            {{#if item.origin}}{{#equals item.origin.limit 0}}style="display: block;" {{/equals}}{{else}}style="display: block;" {{/if}}>
+            <div class="select-box">
+              <select name="provinceId"
+                      class="address-select"
+                      data-level="1"
+                      data-pid="1"
+                {{#if item}}
+                      data-id="{{item.origin.provinceId}}"
+                      data-name="{{item.origin.province.name}}"
+                {{/if}}>
+                <option value="">请选择省</option>
+              </select>
+            </div>
+            <div class="select-box">
+              <select name="cityId" class="address-select"
+                      data-level="2"
+                {{#if item}}
+                      data-pid="{{item.origin.provinceId}}"
+                      data-id="{{item.origin.cityId}}"
+                {{/if}}>
+                <option value="">请选择市</option>
+              </select>
+            </div>
+            <div class="select-box">
+              <select name="regionId"
+                      class="address-select"
+                      data-level="3"
+                {{#if item}}
+                      data-pid="{{item.origin.cityId}}"
+                      data-id="{{item.origin.regionId}}"
+                {{/if}}>
+                <option value="">请选择区/县</option>
+              </select>
+            </div>
+          </div>
+          <div class="b-hide limit-1" {{#equals item.origin.limit 1}}style="display: block;"{{/equals}}>
+            <select name="countryId" data-pid="0"
+              {{#if item}} data-id="{{item.origin.countryId}}"{{/if}} required>
+              <option value="">请选择国家</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    {{/equals}}
+  </div>
+</div>

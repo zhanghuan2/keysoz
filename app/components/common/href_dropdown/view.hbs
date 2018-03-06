@@ -1,0 +1,12 @@
+{{#component "href_dropdown js-comp"}}
+  <div class="hide dataStore" data-showdc="{{showDistrictCode}}">{{json objData}}</div>
+  <div class="title_text">
+    <span>{{objData.navigationName}}<i class="icon-zcy"></i></span>
+    <div class="select-box">
+      {{#each objData.child}}
+        <a href="{{this.navigationUrl}}"
+           {{#if newPage}}target="_blank"{{/if}}>{{this.navigationName}}</a>
+      {{/each}}
+    </div>
+  </div>
+{{/component}}

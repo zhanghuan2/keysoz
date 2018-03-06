@@ -1,0 +1,40 @@
+<div class="modal modal-more-options" data-attrs="{{json _DATA_}}">
+  <div class="modal-header">
+    <span class="h2">规格参数</span>
+    <a href="javascript:void(0)" class="close pull-right close-modal">&times;</a>
+  </div>
+  <div class="modal-body">
+    <table class="attribute-tab">
+     <thead>
+       <th colspan="2" class="attribute-title">
+         基础参数
+       </th>
+     </thead>
+     <tbody>
+        {{#each this.keyProperties}}
+          <tr>
+            <td class="main-parameter">
+               {{this.attrKey}}
+            </td>
+            <td class="parameter-espercial">
+               {{this.attrVal}}
+            </td>
+          </tr>
+        {{/each}}
+        {{#each this.affectProperties}}
+          <tr>
+             <td class="main-parameter">
+                 {{this.attrKey}}
+             </td>
+             <td class="parameter-espercial">
+                 {{this.attrVal}}
+             </td>
+          </tr>
+        {{/each}}
+     </tbody>
+   </table>
+  </div>
+  <div class="modal-footer">
+     <button class="btn btn-medium btn-primary pull-right close">我知道了</button>
+  </div>
+</div>

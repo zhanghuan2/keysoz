@@ -1,0 +1,59 @@
+<table class="table table-grid sku-table">
+  <thead>
+    <tr>
+      {{#each data.attrs}}
+        <th width="70" class="center-text">
+          {{key}}
+        </th>
+      {{/each}}
+      <th width="100" class="center-text">
+        价格
+      </th>
+      {{#if properties.resource.item.hasSkuStock}}
+        <th width="70" class="center-text">
+          库存数量
+        </th>
+      {{/if}}
+      <th width="110" class="center-text">{{i18n "Sku Code" bundle="all_mix"}}</th>
+      {{#equals isVaccine 1}}
+        <!-- 疫苗不显示库存 -->
+      {{else}}
+        <th width="200" class="center-text">库存</th>
+      {{/equals}}
+    </tr>
+  </thead>
+  <tbody>
+    {{#if data}}
+      {{#each data.values}}
+        <tr class="js-sku-tr" data-attr="{{json list}}"
+            data-key="{{#each list}}{{attr}}:{{value}}{{#unless @last}};{{/unless}}{{/each}}"
+            {{#if id}}data-id="{{id}}"{{/if}}>
+          {{#each list}}
+            {{#if rowspan}}
+              <td rowspan="{{rowspan}}" class="center-text">
+                {{value}}
+              </td>
+            {{/if}}
+          {{/each}}
+          {{> seller/item_publish/common/all_templates/_sku_info warehouses=../data.warehouses sku=this stock=this isVaccine=../isVaccine}}
+        </tr>
+      {{/each}}
+    {{else}}
+      {{#if skuAndStocks}}
+        {{#each skuAndStocks}}
+          <tr class="js-sku-tr" {{#if sku.id}}data-id="{{sku.id}}"{{/if}}>
+            {{> component:seller/item_publish/common/all_templates/_sku_info}}
+          </tr>
+        {{else}}
+          <tr class="js-sku-tr" {{#if sku.id}}data-id="{{sku.id}}"{{/if}}>
+            {{> component:seller/item_publish/common/all_templates/_sku_info}}
+          </tr>
+        {{/each}}
+      {{else}}
+        <tr class="js-sku-tr">
+          {{> component:seller/item_publish/common/all_templates/_sku_info sku=skus.[0]}}
+        </tr>
+      {{/if}}
+    {{/if}}
+  </tbody>
+</table>

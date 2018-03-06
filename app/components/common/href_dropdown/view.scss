@@ -1,0 +1,51 @@
+.href_dropdown{
+  height: 18px;
+  .title_text{
+    color: rgb(0,0,0);
+    position: relative;
+    padding-bottom: 10px;
+    span{
+      font-size: 16px;
+      color: rgb(0,0,0);
+      i:before{
+        content: "\e6c5";
+      }
+    }
+    .select-box{
+      position: absolute;
+      background-color: #ffffff;
+      border: 1px solid #DDDDDD;
+      top: 30px;
+      width: 103px;
+      display: none;
+      left: -2px;
+      z-index:100;
+      a{
+        display: block;
+        font-size: 14px;
+        letter-spacing: 0.4px;
+        line-height: 40px;
+        padding-left: 11px;
+        color: rgb(0,0,0);
+        //&:first-child{
+        //  margin-top: 8px;
+        //}
+        &:hover{
+          color: #0876FF;
+          background: #F7F7F7;
+        }
+      }
+    }
+    &:hover .select-box{
+      display: block;
+    }
+    &:hover span{
+      i:before{
+        content: "\e655";
+        font-size: 12px;
+        margin-left: 8px;
+        margin-right: 9px;
+      }
+    }
+  }
+}

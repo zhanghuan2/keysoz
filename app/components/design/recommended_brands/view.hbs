@@ -1,0 +1,27 @@
+{{#component "tab recommended-brands js-comp"}}
+<ul class="tab-navs clearfix">
+  <div class="push-left">
+    <span class="font-20">推荐品牌</span>
+  </div>
+  <div class="push-right">
+    <li class="active" data-role="nav"><a class="font-14" href="javascript:void(0);">全部</a></li>
+    {{#each navTitles}}
+    <li data-role="nav"><a href="javascript:void(0);" class="font-14 js-brand-kind" data-brandids="{{brandId}}">{{brandName}}</a></li>
+    {{/each}}
+  </div>
+</ul>
+<div class="tab-contents clearfix">
+  <div data-role="content" class="tab-content">
+    <ul class="brands-list clearfix">
+      {{#each _DATA_}}
+      <li class="brands-kind {{#gt @index 7}}second-line{{/gt}} {{#mod @index 8}}last{{/mod}}">
+        <a href="/search?bid={{id}}"><img src="{{cdnPath logo "68h"}}"></a>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+  {{#each navTitles}}
+    <div data-role="content" class="tab-content hide"></div>
+  {{/each}}
+</div>
+{{/component}}

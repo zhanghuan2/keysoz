@@ -1,0 +1,14 @@
+node_modules/
+public/
+vendor/
+.idea/
+.sass-cache
+.DS_Store
+npm-debug.log
+app/components/common/header/
+app/components/common/sidebar/
+app/comz_eevees/
+app/components_zcy/
+**/*.gz
+.vscode/settings.json
+package-lock.json

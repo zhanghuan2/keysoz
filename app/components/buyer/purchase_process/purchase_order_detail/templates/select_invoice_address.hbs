@@ -1,0 +1,35 @@
+<div class="modal pur-modal select_invoice_address">
+  <div class="modal-header">
+    <h2>选择发票寄送地址</h2>
+  </div>
+  <form class="form form-aligned receiver-address-form" id="receiver-address-form">
+    <fieldset>
+      <div class="modal-body">
+      {{!-- {{json this}} --}}
+        <div class="control-group">
+        <div class="inv-doc clearfix">
+          <div class="inv-title-doc">发票抬头</div>
+          <div class="inv-addr-doc">发票寄送地址</div>
+        </div>
+        <select class="js-form-requirer select-inv-title">
+          <option value="" >--请选择发票抬头--</option>
+          {{#each _ORG_INV_}}
+           <option value="{{outerId}}" data-invtype='{{invoiceType}}'>{{invoiceTitle}}</option>
+          {{/each}}
+        </select>
+        <select class="js-form-select-addr select select-addr">
+          <option value="" >--请选择发票寄送地址--</option>
+          {{!-- {{#each _PUR_DEL_}}
+           <option value="{{outerId}}">{{receiverProvinceName}}{{receiverCityName}}{{receiverDistrictName}}&nbsp;&nbsp;{{receiverAddress}}({{receiverName}} 收) &nbsp;&nbsp;&nbsp;&nbsp;{{receiverMobile}}</option>
+          {{/each}} --}}
+        </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-info btn-medium close">取消</button>
+        <a class="btn btn-primary btn-medium js-select-addr-submit">{{i18n "Confirm" bundle="all_mix"}}</a>
+      </div>
+    </fieldset>
+  </form>
+
+</div>

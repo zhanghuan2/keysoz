@@ -1,0 +1,71 @@
+<div class="search-table supplier">
+  <div class="search-row">
+    <span class="search-label"><label>下单时间：</label></span>
+    <span class="search-cell">
+      <span class="time-interval-input create-time"></span>
+    </span>
+    <span class="search-label"><label>订单状态：</label></span>
+    <span class="search-cell">
+      <select class="js-select-status select">
+        <option value="">全部状态</option>
+        <option value="0" {{#equals status 0}}selected{{/equals}}>待供应商接单</option>
+        <option value="1" {{#equals status 1}}selected{{/equals}}>待发货</option>
+        <option value="2" {{#equals status 2}}selected{{/equals}}>部分发货</option>
+        <option value="3" {{#equals status 3}}selected{{/equals}}>全部发货</option>
+        <option value="4" {{#equals status 4}}selected{{/equals}}>待验收</option>
+        <option value="5" {{#equals status 5}}selected{{/equals}}>已验收</option>
+        <option value="6" {{#equals status 6}}selected{{/equals}}>启动结算</option>
+        <option value="7" {{#equals status 7}}selected{{/equals}}>已完成</option>
+        <option value="-4" {{#equals status -4}}selected{{/equals}}>订单待取消</option>
+        <option value="-2" {{#equals status -2}}selected{{/equals}}>供应商拒单</option>
+        <option value="-5" {{#equals status -5}}selected{{/equals}}>订单取消</option>
+        <option value="10" {{#equals status 10}}selected{{/equals}}>退换货中</option>
+        <option value="-6" {{#equals status -6}}selected{{/equals}}>全部退货</option>
+        {{#equals tag 'blocktrade'}}
+          <option value="11" {{#equals status 11}}selected{{/equals}}>待卖家发起定价</option>
+          <option value="12" {{#equals status 12}}selected{{/equals}}>待买家确认定价</option>
+          <option value="13" {{#equals status 13}}selected{{/equals}}>定价驳回</option>
+        {{/equals}}
+      </select>
+    </span>
+    <span class="search-label"><label>订单号：</label></span>
+    <span class="search-cell">
+      <input name="orderNo" type="text" placeholder='请输入（支持后6位搜索）' value="{{orderNo}}">
+    </span>
+  </div>
+  <div class="search-row">
+    <span class="search-label"><label>订单金额(元)：</label></span>
+    <span class="search-cell">
+      <input class="js-search-minFee money-input"
+             name="minFee" type="text" placeholder='请输入最小价格'
+             value="{{minFee}}"> -
+      <input class="js-search-maxFee money-input"
+             name="maxFee" type="text" placeholder='请输入最大价格'
+             value="{{maxFee}}">
+    </span>
+    <span class="search-label"><label>采购单位：</label></span>
+    <span class="search-cell">
+      <select class="noselectric" data-org-name="{{purchaseOrgName}}" data-org-id="{{orgId}}" name="purchaseOrg"></select>
+    </span>
+    <span class="search-label"><label>采购经办人：</label></span>
+    <span class="search-cell">
+      <select name="purchaser" class="noselectric" data-name="{{purchaserName}}" data-user-id="{{purchaserId}}"></select>
+    </span>
+  </div>
+  <div class="search-row">
+    <span class="search-label"><label>确认收货时间：</label></span>
+    <span class="search-cell">
+      <span class="time-interval-input receive-time"></span>
+    </span>
+    <span class="search-label"><label>商品名称：</label></span>
+    <span class="search-cell">
+      <input name="itemName" type="text" placeholder='请输入商品名称' value="{{itemName}}">
+    </span>
+  </div>
+  <div class="operation-row">
+    <div class="search-button">
+      <a class="btn btn-info js-search">搜索</a>
+      <a class="btn btn-info js-search-reset">重置</a>
+    </div>
+  </div>
+</div>

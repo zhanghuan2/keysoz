@@ -1,0 +1,97 @@
+.inquiry-protocol-batch-container {
+    width: 910px;
+    margin: 0 auto 50px;
+    .table-fixed-ie8{
+      tr>td:first-child{
+        background-color: #f7f7f7;
+      }
+      tr>td:first-child+td+td{
+        background-color: #f7f7f7;        
+      }
+      tr>td:first-child+td+td+td+td{
+        background-color: #f7f7f7;        
+      }
+      tr>td:first-child+td+td+td+td+td+td{
+        background-color: #f7f7f7;        
+      }
+    }
+    .inquiry-title {
+        text-align: center;
+        h1 {
+            display: inline-block;
+            line-height: 2em;
+        }
+        ul {
+            display: inline-block;
+            li {
+                float: left;
+                &:first-child {
+                    margin-right: 30px;
+                }
+            }
+        }
+    }
+    .inquiry-info {
+        table {
+            td {
+                white-space: normal;
+                border-right: 1px solid #e7e9ea;
+            }
+            td:nth-child(odd) {
+                background-color: #f7f7f7;
+                width: 152px;
+            }
+            td:last-child {
+                border-right: 0;
+            }
+            th {
+                border-right: 1px solid #e7e9ea;
+                &:last-child {
+                    border-right: 0;
+                }
+            }
+            .bgc-clear {
+                td {
+                    background-color: #ffffff;
+                }
+            }
+        }
+    }
+    .inquiry-notice {
+        >div {
+            &:first-child {
+                margin-top: 40px;
+                i {
+                    width: 40px;
+                    height: 40px;
+                    font-size: 40px;
+                    margin-bottom: -20px;
+                }
+                h2 {
+                    display: inline-block;
+                    margin-right: 10px;
+                }
+                span {
+                    display: inline-block;
+                    width: 760px;
+                    height: 100%;
+                    border-top: 2px dashed #e7e9ea;
+                }
+            }
+        }
+        .inquiry-notice-link {
+            margin-top: 10px;
+            a {
+                color: #222;
+                font-size: 14px;
+                line-height: 30px;
+                &:hover {
+                    color: #197aff;
+                }
+            }
+            &:hover {
+                background-color: #f7f7f7;
+            }
+        }
+    }
+}

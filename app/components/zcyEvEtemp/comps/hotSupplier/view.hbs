@@ -1,0 +1,123 @@
+{{#component "component-hotSupplier js-comp"}}
+  <p class="hide">{{json this}}</p>
+  {{#of "1" _ROLES_}}
+    {{#assign "showFavor"}}showFavor{{/assign}}
+  {{else}}
+    {{#unless _USER_}}
+      {{#assign "showFavor"}}showFavor{{/assign}}
+    {{/unless}}
+  {{/of}}
+  <div class="floor-item js-floor-item" 
+       data-name="{{#if data.supplierName}}{{data.supplierName}}{{else}}热销供应商{{/if}}" 
+       data-icon="icon-rexiaogongyingshang" 
+       data-id="js-floor-{{#if data.supplierName}}{{data.supplierName}}{{else}}热销供应商{{/if}}" 
+       {{#if _DESIGN_MODE_}}data-design="true"{{/if}}>
+  <div class="floor-header">
+    <div class="floor-info">
+      <span class="floor-index js-floor-index"></span>
+      <i class="icon-zcy icon-rexiaogongyingshang" style="color: #333;font-size: 26px;vertical-align: bottom;margin-right: 10px;"></i>{{#if data.supplierName}}{{data.supplierName}}{{else}}热销供应商{{/if}}
+      <a class="link-more" href="{{#if data.supplierMore}}{{data.supplierMore}}{{else}}{{_HREF_.main}}/pages/suppliers{{/if}}">更多
+        <i class="icon-zcy icon-roundrightfill"></i>
+      </a>
+    </div>
+    <div class="floor-extend"></div>
+  </div>
+  <div class="floor-body clearfix">
+    <ul class="supplier-list">
+      {{#each _DATA_}}
+        <li class="list-li">
+          <div class="supplier-title">
+            <img class="product-image" src="{{this.supplierInfo.logoPath}}" alt="">
+            <div class="title-msg">
+              <p class="supplier-name-show" style="font-size: 14px">{{this.supplierInfo.name}}</p>
+              <p style="color: #999;font-size: 12px;width: 184px;">规模：{{this.supplierInfo.enterpriseScale}} &nbsp;&nbsp;商品数：{{this.onsaleItemCount}}</p>
+            </div>
+            <div class="title-content">
+              <ul>
+                <li title="{{#each this.categoryList}} {{this.name}},{{/each}}" class="overflow-ell">
+                  <span>主营类目：</span>
+                  <span>{{#each this.categoryList}} {{this.name}},{{/each}}</span>
+                </li>
+                <li>
+                  <span>评价信息：</span>
+                  <span class="score-box">
+                    <span class="arrow-content js-supplier-avg-score-div" data-targetid="5">
+                      <span class="content-span js-target-name">供货</span>
+                       <span class="js-average-score js-supplier-avg-gh">
+                        {{this.evaluateTargetScoreStatistics.0.averageScore}}
+                         <i class="icon-zcy"></i>
+                        </span>
+                    </span>
+                    <span class="arrow-content js-supplier-avg-score-div" data-targetid="5">
+                      <span class="content-span js-target-name">服务</span>
+                    <span class="js-average-score js-supplier-avg-fw">
+                      {{this.evaluateTargetScoreStatistics.1.averageScore}}
+                      <i class="icon-zcy"></i>
+                    </span>
+                    </span>
+                    <span class="arrow-content js-supplier-avg-score-div" data-targetid="5">
+                      <span class="content-span js-target-name">价格</span>
+                    <span class="js-average-score js-supplier-avg-jg">
+                      {{this.evaluateTargetScoreStatistics.2.averageScore}}
+                      <i class="icon-zcy"></i>
+                    </span>
+                    </span>
+                    <span class="arrow-content js-supplier-avg-score-div" data-targetid="5">
+                      <span class="content-span js-target-name">质量</span>
+                    <span class="js-average-score js-supplier-avg-zl">
+                      {{this.evaluateTargetScoreStatistics.3.averageScore}}
+                      <i class="icon-zcy"></i>
+                    </span>
+                    </span>
+                    <input type="text" class="hide js-supplier-avg-save" name="js-supplier-avg-gh" value="{{this.evaluateTargetScoreStatistics.0.averageScore}}_{{this.evaluateWeightAverages.0.averageScore}}" />
+                    <input type="text" class="hide js-supplier-avg-save" name="js-supplier-avg-fw" value="{{this.evaluateTargetScoreStatistics.1.averageScore}}_{{this.evaluateWeightAverages.1.averageScore}}" />
+                    <input type="text" class="hide js-supplier-avg-save" name="js-supplier-avg-jg" value="{{this.evaluateTargetScoreStatistics.2.averageScore}}_{{this.evaluateWeightAverages.2.averageScore}}" />
+                    <input type="text" class="hide js-supplier-avg-save" name="js-supplier-avg-zl" value="{{this.evaluateTargetScoreStatistics.3.averageScore}}_{{this.evaluateWeightAverages.3.averageScore}}" />
+                  </span>
+                </li>
+                <li class="operator-line">
+                  <a class="btn btn-info initShop" href="/eevees/shop?shopId={{this.shopId}}&searchType=1">进入店铺</a>
+                  {{#if showFavor}}
+                    <button class="btn btn-info js-add-favor" href="javascript:void(0)" data-shop-id="{{this.shopId}}">关注店铺</button>
+                  {{/if}}
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="img-box">
+            <a class="supplier-link">
+              <img class="product-image" src="{{this.itemList.0.mainImage}}" alt="">
+              <div class="link-info hide" data-linkId="{{this.itemList.0.id}}">
+                <p class="info-p" title="{{this.itemList.0.name}}">{{this.itemList.0.name}}</p>
+                <p style="color: #ffffff;text-align: center;margin-top: 0;">
+                  {{#equals itemList.0.highPrice itemList.0.lowPrice}}
+                    ￥{{formatPrice itemList.0.highPrice}}
+                  {{else}}
+                    ￥ {{formatPrice itemList.0.lowPrice}} ~ {{formatPrice itemList.0.highPrice}}
+                  {{/equals}}
+                </p>
+              </div>
+            </a>
+            <a class="supplier-link fl-r">
+              <img class="product-image" src="{{this.itemList.1.mainImage}}" alt="">
+              <div class="link-info hide" data-linkid="{{this.itemList.1.id}}">
+                <p class="info-p" title="{{this.itemList.1.name}}">{{this.itemList.1.name}}</p>
+                <p style="color: #ffffff;text-align: center;margin-top: 0;">
+                  {{#equals itemList.1.highPrice itemList.1.lowPrice}}
+                    ￥{{formatPrice itemList.1.highPrice}}
+                  {{else}}
+                    ￥ {{formatPrice itemList.1.lowPrice}} ~ {{formatPrice itemList.1.highPrice}}
+                  {{/equals}}
+                </p>
+              </div>
+            </a>
+          </div>
+          <div class="hide supplier-mask">
+
+          </div>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+  </div>
+{{/component}}

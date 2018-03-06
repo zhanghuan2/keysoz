@@ -1,0 +1,14 @@
+{{#ifCond this.total "==" 0}}
+    <tr>
+        <td colspan="4" style='text-align:center;'>暂时没有交易记录</td>
+    </tr>
+{{else}}
+    {{#each this.data}}
+    <tr>
+        <td title="{{organName}}">{{organName}}</td>
+        <td title="{{requirements}}">{{requirements}}</td>
+        <td title="{{formatPrice totalAmount}}">{{formatPrice totalAmount}}</td>
+        <td title="{{formatDate createdAt}}">{{formatDate createdAt "YYYY-MM-DD"}}</td>
+    </tr>
+    {{/each}}
+{{/ifCond}}

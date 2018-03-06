@@ -1,0 +1,422 @@
+@import 'compass/css3/inline-block';
+@import 'pokeball/theme';
+@import 'compass/css3/box-sizing';
+
+$black-detail: #2a2d33;
+
+.fixed-hotel-service-detail {
+  overflow: hidden;
+
+  .hotel-service-left {
+    float: left;
+    overflow: hidden;
+    position: relative;
+    width: 890px;
+    zoom: 1;
+
+    .hotel-service-info {
+      h2 {
+        display: inline-block;
+        margin: 10px 10px 10px 0;
+      }
+
+      p {
+        height: 36px;
+        color: $navy;
+        font-size: 14px;
+        margin: 0 2px 0 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-all;
+      }
+
+      .docs-galley {
+        width: 890px;
+        height: 280px;
+        position: relative;
+
+        .docs-pictures {
+          height: 100%;
+          width: 100%;
+          overflow: hidden;
+
+          li {
+            float: left;
+            overflow: hidden;
+            width: 170px;
+            height: 138px;
+
+            &:first-child {
+              width: 353px;
+              height: 100%;
+              margin-right: 7px;
+            }
+
+            &:nth-child(2) {
+              width: 353px;
+              height: 100%;
+              margin-right: 7px;
+            }
+
+            &:nth-child(3) {
+              margin-bottom: 4px;
+            }
+
+            ////临时修改
+            //width: 140px;
+            //height: 140px;
+            //&:first-child {
+            //  width: 82%;
+            //  margin-right: 10px;
+            //  height: 100%;
+            //}
+
+            img {
+              border: 0;
+              cursor: zoom-in;
+              height: 100%;
+              vertical-align: middle;
+              width: 100%;
+            }
+          }
+
+          button {
+            position: absolute;
+            bottom: 10px;
+            right: 186px;
+            font-weight: 700;
+          }
+        }
+      }
+    }
+
+    .hotel-service-nav {
+      .tab {
+        margin-top: 20px;
+
+        .tab-navs {
+          margin: 0 0 20px;
+
+          li {
+            border: 1px solid $border-color;
+            margin-right: 0;
+
+            a {
+              color: $black-detail;
+            }
+          }
+
+          li + li {
+            border-left: 0;
+          }
+        }
+
+      }
+
+      .tab-contents {
+        margin-bottom: 20px;
+      }
+
+      .tab-content {
+        border: 1px solid $border-color;
+        margin-bottom: 50px;
+
+        h3 {
+          font-size: 16px;
+          height: 56px;
+          line-height: 56px;
+          margin: 0;
+          padding: 0 15px;
+          border-bottom: 1px solid $gray;
+        }
+
+        table {
+          width: 100%;
+
+          thead {
+            background-color: $whitesmoke;
+          }
+
+          tr {
+            border: 1px solid $border-color;
+          }
+        }
+        #deal-record-list{
+          
+          tr{
+            &>td:nth-child(2){
+              white-space: nowrap;
+              text-overflow:ellipsis;
+              overflow: hidden;
+              padding-right: 130px
+            }
+            &>th:first-child,&>td:first-child{
+              padding-left: 30px;
+            }
+          }
+        }
+
+      }
+
+      #roomtype-list, #service-project {
+
+        thead tr th:first-child {
+          padding-left: 24px;
+        }
+
+        //偶数行(即详情行)
+        tbody tr:nth-child(even) {
+          background-color: $whitesmoke;
+          height: 82px;
+          td {
+            padding: 20px 28px;
+          }
+        }
+
+        //奇数行第一列(带图片)
+        tbody tr:nth-child(odd) td:first-child {
+          padding-left: 24px;
+          overflow: hidden;
+          zoom: 1;
+
+          a {
+            color: $navy;
+          }
+        }
+
+        tr td {
+          white-space: normal;
+        }
+
+        .hotel-thumbnail {
+          overflow: hidden;
+          padding-left: 24px;
+
+          .item-logo {
+            float: left;
+            overflow: hidden;
+            width: 66px;
+            height: 66px;
+            img {
+              width: 100%;
+              height: 100%;
+              cursor: zoom-in;
+            }
+          }
+
+          .item-desc {
+            float: left;
+            margin-left: 6px;
+            width: 110px;
+            white-space: normal;
+            p {
+              margin: 0 0 6px 0;
+            }
+            span {
+              color: $blue;
+            }
+          }
+
+        }
+
+        .hotel-item-detail {
+          background-color: $white;
+          padding: 20px;
+
+          .row-item {
+            overflow: hidden;
+
+            .col-item {
+              border-bottom: 2px dashed $whitesmoke;
+              display: inline-block;
+              font-weight: bold;
+              min-height: 38px;
+              line-height: 38px;
+              margin-right: 60px;
+              width: 330px;
+              vertical-align: bottom;
+
+              span {
+                display: inline-block;
+                font-weight: normal;
+                padding-right: 20px;
+                width: 104px;
+              }
+
+              .val-item {
+                display: inline-block;
+                white-space: normal;
+                width: 220px
+              }
+
+              &:nth-last-child(2) {
+                height: auto;
+                overflow: hidden;
+
+                .col-multiple-key {
+                  float: left;
+                }
+
+                .col-multiple-val {
+                  float: left;
+
+                  div {
+                    white-space: nowrap;
+                  }
+                }
+
+              }
+
+              .col-multiple-val div > span > span {
+                font-weight: bold;
+              }
+            }
+          }
+        }
+      }
+
+      .room-mode-select {
+        height: 40px;
+        padding: 0 10px;
+
+        label {
+          margin-right: 20px;
+
+          input {
+            margin-right: 10px;
+          }
+        }
+        a {
+          float: right;
+        }
+      }
+
+      #base—info {
+        h3 {
+          border-bottom: 0;
+        }
+
+        table {
+          span {
+            margin-right: 10px;
+          }
+
+          tr td {
+            white-space: normal;
+          }
+        }
+      }
+
+      #service-promise {
+        .hotel-detail-service-promise {
+          padding: 20px 20px;
+        }
+      }
+
+    }
+
+  }
+
+  .hotel-service-right {
+    float: left;
+    margin-left: 8px;
+    width: 290px;
+
+    .hotel-location {
+      border: 1px solid $border-color;
+      margin-top: 70px;
+      width: 100%;
+
+      .hotel-location-map {
+        height: 280px;
+
+        img {
+          cursor: zoom-in;
+        }
+      }
+
+      .hotel-traf-cont {
+        background-color: $white;
+
+        div {
+          font-size: 14px;
+          height: 40px;
+          line-height: 40px;
+          i {
+            color: $blue;
+            font-size: 20px;
+            margin: 0 14px;
+          }
+        }
+      }
+    }
+  }
+
+  .hotelOrange {
+    color: $orange;
+    font-weight: bold;
+  }
+
+  .hotel-pic-container {
+    z-index: 10003;
+    transition: all .3s ease-out;
+    opacity: 1;
+    position: fixed;
+    font-size: 0;
+    line-height: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    user-select: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    direction: ltr !important;
+
+    .hotel-pic-canvas {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      // 待完善 大图可以做滚动, 而不是缩放
+      // overflow: auto;
+      text-align: center;
+      width: 90% !important;
+      height: 90% !important;
+      img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    .hotel-pic-closebtn {
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      overflow: hidden;
+      width: 80px;
+      height: 80px;
+      cursor: pointer;
+      border-radius: 50%;
+      background-color: rgba(0, 0, 0, 0.5);
+      i {
+        color: $white;
+        position: absolute;
+        left: 15px;
+        bottom: 25px;
+      }
+    }
+  }
+
+  //覆写viewer 关闭按钮样式
+  .viewer-button {
+    background-color: #2374C1;
+  }
+
+}

@@ -1,0 +1,16 @@
+<div class="form-section clearfix">
+  <div class="section-title">销售规格</div>
+  <div class="pull-left section-content">
+    <div class="sku-attributes attribute-area js-attribute-area" id="js-sku-attribute-area" {{#if spuId}}data-spu="true"{{/if}}>
+      {{#unless @root.categoryId}}
+        {{#each skuAttrs}}
+          {{> component:seller/item_publish/common/all_templates/_sku_attr showImage=attributeRules.[0].showImage attrMetasFork=attributeRules.[0].attrMetasForK}}
+        {{/each}}
+      {{else}}
+        <div class="new-sku-attribute-area" id="js-extend-sku-attribute-area" data-attr="{{json groupedSkuAttributes}}">
+          <a href="javascript:void(0)" class="js-attribute-new label-align-btn" id="js-extend-sku-attribute">添加规格</a>
+        </div>
+      {{/unless}}
+    </div>
+  </div>
+</div>

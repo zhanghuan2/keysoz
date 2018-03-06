@@ -1,0 +1,31 @@
+.address {
+  select.address-select, input.address-input[type='text'] {
+    width: 100px;
+    &.hide {
+      display: none;
+    }
+  }
+
+  select.address-select.init {
+    color: #aaa;
+    option {
+      color: #000;
+    }
+    option:first-child {
+      color: #aaa;
+    }
+  }
+
+  .selectric {
+    width: 100px;
+    &.init>p.label {
+      color: #aaa;
+    }
+  }
+
+  .selectric-items li {
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+  }
+}

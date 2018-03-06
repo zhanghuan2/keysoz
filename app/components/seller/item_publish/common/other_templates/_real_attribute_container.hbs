@@ -1,0 +1,44 @@
+<li class="pull-left js-category-attr attr-show-li {{#if ../composites}}attr-show-composites-li{{/if}}
+    {{#equals property.valueType "2"}}attr-show-multi-li{{/equals}}" data-attr="{{json ..}}">
+  <div class="control-group">
+    <label class="group-title hint--top" title="{{attrKey}}" aria-label="{{attrKey}}">
+      <span class="group-line-title">
+      {{#equals attrMetasForK.REQUIRED "true"}}
+        <b class="required">*</b>
+      {{/equals}}
+      {{attrKey}}：
+      </span>
+    </label>
+    <div class="group-content">
+      {{> component:seller/item_publish/common/other_templates/_real_attribute_item}}
+
+      {{#equals attrMetasForK.PROPERTY_TYPE "SKU_CANDIDATE"}}
+        <span class="sku-attr-status">
+          &nbsp;
+          <i class="icon-mewtwo icon-mewtwo-info-fill"></i>
+          <i class="icon-mewtwo icon-mewtwo-success-fill active hide"></i>
+          <span class="sku-attr-show">&nbsp;销售属性</span>
+        </span>
+      {{/equals}}
+      {{#equals attrMetasForK.IMPORTANT "true"}}
+        {{#equals _DATA_.item.tags.vaccine "1"}}
+          <span class="sku-attr-status">
+          &nbsp;
+            <i class="icon-mewtwo icon-mewtwo-info-fill"></i>
+            <i class="icon-mewtwo icon-mewtwo-success-fill active hide"></i>
+          <span class="sku-attr-show">&nbsp;关键属性</span>
+          </span>
+        {{else}}
+          {{#equals isVaccine 1}}
+            <span class="sku-attr-status">
+              &nbsp;
+              <i class="icon-mewtwo icon-mewtwo-info-fill"></i>
+              <i class="icon-mewtwo icon-mewtwo-success-fill active hide"></i>
+              <span class="sku-attr-show">&nbsp;关键属性</span>
+            </span>
+          {{/equals}}
+        {{/equals}}
+      {{/equals}}
+    </div>
+  </div>
+</li>

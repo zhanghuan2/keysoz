@@ -1,0 +1,28 @@
+{{#of group attrGroup}}
+  <div class="form-section clearfix">
+    <div class="section-title">
+      {{group}}
+    </div>
+    <div class="pull-left section-content">
+      <div class="category-attribute attribute-area js-attribute-area">
+        <ul class="attribute-list clearfix attribute-data"
+            id="js-category-attribute-list"
+            {{#if otherAttributeWithRules}}
+              data-attr="{{json otherAttributeWithRules}}"
+            {{else}}
+              data-attr="{{json categoryAttributeWithProperties}}"
+            {{/if}}>
+          {{#if otherAttributeWithRules}}
+            {{#each otherAttributeWithRules}}
+              {{> component:seller/spus/spu_publish/common/other_templates/_attribute_container}}
+            {{/each}}
+          {{else}}
+            {{#each categoryAttributeWithProperties}}
+              {{> component:seller/spus/spu_publish/common/other_templates/_attribute_container}}
+            {{/each}}
+          {{/if}}
+        </ul>
+      </div>
+    </div>
+  </div>
+{{/of}}

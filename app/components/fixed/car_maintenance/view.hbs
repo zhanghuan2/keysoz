@@ -1,0 +1,62 @@
+{{#component "component-car-maintenance js-comp"}}
+  <div class="fixed-car-maintenance">
+    <div class="fixed-maintenance-filter">
+      <form class="form filter-form" method="GET">
+        <div class="form-left">
+          <label for="repair-company">维修单位名：
+            <input id="repair-company" name="supplierName" placeholder="请输入" value="">
+          </label>
+          <label>维修单位类型：
+            <select name="supplierType">
+              <option value="" hidden>请选择</option>
+              {{#each _SEARCHREPAIR_}}
+                <option value="{{code}}">{{name}}</option>
+              {{/each}}
+            </select>
+          </label>
+          <label for="major-type">主修车型：
+            <input id="major-type" name="majorVehicleType" placeholder="请输入" value="">
+          </label>
+          <label for="special-type">特约车型：
+            <input id="special-type" name="specialVehicleType" placeholder="请输入" value="">
+          </label>
+          <input name="group" value="wxdwlx" style="width: 10px" hidden>
+        </div>
+        <div class="form-right">
+          <button type="submit" class="btn btn-small">搜索</button>
+          <button class="btn btn-small" id="btn-reset">重置</button>
+        </div>
+        <div class="clearfix"></div>
+      </form>
+    </div>
+    <!--car-maintenance-list-->
+    <div class="fixed-maintenance-list clearfix">
+      <ul>
+        {{#each _DATA_.data}}
+          <li>
+            <div class="item-logo">
+              <a href="/fixed/car-maintenance/detail?protocolId={{id}}&supplierId={{supplierId}}&supplierIds=[{{supplierId}}]" target="_blank">
+                <img src="{{cdnPath logoPath}}" alt="{{supplierName}}">
+              </a>
+            </div>
+            <div class="item-desc">
+              <h3>
+                <a href="/fixed/car-maintenance/detail?protocolId={{id}}&supplierId={{supplierId}}&supplierIds=[{{supplierId}}]" title="{{supplierName}}" target="_blank">{{supplierName}}</a>
+              </h3>
+              <p><span>所属区域：</span><span class="itemdesc-val" title="{{districtName}}">{{districtName}}</span></p>
+              <p><span>优惠率：</span><span class="itemdesc-val">{{formatPrice rate}}%</span></p>
+              <p><span>特约车型：</span><span class="itemdesc-val" title="{{specialVehicleType}}">{{specialVehicleType}}</span></p>
+              <p><span>主修车型：</span><span class="itemdesc-val" title="{{majorVehicleType}}">{{majorVehicleType}}</span></p>
+            </div>
+          </li>
+        {{else}}
+          此区划还没有入围的供应商
+        {{/each}}
+      </ul>
+    </div>
+    <div class="fixed-maintenance-list-pagination">
+      <div class="pagination" data-size="{{#if pageSize ~}}{{pageSize}}{{else}}10{{~/if}}"
+           data-total="{{_DATA_.total}}"></div>
+    </div>
+  </div>
+{{/component}}

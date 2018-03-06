@@ -1,0 +1,199 @@
+@import "compass/css3/inline-block";
+@import "pokeball/theme";
+
+div.purchase-check{
+  //width: 990px;
+  .purchase-check-body{
+    background-color: #FFFFFF;
+    padding: 15px;
+    margin: 10px 0 0 0;
+    .pur-title{
+      margin-top: 30px;
+      margin-bottom: 10px;
+      font-size: 14px;
+      font-weight: bold;
+      &.pur-addr-title{
+        margin-top: 0px;
+      }
+    }
+    .receiver-mulit-payments{
+      margin-top: 10px;
+    }
+    .pur-all-payments{
+      margin-top: 20px;
+      table{
+        margin-top: 10px;
+        border-width: 0 !important;
+        tr{
+          border-width: 0 !important;
+        }
+        td{
+          border-width: 0 !important;
+          background-color: #F7F7F7  !important;
+        }
+      }
+    }
+    .checklog-timeline{
+      overflow: auto;
+    }
+    .timeline{
+      margin: 10px;
+    }
+    table{
+      //width: 960px;
+      .icon-warningfill{
+        margin-left:2px;
+        margin-top:-2px;
+        color:#aaa;
+        &:hover{
+          color:#197AFF;
+        }
+      }
+      tbody{
+        tr{
+          border: 1px solid #e7e9ea;
+
+          td{
+            text-align: left;
+            border-width: 0 0 1px 0;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            &:first-child{
+              border-width: 0 0 1px 1px;
+            }
+            &:last-child{
+              border-width: 0 1px 1px 0;
+              text-align: right;
+            }
+            &.no-border{
+              border-width: 0;
+              padding: 10px;
+            }
+          }
+          &.first-level-tr{
+            border-width: 0 0 1px 2px;
+          }
+          &.second-level-tr{
+            display: none;
+          }
+          &.no-border{
+            border-width: 0;
+          }
+        }
+      }
+      &.checklog-table{
+        td{
+          overflow: visible;
+        }
+      }
+    }
+    .pur-detail-about{
+        table{
+          border-width: 0;
+          .td{
+            border-width: 0;
+          }
+        }
+      }
+    .price, .currency{
+      color: #FE7800;
+    }
+    .no-href{
+      color: #9E9E9C;
+    }
+    .pur-checklog, .purchase-check{
+      border: 1px solid #CCC;
+      margin-top: 5px;
+      .checklog-title{
+        padding: 10px;
+        background-color: #EFEFEF;
+      }
+    }
+    .purchase-check{
+      border-width: 0;
+      border: 1px solid #CCC;
+      .checklog-table{
+        border-width: 0;
+      }
+      .checklog-tr{
+        border-width: 0;
+      }
+      .checklog-td{
+        border-width: 0;
+      }
+      .select-checker{
+        width: 150px;
+        color: #333;
+      }
+      select{
+        background-color: #F7F7F7;
+        border-width: 0;
+        width: 110px;
+        color: #9F9F9F;
+      }
+      textarea{
+        width: 300px;
+        height: 100px;
+      }
+      .checklog-comment-count{
+        display: inline;
+      }
+    }
+    .check-submit{
+      margin:20px 0 20px 20px;
+    }
+  }
+  .list-pagination {
+    text-align: right;
+    margin: 10px 0 10px 0;
+  }
+  .hide{
+    display: none;
+  }
+  .trade-panel{
+    border: 1px solid #e7e9ea;
+  }
+}
+.pur-comment-modal{
+  width:500px !important;
+  .h2{
+    margin: 0;
+    font-size: 14px;
+    line-height: 14px;
+    color: #666;
+  }
+  .close-modal{
+    color:#666666 !important;
+  }
+  .modal-body{
+    height: 300px;
+    overflow-y:auto;
+  }
+  ul{
+    padding: 10px 10px;
+    .item-comment{
+      list-style: disc;
+    }
+    .item-creater{
+      color: #999999;
+    }
+  }
+  .comment-content-group{
+    padding-bottom: 10px;
+    display:inline;
+    .input-comment-group{
+      float:left;
+      height:35px;
+      margin-top: 6px;
+      margin-left: 6px;
+    }
+    .comment-content{
+      width:360px;
+    }
+    .comment-content-count{
+      float:right;
+      line-height: 35px;
+      padding-right: 5px;
+    }
+  }
+}

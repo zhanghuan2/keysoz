@@ -1,0 +1,26 @@
+<div class="modal pur-modal">
+  <div class="modal-header">
+    <h2>选择地址</h2>
+  </div>
+  <form class="form form-aligned receiver-address-form" id="receiver-address-form">
+    <fieldset>
+      <div class="modal-body">
+      {{!-- {{json data}} --}}
+        <div class="control-group">
+          {{#each data}}
+          {{#with delivery}}
+            <div class="receiver-address" data-id="{{id}}" data-purchaseid="{{purchaseId}}" data-receiverprovinceid="{{receiverProvinceId}}" data-receivercityid="{{receiverCityId}}" data-receiverdistrictid="{{receiverDistrictId}}" data-receiverstreetid="{{receiverStreetId}}" data-receiverprovincename="{{receiverProvinceName}}" data-receivercityname="{{receiverCityName}}" data-receiverdistrictname="{{receiverDistrictName}}" data-receiverstreetname="{{receiverStreetName}}" data-receiveraddress="{{receiverAddress}}" data-receivername="{{receiverName}}" data-receivermobile="{{receiverMobile}}" data-receiverphone="{{receiverPhone}}" data-receiverzip="{{receiverZip}}" data-deliverymethod="{{deliveryMethod}}">
+              <input type="radio" name="chooseUnifiedAddr" id="chooseUnifiedAddr{{id}}" class="input-radio"/><label for="chooseUnifiedAddr{{id}}" style="width:500px;text-align: left;">{{receiverProvinceName}}{{receiverCityName}}{{receiverDistrictName}}&nbsp;&nbsp;{{receiverAddress}}({{receiverName}} 收) &nbsp;&nbsp;&nbsp;&nbsp;{{receiverMobile}}</label><a class="js-add-set-default-addr set-default-addr">设为默认地址</a>
+            </div><br />
+            {{/with}}
+          {{/each}}
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-info btn-medium close">取消</button>
+        <a class="btn btn-primary btn-medium js-select-addr-submit">确定</a>
+      </div>
+    </fieldset>
+  </form>
+
+</div>

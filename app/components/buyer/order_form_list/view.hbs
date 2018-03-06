@@ -1,0 +1,380 @@
+{{#component "order-form-list trade-manage js-comp clearfix"}}
+  <p class="hide">{{json this}}</p>
+  <input type="hidden" class="js-order-tag" value="{{tag}}">
+  <div class="page-body-option clearfix">
+    <div class="page-title">订单列表</div>
+  </div>
+  <div class="order-form-list-body">
+  {{#if _USER_.isPurchaser}}
+    {{inject "buyer/order_form_list/search_table/purchaser"}}
+  {{else if _USER_.isSupplier}}
+    {{inject "buyer/order_form_list/search_table/supplier"}}
+  {{/if}}
+    <table class="table table-striped order-form-list-table">
+      <thead>
+        <tr>
+          {{#if _USER_.isPurchaser}}
+            <th width="15%">订单号</th>
+            <th width="15%">供应商</th>
+            <th width="10%">订单金额(元)</th>
+            <th width="15%">下单时间</th>
+            <th width="10%">验收单</th>
+            <th width="15%">采购计划</th>
+            <th width="10%">状态</th>
+            <th width="10%">操作</th>
+          {{else if _USER_.isSupplier}}
+            <th width="15%">订单号</th>
+            <th width="15%">采购单位</th>
+            <th width="15%">采购经办人</th>
+            <th width="10%">订单金额(元)</th>
+            <th width="10%">下单时间</th>
+            <th width="10%">验收单</th>
+            <th width="10%">状态</th>
+            <th width="15%">操作</th>
+          {{/if}}
+        </tr>
+      </thead>
+      <tbody>
+      {{#if _DATA_.data}}
+        {{#each _DATA_.data}}
+          {{#with order}}
+            <tr data-id="{{id}}" data-shipment-id='{{../shipmentId}}' data-orderType="{{orderType}}" data-tmp="{{json this}}" class="order-tr first-level-tr">
+              {{#if _USER_.isPurchaser}}
+                <td>
+                  {{#gt (size ../orderItems) 0}}
+                    <span class="open-mark">
+                      <i class="icon-zcy icon-shouqizhuangtai1"></i>
+                    </span>
+                  {{/gt}}
+                  {{#equals tag 'blocktrade'}}
+                    <a href="/blocktrade/orders/detail?orderId={{id}}" >{{id}}</a>
+                  {{else}}
+                    <a href="/buyer/orders/detail?orderId={{id}}" >{{id}}</a>
+                  {{/equals}}
+                </td>
+                <td>
+                  <a class="js-get-phone" data-user-id="{{supplierOrganizationId}}" data-user-type="2">{{supplierOrganizationName}}</a>
+                </td>
+              {{else if _USER_.isSupplier}}
+                <td>
+                  {{#gt (size ../orderItems) 0}}
+                    <span class="open-mark">
+                      <i class="icon-zcy icon-shouqizhuangtai1"></i>
+                    </span>
+                  {{/gt}}
+                  {{#equals tag 'blocktrade'}}
+                    <a href="/blocktrade/orders/detail?orderId={{id}}" >{{id}}</a>
+                  {{else}}
+                    <a href="/seller/orders/detail?orderId={{id}}" >{{id}}</a>
+                  {{/equals}}
+                </td>
+                <td>
+                  <a href="javascript:void(0)" class="js-get-phone" data-user-id="{{purchaserId}}" data-user-type="1">{{purchaserOrganizationName}}</a>
+                </td>
+                <td>{{purchaserName}}</td>
+              {{/if}}
+              <td>
+                <span class="price">
+                {{#equals orderType 3}}
+                  {{#ifCond fee ">" 0}}
+                    {{../../_CURRENCY_}}
+                    <span class="order-subtotal">{{formatPrice fee}}</span>
+                  {{else}}
+                    <span class="order-subtotal">－</span>
+                  {{/ifCond}}
+                {{else}}
+                  {{../../_CURRENCY_}}
+                  <span class="order-subtotal">{{formatPrice fee}}</span>
+                {{/equals}}
+                </span>
+              </td>
+              <td><span class="order-span"><span class="">{{formatDate createdAt}}</span></span></td>
+              <td>
+                {{#if ../acceptanceFiles}}
+                  {{#if ../acceptanceFiles.empty}}
+                    <span class="no-href">验收单</span>
+                  {{else}}
+                    <a href="javascript:void(0)" class="js-show-acceptance-file js-check-user" data-isowner="{{#equals purchaserOrganizationId ../../_USER_.orgId}}1{{else}}0{{/equals}}" data-status="{{status}}" data-files="{{json ../acceptanceFiles}}" data-id="{{../../_USER_.id}}" data-type="{{../../_USER_.type}}">验收单</a>
+                  {{/if}}
+                {{else}}
+                  <span class="no-href">验收单</span>
+                {{/if}}
+                {{#of status '1,2'}}
+                  <a href="/api/zcy/reports/accept/{{id}}" target="_blank">打印</a>
+                {{/of}}
+                {{#ifCond status ">=" 3}}
+                  {{#if ../acceptanceFiles}}
+                    {{#if ../acceptanceFiles.empty}}
+                      {{#equals purchaserId _USER_.id}}
+                        <a href="javascript:void(0)" class="js-upload-acceptance-file js-check-user js-check-purse">上传</a>
+                      {{/equals}}
+                      {{#equals supplierOrganizationId _USER_.orgId}}
+                        <a href="javascript:void(0)" class="js-upload-acceptance-file js-check-user">上传</a>
+                      {{/equals}}
+                    {{/if}}
+                  {{else}}
+                    {{#equals purchaserId _USER_.id}}
+                      <a href="javascript:void(0)" class="js-upload-acceptance-file js-check-user js-check-purse">上传</a>
+                    {{/equals}}
+                    {{#equals supplierOrganizationId _USER_.orgId}}
+                      <a href="javascript:void(0)" class="js-upload-acceptance-file js-check-user">上传</a>
+                    {{/equals}}
+                  {{/if}}
+                {{/ifCond}}
+              </td>
+              {{#if _USER_.isPurchaser}}
+                <td class="order-confirmation-list">
+                  {{#each ../confirmationNos}}
+                      <div>{{this}}</div>
+                  {{/each}}
+                </td>
+              {{/if}}
+              <td>
+                {{#equals status -5}}订单取消{{/equals}}
+                {{#equals status -4}}订单待取消{{/equals}}
+                {{#equals status -2}}供应商拒单{{/equals}}
+                {{#equals status 0}}待供应商接单{{/equals}}
+                {{#equals status 1}}待发货{{/equals}}
+                {{#equals status 2}}部分发货{{/equals}}
+                {{#equals status 3}}{{#equals isNeedReissue false}}全部发货{{/equals}}{{/equals}}
+                {{#equals status 3}}{{#equals isNeedReissue true}}全部发货(待补发货){{/equals}}{{/equals}}
+                {{#equals status 4}}待验收{{/equals}}
+                {{#equals status 5}}已验收{{/equals}}
+                {{#equals status 6}}启动结算{{/equals}}
+                {{#equals status 7}}已完成{{/equals}}
+                {{#equals status 10}}退换货中{{/equals}}
+                {{#equals status -6}}全部退货{{/equals}}
+                {{#equals status 11}}待卖家发起定价{{/equals}}
+                {{#equals status 12}}待买家确认定价{{/equals}}
+                {{#equals status 13}}定价驳回{{/equals}}
+              </td>
+              <td data-record="{{hasRecord}}"
+                  data-status="{{status}}"
+                  data-isneedr="{{isNeedReissue}}"
+                  data-hasrecive="{{hasReceiveCommonAll}}">
+                {{#if _USER_.isPurchaser}}
+                  {{#equals tag 'blocktrade'}}
+                    {{#equals status 0}}{{else}}<a href="/blocktrade/orders/detail?orderId={{id}}" >查看详情</a><br>{{/equals}}
+                    {{#equals status 12}}
+                      {{#equals purchaserId _USER_.id}}
+                        <a href="/blocktrade/orders/detail?orderId={{id}}">确认定价</a><br>
+                      {{/equals}}
+                    {{/equals}}
+                  {{else}}
+                    {{#equals status 0}}{{else}}<a href="/buyer/orders/detail?orderId={{id}}" >查看详情</a><br>{{/equals}}
+                  {{/equals}}
+                  {{#of "1" _ROLES_}}
+                    {{#of status "0,1"}}
+                      {{#equals purchaserId _USER_.id}}
+                        <a href="javascript:void(0)" name="cancel-order" data-id="{{id}}">取消订单</a>
+                      {{/equals}}
+                    {{/of}}
+                    {{#if ../isReceiveShipments}}
+                    {{!isReceiveShipments判断是否只有一个发货单，发货单唯一且是全部发货的时候才在列表中显示确认收货按钮，否则只能在详情页选择特定发货单确认收货}}
+                        {{#equals purchaserId _USER_.id}}
+                            <a href="javascript:void(0)" class="js-confirm-receiving">确认收货</a>
+                        {{/equals}}
+                    {{/if}}
+                  {{/of}}
+                {{else if _USER_.isSupplier}}
+                  {{#equals tag 'blocktrade'}}
+                    <a href="/blocktrade/orders/detail?orderId={{id}}" >查看详情</a><br>
+                    {{#of status '11,13'}}
+                      {{#equals supplierOrganizationId _USER_.orgId}}
+                        <a href="/blocktrade/orders/detail?orderId={{id}}">发起定价</a><br>
+                      {{/equals}}
+                    {{/of}}
+                  {{else}}
+                    {{#equals status 0}}{{else}}<a href="/seller/orders/detail?orderId={{id}}" >查看详情</a><br>{{/equals}}
+                  {{/equals}}
+                  {{#equals status 0}}
+                    {{#ifCond fee ">" 0}}
+                      {{#of orderType '2,3'}}
+                          <!--疫苗、大宗订单不能改价 -->
+                      {{else}}
+                      <a href="javascript:void(0)" class="js-set-price" data-id="{{id}}">商品改价</a><br>
+                      {{/of}}
+                    {{/ifCond}}
+                    <a href="javascript:void(0)" data-event="confirm:receive-order"
+                       data-toggle="confirm"
+                       data-title="确认接单吗？"
+                       data-content="接单后不可取消，请尽快安排发货！" data-id="{{id}}">接单</a><br>
+                    {{#equals orderType 2}}
+                      <!--疫苗订单不能拒单 -->
+                    {{else}}
+                      <a href="javascript:void(0)" class="js-reject-order" data-id="{{id}}">拒绝接单</a><br>
+                    {{/equals}}
+                  {{else}}
+                    {{#ifCond status "<" 3}}
+                      {{#ifCond status ">" 0}}
+                        {{#equals hasRecord false}}
+                          <a href="/buyer/order-shipment-create?orderId={{id}}&orderType={{orderType}}">发货</a><br>
+                        {{/equals}}
+                      {{/ifCond}}
+                    {{/ifCond}}
+                  {{/equals}}
+                  {{#equals status 3}}
+                    {{#equals hasRecord false}}
+                      {{#equals isNeedReissue true}}
+                        {{#equals hasReceiveCommonAll true}}
+                          <a href="javascript:void(0)" class="js-create-reissue-shipment">补发货</a><br>
+                        {{/equals}}
+                      {{/equals}}
+                    {{/equals}}
+                  {{/equals}}
+                  {{#equals status -4}}
+                    <a href="javascript:void(0)" name="confirm-cancel-order" data-id="{{id}}">订单取消</a><br>
+                  {{/equals}}
+                {{/if}}
+
+                {{!hasRecord 是否已经备案}}
+                {{#equals hasRecord false}}
+                  {{#if _USER_.isPurchaser}}
+                    {{#equals status 4}}{{!4->待验收}}
+                      {{#equals purchaserOrganizationId _USER_.orgId}}
+                        {{#equals purchaserId _USER_.id}}
+                          {{!只有经办人本人可以验收}}
+                          <a href="javascript:void(0)" class="js-order-check">验收</a><br>
+                        {{else}}
+                          {{#equals orderType 2}}
+                            {{!疫苗订单可以由疫苗验收岗来验收}}
+                            {{#of "21" _ROLES_}}
+                              <a href="javascript:void(0)" class="js-order-check">验收</a><br>
+                            {{/of}}
+                          {{/equals}}
+                        {{/equals}}
+                      {{/equals}}
+                    {{/equals}}
+                  {{/if}}
+                {{/equals}}
+
+                {{#of status "5,6,7"}}
+                  {{#if _USER_.isPurchaser}}
+                    {{#of "1" _ROLES_}}
+                      {{#equals hasComment true}}
+                        {{#equals purchaserOrganizationId _USER_.orgId}}
+                          <a href="/buyer/order-evaluation?orderId={{id}}&hasComment=true&evaluateModule=1&orgId={{_USER_.orgId}}&flagSelf=1">查看评价</a><br>
+                        {{/equals}}
+                      {{else}}
+                        {{#equals purchaserId _USER_.id}}
+                          <a class="evaluateBtn" href="/buyer/order-evaluation?orderId={{id}}&hasComment=false&evaluateModule=1&isOrder=true&flag=1">评价</a><br>
+                        {{/equals}}
+                      {{/equals}}
+                    {{/of}}
+                  {{else}}
+                    {{#equals hasSupplierComment true}}
+                      <a href="/seller/order-evaluation?orderId={{id}}&hasSupplierComment=true&orgId={{_USER_.orgId}}&flagSelf=1">查看评价</a><br>
+                    {{else}}
+                      {{#equals supplierOrganizationId _USER_.orgId}}
+                        <a href="/seller/order-evaluation?orderId={{id}}&hasSupplierComment=false&evaluateModule=4&isOrder=true&flag=1">评价</a><br>
+                      {{/equals}}
+                    {{/equals}}
+                  {{/if}}
+                {{/of}}
+                {{#equals purchaserId _USER_.id}}
+                  {{!只有经办人本人可以再次购买}}
+                  <a class="js-buy-again" href="javascript:void(0)" style="white-space:nowrap;">再次购买</a>
+                {{/equals}}
+              </td>
+            </tr>
+          {{/with}}
+          {{#each orderItems}}
+            <tr class="item-tr second-level-tr" data-site="{{../order.id}}" data-id="{{id}}" data-orderid="{{../order.id}}" data-itemid="{{itemId}}" data-skuid="{{skuId}}">
+              <td colspan="4" class="sku-name">
+                <a href="/buyer/trading-snapshot?orderId={{../order.id}}&skuId={{skuId}}">{{itemName}}</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="sku-attrs">
+                  {{#each attributeMap}}{{this}}&nbsp;&nbsp;{{/each}}
+                </span>
+                <span class="js-item-services" data-services="{{json services}}"></span>
+              </td>
+              <td>
+                <span class="sku-price">{{formatPrice skuPrice}}</span>
+                <span class="count-number">{{quantity}}</span>
+                <span class="item-subtotal"></span>
+              </td>
+              <td>
+                <span class="price">
+                  {{#ifCond fee ">" 0}}
+                    {{../../_CURRENCY_}}
+                    <span class="order-subtotal">{{formatPrice fee}}</span>
+                  {{else}}
+                    <span class="order-subtotal">－</span>
+                  {{/ifCond}}
+                </span>
+              </td>
+              {{#equals ../order.orderType 1}}
+                <td>{{#equals isMaster true}}主商品{{else}}配件{{/equals}}</td>
+                <td>
+                  {{#equals needInstalled true}}
+                    {{#equals ../installFiles.empty false}}
+                      <a class="js-show-install-file" data-isowner="{{#equals purchaserOrganizationId ../../_USER_.orgId}}1{{else}}0{{/equals}}" data-status="{{../order.status}}"  data-files="{{json ../installFiles}}" data-type="{{../../_USER_.type}}" data-id="{{../../_USER_.id}}">查看安装单</a>
+                    {{/equals}}
+                    {{#ifCond ../order.status ">=" 2}}
+                      {{#ifCond ../order.status "<=" 6}}&nbsp;
+                        {{#equals ../order.hasRecord false}}
+                          <a class="js-upload-install-file">上传安装单</a>
+                        {{/equals}}
+                      {{/ifCond}}
+                    {{/ifCond}}
+                  {{else}}
+                    <span class="no-href">不需要安装</span>
+                  {{/equals}}
+                </td>
+              {{else}}
+                <td colspan="2">
+                  {{#equals needInstalled true}}
+                    {{#equals ../installFiles.empty false}}
+                      <a class="js-show-install-file" data-isowner="{{#equals purchaserOrganizationId ../../_USER_.orgId}}1{{else}}0{{/equals}}" data-status="{{../order.status}}"  data-files="{{json ../installFiles}}" data-type="{{../../_USER_.type}}" data-id="{{../../_USER_.id}}">查看安装单</a>
+                    {{/equals}}
+                    {{#ifCond ../order.status ">=" 2}}
+                      {{#ifCond ../order.status "<=" 6}}&nbsp;
+                        {{#equals ../order.hasRecord false}}
+                          <a class="js-upload-install-file">上传安装单</a>
+                        {{/equals}}
+                      {{/ifCond}}
+                    {{/ifCond}}
+                  {{else}}
+                    <span class="no-href">不需要安装</span>
+                  {{/equals}}
+                </td>
+              {{/equals}}
+            </tr>
+          {{/each}}
+        {{/each}}
+      {{else}}
+        <tr><td colspan="8" class="text-center">没有相关数据</td></tr>
+      {{/if}}
+      </tbody>
+    </table>
+    <div  class="list-pagination pagination-danger"
+          data-size="{{#if pageSize ~}}{{pageSize}}{{else}}20{{~/if}}"
+          data-total="{{_DATA_.total}}"></div>
+  </div>
+
+  <div class="modal modal-image-selector hide" id="upload-order-file-modal">
+    <div class="modal-header">
+      <a href="#" class="close">&times;</a>
+      <h2>验收单上传</h2>
+    </div>
+    <div class="modal-body">
+    <span class="modal-body-heading">
+      <span class="modal-body-heading-note">提示：请您打印验收单之后签字，再拍照上传。</span>
+      <a class="btn btn-info pull-right js-print-order-file" target="_blank">打印验收单</a>
+    </span>
+      <div class="btn btn-upload btn-primary mt">
+      <span class="modal-body-heading">
+        <span>上传验收单</span>
+        <input type="file" name="file" id="order-file-upload" multiple="">
+      </span>
+      </div>
+      <div class="modal-body-content">
+        <ul class="modal-image-list">
+        </ul>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-small btn-primary" disabled="disabled" id="order-file-submit">提交</button>
+      <button class="btn btn-small btn-minor close" type="button">取消</button>
+    </div>
+  </div>
+{{/component}}

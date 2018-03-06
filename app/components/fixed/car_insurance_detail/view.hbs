@@ -1,0 +1,125 @@
+{{#component "component-car-insurance-detail js-comp"}}
+  <div class="fixed-car-insurance-detail">
+    <!--breadCrumbs-->
+    <!--<div class="current-location-dark clearfix" data-user="{{_USER_}}">-->
+      <!--<span class="current-location-span">-->
+          <!--<a class="font-12 js-bread-category-selector" href="javascript:;">定点大厅</a>-->
+          <!--<i class="font-12 icon-zcy icon-nextstep"></i>-->
+          <!--<a class="font-12 js-bread-category-selector" href="javascript:;">保险大厅</a>-->
+          <!--<i class="font-12 icon-zcy icon-nextstep"></i>-->
+          <!--<a class="font-12 js-bread-category-selector" href="javascript:;">详情</a>-->
+      <!--</span>-->
+    <!--</div>-->
+    <div class="fixed-protocol">
+      <div class="fixedpro-info">
+        <div class="fixedpro-left">
+          {{#if _INSCOMPANYINFO_}}
+            {{#with _INSCOMPANYINFO_}}
+            <div class="fixedpro-logo">
+              <img src="{{logoURL}}" alt="{{supplierName}}">
+            </div>
+            <div class="fixedpro-summary">
+              <p><span>保险机构名称</span><span class="summay-val">{{supplierName}}</span></p>
+              <p><span>咨询、报警、监督投诉电话</span><span class="summay-val">{{tel}}</span></p>
+              <p><span>渠道系统*自核系数</span><span class="summay-val feerate-color">{{feeRate}}%</span></p>
+              <p><span>是否有增值服务</span><span class="summay-val">{{#equals hasAppreciationService true}}
+                有{{else}}无{{/equals}}</span></p>
+            </div>
+            {{/with}}
+          {{/if}}
+        </div>
+        <div class="fixedpro-right">
+          {{#if _STATISTICS_}}
+            <!--先去掉html，style基本完成-->
+            <!--<div class="protcolscore-comp">
+              <p class="protcolscore-result">占位标题</p>
+              <p>
+                <input name="rating" type="radio" class="star">
+                <input name="rating" type="radio" class="star">
+                <input name="rating" type="radio" class="star">
+                <input name="rating" type="radio" class="star" checked="checked">
+                <input name="rating" type="radio" class="star">
+              </p>
+            </div>-->
+            <div class="customer-satisfaction">
+              <p><span class="cussatif-key">车辆数</span><span class="cussatif-val">{{_STATISTICS_.sumCars}}辆</span></p>
+              <p><span class="cussatif-key">净保费</span><span class="cussatif-val car-amount">{{formatBudgetAmount _STATISTICS_.insAmount}}</span>万元</p>
+              <div class="supplier-web"><a href="{{_STATISTICS_.website}}">进入供应商网站</a></div>
+            </div>
+          {{/if}}
+        </div>
+      </div>
+      <div class="fixedpro-extra">
+        <div class="tab" data-type="switchable">
+          <ul class="tab-navs clearfix">
+            <li class="active" data-role="nav"><a href="javascript:;" data-param="6">公司介绍</a></li>
+            <li data-role="nav"><a href="javascript:;" class="insurance-type">承接险种</a></li>
+            <li data-role="nav"><a href="javascript:;" data-param="3,4">服务承诺</a></li>
+            <li data-role="nav"><a href="javascript:;" data-param="1,2">理赔服务</a></li>
+            <li data-role="nav"><a href="javascript:;" data-param="5">费率表</a></li>
+            <li data-role="nav"><a href="javascript:;" data-param="7">省内分支机构</a></li>
+            <li data-role="nav"><a href="javascript:;" data-param="8">成交记录</a></li>
+          </ul>
+          <div class="tab-contents clearfix">
+            <div data-role="content" class="tab-content" id="insurance-type-6"></div>
+            <div data-role="content" class="tab-content hide"></div>
+            <div data-role="content" class="tab-content hide">
+              <div class="panel">
+                <div class="panel-header">
+                  <h3 class="panel-title">特别服务承诺</h3>
+                </div>
+                <div class="panel-body" id="insurance-type-4">
+                </div>
+              </div>
+              <div class="panel">
+                <div class="panel-header">
+                  <h3 class="panel-title">服务方案</h3>
+                </div>
+                <div class="panel-body" id="insurance-type-3">
+                </div>
+              </div>
+            </div>
+            <div data-role="content" class="tab-content hide">
+              <div class="panel">
+                <div class="panel-header">
+                  <h3 class="panel-title">特别服务承诺</h3>
+                </div>
+                <div class="panel-body" id="insurance-type-2">
+                </div>
+              </div>
+              <div class="panel">
+                <div class="panel-header">
+                  <h3 class="panel-title">服务方案</h3>
+                </div>
+                <div class="panel-body" id="insurance-type-1">
+                </div>
+              </div>
+            </div>
+            <div data-role="content" class="tab-content hide" id="insurance-type-5"></div>
+            <div data-role="content" class="tab-content hide" id="insurance-type-7"></div>
+            <div data-role="content" class="tab-content hide" id="insurance-type-8">
+              <table class="table table-fixed recordList">
+                <thead>
+                    <tr>
+                        <th width="25%">采购单位</th>
+                        <th width="40%">投保内容</th>
+                        <th width="15%">总价（元）</th>
+                        <th width="20%">日期</th>
+                    </tr>
+                </thead>
+                <tbody id="deal-record-list-tbody">
+                </tbody>
+                <tfoot>
+                    <tr id="deal-record-pagination">
+                        <td class="record-pagination col-12" colspan='4' style='text-align:right;'>
+                        </td>
+                    </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{{/component}}

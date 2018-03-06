@@ -1,0 +1,56 @@
+<table>
+  <tbody>
+  <tr>
+    <td>
+      pageID：
+    </td>
+    <td>
+      <input type="text" name="pageid" />
+    </td>
+  </tr>
+  <tr>
+    <td>
+      页面名称：
+    </td>
+    <td>
+      <input type="text" name="pagename" />
+    </td>
+  </tr>
+  <tr>
+    <td>
+      适配区划：
+    </td>
+    <td>
+      <input type="text" name="discode" />
+    </td>
+  </tr>
+  <tr>
+    <td>
+      页面链接：
+    </td>
+    <td>
+      <input type="text" name="href" />
+    </td>
+  </tr>
+  <tr>
+    <td>
+      模板选择：
+    </td>
+    <td>
+      <select>
+        <option value="">选择大厅</option>
+        <option value="">医疗馆</option>
+        <option value="">疫苗馆</option>
+      </select>
+    </td>
+    <td>
+      <select name="coms">
+        <option value="">无</option>
+        {{#each this}}
+          <option value="{{this}}">{{@key}}</option>
+        {{/each}}
+      </select>
+    </td>
+  </tr>
+  </tbody>
+</table>

@@ -1,0 +1,17 @@
+<div class="modal whole-white-list">
+  <div class="modal-header">全部白名单
+    <a href="javascript:void(0)" class="close">&times;</a>
+  </div>
+  <div class="modal-body">
+    <div class="white-list" data-orgs="{{json orgs}}">
+      {{#each orgs}}
+        <div class="white-org-name">
+          <span title="{{name}}">{{name}}</span>
+          <a href="javascript:void(0)" class="js-delete-org" data-id="{{id}}" data-day="{{../day}}">
+            <i class="icon-zcy icon-shanchu"></i>
+          </a>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</div>

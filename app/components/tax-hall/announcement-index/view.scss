@@ -1,0 +1,32 @@
+.component-tax-hall-notice {
+    width: 1210px;
+    padding: 0;
+    text-align: center;
+    
+    .notice-title {
+        font-family: "PingFangSC-Regular";
+        font-size: 20px;
+        color: #333333;
+        letter-spacing: 5px;
+        line-height: 28px;
+        .notice-title-split {
+            // font: normal bold 12px;
+            vertical-align: middle;
+            font-size: 4px;
+            line-height: 28px;
+            font-weight: 900;
+            // font-family: "MicrosoftYaHei";
+            color: #0876ff;
+        }
+    }
+    .notice-left {
+      margin-right: 20px;
+    }
+    >.notice-block {
+        display: inline-block;
+        margin-top: 19px;
+        width:590px;
+        height:475px;
+        background-color: white;
+    }
+}

@@ -1,0 +1,40 @@
+{{#component 'ZCY-eevee-comp-search evees-comp js-comp'}}
+  <div id="env-config" data-middle="" data-user-id=""></div>
+  <div class="search-tab">
+    <a class="product-tab active" href="javascript:void(0)">商品</a>
+    <a class="supplier-tab " href="javascript:void(0)">供应商</a>
+  </div>
+  <form class="form form-search" type="get" id="form-search" action="/eevees/search" data-hrefbase="http://www.zcy.gov.cn" style="width:530px;">
+
+    <fieldset>
+      <div class="input-group input-group-append input-search">
+        <input type="hidden" class="isSupplier" name="isSupplier" value="0">
+        <i class="icon-zcy icon-search"></i>
+        <input type="text" name="q" class="search-input items-suggest active" value="{{q}}" autocomplete="off" placeholder="输入你要搜索的商品"><span class="input-group-btn">
+          <button class="btn btn-primary btn-medium" id="search-button" type="submit">搜&nbsp;索</button>
+        </span>
+      </div>
+    </fieldset>
+    <div class="search-hot">
+      <ul class="search-hot-ul">
+        <li><span class="title">热门搜索:</span></li>
+
+        <li><a href="/eevees/search?q=%E7%A1%92%E9%BC%93" target="_blank">硒鼓</a></li>
+
+        <li><a href="/eevees/search?q=%E6%89%93%E5%8D%B0%E7%BA%B8" target="_blank">打印纸</a></li>
+
+        <li><a href="/eevees/search?q=%E4%B8%AD%E6%80%A7%E7%AC%94" target="_blank">中性笔</a></li>
+
+        <li><a href="/eevees/search?q=%E5%A2%A8%E7%B2%89" target="_blank">墨粉</a></li>
+
+        <li><a href="/eevees/search?q=%E5%A2%A8%E7%9B%92" target="_blank">墨盒</a></li>
+
+        <li><a href="/eevees/search?q=%E7%B2%89%E7%9B%92" target="_blank">粉盒</a></li>
+
+        <li><a href="/eevees/search?q=%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98" target="_blank">移动硬盘</a></li>
+
+      </ul>
+    </div>
+
+  </form>
+{{/component}}

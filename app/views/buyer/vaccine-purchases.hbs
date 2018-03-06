@@ -1,0 +1,23 @@
+{{#partial "realTitle"}}预购单列表{{/partial}}
+{{#partial "realBody"}}
+  {{#inject "common/breadcrumb"}}
+    {
+    "breadcrumb":
+    [{
+    "crumb": "疫苗采购管理",
+    "url": "#"
+    },
+    {
+    "crumb": "预购单列表",
+    "url": "#"
+    }]
+    }
+  {{/inject}}
+  {{#inject "buyer/purchase_list"}}
+    {
+    "pageId": "/buyer/vaccine-purchases",
+    "tag": "vaccine"
+    }
+  {{/inject}}
+{{/partial}}
+{{> user_layout}}

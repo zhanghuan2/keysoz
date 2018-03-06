@@ -1,0 +1,17 @@
+{{#component "component-tax-hall-notice-result jscomp"}}
+{{!-- 
+{
+  resultList:[{
+    resultTitle:"",
+    noticeTime:""
+  }]
+}
+ --}}
+ {{#each resultList}}
+<tr>
+  <td><a href="">{{resultTitle}}</a></td>
+  <td>{{formatDate noticeTime "day"}}</td>
+</tr>
+{{/each}}
+{{/component}}
+

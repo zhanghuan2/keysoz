@@ -1,0 +1,42 @@
+{{#component "component-car-insurance js-comp"}}
+  <div class="fixed-car-insurance">
+    <!--breadCrumbs-->
+    <!--<div class="current-location-dark clearfix" data-user="{{_USER_}}">-->
+      <!--<span class="current-location-span">-->
+        <!--<a class="font-12 js-bread-category-selector" href="javascript:;">定点大厅</a>-->
+        <!--<i class="font-12 icon-zcy icon-nextstep"></i>-->
+        <!--<a class="font-12 js-bread-category-selector" href="javascript:;">保险大厅</a>-->
+      <!--</span>-->
+    <!--</div>-->
+    <div class="fixed-title">
+      <h3>{{_INSTITLE_}}</h3>
+    </div>
+    <!--insurance-list-->
+    <div class="fixed-insurance-list clearfix">
+      {{#if _DATA_.data}}
+        <ul>
+          {{#each _DATA_.data}}
+            <li>
+              <div class="item-logo">
+                <a href="/fixed/car-insurance/detail?fixedProtocolId={{fixedProtocolId}}&supplierId={{supplierId}}" target="_blank">
+                  <img src="{{cdnPath logoURL}}" alt="{{supplierName}}">
+                </a>
+              </div>
+              <div class="item-desc">
+                <h3><a href="/fixed/car-insurance/detail?fixedProtocolId={{fixedProtocolId}}&supplierId={{supplierId}}" title="{{supplierName}}" target="_blank">{{supplierName}}</a></h3>
+                <p>联系人:&nbsp;<span class="itemdesc-val">{{contact}}</span></p>
+                <p>电话:&nbsp;<span class="itemdesc-val">{{tel}}</span></p>
+                <p>渠道系统*自核系数:&nbsp;<span class="feerate-color">{{feeRate}}%</span></p>
+              </div>
+            </li>
+          {{/each}}
+        </ul>
+      {{else}}
+        此区划还没有入围的供应商
+      {{/if}}
+    </div>
+    <div class="fixed-insurance-list-pagination">
+      <div class="pagination" data-size="{{#if pageSize ~}}{{pageSize}}{{else}}10{{~/if}}" data-total="{{_DATA_.total}}"></div>
+    </div>
+  </div>
+{{/component}}

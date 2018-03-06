@@ -1,0 +1,19 @@
+{{#partial "title"}}{{{block "realTitle"}}}{{/partial}}
+{{#partial "body"}}
+  {{#designPart "header" scope="SITE" key=_MAIN_SITE_.id}}
+    {{{block "ceiling"}}}
+  {{/designPart}}
+  {{#designPart "outer-top"}}{{/designPart}}
+  <div class="user-background user-white-background">
+    <div class="main-container">
+      {{{block "mainBody"}}}
+    </div>
+  </div>
+  <div class="footer">
+    <div class="session"></div>
+    <div class="copyright">
+      <span>Copyright © 2013杭州端点网络科技有限公司 版权所有 鲁ICP备09096283号</span>
+    </div>
+  </div>
+{{/partial}}
+{{> layout}}

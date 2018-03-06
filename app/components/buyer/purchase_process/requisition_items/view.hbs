@@ -1,0 +1,66 @@
+{{#component "pur-process-requisition-items trade-manage js-comp"}}
+  <p class="hide">{{json this}}</p>
+<div class="req-item-lists" data-req-lists-total="{{_DATA_.total}}">
+  <div class="req-item-body">
+    <table class="table  center-tex req-item-table">
+      <thead>
+        <tr>
+          <th width="10%">需求人</th>
+          <th class="left-text" colspan="1" width="20%"> <span class="">商品</span> </th>
+          <th width="10%">商品编号</th>
+          <th width="10%">供应商</th>
+          <th width="10%">单价(元)</th>
+          <th width="10%">数量</th>
+          <th width="10%">小计(元)</th>
+          {{#of "1" _ROLES_}}{{#of purchaseStatus "0,4"}}
+          <th width="10%">操作</th>
+          {{/of}}{{/of}}
+        </tr>
+      </thead>
+      <tbody>
+        {{#each _REQITEMS_}}
+          {{#each items}}
+          <tr class="item-tr" data-site="{{shopId}}" data-id="{{skuId}}" data-unbind-delivery-count="{{unbindDeliveryCount}}">
+            {{#equals @index 0}}
+              <td style="border:1px solid #CCD0D6;text-align: center;" rowspan="{{size ../items}}" class="requisitionsNameList">{{../requisitionsName}}</td>
+            {{/equals}}
+            <td class="left-text" style="padding-left: 5px;">
+              <span>{{itemName}}</span>
+              <span class="js-item-services" data-services="{{json services}}"></span>
+            </td>
+            <td class="item-id" data-skuid='{{skuId}}' data-buyerid="{{reqUserId}}"><span class="">{{itemId}}</span></td>
+            <td><span class="">{{shopName}}</span></td>
+            <td>
+              {{#equals skuPrice 0}}
+                <span class="text-center">－</span>
+              {{else}}
+                <span class="price item-price">{{formatPrice skuPrice}}</span>
+              {{/equals}}
+            </td>
+            <td>
+              <span class="item-count">{{currentCount}}</span>
+              <div class="input-amount hide" data-min="0" data-max="{{skuStockQuantity}}">
+                <a href="javascript:void(0);" class="minus {{#equals currentCount 0}}disabled{{/equals}}" >-</a>
+                <input type="number" class="count-number" value="{{currentCount}}" data-old="{{currentCount}}"  data-init="{{currentCount}}" style="width:70px">
+                <a href="javascript:void(0);" class="plus {{#equals currentCount skuStockQuantity}}disabled{{/equals}}">+</a>
+              </div>
+            </td>
+            <td><span class="price js-item-sub-total">{{_CURRENCY_}}</span><span class="item-subtotal currency"></span></td>
+            {{#of "1" _ROLES_}}{{#of purchaseStatus "0,4"}}
+            <td><a class="js-chang-items-count">变更数量</a>
+                <button class="js-save-items-count btn btn-smaller hide">保存</button>
+            </td>{{/of}}
+            {{/of}}
+          </tr>
+          {{/each}}
+        {{else}}
+          <tr><td colspan="{{#of "1" _ROLES_}}{{#of purchaseStatus "0,4"}}8{{else}}7{{/of}}{{else}}7{{/of}}" class="center-text">无可展示信息</td></tr>
+        {{/each}}
+      </tbody>
+    </table>
+    <div class="list-pagination pagination-danger clearfix"
+        data-size="{{#if pageSize ~}}{{pageSize}}{{else}}20{{~/if}}"
+        data-total="{{_DATA_.total}}"></div>
+  </div>
+</div>
+{{/component}}

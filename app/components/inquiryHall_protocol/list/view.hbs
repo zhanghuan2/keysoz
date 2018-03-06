@@ -1,0 +1,121 @@
+{{#component "js-comp protocolhall-list-lasvegas"}}
+<div class="hide">{{json}}</div>
+<input type="hidden" name="lasvegasPath" value="{{_ENV_HREF_.lasvegas}}">
+<input type="hidden" id="frontPath" value="{{_ENV_HREF_.front}}">
+<input type="hidden" name="loginPath" value="{{_ENV_HREF_.login}}">
+<input type="hidden" name="districtId" value="{{_USER_.districtId}}">
+<input type="hidden" name="inquiryPath" value="{{_ENV_HREF_.inquiryhall}}">
+<input type="hidden" id="frontPath" value="{{_ENV_HREF_.front}}">
+<div class="mt mb inquiry-district-tip">
+  <span class="inquiry-bread-title">协议批量大厅
+    <i class="icon-zcy icon-nextstep"></i>竞价所在地: </span>
+  {{#if _DISTRICTNAME_}} {{#each _DISTRICTNAME_}}
+  <span class="inquiry-bread" title="{{name}}{{#each names}}{{name}}{{#if @last}}{{else}}/{{/if}}{{/each}}">
+    {{name}}{{#each names}}{{name}}{{#if @last}}{{else}}/{{/if}}{{/each}}
+    <i class="icon-zcy icon-close close-select-icon" data-code="{{code}}"></i>
+    <span class="hide-code">
+      {{code}}/{{#each names}}{{code}}/{{/each}}
+    </span>
+  </span>
+  {{/each}} {{/if}}
+</div>
+
+<div class="inject-district">
+  {{inject "inquiryHall_protocol/inquiry_district"}}
+</div>
+
+<div class="mt mb page-position" style="font-size: 0">
+  <button data-type="1" class="btn {{#equals page "2"}}btn-info{{/equals}} ft16 inquiry-type">
+    <i class="lh15 icon-zcy icon-zuixinxunjia-"></i>最新竞价
+  </button>
+  <button data-type="2" class="btn {{#equals page "2"}}{{else}}btn-info {{/equals}} mr ft16 inquiry-type">
+    <i class="lh15 icon-zcy icon-xunjiaxinxi-"></i>采购结果
+  </button>
+  <span style="font-size: 14px;">共<span class="orange">{{#if _DATA_.total}}{{_DATA_.total}}{{else}}0{{/if}}</span>条</span>
+</div>
+
+{{#equals page "2"}}
+<!--采购结果-->
+<div class="mt mb">
+  <table class="table table-fixed">
+    <thead>
+      <tr>
+        <th width="30%">采购结果</th>
+        <th width="17%">采购单位</th>
+        <th width="17%">需求归集区域</th>
+        <th width="12%">竞价方式</th>
+        <th width="12%">当前状态</th>
+        <th width="12%">公告时间</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#if _DATA_.data}} {{#each _DATA_.data}}
+      <tr>
+        <td>
+          <a href="/lasvegas/protocolhall/{{#equals type 5}}result{{/equals}}{{#equals type 6}}batch{{/equals}}{{#equals type 7}}cancel{{/equals}}?anNouncementId={{anNouncementId}}" target="_blank">
+            <span title="{{title}}">{{title}}</span>
+          </a>
+        </td>
+        <td title="{{purchaserName}}">{{purchaserName}}</td>
+        <td>{{packAreaName}}</td>
+        <td>{{requireTypeName}}</td>
+        <td>{{stateName}}</td>
+        <td>{{formatDate announcementStartTime 'yyyy-MM-dd'}}</td>
+      </tr>
+      {{/each}} {{else}}
+      <tr>
+        <td colspan="6" class="text-center">暂无数据</td>
+      </tr>
+      {{/if}}
+    </tbody>
+  </table>
+</div>
+{{else}}
+<!--最新竞价-->
+<div class="mt mb">
+  <table class="table table-fixed">
+    <thead>
+      <tr>
+        <th width="37%">采购需求</th>
+        <th width="16%">需求归集区域</th>
+        <th width="15%">离报价截止时间</th>
+        <th width="12%">报价数</th>
+        <th width="10%">当前状态</th>
+        <th width="10%">我要报价</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#if _DATA_.data}} {{#each _DATA_.data}}
+      <tr>
+        <td>
+          <a href="/lasvegas/protocolhall/detail?anNouncementId={{anNouncementId}}" target="_blank">
+            <span></span><span title="{{purchaserRequire}}">{{purchaserRequire}}</span>
+          </a>
+        </td>
+        <td title="{{packAreaName}}">{{packAreaName}}</td>
+        {{#equals stateName "报价中"}}
+        <td class="timer" data-time="{{endTime}}"></td>
+        {{else}}
+        <td>-</td>
+        {{/equals}}
+        <td>已有报价数{{quoteCount}}条</td>        
+        
+        <td>{{stateName}}</td>
+        <td>
+          <button {{#ifCond stateName '!=' '报价中'}}disabled{{/ifCond}} class="btn btn-info getQuoteId" data-announcement-id="{{anNouncementId}}">报价</button>
+        </td>
+      </tr>
+      {{/each}} {{else}}
+      <tr>
+        <td colspan="7" class="text-center">暂无数据</td>
+      </tr>
+      {{/if}}
+    </tbody>
+  </table>
+</div>
+{{/equals}}
+
+<div class="list-pagination">
+  <div class="pagination" data-size="{{#if pageSize}}{{pageSize}}{{else}}10{{/if}}" data-total="{{_DATA_.total}}"></div>
+</div>
+{{/component}}

@@ -1,0 +1,23 @@
+{{#component "item-publish js-comp"}}
+  {{> component:seller/spus/spu_publish/common/other_templates/category_path}}
+
+  <form method="POST" class="form form-aligned item-publish-form" id="js-item-form"
+      {{#if spuId}}
+        data-id="{{spuId}}"
+      {{/if}}>
+
+    {{#if spuId}}
+      {{inject "seller/spus/spu_publish/with_spu"}}
+    {{else}}
+      {{inject "seller/spus/spu_publish/with_category"}}
+    {{/if}}
+
+    <div class="control-group item-submit-area">
+      <p class="error-tip js-form-error-tip hide">
+        <i class="icon-alakazam icon-alakazam-alert-fill"></i> 商品信息有误，请向上查看红色标出的具体错误位置
+      </p>
+      <button class="btn btn-primary btn-medium" type="submit" id="js-item-submit">确定</button>
+      <span class="error-tip">&nbsp;&nbsp;&nbsp;带 * 的项是必填项，请确认无未填的必填项</span>
+    </div>
+  </form>
+{{/component}}

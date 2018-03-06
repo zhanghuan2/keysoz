@@ -1,0 +1,67 @@
+<div class="dropdown clearfix js-category-attr-input" data-key="{{attrKey}}"
+  {{#if attrMetasForK}}
+    {{#equals property.valueType "1"}}data-type="STRING"{{/equals}}
+      {{#equals property.valueType "2"}}data-type="STRING"{{/equals}}
+      {{#equals property.valueType "3"}}data-type="DATE"{{/equals}}
+      {{#equals property.valueType "4"}}data-type="NUMBER"{{/equals}}
+    data-required="{{attrMetasForK.REQUIRED}}"
+  {{else}}
+    data-type="STRING"
+    data-required="false"
+  {{/if}}>
+  <span class="dropdown-selector" title="{{../attrVal}}">
+    <input type="text" class="js-group-item" data-property-id="{{propertyId}}" value="{{../attrVal}}" autocomplete="off" data-parent=".dropdown-selector" placeholder="请选择" readonly="readonly" name="{{group}}-{{attrKey}}" {{#if hasSpu}}disabled{{/if}}
+    data-key="{{attrKey}}" {{#equals attrMetasForK.REQUIRED "true"}}required{{/equals}}
+    {{#if attrMetasForK}}
+      data-group="{{group}}"
+      {{#if property.unit}}
+        data-unit="{{property.unit}}"
+      {{/if}}
+    {{else}}
+      data-group="SPU"
+    {{/if}}>
+    <span class="caret"></span>
+  </span>
+  <div class="dropdown-content">
+    <ul class="dropdown-menu">
+      <li class="js-dropdown-item js-attr-val" data-val="">
+        <span class="empty">请选择</span>
+      </li>
+      {{#isEmpty property.attrVals}}
+        {{#if ../attrVal}}
+          <li class="js-dropdown-item js-attr-val" data-val="{{../attrVal}}">
+            <span>{{../attrVal}}</span>
+          </li>
+        {{/if}}
+      {{else}}
+        {{#each property.attrVals}}
+          <li class="js-dropdown-item js-attr-val" data-val="{{this}}">
+            <span>{{this}}</span>
+          </li>
+        {{/each}}
+      {{/isEmpty}}
+    </ul>
+    {{#if attrMetasForK}}
+      {{#equals attrMetasForK.USER_DEFINED "true"}}
+        <div class="dropdown-append input-group input-group-append">
+          <input type="text" class="js-dropdown-item-append-text js-attr-val-input">
+          <span class="input-group-btn pull-right">
+            <button class="btn btn-info js-dropdown-item-append" type="button">添加</button>
+          </span>
+        </div>
+      {{/equals}}
+    {{else}}
+      <div class="dropdown-append input-group input-group-append">
+        <input type="text" class="js-dropdown-item-append-text js-attr-val-input">
+        <span class="input-group-btn pull-right">
+          <button class="btn btn-info js-dropdown-item-append" type="button">添加</button>
+        </span>
+      </div>
+    {{/if}}
+  </div>
+</div>
+{{#if attrMetasForK}}
+  {{#if property.unit}}
+    <span class="attr-unit-show">&nbsp;{{property.unit}}</span>
+  {{/if}}
+{{/if}}

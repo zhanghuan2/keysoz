@@ -1,0 +1,41 @@
+{{#component "js-comp enquiry-list"}}
+<input type="hidden" class="js-env-href" value="{{json _ENV_HREF_}}">
+<div class="list-header">
+  <span class="icon"></span>
+  <span class="name">
+    {{#if purchaseOrg}}
+    {{purchaseOrg}}发起的询价单
+    {{else}}
+    在线询价
+    {{/if}}
+  </span>
+</div>
+<div class="list-body">
+  {{#if purchaseOrgId}}
+    <input type="hidden" class="js-org-id" value="{{purchaseOrgId}}">
+  {{/if}}
+  <div class="tab">
+    <button data-type="1" class="btn btn-info active js-list-tab">
+      <i class="lh15 icon-zcy icon-zuixinxunjia-"></i>最新询价
+    </button>
+    <button data-type="2" class="btn btn-info js-list-tab">
+      <i class="lh15 icon-zcy icon-xunjiaxinxi-"></i>询价结果
+    </button>
+    <div style="font-size: 14px; margin-left: 10px; padding: 8px;">共<span class="orange js-total-count"> - </span>条</div>
+  </div>
+  <table class="enquiry-table">
+    <thead>
+      <tr>
+        <th>采购需求</th>
+        <th>采购单位</th>
+        <th>询价所在地区</th>
+        <th class="js-recent-only">送货地区</th>
+        <th class="js-recent-only">离报价截止时间</th>
+        <th class="js-recent-only">报价数量</th>
+        <th>当前状态</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+  </table>
+</div>
+{{/component}}

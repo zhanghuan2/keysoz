@@ -1,0 +1,17 @@
+{{#if _SITE_}}
+  {{#designPart "header" scope="SITE" rule="0" key=_MAIN_SITE_.id}}
+    {{#inject "common/ceiling"}}
+    {
+      "webName": "政采云"
+    }
+    {{/inject}}
+  {{/designPart}}
+{{else}}
+  {{#designPart "header" rule="-1"}}
+    {{#inject "common/ceiling"}}
+    {
+      "webName": "政采云"
+    }
+    {{/inject}}
+  {{/designPart}}
+{{/if}}

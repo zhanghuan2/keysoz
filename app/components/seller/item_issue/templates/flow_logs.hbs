@@ -1,0 +1,21 @@
+<div class="sr-timeline zcy-timeline">
+  {{#each data}}
+    <div class='sr-row trans-info down'>
+      {{#ifCond @index ">" 0}}<div class='sr-line line-solid'></div>{{/ifCond}}
+      <div class='sr-dot dot-success'></div>
+      <label class="ml mr">{{creationTime}}</label>
+      <label class="ml mr" title="{{creatorOrg}}" style="width: 100px;">{{createrOrg}}</label>
+      <label class="ml mr" title="{{creatorName}}" style="width: 100px;">{{createrName}}</label>
+      {{#equals auditResult "SUBMIT_AUDIT"}}
+        <span class="ml mr" title="{{auditResult}}" style="width: 120px;">提交审核</span>
+      {{/equals}}
+      {{#equals auditResult "AUDIT_APPROVE"}}
+        <span class="ml mr" title="{{auditResult}}" style="width: 120px;">审核通过</span>
+      {{/equals}}
+      {{#equals auditResult "AUDIT_REJECT"}}
+        <span class="ml mr" title="{{auditResult}}" style="width: 120px;">审核不通过</span>
+      {{/equals}}
+      <label class="ml mr" title="{{auditComment}}" style="width: 200px; white-space: nowrap; overflow: hidden;text-overflow: ellipsis; vertical-align: bottom;">{{auditComment}}</label>
+    </div>
+  {{/each}}
+</div>

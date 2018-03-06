@@ -1,0 +1,12 @@
+<ul class="search-result">
+  {{#each data}}
+    <li class="category-path" data-path="{{json this}}">
+      {{#each this}}
+        {{#gt @index 0}}&nbsp;&nbsp;>&nbsp;&nbsp;{{/gt}}
+        <span class="node">{{name}}</span>
+      {{/each}}
+    </li>
+  {{else}}
+    <div class="empty-message">未找到相关类目</div>
+  {{/each}}
+</ul>

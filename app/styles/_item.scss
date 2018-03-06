@@ -1,0 +1,21 @@
+@import "pokeball/theme";
+
+.item-detail-container {
+  .left-part {
+    width: 930px;
+    margin-right: 20px;
+    float: left;
+  }
+
+  .right-part {
+    width: 250px;
+    float: right;
+
+    i {
+      border-width: 0 1px 1px;
+      border-style: solid;
+      border-color: $color-border;
+    }
+  }
+
+}

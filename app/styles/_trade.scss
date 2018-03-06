@@ -1,0 +1,196 @@
+@import "pokeball/theme";
+
+.trade-manage{
+  table{
+    //width: 960px;
+    width: 100%;
+    border: 1px solid #ccd0d6;
+    thead{
+      tr{
+        background-color: #F7F7F7;
+        color: #666666 !important;
+        font-size: 12px !important;
+        th{
+          text-align: left;
+          //border: 1px solid $color-border;
+          border-width: 0 0 1px 0;
+          padding-left: 5px;
+          padding-right: 5px;
+          &:first-child{
+            border-width: 0 0 1px 1px;
+            padding-left: 10px;
+          }
+          &:last-child{
+            border-width: 0 1px 1px 0;
+            text-align: right;
+            padding-right: 10px;
+          }
+        }
+      }
+    }
+    tbody{
+      tr{
+        border: 1px solid #ccd0d6;
+        &.time-line{
+          border-width: 0 !important;
+        }
+        td{
+          text-align: left;
+          border-width: 0 0 1px 0;
+          padding-left: 5px;
+          padding-right: 5px;
+          &:first-child{
+            border-width: 0 0 1px 1px;
+            padding-left: 10px;
+          }
+          &:last-child{
+            border-width: 0 1px 1px 0;
+            text-align: right;
+            padding-right: 10px;
+          }
+          &.time-line{
+            text-align: left !important;
+            word-wrap: break-word;
+            word-break: break-all;
+          }
+        }
+        &.first-level-tr{
+          border-width: 0 0 1px 2px;
+        }
+        &.second-level-tr{
+          display: none;
+        }
+      }
+    }
+    &.time-line{
+      width: auto !important;
+      border-width: 0 !important;
+    }
+    &.table-about-view{
+      td{
+        padding-left: 0 !important;
+        padding-right: 5px !important;
+      }
+    }
+  }
+
+  textarea{
+    width: 900px;
+    height: 300px;
+  }
+
+  .errorInfo{
+    color: #bc1339;
+    padding: 5px;
+    margin: 5px;
+    overflow: auto;
+  }
+
+  .t-breadcrumb{
+    display: inline-block;
+    //box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+    //border-radius: 5px;
+    /*Lets add the numbers for each link using CSS counters. flag is the name of the counter. to be defined using counter-reset in the parent element of the links*/
+    //counter-reset: flag;
+    padding: 20px 0 10px 0;
+  }
+  .t-breadcrumb label{
+    color: #9F9F9F;
+    &.active{
+      color: #666666;
+    }
+  }
+
+  .page-body-option{
+    background-color: #F7F7F7;
+    padding: 5px 5px 5px 15px;
+    .page-title{
+      display: inline;
+      line-height: 32px;
+      font-size: 14px;
+    }
+    .page-button{
+      float: right;
+    }
+  }
+  .page-list-search{
+    background-color: #fff;
+    border: 1px solid #ccc;
+    margin: 0 0 10px 0;
+    padding: 10px;
+    .search-label{
+      display: inline;;
+      label{
+        padding-left: 5px;
+      }
+      select{
+        background-color: #fff;
+      }
+
+      .selectric-wrapper {
+        vertical-align: middle;
+      }
+      .input-datepicker{
+        width: 100px !important;
+      }
+    }
+    .search-button{
+      float: right;
+    }
+  }
+
+  .error-text {
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0 10px;
+    color: $color-danger;
+  }
+
+  .trade-list-footer{
+    background-color: #F7F7F7;
+    text-align: right;
+    .list-pagination {
+      padding: 0 15px 15px 0;
+    }
+  }
+
+  .desc-text{
+    color: #9F9F9F;
+  }
+
+  .trade-panel{
+    background-color: #FFFFFF;
+    margin-bottom: 10px;
+    .trade-panel-top{
+      background-color: #F7F7F7;
+      padding: 5px 5px 5px 15px;
+      .trade-panel-title{
+        display: inline;
+        line-height: 32px;
+        font-size: 14px;
+      }
+      .page-button{
+        float: right;
+      }
+    }
+    .trade-panel-body{
+      padding: 15px;
+    }
+    .trade-panel-footer{
+      background-color: #F7F7F7;
+      padding: 15px;
+      //text-align: right;
+    }
+  }
+
+  .left-text {
+    text-align: left !important;
+  }
+  .right-text {
+    text-align: right !important;
+  }
+  .center-text {
+    text-align: center;
+  }
+}

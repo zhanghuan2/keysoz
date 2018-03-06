@@ -1,0 +1,97 @@
+<table class="table table-fixed meetingroom">
+  <thead>
+  <tr>
+    <th width="26%">会议室培训类型</th>
+    <th width="16%">会议室名称</th>
+    <th width="12%">使用面积(平米)</th>
+    <th width="12%">容纳人数(人)</th>
+    <th width="10%">门市价(元)</th>
+    <th width="12%">折扣率</th>
+    <th width="12%">协议价(元)</th>
+  </tr>
+  </thead>
+  <tbody>
+  {{#each this}}
+    <tr class="tr-info {{#ifCond @index ">=" 5}}hide{{/ifCond}}">
+      <td class="hotel-thumbnail">
+        <div class="item-logo">
+          <img data-path="{{cdnPath hotelMeetingRoomPhotos.0.url 500 600}}" src="{{hotelMeetingRoomPhotos.0.url}}" alt="{{hotelMeetingRoomPhotos.0.name}}">
+        </div>
+        <div class="item-desc">
+          <p>{{meetingTypeName}}</p>
+          <a class="expanded-trigger"><span>查看详情</span><i class="icon-zcy icon-xiangxiazhedie"></i></a>
+        </div>
+      </td>
+      <td>{{meetingName}}</td>
+      <td>{{formatPrice floorArea}}</td>
+      <td>{{capacity}}</td>
+      <td>{{formatPrice rackRate}}</td>
+      <td>{{#if discountRate}}{{formatPrice discountRate}}%{{else}}-{{/if}}</td>
+      <td>{{formatPrice negotiatedRate}}</span></td>
+    </tr>
+    <tr class="tr-detail hide">
+      <td colspan="7">
+        <div class="hotel-item-detail">
+          <div class="row-item">
+            <span class="col-item"><span>协议价(元)</span><div class="val-item">{{formatPrice negotiatedRate}}</div></span>
+            <span class="col-item"><span>折扣率(%)</span><div class="val-item">{{#if discountRate}}{{formatPrice discountRate}}%{{else}}-{{/if}}</div></span>
+          </div>
+          <div class="row-item">
+            <span class="col-item"><span>序号</span><div class="val-item">{{sequence}}</div></span>
+            <span class="col-item"><span>会议培训室类型</span><div class="val-item">{{meetingTypeName}}</div></span>
+          </div>
+          <div class="row-item">
+            <span class="col-item"><span>会议培训室名称</span><div class="val-item">{{meetingName}}</div></span>
+            <span class="col-item"><span>门市价(元)</span><div class="val-item">{{formatPrice rackRate}}</div></span>
+          </div>
+          <div class="row-item">
+            <span class="col-item"><span>计价单位</span><div class="val-item">{{unit}}</div></span>
+            <span class="col-item"><span>实际面积(m<sup>2</sup>)</span><div class="val-item">{{formatPrice floorArea}}</div></span>
+          </div>
+          <div class="row-item">
+            <span class="col-item"><span>容纳人数(人)</span><div class="val-item">{{capacity}}</div></span>
+            <span class="col-item"><span>是否标配</span><div class="val-item">{{#equals ifStandard 1}}是{{else}}否{{/equals}}</div></span>
+          </div>
+          <div class="row-item">
+            <span class="col-item">
+              <span class="col-multiple-key">配套</span>
+              <span class="col-multiple-val">
+                <div>
+                  <span>同声翻译：<span>{{#equals facilitySi 1}}有{{else}}无{{/equals}}</span></span>
+                  <span>投影仪、幕布：<span>{{#equals facilityProjector 1}}有{{else}}无{{/equals}}</span></span>
+                </div>
+                <div>
+                  <span>视频会议培训：<span>{{#equals facilityVideo 1}}有{{else}}无{{/equals}}</span></span>
+                  <span>话筒：<span>{{#equals facilityMicrophone 1}}有{{else}}无{{/equals}}</span></span>
+                </div>
+                <div>
+                  <span>内部网络：<span>{{#equals facilityIntranet 1}}有{{else}}无{{/equals}}</span></span>
+                  <span>饮用水：<span>{{#equals facilityWater 1}}开水{{else}}矿泉水{{/equals}}</span></span>
+                </div>
+                <div>
+                  <span>笔、纸：<span>{{#equals facilityPen 1}}有{{else}}无{{/equals}}</span></span>
+                </div>
+              </span>
+            </span>
+            <span class="col-item">
+              <div><span>其他设施</span><div class="val-item">{{facilityOther}}</div></div>
+            </span>
+          </div>
+        </div>
+      </td>
+    </tr>
+  {{/each}}
+  </tbody>
+  <tfoot>
+  {{#gt (size this) 5}}
+    <tr class="tr-hotel-total">
+      <td colspan="7" style="text-align:right">
+        <a class="hotel-list-all">
+          <span>查看全部</span>
+          <i class="icon-zcy icon-xiangxiazhedie"></i>
+        </a>
+      </td>
+    </tr>
+  {{/gt}}
+  </tfoot>
+</table>

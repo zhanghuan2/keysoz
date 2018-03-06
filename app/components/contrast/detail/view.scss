@@ -1,0 +1,160 @@
+@import "compass/css3/inline-block";
+@import "pokeball/theme";
+.contrast-detail {
+
+  .product-comparison {
+    width: 1200px;
+
+    .check-item-style {
+      @include inline-block();
+    }
+
+    .change-input {
+      position: fixed;
+      width: 150px;
+      z-index: 999;
+      margin-left: -80px;
+      top: 0;
+    }
+
+    strong {
+      font-size: 20px;
+      line-height: 50px;
+      margin-right: 20px;
+      color: black;
+    }
+  }
+
+  table {
+    width: 100%;
+
+    th {
+      height: 37px;
+      width: 150px;
+    }
+
+    td {
+      width: 260px;
+      height: 42px;
+    }
+
+    th,td {
+      border-bottom: 1px solid $color-border;
+      border-right: 1px solid $color-border;
+    }
+  }
+
+  .item-details {
+    width: 1200px;
+    border-top: 1px solid $color-border;
+    border-left: 1px solid $color-border;
+  }
+
+  .product-flow
+  ,.product-pro {
+    list-style: none;
+    float: left;
+    width: 1200px;
+
+    li {
+      border-bottom: 1px solid $color-border;
+      border-right: 1px solid $color-border;
+      width: 262px;
+      height: 125px;
+      float: left;
+
+      &:first-child {
+        text-align: center;
+      }
+
+      img {
+        width: 75px;
+        height: 75px;
+        margin-left: 10px;
+        margin-top: 25px;
+      }
+
+      .pull-right {
+        margin-top: 25px;
+        width: 170px;
+        @include inline-block();
+
+        .sale-details {
+          @include inline-block();
+          margin-top: 15px;
+          color: $default-blue-color;
+        }
+      }
+    }
+
+    .first {
+      width: 151px;
+      line-height: 125px;
+    }
+  }
+
+  .first-flow {
+    width: 151px !important;
+    border-left: 1px solid $color-border;
+  }
+
+  .compare-tab {
+
+    td {
+      text-align: center;
+    }
+
+    .item-title {
+      text-align: left;
+      background-color: $color-background;
+      border-bottom: 2px solid white;
+
+      a {
+        position: relative;
+        left: 30px;
+        line-height: 30px;
+        color: #999;
+        top: -3px;
+      }
+    }
+  }
+
+  .fixed {
+    position: fixed;
+    top: 0px;
+    z-index: 99;
+    background-color: white;
+  }
+
+  .highlight {
+    background-color: $color-border-dark;
+  }
+
+  .arrow-up-down {
+    background-position: center;
+    position: relative;
+    width: 8px;
+    height: 8px;
+    background-color: white;
+    background-repeat: no-repeat;
+    background-size: 40% 40%;
+    left: 10px;
+    top: 15px;
+    cursor: pointer;
+  }
+
+  .arrow-down-open {
+    background-image: url(/lunatone/assets/images/other-images/arrowdown.png);
+  }
+
+  .arrow-up-close {
+    background-image: url(/lunatone/assets/images/other-images/arrowup5x9.png);
+  }
+
+  .brands-name {
+
+    td {
+      text-align: center;
+    }
+  }
+}

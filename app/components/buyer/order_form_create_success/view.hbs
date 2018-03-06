@@ -1,0 +1,38 @@
+{{#component "order-form-create-success trade-manage js-comp clearfix"}}
+  <div>
+    <div class="create-success">
+      <img src="/lunatone/assets/images/other-images/order-create-success.png">
+    </div>
+    <div class="success-info">
+      <h2><img src="/lunatone/assets/images/other-images/finish.png">&nbsp;下单成功</h2>
+      <div class="order-addition-info">
+        <span>已关联采购计划总额(元)：<span class="money js-bind-money">0.00</span></span>&nbsp;&nbsp;
+        <span>计划外资金总额(元)：<span class="money js-unbind-money">0.00</span></span>&nbsp;&nbsp;
+        <span>采购单总额(元)：<span class="money js-total-money">0.00</span></span>
+      </div>
+      <div class="delivery-address">
+        <span>收货地址：</span>
+        <span class="address-info"></span>
+      </div>
+      <div class="invoice-info" style="display: none">
+        发票类型：<span class="invoice-type"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+        发票抬头：<span class="invoice-title"></span>
+      </div>
+      <br>
+      <a
+        {{#of orderType '0,1'}}
+          href="/buyer/netsuper-orders"
+        {{/of}}
+        {{#equals orderType 2}}
+          href="/buyer/vaccine-orders"
+        {{/equals}}
+        {{#equals orderType 3}}
+          href="/buyer/blocktrade-orders"
+        {{/equals}}
+      >查看订单列表</a><br>
+      <a href="/" class="btn btn-primary">继续购物</a>&nbsp;&nbsp;
+      <label><span class="time-count-down">20</span>秒后自动返回首页</label>
+    </div>
+
+  </div>
+{{/component}}

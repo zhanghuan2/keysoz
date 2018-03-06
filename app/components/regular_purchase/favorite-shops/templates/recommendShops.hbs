@@ -1,0 +1,29 @@
+{{#gt (size data) 0}}
+  <div class="recommend-shops">
+    {{#each data}}
+      <div class="shop-item" data-shop-id="{{shopId}}">
+        <div class="info-area">
+          <div class="shop-img">
+            <img src="{{logoUrl}}">
+          </div>
+          <div class="shop-name" title="{{shopName}}">{{shopName}}</div>
+          <div class="main-business" title="{{categorys}}">主营类目：{{categorys}}</div>
+        </div>
+        <div class="mask"></div>
+        <div class="operations">
+          <button class="btn btn-info js-enter-shop" data-shop-id="{{shopId}}">进入店铺</button>
+          <button class="btn btn-info js-add-favor" data-shop-id="{{shopId}}">关注店铺</button>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+{{else}}
+  <div class="empty-view">
+    <div class="hint">
+      <img src="/lunatone/assets/images/other-images/no-recommend-shops.png">
+      <div class="title">暂无推荐店铺</div>
+    </div>
+  </div>
+{{/gt}}
+
+

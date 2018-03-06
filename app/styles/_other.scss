@@ -1,0 +1,5 @@
+@mixin word-wrap($width: 150px) {
+  width: $width;
+  word-break: break-all;
+  word-wrap: break-word;
+}

@@ -1,0 +1,73 @@
+{{#component "supplier-details js-comp"}}
+<div class="seller-title" >
+  <div class="shop-image">
+    <img src="{{_SELLER_DATA_.logoPath}}" alt="">
+  </div>
+  <span class="store-name hide-ellipsis">
+    {{#if _SELLER_DATA_.abbreviation}}
+      {{_SELLER_DATA_.abbreviation}}
+    {{else if _SELLER_DATA_.name}}
+      {{_SELLER_DATA_.name}}
+    {{else}}政采云商家{{/if}}
+  </span>
+</div>
+<div class="seller-info-content">
+  <ul class="info-ul">
+    <li class="arrow-content-table info-li hide-ellipsis">
+      {{#each _DATA_}}
+      <div class="arrow-content"><span class="content-span">{{targetName}}</span><br>{{averageScore}}</div>
+      {{/each}}
+    </li>
+    <li class="info-li hide-ellipsis" title="{{#if _SELLER_DATA_.contactPhone}}{{_SELLER_DATA_.contactPhone}}{{else}}暂无联系电话{{/if}}"><i class="icon-phone info-icon"></i>联系电话：{{#if _SELLER_DATA_.contactPhone}}{{_SELLER_DATA_.contactPhone}}{{else}}暂无联系电话{{/if}}</li>
+    <li class="info-li hide-ellipsis"><i class="icon-model info-icon"></i>品牌协调人：{{#if _DATA3_.data.supplier.contactName}}{{_DATA3_.data.supplier.contactName}}{{else}}暂无{{/if}}{{#equals _SELLER_DATA_.auditStatus "DONE"}} <i class="icon-audit"></i>{{/equals}}</li>
+    <li class="info-li hide-ellipsis">
+      <i class="icon-location1 info-icon"></i>所在地区：<span title="{{_SELLER_DATA_.affiliationLocName}}">{{#if _SELLER_DATA_.affiliationLocName}}
+        {{_SELLER_DATA_.affiliationLocName}}
+      {{else}}
+        浙江省杭州市西湖区
+      {{/if}}
+      </span>
+    </li>
+  </ul>
+</div>
+{{#gt (add (size _SELLER_DATA_.qqMaps) (size _SELLER_DATA_.wangwangMaps)) 0}}
+<div class="seller-info-content last clearfix">
+{{#gt (size _SELLER_DATA_.wangwangMaps) 0}}
+    <div class="contact-box-warp wangwang-warp">
+        <select class="js-select" data-type="ww">
+            <option>旺旺</option>
+            {{#each _SELLER_DATA_.wangwangMaps}}
+                <option data-name="{{name}}" data-code="{{code}}">
+                    {{name}}
+                </option>
+            {{/each}}
+        </select>
+    </div>
+{{/gt}}
+{{#gt (size _SELLER_DATA_.qqs) 0}}
+    <div class="contact-box-warp qq-warp">
+        <select class="js-select" data-type="qq">
+            <option>QQ</option>
+            {{#each _SELLER_DATA_.qqMaps}}
+                <option data-name="{{name}}" data-qqid="{{code}}" data-site="{{@root._HREF_.main}}">
+                    {{name}}
+                </option>
+            {{/each}}
+        </select>
+    </div>
+{{/gt}}
+</div>
+{{/gt}}
+{{#gt (size _SELLER_DATA_.services) 0}}
+  <div class="seller-info-content last-seller-info last">
+    <ul class="clearfix">
+      {{#each _SELLER_DATA_.services}}
+        <li class="pull-left service-item">
+          <img src="{{logoPath}}" alt="" class="service-logo">
+          <span class="service-title">{{title}}</span>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+{{/gt}}
+{{/component}}

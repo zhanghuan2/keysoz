@@ -1,0 +1,22 @@
+{{#partial "realTitle"}}{{i18n "Products listed for sales" bundle="all_mix"}}{{/partial}}
+{{#partial "realBody"}}
+  {{#inject "common/breadcrumb"}}
+    {
+      "breadcrumb":
+      [{
+        "crumb": "商品管理",
+        "url": "#"
+      },
+      {
+        "crumb": "上架商品管理",
+        "url": "#"
+      }]
+    }
+  {{/inject}}
+  {{#inject "seller/shelf_item" true}}
+  {
+    "status": "1"
+  }
+  {{/inject}}
+{{/partial}}
+{{> user_layout}}

@@ -1,0 +1,54 @@
+{{#if attrKey}}
+  <li class="pull-left js-category-attr attr-show-li" data-attr="{{json this}}">
+    <div class="control-group">
+      <label class="group-title hint--top" title="{{attrKey}}" aria-label="{{attrKey}}">
+        <span class="group-line-title">{{attrKey}}：</span>
+      </label>
+      <div class="group-content">
+        {{> seller/item_issue/all_templates/_attribute_dropdown}}&nbsp;
+        <a href="javascript:void(0)" class="js-delete-user-attr attribute-delete-icon"><i
+          class="icon-mewtwo icon-mewtwo-trash"></i></a>
+      </div>
+    </div>
+  </li>
+{{else}}
+  <div class="attribute-template extend-template js-extend-template">
+    <form action="post" class="form form-aligned form-inline clearfix">
+      <fieldset>
+        <div class="control-group">
+          <input type="hidden" name="group" value="USER_DEFINED">
+          <label class="group-title"><b class="required">*</b>属性名：</label>
+          <div class="group-content">
+            <input type="text" name="attrKey" placeholder="请输入属性名称" data-parent=".control-group"
+                   pattern="^((?![:_]).){1,15}$" required>
+            <span class="note-error note-icon hint--top" aria-label="请输入不包含:和_的1-15个字符">
+            <i class="icon-pokeball icon-pokeball-error"></i>
+          </span>
+            <span class="note-error-empty note-icon hint--top" aria-label="请输入属性名称">
+            <i class="icon-pokeball icon-pokeball-error"></i>
+          </span>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="group-title"><b class="required">*</b>属性值：</label>
+          <div class="group-content">
+            <input type="text" name="attrVal" placeholder="请输入属性值" data-parent=".control-group"
+                   pattern="^((?![:_]).){1,30}$" required>
+            <span class="note-error note-icon hint--top" aria-label="请输入不包含:和_的1-30个字符">
+            <i class="icon-pokeball icon-pokeball-error"></i>
+          </span>
+            <span class="note-error-empty note-icon hint--top" aria-label="请输入属性值">
+            <i class="icon-pokeball icon-pokeball-error"></i>
+          </span>
+          </div>
+        </div>
+        <div class="control-group">
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <button class="btn btn-secondary close" type="button">取消</button>
+          &nbsp;
+          <button class="btn btn-primary" type="submit">添加</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+{{/if}}

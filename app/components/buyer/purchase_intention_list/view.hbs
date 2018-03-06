@@ -1,0 +1,41 @@
+{{#component "pur-list trade-manage js-comp clearfix"}}
+  {{!-- {{json this}} --}}
+  <div class="t-breadcrumb">
+  </div>
+  <div class="page-body-option clearfix">
+    <div class="page-title">采购意向公示</div>
+  </div>
+  <div class="pur-list-body">
+    <table class="table center-tex pur-list-table">
+      <thead>
+        <tr>
+          <th width="20%">采购需求</th>
+          <th width="20%">采购单位</th>
+          <th width="16%">采购类目名称</th>
+          <th width="15%">品牌</th>
+          <th width="14%">型号</th>
+          <th width="15%">发布时间</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each _DATA_.data}}
+          <tr data-purchase="{{displayNo}}">
+            <td><a href="/procurement/supplier/info?demandId={{id}}">{{name}}</a></td>
+            <td>{{organName}}</td>
+            <td title="{{categoryNames}}">{{gpcategoryName}}</td>
+            <td>{{brandName}}</td>
+            <td>{{specificationName}}</td>
+            <td>{{formatDate publishedAt "day"}}</td>
+          </tr>
+        {{else}}
+          <tr>
+            <td colspan="6" class="text-center">没有公示的采购意向！</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  <div class="list-pagination pagination-danger clearfix"
+      data-size="{{#if pageSize ~}}{{pageSize}}{{else}}20{{~/if}}"
+      data-total="{{_DATA_.total}}"></div>
+{{/component}}

@@ -1,0 +1,103 @@
+{{#component "carousel-container js-comp"}}
+  <div class="carousel{{#equals isSuper "1"}} carousel-super{{/equals}}{{#equals type "round"}} carousel-rounded{{/equals}}{{#equals type "square"}} carousel-squared{{/equals}}{{#equals type "round-rt"}} carousel-rounded-rt{{/equals}}{{#equals type "square-lb"}} carousel-squared-lb{{/equals}}" data-ride="carousel" data-type="switchable" data-interval="{{#if interval}}{{interval}}{{else}}3000{{/if}}" data-colors="{{colors}}" data-row-size="{{rowSize}}" style="height:{{#if height}}{{height}}{{else}}100{{/if}}px;">
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-contents">
+      {{#if images}}
+        {{#each images}}
+        <div data-role="content" class="carousel-content {{#unless @first}}hide{{/unless}}" data-id="1" style="height:{{#if ../height}}{{../height}}{{else}}100{{/if}}px;background:url('{{image}}') no-repeat center;">
+          <a {{#if href}}href="{{href}}"{{/if}} target="_blank"></a>
+        </div>
+        {{#equals @index 0}}
+          <div data-role="content" class="carousel-content hide" data-id="1" style="height:{{#if ../height}}{{../height}}{{else}}100{{/if}}px;background:url('/lunatone/assets/images/other-images/banner2.png') no-repeat center;">
+            <a href="/2017zhuanti" target="_blank"></a>
+          </div>
+          <div data-role="content" class="carousel-content hide" data-id="1" style="height:{{#if ../height}}{{../height}}{{else}}100{{/if}}px;background:url('/lunatone/assets/images/other-images/banner3.png') no-repeat center;">
+            <a href="/pages/banner/public20180211" target="_blank"></a>
+          </div>
+        {{/equals}}
+        {{/each}}
+      {{else}}
+        {{#if image1}}
+        <div data-role="content" class="carousel-content" data-id="1" style="height:{{#if height}}{{height}}{{else}}100{{/if}}px;background:url('{{image1}}') no-repeat center;">
+          <a {{#if href}}href="{{href1}}"{{/if}} target="_blank"></a>
+        </div>
+        {{/if}}
+        {{#if image2}}
+        <div data-role="content" class="carousel-content hide" data-id="2" style="height:{{#if height}}{{height}}{{else}}100{{/if}}px;background:url('{{image2}}') no-repeat center;">
+          <a {{#if href}}href="{{href2}}"{{/if}} target="_blank"></a>
+        </div>
+        {{/if}}
+        {{#if image3}}
+        <div data-role="content" class="carousel-content hide" data-id="3" style="height:{{#if height}}{{height}}{{else}}100{{/if}}px;background:url('{{image3}}') no-repeat center;">
+          <a {{#if href}}href="{{href3}}"{{/if}} target="_blank"></a>
+        </div>
+        {{/if}}
+        {{#if image4}}
+        <div data-role="content" class="carousel-content hide" data-id="4" style="height:{{#if height}}{{height}}{{else}}100{{/if}}px;background:url('{{image4}}') no-repeat center;">
+          <a {{#if href}}href="{{href4}}"{{/if}} target="_blank"></a>
+        </div>
+        {{/if}}
+        {{#if image5}}
+        <div data-role="content" class="carousel-content hide" data-id="5" style="height:{{#if height}}{{height}}{{else}}100{{/if}}px;background:url('{{image5}}') no-repeat center;">
+          <a {{#if href}}href="{{href5}}"{{/if}} target="_blank"></a>
+        </div>
+        {{/if}}
+      {{/if}}
+    </div>
+    <div class="carousel-navs" data-role="link">
+      <!-- Indicators -->
+      {{#equals isIndicator "1"}}
+        <ol class="carousel-indicators">
+          {{#if images}}
+            {{#each images}}
+              <li data-role="nav" {{#if @first}}class="active"{{/if}}>
+                {{#if ../type}}
+                  {{#equals ../type "auto"}}
+                  {{else}}
+                    <span class="icon-zcy icon-yuandian"></span>
+                    <span class="icon-zcy icon-yuandiankuang"></span>
+                  {{/equals}}
+                {{/if}}
+              </li>
+            {{/each}}
+            <li data-role="nav">
+                {{#if type}}
+                  {{#equals type "auto"}}
+                  {{else}}
+                    <span class="icon-zcy icon-yuandian"></span>
+                    <span class="icon-zcy icon-yuandiankuang"></span>
+                  {{/equals}}
+                {{/if}}
+              </li>
+              <li data-role="nav">
+                {{#if type}}
+                  {{#equals type "auto"}}
+                  {{else}}
+                    <span class="icon-zcy icon-yuandian"></span>
+                    <span class="icon-zcy icon-yuandiankuang"></span>
+                  {{/equals}}
+                {{/if}}
+              </li>
+          {{else}}
+            {{#if image1}}<li data-role="nav" class="active">{{#if type}}{{#equals type "auto"}}{{else}}<span class="icon-zcy icon-yuandian"></span><span class="icon-zcy icon-yuandiankuang"></span>{{/equals}}{{/if}}</li>{{/if}}
+            {{#if image2}}<li data-role="nav">{{#if type}}{{#equals type "auto"}}{{else}}<span class="icon-zcy icon-yuandian"></span><span class="icon-zcy icon-yuandiankuang"></span>{{/equals}}{{/if}}</li>{{/if}}
+            {{#if image3}}<li data-role="nav">{{#if type}}{{#equals type "auto"}}{{else}}<span class="icon-zcy icon-yuandian"></span><span class="icon-zcy icon-yuandiankuang"></span>{{/equals}}{{/if}}</li>{{/if}}
+            {{#if image4}}<li data-role="nav">{{#if type}}{{#equals type "auto"}}{{else}}<span class="icon-zcy icon-yuandian"></span><span class="icon-zcy icon-yuandiankuang"></span>{{/equals}}{{/if}}</li>{{/if}}
+            {{#if image5}}<li data-role="nav">{{#if type}}{{#equals type "auto"}}{{else}}<span class="icon-zcy icon-yuandian"></span><span class="icon-zcy icon-yuandiankuang"></span>{{/equals}}{{/if}}</li>{{/if}}
+          {{/if}}
+        </ol>
+      {{/equals}}
+
+        <!-- Controls -->
+      {{#equals isControl "1"}}
+        <a class="left carousel-control" data-role="prev">
+          <i class="icon-carousel-left"></i>
+        </a>
+        <a class="right carousel-control" data-role="next">
+          <i class="icon-carousel-right"></i>
+        </a>
+      {{/equals}}
+    </div>
+  </div>
+{{/component}}

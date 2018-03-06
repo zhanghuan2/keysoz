@@ -1,0 +1,320 @@
+{{#component "js-comp buyer_back-change_purchaser-info"}}
+{{!json}}
+
+    <div class="component">
+        <div class="component-header">
+            退换货单基本信息
+        </div>
+        <div class="component-body">
+            <table class="table border-none">
+                <tbody>
+                <tr>
+                    <th>退换货单号</th>
+                    <td>{{_DATA_.id}}</td>
+                    <th>订单号</th>
+                    <td><a class="order-info" href="javascript:;">{{_DATA_.orderId}}</a></td>
+                    <th>创建时间</th>
+                    <td>{{_DATA_.createdAt}}</td>
+                    <td class="status" rowspan="3">
+                        <span class="#1">退换货单状态：</span>
+                        {{#equals _DATA_.status  1}}<span class="#2 color #FF9147">待供应商确认</span>{{/equals}}
+                        {{#equals _DATA_.status -1}}<span class="#2 color #FF9147">供应商拒绝</span>{{/equals}}
+                        {{#equals _DATA_.status -2}}<span class="#2 color #FF9147">采购人撤销</span>{{/equals}}
+                        {{#equals _DATA_.status  2}}<span class="#2 color #FF9147">待采购人退换货</span>{{/equals}}
+                        {{#equals _DATA_.status  3}}<span class="#2 color #FF9147">待供应商收货</span>{{/equals}}
+                        {{#equals _DATA_.status  4}}<span class="#2 color #FF9147">供应商已收货待发货</span>{{/equals}}
+                        {{#equals _DATA_.status  5}}<span class="#2 color #FF9147">供应商部分发货</span>{{/equals}}
+                        {{#equals _DATA_.status  6}}<span class="#2 color #FF9147">供应商全部发货</span>{{/equals}}
+                        {{#equals _DATA_.status  9}}<span class="#2 color #FF9147">待供应商上门取货</span>{{/equals}}
+                        {{#equals _DATA_.status 10}}<span class="#2 color #FF9147">退换货结束</span>{{/equals}}
+                    </td>
+                </tr>
+                <tr>
+                    <th>采购单位</th>
+                    <td>{{_DATA_.purchaserOrgName}}</td>
+                    <th>创建人</th>
+                    <td>{{_DATA_.createrName}}</td>
+                    <th>联系电话</th>
+                    <td>{{_DATA_.createrContactMobile}}</td>
+                </tr>
+                <tr>
+                    <th>供应商</th>
+                    <td>{{_DATA_.supplierOrgName}}</td>
+                    <th>联系人</th>
+                    <td>{{_DATA_.supplierContact}}</td>
+                    <th>联系电话</th>
+                    <td>{{_DATA_.supplierContactMobile}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="component">
+        <div class="component-header">
+            退换货信息
+        </div>
+        <div class="component-body">
+            <table class="table border-none">
+                <tbody>
+
+                {{!物流发货}}
+                {{#equals _DATA_.returnType 1}}
+                    <tr>
+                        <th>换货方式</th>
+                        <td>物流发货</td>
+                    </tr>
+                    {{#if _DATA_.purchaserAddr}}
+                        <tr>
+                            <th>采购人收货地址</th>
+                            <td>{{#with _DATA_.purchaserAddr}}{{province}} {{city}} {{region}} {{street}} {{detail}} ({{receiverName}} 收) {{mobile}}{{/with}}</td>
+                        </tr>
+                    {{/if}}
+                    {{#if _DATA_.supplierAddr}}
+                        <tr>
+                            <th>供应商收货地址</th>
+                            <td>{{#with _DATA_.supplierAddr}}{{province}} {{city}} {{region}} {{street}} {{detail}} ({{receiverName}} 收) {{mobile}}{{/with}}</td>
+                        </tr>
+                    {{/if}}
+                {{/equals}}
+
+                {{!上门取件}}
+                {{#equals _DATA_.returnType 2}}
+                    <tr>
+                        <th>换货方式</th>
+                        <td>上门取件</td>
+                    </tr>
+                    <tr>
+                        <th>取件地址</th>
+                        <td>{{#if _DATA_.purchaserAddr}}{{#with _DATA_.purchaserAddr}}{{province}} {{city}} {{region}} {{street}} {{detail}} ({{receiverName}} 收) {{mobile}}{{/with}}{{/if}}</td>
+                    </tr>
+                {{/equals}}
+
+                <tr>
+                    <th>换货原因</th>
+                    <td class="color #FF9147">{{_DATA_.returnReason}}</td>
+                </tr>
+                <tr>
+                    <th>备注</th>
+                    <td>{{_DATA_.remark}}</td>
+                </tr>
+                <tr>
+                    <th>附件上传</th>
+                    <td>
+                        <div id="uploadFile">
+                            <div class="uploadFile">
+                                {{inject "common/uploadFile/download" _FILE_DATA_=_DATA_.returnFiles}}
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            {{!商品列表}}
+            {{#if _DATA_.returnItems}}
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <td>商品名称</td>
+                        <td>单价（元）</td>
+                        <td>总数量</td>
+                        <td>采购计划</td>
+                        <td>数量</td>
+                        <td>退货数量</td>
+                        <td>换货数量</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each _DATA_.returnItems}}
+                        <tr>
+                            <td>
+                              <span class="rowspan #20">{{itemName}}</span>
+                              {{#equals (size attributeMap) 0}}
+                              {{else}}
+                                <br>
+                                <span class="sku-attr js-sku-attrs" data-attrs="{{json attributeMap}}"></span>
+                              {{/equals}}
+                            </td>
+                            <td><span class="rowspan #66 color #FF9147">{{formatPrice skuPrice}}</span></td>
+                            <td><span class="rowspan #66">{{totalQuantity}}</span></td>
+                            <td>{{#each pplanRelations}}<span class="rowspan #28">{{confirmationNo}}</span>{{/each}}</td>
+                            <td>{{#each pplanRelations}}<span class="rowspan #28">{{quantity}}</span>{{/each}}</td>
+                            <td>{{#each pplanRelations}}<span class="rowspan #28">{{backQuantity}}</span>{{/each}}</td>
+                            <td><span class="rowspan #66">{{swapQuantity}}</span></td>
+                        </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            {{/if}}
+
+        </div>
+    </div>
+
+    {{#equals _DATA_.returnType 1}}
+        <div class="component">
+            <div class="component-header">
+                采购人物流信息
+            </div>
+            <div class="component-body">
+
+                {{!流转日志}}
+                <div class="zcy-timeline">
+                    {{#if _DATA_.purchaserShipment}}
+                        {{#each _DATA_.purchaserShipment.expressInfo}}
+                            {{#if @last}}
+                                {{#each expressSteps}}
+                                    <div class='sr-row trans-info down last'>
+                                        <div class='sr-line line-solid'></div>
+                                        <div class='sr-dot {{#if @last}}dot-success{{/if}}'></div>
+                                        <label class="ml mr">{{formatDate time}}</label>
+                                        <label class="ml mr">{{desc}}</label>
+                                    </div>
+                                {{/each}}
+                            {{else}}
+                                {{#each expressSteps}}
+                                    <div class='sr-row trans-info down'>
+                                        <div class='sr-line line-solid'></div>
+                                        <div class='sr-dot {{#if @last}}dot-success{{/if}}'></div>
+                                        <label class="ml mr">{{formatDate time}}</label>
+                                        <label class="ml mr">{{desc}}</label>
+                                    </div>
+                                {{/each}}
+                            {{/if}}
+                        {{else}}
+                            暂无物流信息
+                        {{/each}}
+                    {{else}}
+                        暂无物流信息
+                    {{/if}}
+                </div>
+
+                {{!备注}}
+                {{#if _DATA_.supplierAddr}}
+                    <div class="remark">
+                        <span>供应商收货地址</span>{{#with _DATA_.supplierAddr}}{{province}} {{city}} {{region}} {{street}} {{detail}} ({{receiverName}} 收) {{mobile}}{{/with}}
+                    </div>
+                {{/if}}
+
+            </div>
+        </div>
+    {{/equals}}
+
+    {{#each _DATA_.supplierShipments}}
+        <div class="component">
+            <div class="component-header">
+                供应商发货商品信息{{#if ../_DATA_.supplierShipments.[1]}}（{{add @index 1}}）{{/if}}{{#equals status 0}}<input class="btn confirm-receipt" type="button" value="确认收货" data-return-id="{{../_DATA_.id}}" data-shipment-id="{{shipmentId}}">{{/equals}}
+            </div>
+            <div class="component-body">
+
+                {{!商品列表}}
+                <div class="component">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <td>商品名称</td>
+                            <td>单价（元）</td>
+                            <td>总数量</td>
+                            <td>发货数量</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#equals shipmentItems.length 0}}
+                            <tr>
+                                <td colspan="4" class="text-center">当前的列表中没有内容</td>
+                            </tr>
+                        {{else}}
+                            {{#each shipmentItems}}
+                                <tr>
+                                    <td>{{itemName}}</td>
+                                    <td class="color #FF9147">{{formatPrice skuPrice}}</td>
+                                    <td>{{totalQuantity}}</td>
+                                    <td>{{shippedQuantity}}</td>
+                                </tr>
+                            {{/each}}
+                        {{/equals}}
+                        </tbody>
+                    </table>
+                </div>
+
+                {{!物流信息}}
+                <div class="component">
+                    <div class="component-header">
+                        物流信息
+                    </div>
+                    <div class="component-body zcy-timeline">
+                        {{#each expressInfo}}
+                            {{#if @last}}
+                                {{#each expressSteps}}
+                                    <div class='sr-row trans-info down last'>
+                                        <div class='sr-line line-solid'></div>
+                                        <div class='sr-dot {{#if @last}}dot-success{{/if}}'></div>
+                                        <label class="ml mr">{{formatDate time}}</label>
+                                        <label class="ml mr">{{desc}}</label>
+                                    </div>
+                                {{/each}}
+                            {{else}}
+                                {{#each expressSteps}}
+                                    <div class='sr-row trans-info down'>
+                                        <div class='sr-line line-solid'></div>
+                                        <div class='sr-dot {{#if @last}}dot-success{{/if}}'></div>
+                                        <label class="ml mr">{{formatDate time}}</label>
+                                        <label class="ml mr">{{desc}}</label>
+                                    </div>
+                                {{/each}}
+                            {{/if}}
+                        {{else}}
+                            暂无物流信息
+                        {{/each}}
+                    </div>
+                </div>
+
+                {{!收货地址}}
+                {{#if ../_DATA_.purchaserAddr}}
+                    <div class="remark">
+                        <span>采购人收货地址</span>{{#with ../_DATA_.purchaserAddr}}{{province}} {{city}} {{region}} {{street}} {{detail}} ({{receiverName}} 收) {{mobile}}{{/with}}
+                    </div>
+                {{/if}}
+
+            </div>
+        </div>
+    {{/each}}
+
+    <div class="component">
+        <div class="component-header">
+            流转日志
+        </div>
+        <div class="component-body">
+
+            {{!流转日志}}
+            <div class="zcy-timeline">
+                {{#each _LOG_}}
+                    <div class='sr-row trans-info down'>
+                        {{#if @index}}<div class='sr-line line-solid'></div>{{/if}}
+                        <div class='sr-dot {{#if @last}}dot-blue{{/if}}'></div>
+                        <label class="ml mr" style="width: 220px;">{{createdAt}}</label>
+                        <label class="ml mr" style="width: 120px;">{{checkerOrg}}</label>
+                        <label class="ml mr" style="width: 120px;">{{checkerName}}</label>
+                        <label class="ml mr" style="width: 120px;">
+                            {{#equals status  1}}创建退换货单{{/equals}}
+                            {{#equals status -1}}供应商不同意{{/equals}}
+                            {{#equals status -2}}撤销{{/equals}}
+                            {{#equals status  2}}同意{{/equals}}
+                            {{#equals status  3}}采购人发货{{/equals}}
+                            {{#equals status  4}}供应商收货{{/equals}}
+                            {{#equals status  5}}供应商部分发货{{/equals}}
+                            {{#equals status  6}}供应商全部发货{{/equals}}
+                            {{#equals status  9}}待上门取货{{/equals}}
+                            {{#equals status 10}}退换货结束{{/equals}}
+                        </label>
+                        <label class="ml mr" style="width: 120px;">{{checkerComment}}</label>
+                    </div>
+                {{else}}
+                    暂无流转日志
+                {{/each}}
+            </div>
+
+        </div>
+    </div>
+
+{{/component}}

@@ -1,0 +1,43 @@
+@import "compass/css3/inline-block";
+@import "pokeball/theme";
+
+.release-items-category-bc {
+  height: auto;
+  display: none;
+  .category{
+    border-width:1px;
+  }
+
+  .option-banner {
+    width: 870px;
+    height: 40px;
+
+    .recent-category {
+      float: left;
+    }
+
+    .items-search {
+      width: 240px;
+      float: right;
+    }
+  }
+
+  .category-list {
+    height: 400px;
+  }
+
+  .button-submit {
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .selected-category {
+    border-top: 1px solid $color-border;
+    border-bottom: 1px solid $color-border;
+    width: 100%;
+    background-color: $color-background;
+    text-align: center;
+    padding: 10px 0;
+  }
+}

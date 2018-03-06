@@ -1,0 +1,16 @@
+<div class="categorys" data-all="{{data}}">
+    {{#each data}}
+        <div class="{{#equals status 1}} category-li {{else}} category-li-disable {{/equals}}">
+            <div class="category-logo">
+                <i class="category-icon icon-zcy {{iconPath}}"></i>
+            </div>
+            <div class="parent-category">
+                <a {{#equals status 1}} href="{{href}}/search?nodeId={{id}}" {{else}} href="javascript:;" {{/equals}} target="_blank" class="child-category"
+                    {{#equals status 1}} title="{{displayName}}" {{else}} title="{{statusMemo}}" {{/equals}}>
+                    {{displayName}}
+                </a>
+            </div>
+        </div>
+    {{/each}}
+</div>
+

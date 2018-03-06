@@ -1,0 +1,18 @@
+{{#component "dropdown-menu float-menu"}}
+<div id="msg-container" class="float-menu-body">
+  <a class="dropdown-menu-title" href="javascript:;"><i></i><span>消息</span></a>
+  {{#unless _DATA_.messages}}
+  <a class="text-bg-hover" href="javascript:;" class="disabled">当前没有未读消息</a>
+  {{/unless}}
+  {{#each _DATA_.messages}}
+  <a class="text-bg-hover" href="{{_ENV_HREF_.middle}}/dashboard/message/detail?id={{id}}" title="[{{title}}] {{content}}">
+    <span class="text-link">{{title}}</span>
+    &nbsp;
+    <span class="time-info" data-time-millis="{{formatDate createdAt "yyyy-MM-dd HH:mm:ss"}}">刚刚</span>
+  </a>
+  {{/each}}
+  <a href="{{_ENV_HREF_.middle}}/dashboard/message?read=false#unread" {{#of _USER_.currentCategory "01,02,03,06,12"}}target="_blank"{{/of}} class="header-message-more menu-footer">
+    <span style="color: #999;">查看更多&gt;</span>
+  </a>
+</div>
+{{/component}}

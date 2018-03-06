@@ -1,0 +1,187 @@
+
+    .buyer_back-change_purchaser-info {
+
+        & {
+
+            .component {
+                margin-bottom: 10px;
+            }
+
+            .component-header {
+                position: relative;
+                font-size: 14px;
+                line-height: 40px;
+                text-indent: 20px;
+
+                .confirm-receipt {
+                    position: absolute;
+                    right: 20px;
+                    top: 4px;
+                }
+
+            }
+
+            .component-body {
+
+                .table {
+
+                    tbody {
+
+                        th, td {
+                            height: 30px;
+                            line-height: 30px;
+                        }
+
+                        th {
+                            width: 160px;
+                            text-align: right;
+                        }
+
+                        th:after {
+                            content: "：";
+                        }
+
+                        th {
+                            color: #AAAAAA;
+                        }
+
+                        td {
+                            color: #666666;
+                        }
+
+                    }
+
+                }
+
+                .table {
+                    margin-top: 10px;
+                }
+
+                .table:first-child {
+                    margin-top: 0;
+                }
+
+                .table.border-none {
+                    border: none;
+
+                    tbody {
+
+                        tr, th, td {
+                            padding: inherit;
+                            border: none;
+                        }
+
+                    }
+
+                }
+
+                .table, table.border-none {
+
+                    td.status {
+                        padding-left: 40px;
+                        border-left: 2px solid #F4F5F5;
+                        background-color: #FFFFFF;
+                    }
+
+                    .\#1 {
+                        display: block;
+                        font-size: 12px;
+                        line-height: 12px;
+                    }
+
+                    .\#2 {
+                        display: block;
+                        font-size: 18px;
+                        line-height: 40px;
+                    }
+
+                }
+
+                .component-body {
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+
+                .zcy-timeline {
+
+                    .sr-row.trans-info.down:first-child .sr-line.line-solid {
+                        display: none;
+                    }
+
+                    .dot-success {
+                        border-color: #e5e9ee;
+                        background-color: #ffffff;
+                    }
+
+                    .last .dot-success {
+                        border-color: #2dc12d;
+                        background-color: #2dc12d;
+                    }
+
+                }
+
+                .remark {
+                    position: relative;
+                    margin-top: 20px;
+                    color: #666666;
+                    font-size: 12px;
+                    line-height: 60px;
+
+                    span {
+                        color: #AAAAAA;
+                    }
+
+                    span:after {
+                        content: "：";
+                    }
+
+                }
+
+                .remark:before {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    top: -2px;
+                    height: 2px;
+                    background-color: #EFEFEF;
+                }
+
+                .rowspan {
+                    display: block;
+                }
+
+                .sku-attr {
+                    line-height: 14px;
+                    color: #999;
+                }
+
+                .rowspan.\#20 {
+                    line-height: 20px;
+                }
+
+                .rowspan.\#28 {
+                    line-height: 28px;
+                }
+
+                .rowspan.\#66 {
+                    line-height: 66px;
+                }
+
+                .color.\#2687D0 {
+                    color: #2687D0;
+                }
+
+                .color.\#FF9147 {
+                    color: #FF9147;
+                }
+
+                .color.\#00B22D {
+                    color: #00B22D;
+                }
+
+            }
+
+        }
+
+    }

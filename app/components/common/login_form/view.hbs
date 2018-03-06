@@ -1,0 +1,43 @@
+{{#component "login-form-block js-comp"}}
+<div class="login-block">
+  <div class="login-title">
+    <label class="">帐号登录</label>
+  </div>
+  <form class="login-form" action="" method="post">
+    <div class="col-12 input-row hidden">
+      <div class="login-error">
+        <i class="icon-zcy icon-alertfill login-error-icon"></i>
+        <label id="error-text" class="error-text">帐号不存在，请重新输入</label>
+      </div>
+    </div>
+    <div class="col-12 input-row hidden">
+      <label class="text-danger" id="error-input"></label>
+    </div>
+    <div class="col-12 input-row">
+      <div class="input-group">
+        <i class="icon-zcy icon-dengluyonghuming input-icon"></i>
+        <input type="text" id="login-by" name="loginBy" value="" class="input" placeholder="请输入帐号/邮箱/手机号"/></div>
+      </div>
+    <div class="col-12 input-row">
+      <div class="input-group">
+        <i class="icon-zcy icon-denglumima input-icon"></i>
+        <input type="password" id="password" name="password" value="" class="input" placeholder="请输入密码"/>
+      </div>
+    </div>
+    <div class="col-12 input-row" id="div-captcha">
+      <div class="input-group">
+        <input type="text" id="captcha" name="captcha" value="" class="input-captcha input" placeholder="请输入验证码" autocomplete="off"/>
+        <img alt="验证码" id="img-captcha" name="img-captcha" class="img-captcha" src="/api/user/captcha" title="看不清？点击更换" />
+      </div>
+    </div>
+    <div class="col-12 input-row">
+      <input type="checkbox" name="auto-login" id="auto-login" class="auto-login-check" />
+      <label class="auto-login">记住帐号</label>
+      <a href="/password-find/phone/fill-info" class="forget-password pull-right">忘记密码？</a>
+    </div>
+    <div class="col-12 input-row">
+      <button type="button" id="login-now" name="login-now" class="btn btn-block login-btn">登录</button>
+    </div>
+  </form>
+</div>
+{{/component}}

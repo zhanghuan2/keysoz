@@ -1,0 +1,28 @@
+{{#partial "realTitle"}}商品审核{{/partial}}
+{{#partial "realBody"}}
+  {{#inject "common/breadcrumb"}}
+    {
+      "breadcrumb":
+      [{
+        "crumb": "商品管理",
+        "url": "#"
+      },
+      {
+        "crumb": "商品监管",
+        "url": "#"
+      },
+      {
+        "crumb": "商品详情",
+        "url": "#"
+      }]
+    }
+  {{/inject}}
+  {{#if tag}}
+    {{inject "seller/item_check_detail"}}
+  {{else}}
+    {{#inject "seller/item_check_detail"}}
+      {"tag": null}
+    {{/inject}}
+  {{/if}}
+{{/partial}}
+{{> user_layout}}

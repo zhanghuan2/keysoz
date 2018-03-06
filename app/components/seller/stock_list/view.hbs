@@ -1,0 +1,78 @@
+{{#component "js-comp stock-list trade-manage"}}
+  <div class="page-body-option clearfix">
+    <div class="page-title">库存信息</div>
+    <button class="btn btn-primary pull-right js-add-stock-btn">新增仓库</button>
+  </div>
+  <div class="stock-list-body" data-sku-id="{{skuId}}"
+                               data-warehouse-id="{{warehouseId}}"
+                               data-warehous-ccode="{{warehouseCode}}"
+                               data-total="{{_DATA_.total}}">
+    <div id="block" class="block">
+      <form id="form4">
+        <span class="span3">
+          <label for="">选择仓库:</label>
+          <select class="js-select-warehouse-id">
+            <option value="">请选择</option>
+          </select>
+        </span>
+        <span class="span3">
+          <label>仓库编码:</label>
+          <input type="text" placeHolder="请输入" value="{{warehouseCode}}" class="js-select-warehouse-code">
+        </span>
+        <button class="btn btn-primary btn-ghost pull-right js-search-reset">重置</button>
+        <button class="btn btn-primary btn-minor pull-right form-search-button js-search-button">搜索</button>
+      </form>
+    </div>
+    <table class="table table-striped warehouse-list-table">
+      <thead>
+        <th width="20%">仓库</th>
+        <th width="25%">仓库编码</th>
+        <th width="25%">库存数量</th>
+        <th width="30%">操作</th>
+      </thead>
+      <tbody>
+        <tr class="add-stock-tr hide js-add-stock-tr">
+          <td>
+            <span>
+              <select>
+              </select>
+            </span>
+          </td>
+          <td></td>
+          <td>
+            <input type="text" class="js-add-stock-quantity">
+          </td>
+          <td>
+            <button class="btn btn-small js-add-stock-submit">保存</button>
+            <button class="btn btn-small js-cancle-add-stock">取消</button>
+          </td>
+        </tr>
+        {{#if _DATA_}}
+        {{#each _DATA_.data}}
+        <tr data-sku-id="{{zcyStock.skuId}}"
+            data-warehouse-code="{{zcyWarehouse.code}}">
+          <td class="warehouse-name">{{zcyWarehouse.name}}</td>
+          <td>{{zcyWarehouse.code}}</td>
+          <td class="js-save-quantity">{{zcyStock.availableQuantity}}</td>
+          <td class="operating-list">
+            <span class="in-out-stock-input js-in-out-stock-input hide">
+              <input type="text" class="js-change-quantity">
+              <button class="btn btn-small js-in-out-stock">保存</button>
+              <button class="btn btn-small js-cancel-stock">取消</button>
+            </span>
+            <a class="js-in-stock js-stock">入库</a>
+            <a class="js-out-stock js-stock">出库</a>
+            <a class="js-view-record" href="/seller/stock-record?warehouseCode={{zcyWarehouse.code}}&skuId={{zcyStock.skuId}}">查看记录</a>
+          </td>
+        </tr>
+        {{/each}}
+        {{else}}
+          <tr><td colspan="6" class="center-text">无可展示信息</td></tr>
+        {{/if}}
+      </tbody>
+    </table>
+    <div class="pagination"
+        data-size="{{#if pageSize ~}}{{pageSize}}{{else}}20{{~/if}}"
+        data-total="{{_DATA_.total}}"></div>
+  </div>
+{{/component}}

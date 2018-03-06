@@ -1,0 +1,23 @@
+@import "pokeball/theme";
+@import "compass/css3/inline-block";
+@import "compass/css3/box-sizing";
+
+.customer-service {
+  * {
+    @include box-sizing(content-box);
+  }
+  
+  width: 38px;
+  position: fixed;
+  right: .1%;
+  bottom: 45%;
+  
+  &-box {
+    width: 38px;
+    cursor: pointer;
+  }
+  
+  &-icon {
+    width: 38px;
+  }
+}

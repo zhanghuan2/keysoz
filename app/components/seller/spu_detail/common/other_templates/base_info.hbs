@@ -1,0 +1,67 @@
+<div class="form-section section-top-bottom clearfix">
+  <div class="section-title">基本信息</div>
+    <div style="display: none;">{{json}}</div>
+  <div class="pull-left section-content clearfix">
+    <div class="clearfix">
+      <div class="form-left">
+        <div class="control-group" data-model="name">
+          <label class="group-title line-title">SPU 名称：</label>
+          <div class="group-content">
+            <span class="input-text">{{spu.name}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="form-right">
+        <div class="control-group" data-model="name">
+          <label class="group-title line-title">品牌：</label>
+          <div class="group-content">
+              {{#if spu}}<span class="input-text">{{spu.brandName}}</span>{{/if}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="control-group image-area">
+      <label class="group-title">图片：</label>
+      <div class="group-content">
+        <div class="image-tip">请上传小于1MB的PNG或JPG的图片</div>
+        <div class="main-image {{#unless spu.mainImage}}empty{{/unless}} image-container js-main-image js-item-image" id="js-item-main-image">
+          {{#if spu.mainImage}}
+            <img src="{{spu.mainImage}}" alt="">
+          {{!-- {{else}}
+            <span class="image-tip-add">+</span>--}}
+          {{/if}}
+          <input type="hidden" name="mainImage" value="{{spu.mainImage}}">
+        </div>
+        <ul class="images-list js-images-list clearfix">
+          {{#if spuDetail.images}}
+            {{#each spuDetail.images}}
+              <li class="pull-left image-container js-item-image-container item-image js-item-image">
+                <img src="{{url}}" alt="" data-src="{{url}}" data-name="{{name}}"/>
+              </li>
+              {{!--{{#if @last}}
+                {{#gt @index 3}}
+                {{else}}
+                  <li class="pull-left image-container image-end empty js-item-image">
+                    <span class="image-tip-add">+</span>
+                  </li>
+                {{/gt}}
+              {{/if}}--}}
+            {{/each}}
+          {{else}}
+            <li class="pull-left image-container image-end empty js-item-image">
+              <span class="image-tip-add">+</span>
+            </li>
+          {{/if}}
+        </ul>
+      </div>
+    </div>
+    <div class="form-left">
+        <div class="control-group xhbox last-line" data-model="specification">
+            <label class="group-title line-title">型号：</label>
+            <div class="group-content">
+              <span class="input-text">{{spu.specification}}</span>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

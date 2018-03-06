@@ -1,0 +1,29 @@
+{{#each this}}
+  <ul>
+    <li id="{{node.code}}" class="">{{node.name}}
+      {{#each data}}
+      <ul>
+        <li id="{{node.code}}" class="">{{node.name}}
+          {{#each data}}
+          <ul>
+            <li id="{{node.code}}" class="">{{node.name}}
+              {{#each data}}
+              <ul>
+                <li id="{{node.code}}" class="">{{node.name}}
+                  {{#each data}}
+                  <ul>
+                    <li id="{{node.code}}">{{node.name}}</li>
+                  </ul>
+                  {{/each}}
+                </li>
+              </ul>
+              {{/each}}
+            </li>
+          </ul>
+          {{/each}}
+        </li>
+      </ul>
+      {{/each}}
+    </li>
+  </ul>
+{{/each}}

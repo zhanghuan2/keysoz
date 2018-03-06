@@ -1,0 +1,24 @@
+{{#partial "realTitle"}}预购单查询{{/partial}}
+{{#partial "realBody"}}
+  {{#inject "common/breadcrumb"}}
+    {
+    "breadcrumb":
+    [
+    {
+    "crumb": "网超采购管理",
+    "url": "#"
+    },
+    {
+    "crumb": "预购单查询",
+    "url": "/customer/netsuper-purchases"
+    },
+    {
+    "crumb": "预购单详情",
+    "url": "#"
+    }
+    ]
+    }
+  {{/inject}}
+  {{inject "customer_service/purchase/detail"}}
+{{/partial}}
+{{> user_layout}}

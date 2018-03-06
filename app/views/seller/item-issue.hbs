@@ -1,0 +1,36 @@
+{{#partial "realTitle"}}
+  {{#if itemId}}编辑商品{{else}}发布商品{{/if}}
+{{/partial}}
+{{#partial "realBody"}}
+  {{#if itemId}}
+    {{#inject "common/breadcrumb"}}
+      {
+      "breadcrumb":
+      [{
+      "crumb": "商品管理",
+      "url": "#"
+      },
+      {
+      "crumb": "商品编辑",
+      "url": "#"
+      }]
+      }
+    {{/inject}}
+  {{else}}
+    {{#inject "common/breadcrumb"}}
+      {
+      "breadcrumb":
+      [{
+      "crumb": "商品管理",
+      "url": "#"
+      },
+      {
+      "crumb": "商品发布",
+      "url": "#"
+      }]
+      }
+    {{/inject}}
+  {{/if}}
+  {{inject "seller/item_issue/common"}}
+{{/partial}}
+{{> user_layout}}

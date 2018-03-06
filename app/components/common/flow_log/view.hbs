@@ -1,0 +1,18 @@
+{{#component "flow-log js-comp"}}
+<div class="log">
+  <table>
+  {{#each _DATA_}}
+    <tr>
+      <td>{{formatDate createAt}}</td>
+      <td>{{roleCategory}}</td>
+      <td>{{operator}}</td>
+      <td>{{action}}</td>
+      {{#if noDetail}}
+      {{else}}
+      <td>{{detail}}</td>
+      {{/if}}
+    </tr>
+  {{/each}}
+  </table>
+</div>
+{{/component}}

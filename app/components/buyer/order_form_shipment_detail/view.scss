@@ -1,0 +1,63 @@
+@import "compass/css3/inline-block";
+@import "pokeball/theme";
+
+div.order-form-shipment-detail{
+  .order-form-shipment-detail-body{
+    //width: 990px;
+    //background-color: #FFFFFF;
+    //padding: 15px;
+    margin: 10px 0 0 0;
+    .shipment-title{
+      font-size: 14px;
+      margin: 10px;
+      margin-top: 30px;
+      &.shipment-info-title{
+        margin-top: 10px;
+      }
+    }
+    .logistics-info{
+      overflow: auto;
+    }
+    .timeline, .addr-info{
+      margin: 10px;
+    }
+    table{
+      //width: 960px;
+
+      tbody{
+        tr{
+          border: 1px solid #e7e9ea;
+          td{
+            text-align: left;
+            border-width: 0 0 1px 0;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            &:first-child{
+              border-width: 0 0 1px 1px;
+            }
+            &:last-child{
+              border-width: 0 1px 1px 0;
+              text-align: right;
+            }
+            .sku-attrs{
+              color: #BBB;
+            }
+          }
+          &.first-level-tr{
+            border-width: 0 0 1px 2px;
+          }
+        }
+      }
+    }
+    .price, .currency{
+      color: #FE7800;
+    }
+    .no-href{
+      color: #9E9E9C;
+    }
+  }
+  .list-pagination {
+    text-align: right;
+    margin: 10px 0 10px 0;
+  }
+}

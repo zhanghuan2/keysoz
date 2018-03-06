@@ -1,0 +1,25 @@
+{{#component "component-supperPro-main js-comp"}}
+  <div class="hide">{{json this}}</div>
+  <input type="hidden" name="frontUrl" value="{{_ENV_HREF_.front}}">
+  <div class="page-title">
+    <div class="inline-block btn-tab hover-c" style="margin-right: 35px" data-fontid="{{#if frontCategoryId1}}{{frontCategoryId1}}{{else}}860{{/if}}">粮食</div>
+    <div class="inline-block hover-c btn-tab" data-fontid="{{#if frontCategoryId2}}{{frontCategoryId2}}{{else}}{{#equals tabs 1}}{{frontCategoryId}}{{else}}871{{/equals}}{{/if}}">食用油</div>
+    <div class="local-tab">
+      <ul>
+        {{#equals _DATA_.hasPrivate true}}
+          <li class="active hover-c" data-tenderid="" >
+            供货合同供应商
+          </li>
+        {{/equals}}
+        {{#each _DATA_.tenders}}
+          <li class="hover-c {{#equals _DATA_.hasPrivate false}}{{#equals @index 0}}active{{/equals}}{{/equals}}" data-tenderid="{{this.id}}">
+            {{this.name}}
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+  <div class="floor-body clearfix listBox">
+    <img style="display: block;margin: 0 auto;" src="/lunatone/assets/images/other-images/block_loading.gif" />
+  </div>
+{{/component}}

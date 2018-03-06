@@ -1,0 +1,266 @@
+.inquiry_district_ctax {
+  .search-container {
+    position: relative;
+    .search-i {
+      position: absolute;
+      right: 12px;
+      bottom: 8px;
+      cursor: pointer;
+      &:hover {
+        color: #166fff;
+      }
+    }
+    .close-i {
+      position: absolute;
+      right: 43px;
+      top: 27px;
+      &:hover {
+        color: #166fff;
+      }
+    }
+    .senior-search {
+      position: absolute;
+      right: 38px;
+      bottom: 8px;
+      font-weight: 500;
+      color: #333;
+      cursor: pointer;
+      &:hover {
+        color: #197aff;
+      }
+    }
+    >input {
+      font-size: 14px;
+      padding: 6px 120px 6px 20px;
+      width: 100%;
+      border-radius: 22px;
+    }
+    .search-modal {
+      display: none;
+      position: absolute;
+      z-index: 10;
+      background: #fff;
+      width: 510px;
+      margin: 0 26px;
+      padding: 20px 30px;
+      box-shadow: 0 0 5px #ccd0d6;
+      border: 1px solid #ccd0d6;
+      text-align: left;
+      >div {
+        //height: 54px;
+        padding-bottom: 20px;
+      }
+      .title-item {
+        width: 70px;
+        color: #333;
+      }
+      .selectric-wrapper .button {
+        top: 2px;
+      }
+      input[name=keyword-search] {
+        width: 368px;
+      }
+      .selectric {
+        background: #fff;
+        width: 220px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+      .district-text {
+        margin-right: 22px;
+      }
+      .btn-inquiry-reset {
+        font-size: 14px;
+        float: right;
+        margin-right: 10px;
+        color: #666;
+        border-color: #bbb;
+        background-color: #fff;
+        &:hover {
+          color: #197aff;
+          background-color: #fff;
+          border-color: #4c97ff;
+        }
+      }
+      .btn-inquiry-sure {
+        float: right;
+        margin-right: 2px;
+        font-size: 14px;
+      }
+    }
+    .location-container {
+      display: none;
+      position: absolute;
+      top: 139px;
+      left: 283px;
+      border: 1px solid #ccc;
+      padding: 10px 20px;
+      z-index: 20;
+      width: 602px;
+      background: #fff;
+      .location-header {
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+        &::after,
+        &::before {
+          display: table;
+          content: '';
+          clear: both;
+          zoom: 1;
+        }
+        .panel-container {
+          float: left;
+          width: 476px;
+          .district-pannel {
+            position: relative;
+            display: inline-block;
+            //height: 32px;
+            margin: 0 2px 2px 0;
+            padding: 6px 24px 6px 8px;
+            background: #166fff;
+            color: #fff;
+            i {
+              position: absolute;
+              right: 4px;
+              bottom: 6px;
+              &:hover {
+                color: rgba(255, 255, 255, .8);
+              }
+            }
+          }
+        }
+        .submit-btn-container {
+          float: right;
+          button {
+            margin: 1px;
+            font-size: 14px;
+          }
+        }
+      }
+      .location-body {
+        width: 560px;
+        padding-top: 10px;
+        max-height: 460px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        .location-section{
+          overflow: hidden;
+          .ls-left{
+            float: left;
+            width: 40px;
+            border-right: 2px dotted #bbbbbb;
+            margin-top: 8px;
+          }
+          .ls-right{
+            float: left;
+            width: 500px;
+          }
+        }
+
+        i {
+          position: relative;
+          left: 8px;
+          bottom: 0;
+          font-size: 10px;
+        }
+        input[type=checkbox] {
+          margin: 0 12px;
+        }
+        .dt-province {
+          display: inline-block;
+          position: relative;
+          padding: 1px 0;
+          width: 125px;
+          line-height: 30px;
+          vertical-align: top;
+          cursor: pointer;
+          color: #24333e;
+          &:hover {
+            color: #166fff;
+          }
+          &.dt-choosed {
+            color: #166fff;
+            .border {
+              border: 1px solid #ccc;
+              border-bottom: 1px solid #fff;
+              position: relative;
+              z-index: 20;
+            }
+          }
+          &.large{
+            width:250px;
+          }
+          .border {
+            // border: 1px solid #fff;
+          }
+        }
+        .dt-float {
+          width: 500px;
+          border: 1px solid #ccc;
+          text-align: left;
+          position: relative;
+          top: -1px;
+          .dt-city {
+            display: inline-block;
+            width: 124px;
+            line-height: 26px;
+            padding: 7px 0;
+            color: #666;
+            vertical-align: top;
+            cursor: pointer;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            &:hover,
+            &.dt-choosed-city {
+              color: #166fff;
+            }
+            .dt-sfloat {
+              background: #f6f6f6;
+              width: 498px;
+              text-align: left;
+              position: relative;
+              font-size: 12px;
+              &:before,
+              &:after {
+                display: table;
+                content: '';
+                clear: both;
+                zoom: 1;
+              }
+              .dt-county {
+                //float: left;
+                vertical-align: top;
+                display: inline-block;
+                width: 124px;
+                line-height: 26px;
+                color: #666;
+                border-radius: 3px;
+                cursor: pointer;
+                &:hover,
+                &.choosed {
+                  color: #fff;
+                  background: #166fff;
+                }
+                input {
+                  float: left;
+                  position: relative;
+                  top: 7px;
+                }
+                span {
+                  display: inline-block;
+                  width: 86px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  input {
+    font-family: Hiragino Sans GB, Microsoft YaHei, 微软雅黑, SimSun, \5b8b\4f53, WenQuanYi Micro Hei, Helvetica Neue, Arial, Tahoma, sans-serif;
+    border-color: #ccd0d6 !important;
+  }
+}

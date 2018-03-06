@@ -1,0 +1,10 @@
+{{#each _FILE_DATA_}}
+  {{#ifCond @index '>' 4}}
+  {{inject "common/uploadFile/templates" _FILE_DATA_=this _HIDE_=true}}
+  {{else}}
+  {{inject "common/uploadFile/templates" _FILE_DATA_=this}}
+  {{/ifCond}}
+{{/each}}
+{{#gt (size _FILE_DATA_) 4}}
+  <a href='javascript:;' name='show-all-file'>展开全部</a>
+{{/gt}}

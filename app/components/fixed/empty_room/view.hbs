@@ -1,0 +1,56 @@
+{{#component "component-empty-room js-comp"}}
+  <div class="fixed-empty-room clearfix">
+    <div class="table-wrapper">
+      <div class="room-total-table">
+        <table class="table table-fixed">
+          <thead>
+          <tr>
+            <th width="100px">房型</th>
+            <th width="100px">房间数量(间)</th>
+            <th width="120px">协议承诺数量(间)</th>
+          </tr>
+          </thead>
+          <tbody>
+          {{#each _DATA_.rooms}}
+            <tr>
+              <td title="{{name}}">{{name}}</td>
+              <td><strong>{{total}}</strong></td>
+              <td class="count-color-weight">{{roomPromiseCount}}</td>
+            </tr>
+          {{/each}}
+          <tr>
+            <td>合计</td>
+            <td><strong>{{_DATA_.sumRooms.total}}</strong></td>
+            <td class="count-color-weight">{{_DATA_.sumRooms.roomPromiseCount}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="room-daily-table">
+        <table class="table table-fixed">
+          <thead>
+          <tr>
+            {{#each _DATA_.days}}
+              <th>{{formatDate date "MM/dd"}}<br>{{weekday}}</th>
+            {{/each}}
+          </tr>
+          </thead>
+          <tbody>
+          {{#each _DATA_.rooms}}
+            <tr>
+              {{#each counts}}
+                <td>{{count}}</td>
+              {{/each}}
+            </tr>
+          {{/each}}
+          <tr>
+            {{#each _DATA_.sumRooms.counts}}
+              <td><strong>{{count}}</strong></td>
+            {{/each}}
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{{/component}}

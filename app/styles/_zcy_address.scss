@@ -1,0 +1,89 @@
+@import "compass/css3/inline-block";
+@import "pokeball/theme";
+
+$active-title-color: #24344E;
+$title-color: #666;
+$titlt-size: 12px;
+$border-color: #ddd;
+$active-border-color: #328cff;
+
+$active-li-bg-color: $active-border-color;
+$active-li-color: #fff;
+
+.zcy-address {
+
+  .dropdown-content {
+    width: 280px;
+    border: 1px solid $border-color;
+
+    .zcy-address-title {
+      line-height: 32px;
+      font-size: $titlt-size;
+      margin: 0;
+
+      li {
+        float: left;
+        text-align: center;
+        cursor: pointer;
+        color: $title-color;
+        padding: 0;
+        border-bottom: 2px solid $border-color;
+        &.active {
+          color: $active-title-color;
+          border-bottom-color: $active-border-color;
+        }
+      }
+    }
+
+    .zcy-address-selection {
+      ul {
+        li {
+          float: left;
+          padding: 6px;
+          margin: 2px 5px;
+          cursor: pointer;
+          &.active {
+            background-color: $active-li-bg-color;
+            color: $active-li-color;
+            border-radius: 4px;
+          }
+        }
+      }
+
+      &-container {
+        padding: 10px;
+      }
+    }
+  }
+
+  &-select-selection {
+    width: 280px;
+    height: 32px;
+    &.error {
+      border-color: $lightred;
+    }
+    &.valid {
+      border-color: $green;
+    }
+    &.selectric {
+      .btn-clear {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 28px;
+        height: 30px;
+        .icon-zcy {
+          color: #aaa;
+        }
+      }
+      .icon-zcy {
+        position: absolute;
+        color: #000;
+        line-height: 30px;
+        height: 30px;
+        right: 5px;
+        font-size: 12px;
+      }
+    }
+  }
+}

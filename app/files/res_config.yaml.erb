@@ -1,0 +1,748 @@
+# 全局放行
+global:
+  - index
+  - getuser
+  - logout
+
+# 资源树
+tree:
+  cate_m:
+    back:
+      back_c:
+      back_k:
+      back_s:
+    frontend:
+      frontendsync:
+      bindback:
+    subsite:
+      subsiteadd:
+      subsiteedit:
+      subsitedelete:
+    business:
+      businessadd:
+      businessedit:
+  users:
+    seller:
+      sellerstatus:
+      sellerperm:
+      sellerdelete:
+    user:
+      userstatus:
+      userstype:
+    auth:
+      roleadd:
+      roleedit:
+      operateadd:
+      operateedit:
+  products:
+    items:
+      itemsstatus:
+    brands:
+      beandadd:
+  marketing:
+    # market:
+    #   marketadd:
+    #   marketedit:
+    #   marketdelete:
+    #   marketpublish:
+    #   marketstop:
+    coupons:
+      couponsadd:
+      couponsedit:
+      couponsdelete:
+      couponspublish:
+      couponsstop:
+      couponssend:
+    # promos:
+    #   promosadd:
+    #   promosedit:
+    #   promosdelete:
+    #   promospublish:
+    #   promosstop:
+    #   promossend:
+    # itemspackage:
+    #   itemspackageadd:
+    #   itemspackageedit:
+    #   itemspackagestatus:
+    # eventgifts:
+    #   eventgiftsadd:
+    #   eventgiftsedit:
+    #   eventgiftsdelete:
+    #   eventgiftspublish:
+    #   eventgiftsstop:
+    # tools:
+  orders:
+    order:
+      orderdetail:
+      orderstatus:
+      ordercancel:
+    return:
+      returndetail:
+      agreerefunds:
+      refuserefunds:
+      refundrequest:
+      agreereturns:
+      refusereturns:
+    comment:
+      commentstatus:
+  search:
+    hotwords:
+      hotwordsadd:
+      hotwordsedit:
+      hotwordsenabled:
+      hotwordsdelete:
+    participle:
+      participleadd:
+      participleedit:
+      participledelete:
+  notify:
+    email:
+      changepriority:
+    logs:
+  settlement:
+    # deposit:
+    #   depositadd:
+    #   depositedit:
+    # ordersettle:
+    #   ordersellersum:
+    #   ordersettledetail:
+    #   ordersettleitem:
+    #   ordersettlecancel:
+    #   exportexcel:
+    #   sendmoney:
+    #   resendsettle:
+    # ordersettleservice:
+    #   deductmoney:
+    deposit:
+      depositadd:
+      depositedit:
+      depositstatus:
+    fund:
+      fundadd:
+      fundstatus:
+    ordersettle:
+      ordersellersum:
+      ordersettledetail:
+      ordersettleitem:
+      ordersettlecancel:
+      resendsettle:
+    orderreturnsum:
+    advise:
+      advisecheck:
+  configs:
+    config:
+      configadd:
+      configedit:
+  analyse:
+    sales:
+    flows:
+    members:
+    invite:
+    attention:
+  express:
+    expressCreate:
+    expressUpdate:
+    expressEnable:
+    expressDisable:
+    expressDelete:
+
+# 资源定义
+resources:
+  - key: index
+    name: 首页
+    path: /(index)?
+    method: GET
+  - key: getuser
+    name: 获取登录用户
+    path: /api/user
+    method: GET
+  - key: logout
+    name: 登出
+    path: /api/user/logout
+    method: GET
+  - key: cate_m
+    name: 类目管理
+    virtual: true
+  - key: back
+    name: 后台类目
+    path: /categories/backend
+    method: GET
+  - key: back_c
+    name: 后台类目查询子树
+    path: /api/categories/backend/[0-9]+/children
+    method: GET
+  - key: back_k
+    name: 后台类目查询key
+    path: /api/categories/backend/[0-9]+/keys
+    method: GET
+  - key: back_s
+    name: 后台类目查询spu
+    path: /api/categories/backend/[0-9]+/spus
+    method: GET
+  - key: backsync
+    name: 同步后台类目
+    path: /api/categories/backend/sync
+    method: POST
+  - key: frontend
+    name: 前台类目
+    path: /categories/frontend
+    method: GET
+  - key: frontendadd
+    name: 添加前台类目
+    path: /categories/frontend
+    method: GET
+  - key: frontendedit
+    name: 编辑前台类目
+    path: /categories/frontend
+    method: GET
+  - key: frontendsync
+    name: 同步前台类目
+    path: /api/categories/frontend/sync
+    method: POST
+  - key: bindback
+    name: 绑定后台类目
+    path: /api/categories/frontend/bind
+    method: POST
+  - key: subsite
+    name: 二级域名
+    path: /categories/sub-site
+    method: GET
+  - key: subsiteadd
+    name: 添加二级域名
+    path: /api/sub-domain
+    method: POST
+  - key: subsiteedit
+    name: 编辑二级域名
+    path: /api/sub-domain/[0-9]+
+    method: PUT
+  - key: subsitedelete
+    name: 删除二级域名
+    path: /api/sub-domain/[0-9]+
+    method: DELETE
+  - key: users
+    name: 用户管理
+    virtual: true
+  - key: seller
+    name: 商家管理
+    path: /members/shops
+    method: GET
+  - key: sellerstatus
+    name: 更改商家状态
+    path: /api/shops/statuses
+    method: POST
+  - key: sellerperm
+    name: 商家权限管理
+    path: /api/categories/backend/perm
+    method: POST
+  - key: sellerdelete
+    name: 删除商家
+    path: /todo
+    method: DELETE
+  - key: user
+    name: 用户管理
+    path: /members/users
+    method: GET
+  - key: userstatus
+    name: 更改用户状态
+    path: /api/user/statuses
+    method: POST
+  - key: userstype
+    name: 更改用户类型
+    path: /api/user/type/[0-9]+
+    method: POST
+  - key: business
+    name: 行业管理
+    path: /members/business
+    method: GET
+  - key: businessadd
+    name: 添加行业
+    path: /api/shops/businesses
+    method: POST
+  - key: businessedit
+    name: 编辑行业
+    path: /api/shops/businesses
+    method: PUT
+  - key: roleadd
+    name: 新建角色
+    path: /api/admin/op/role
+    method: POST
+  - key: roleedit
+    name: 编辑角色
+    path: /api/admin/op/role
+    method: PUT
+  - key: operateadd
+    name: 新建运营
+    path: /api/admin/op
+    method: POST
+  - key: operateedit
+    name: 编辑运营
+    path: /api/admin/op/[0-9]+
+    method: PUT
+  - key: products
+    name: 商品管理
+    virtual: true
+  - key: items
+    name: 商品管理
+    path: /items/items
+    method: GET
+  - key: itemsstatus
+    name: 更改商品状态
+    path: /api/items/status
+    method: PUT
+  - key: brands
+    name: 品牌管理
+    path: /items/brands
+    method: GET
+  - key: beandadd
+    name: 添加品牌
+    path: /api/brands
+    method: POST
+  - key: marketing
+    name: 营销管理
+    virtual: true
+  - key: market
+    name: 优惠活动
+    path: /marketing/activities
+    method: GET
+  - key: marketadd
+    name: 创建优惠活动
+    path: /api/admin/activities/activity
+    method: POST
+  - key: marketedit
+    name: 编辑优惠活动
+    path: /api/admin/activities/activity
+    method: PUT
+  - key: marketdelete
+    name: 删除优惠活动
+    path: /api/admin/activities/[0-9]+/delete
+    method: DELETE
+  - key: marketpublish
+    name: 发布优惠活动
+    path: /api/admin/activities/[0-9]+/release
+    method: PUT
+  - key: marketstop
+    name: 发布优惠活动
+    path: /api/admin/activities/[0-9]+/stop
+    method: PUT
+  - key: coupons
+    name: 优惠劵管理
+    path: /marketing/coupons
+    method: GET
+  - key: couponsadd
+    name: 添加优惠劵
+    path: /api/admin/coupon
+    method: POST
+  - key: couponsedit
+    name: 编辑优惠劵
+    path: /api/admin/coupon
+    method: PUT
+  - key: couponsdelete
+    name: 删除优惠劵
+    path: /api/admin/coupon/[0-9]+/delete
+    method: DELETE
+  - key: couponspublish
+    name: 发布优惠劵
+    path: /api/admin/coupon/[0-9]+/release
+    method: PUT
+  - key: couponsstop
+    name: 停用优惠劵
+    path: /api/admin/coupon/[0-9]+/stop
+    method: PUT
+  - key: couponssend
+    name: 赠送优惠劵
+    path: /api/admin/coupon/send
+    method: POST
+  - key: promos
+    name: 优惠码管理
+    path: /marketing/promos
+    method: GET
+  - key: promosadd
+    name: 添加优惠码
+    path: /api/admin/promo/definition
+    method: POST
+  - key: promosedit
+    name: 编辑优惠码
+    path: /api/admin/promo/definition
+    method: PUT
+  - key: promosdelete
+    name: 删除优惠码
+    path: /api/admin/promos/[0-9]+/delete
+    method: DELETE
+  - key: promospublish
+    name: 发布优惠码
+    path: /api/admin/promos/[0-9]+/send
+    method: PUT
+  - key: promosstop
+    name: 停用优惠码
+    path: /api/admin/promos/[0-9]+/stop
+    method: PUT
+  - key: promossend
+    name: 赠送优惠码
+    path: /api/admin/promos/send
+    method: POST
+  - key: itemspackage
+    name: 组合套餐
+    path: /marketing/items-package
+    method: GET
+  - key: itemspackageadd
+    name: 添加组合套餐
+    path: /api/seller/itemBundle
+    method: POST
+  - key: itemspackageedit
+    name: 编辑组合套餐
+    path: /api/seller/itemBundle/[0-9]+
+    method: PUT
+  - key: itemspackagestatus
+    name: 组合套餐状态
+    path: /api/seller/itemBundle/[0-9]+/updateStatus
+    method: PUT
+  - key: eventgifts
+    name: 有礼活动
+    path: /marketing/event-gifts
+    method: GET
+  - key: eventgiftsadd
+    name: 添加有礼活动
+    path: /api/admin/activities/activity
+    method: POST
+  - key: eventgiftsedit
+    name: 编辑有礼活动
+    path: /api/admin/activities/activity
+    method: PUT
+  - key: eventgiftsdelete
+    name: 删除有礼活动
+    path: /api/admin/activities/[0-9]+/delete
+    method: DELETE
+  - key: eventgiftspublish
+    name: 发布有礼活动
+    path: /api/admin/activities/[0-9]+/release
+    method: PUT
+  - key: eventgiftsstop
+    name: 停用有礼活动
+    path: /api/admin/activities/[0-9]+/stop
+    method: PUT
+  - key: tools
+    name: 工具管理
+    path: /marketing/tools
+  - key: orders
+    name: 订单管理
+    virtual: true
+  - key: order
+    name: 订单管理
+    path: /trade/orders
+    method: GET
+  - key: orderdetail
+    name: 订单详情
+    path: /trade/order-detail
+    method: GET
+    inherit: true
+  - key: orderstatus
+    name: 更改订单状态
+    path: /api/order/[0-9]+/update
+    method: GET
+  - key: ordercancel
+    name: 取消订单
+    path: /api/admin/orders/[0-9]+/seller/cancel
+    method: GET
+  - key: return
+    name: 退货款管理
+    path: /trade/return
+    method: GET
+  - key: returndetail
+    name: 订单详情
+    path: /trade/return-detail
+    method: GET
+    inherit: true
+  - key: agreerefunds
+    name: 同意退款
+    path: /api/admin/orders/[0-9]+/agreeRefunds
+    method: PUT
+  - key: refuserefunds
+    name: 拒绝退款
+    path: /api/admin/orders/[0-9]+/refuseRefunds
+    method: PUT
+  - key: refundrequest
+    name: 去退款
+    path: /api/admin/orders/[0-9]+/refundRequest
+    method: GET
+  - key: agreereturns
+    name: 同意退货
+    path: /api/admin/orders/[0-9]+/agreeReturns
+    method: PUT
+  - key: refusereturns
+    name: 拒绝退货
+    path: /api/admin/orders/[0-9]+/refuseReturns
+    method: PUT
+  - key: comment
+    name: 评论管理
+    path: /trade/comments
+    method: GET
+  - key: commentstatus
+    name: 评论管理
+    path: /api/admin/orders/comment
+    method: PUT
+  - key: search
+    name: 搜索管理
+    virtual: true
+  - key: hotwords
+    name: 热词管理
+    path: /search/hotwords
+    method: GET
+  - key: hotwordsadd
+    name: 添加热词
+    path: /api/hotword/add
+    method: POST
+  - key: hotwordsedit
+    name: 编辑热词
+    path: /api/hotword/[0-9]+/update
+    method: PUT
+  - key: hotwordsenabled
+    name: 更改热词状态
+    path: /api/hotword/[0-9]+/update
+    method: PUT
+  - key: hotwordsdelete
+    name: 删除热词
+    path: /api/hotword/[0-9]+/delete
+    method: DELETE
+  - key: participle
+    name: 分词管理
+    path: /search/hotwords
+    method: GET
+  - key: participleadd
+    name: 添加分词
+    path: /api/dictionary/add
+    method: POST
+  - key: participleedit
+    name: 编辑分词
+    path: /api/dictionary/[0-9]+/update
+    method: PUT
+  - key: participledelete
+    name: 删除分词
+    path: /api/dictionary/[0-9]+/delete
+    method: DELETE
+  - key: notify
+    name: 通知管理
+    virtual: true
+  - key: email
+    name: 邮件/短信渠道
+    path: /notify/channel-email
+    method: GET
+  - key: changepriority
+    name: 更改邮件/短信优先级
+    path: /api/msg/change-priority
+    method: PUT
+  - key: logs
+    name: 发送日志
+    path: /notify/channel-logs
+    method: GET
+
+  - key: settlement
+    name: 结算中心
+    virtual: true
+  # - key: deposit
+  #   name: 保证金管理
+  #   path: /trade/deposit
+  #   method: GET
+  # - key: depositadd
+  #   name: 添加保证金
+  #   path: /api/deposit
+  #   method: POST
+  # - key: depositedit
+  #   name: 编辑保证金
+  #   path: /api/deposit
+  #   method: POST
+  # - key: ordersettle
+  #   name: 结算管理
+  #   path: /trade/order-settle
+  #   method: GET
+  # - key: ordersellersum
+  #   name: 商家日汇总
+  #   path: /trade/order-settle-shop
+  #   method: GET
+  #   inherit: true
+  # - key: ordersettledetail
+  #   name: 订单明细
+  #   path: /trade/order-detail
+  #   method: GET
+  #   inherit: true
+  # - key: ordersettleitem
+  #   name: 账务明细
+  #   path: /trade/order-item
+  #   method: GET
+  #   inherit: true
+  # - key: ordersettlecancel
+  #   name: 挂账记录
+  #   path: /trade/order-settle-cancel
+  #   method: GET
+  #   inherit: true
+  # - key: exportexcel
+  #   name: 导出商家日汇总
+  #   path: /trade/order-settle
+  #   method: GET
+  # - key: sendmoney
+  #   name: 打款
+  #   path: /trade/order-settle
+  #   method: GET
+  # - key: resendsettle
+  #   name: 重新结算
+  #   path: /api/admin/settlement/[0-9]+
+  #   method: GET
+  # - key: ordersettleservice
+  #   name: 售后账务
+  #   path: /trade/order-settle-service
+  #   method: GET
+  # - key: deductmoney
+  #   name: 扣款/批量扣款
+  #   path: /api/admin/settlement/after_sales
+  #   method: PUT
+  - key: deposit
+    name: 基础明细
+    path: /settlement/deposit-detail
+    method: GET
+  - key: depositadd
+    name: 添加保证金
+    path: /api/admin/deposit/
+    method: POST
+  - key: depositedit
+    name: 编辑保证金
+    path: /api/admin/deposit/
+    method: POST
+  - key: depositstatus
+    name: 更改保证金状态
+    path: /api/admin/deposit/status
+    method: PUT
+  - key: fund
+    name: 奖励/运费扣还
+    path: /settlement/fund-detail
+    method: GET
+  - key: fundadd
+    name: 添加奖励/运费扣还
+    path: /api/admin/fund_operation
+    method: POST
+  - key: fundstatus
+    name: 更改奖励/运费扣还状态
+    path: /api/admin/fund_operation/status
+    method: PUT
+  - key: ordersettle
+    name: 结算管理
+    path: /settlement/order-sum
+    method: GET
+  - key: ordersellersum
+    name: 商家日汇总
+    path: /settlement/order-seller-sum
+    method: GET
+    inherit: true
+  - key: ordersettledetail
+    name: 订单明细
+    path: /settlement/order-detail
+    method: GET
+    inherit: true
+  - key: ordersettleitem
+    name: 账务明细
+    path: /settlement/order-item
+    method: GET
+    inherit: true
+  - key: ordersettlecancel
+    name: 挂账记录
+    path: /settlement/order-cancel
+    method: GET
+    inherit: true
+  - key: resendsettle
+    name: 重新结算
+    path: /api/admin/settlement/[0-9]+
+    method: GET
+  - key: orderreturnsum
+    name: 退款明细
+    path: /settlement/order-return
+    method: GET
+  - key: advise
+    name: 付款建议
+    path: /settlement/advise-detail
+    method: GET
+  - key: advisecheck
+    name: 标记打款
+    path: /api/admin/advise/status
+    method: PUT
+  - key: rebate
+    name: 返利明细
+    path: /settlement/rebate-detail
+    method: GET
+  - key: admanage
+    name: 广告充值
+    path: /settlement/ad-detail
+    method: GET
+  - key: constract
+    name: 商家合同
+    path: /settlement/constract-detail
+    method: GET
+  - key: voucher
+    name: 凭证管理
+    path: /settlement/voucher-detail
+    method: GET
+
+
+  - key: configs
+    name: 配置中心
+    virtual: true
+  - key: config
+    name: 配置中心
+    path: /config/config
+    method: GET
+  - key: auth
+    name: 权限管理
+    path: /members/auth-manage
+    method: GET
+  - key: configadd
+    name: 添加配置
+    path: /api/config/add
+    method: POST
+  - key: configedit
+    name: 编辑配置
+    path: /api/config/[0-9]+/update
+    method: POST
+  - key: analyse
+    name: 平台统计
+    virtual: true
+  - key: sales
+    name: 销售数据
+    path: /analyse/sales
+    method: GET
+  - key: flows
+    name: 流量统计
+    path: /analyse/flows
+    method: GET
+  - key: members
+    name: 会员统计
+    path: /analyse/members
+    method: GET
+  - key: invite
+    name: 邀请统计
+    path: /analyse/invite
+    method: GET
+  - key: attention
+    name: 关注统计
+    path: /analyse/attention-brand
+    method: GET
+  - key: express
+    name: 快递管理
+    path: /trade/express
+    method: GET
+  - key: expressCreate
+    name: 新建快递
+    path: /api/expresses
+    method: POST
+  - key: expressUpdate
+    name: 修改快递
+    path: /api/expresses/[0-9]+
+    method: PUT
+  - key: expressEnable
+    name: 启用快递
+    path: /api/expresses/[0-9]+/enable
+    method: PUT
+  - key: expressDisable
+    name: 禁用快递
+    path: /api/expresses/[0-9]+/disable
+    method: PUT
+  - key: expressDelete
+    name: 删除快递
+    path: /api/expresses/[0-9]+
+    method: DELETE

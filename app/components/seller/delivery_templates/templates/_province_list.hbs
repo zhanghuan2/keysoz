@@ -1,0 +1,21 @@
+<div class="delivery-list js-delivery-list">
+  <p class="all-select"><label><input type="checkbox" class="js-check-all input-checkbox"> {{i18n "Select all " bundle="all_mix"}}</label></p>
+  <ul class="province-list clearfix">
+    {{#each provinces}}
+      <li class="province-li" data-id="{{id}}" data-name="{{name}}"
+        {{#if check}}data-address="{{json address}}"{{/if}}
+        {{#equals check "indeterminate"}}data-show="{{children}}"{{/equals}}>
+        <label for="province-{{id}}" class="province-label">
+          <input type="checkbox" value="{{id}}" data-name="{{name}}" class="input-checkbox js-select-province-item" id="province-{{id}}"
+          {{#equals check "indeterminate"}}indeterminate="true"{{/equals}}
+          {{#equals check "checked"}}checked{{/equals}}
+          >{{name}}
+        </label>
+        <span class="drop-entrance js-city-list">
+          <span class="city-count js-city-count">{{#if count}}({{count}}){{/if}}</span>
+          <i class="icon-mewtwo icon-mewtwo-caret"></i>
+        </span>
+      </li>
+    {{/each}}
+  </ul>
+</div>

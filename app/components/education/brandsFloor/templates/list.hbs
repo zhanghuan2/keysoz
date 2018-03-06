@@ -1,0 +1,10 @@
+{{#each this}}
+{{#gt @index 5}}
+{{else}}
+<div class="brand">
+    <a href="{{../domain}}/eevees/search?bid={{id}}">
+        <img src="{{logo}}" title="{{fullName}}">
+    </a>
+</div>
+{{/gt}}
+{{/each}}

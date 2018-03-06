@@ -1,0 +1,345 @@
+{{#component "item-detail js-comp"}}
+  <input type="hidden" id="YZHD_ITEMID" value="{{itemId}}">
+  <input type="hidden" id="IF_VACCINE" value="{{_DATA_.item.tags.vaccine}}">
+  <input type="hidden" id="IF_supperPro" value="{{_DATA_.item.tags.blocktrade}}">
+  <div class="hide">{{json this}}</div>
+  <p class="item-bread-crumb">全部 <i class="icon-zcy icon-nextstep"></i> 商品详情</p>
+  <div class="item-detail-left" id="js-item-detail-left">
+    <div class="image-manage" data-item-detail="{{_DATA_.itemDetail.id}}"
+         data-user="{{json _USER_}}">
+      <a class="main-image js-main-image-container zoom" href="{{_DATA_.item.mainImage}}">
+        <img alt="{{_DATA_.item.name}}" src="{{cdnPath _DATA_.item.mainImage '400'}}" class="js-main-image"
+             width="380" height="380"/>
+        <i class="icon-zcy icon-search image-enlarge"></i>
+      </a>
+
+      <div class="carousel-wrap item-carousel-wrap js-comp" data-comp-path="common/more_carousel">
+        <div class="carousel show">
+          <ul class="images carousel-container clearfix" data-time="" data-auto="false" data-length="5"
+              data-type="0" data-size="{{add (size _DATA_.imageInfos) 1}}">
+            <li class="selected" style="width:20%">
+              <img id="itemMainImage" class="thumbnail" src="{{cdnPath _DATA_.item.mainImage "360"}}"
+                   alt="{{_DATA_.item.name}}" data-src="{{_DATA_.item.mainImage}}"/>
+            </li>
+            {{#each _DATA_.imageInfos}}
+              <li style="width:20%">
+                <img class="thumbnail" src="{{cdnPath url "100"}}"
+                     alt="{{#if name}}{{name}}{{else}}{{_DATA_.item.name}}{{/if}}" data-src="{{url}}"/>
+              </li>
+            {{/each}}
+          </ul>
+        </div>
+
+        <a class="prev outside" href="javascript:void(0);"></a>
+        <a class="next outside" href="javascript:void(0);"></a>
+      </div>
+    </div>
+  </div>
+  <div class="item-detail-right" id="js-item-detail-right">
+    <div class="item-title" data-id="{{itemId}}" data-status="{{_DATA_.item.status}}">
+      <h1 title="{{_DATA_.item.name}}" id="js-item-name">{{_DATA_.item.name}}</h1>
+      {{#equals _DATA_.item.tags.vaccine 1}}
+
+      {{else}}
+        <a href="/report/report-fill?accusationType=商品举报&businessId={{itemId}}">
+          <div class="js-report-item report-item">举报</div>
+        </a>
+      {{/equals}}
+
+    </div>
+    {{#equals _DATA_.item.tags.vaccine 1}}
+
+    {{else}}
+      <p class="item-platform-link-warp">采购目录：
+        {{#if _DATA_.gpCatalog}}
+          <span class="total-sold"
+                title="{{#if _DATA_.gpCatalog}}{{#each _DATA_.gpCatalog}}{{this}}&nbsp;&nbsp;{{/each}}{{/if}}">
+
+            {{#each _DATA_.gpCatalog}}
+              {{this}}
+            {{/each}}
+          </span>
+        {{else}}
+          暂无目录
+        {{/if}}
+        {{#each _DATA_.categoryTags}}
+          {{#equals this "tybgsbpzbzlm"}}
+            <br>此商品为资产限额商品
+          {{/equals}}
+        {{/each}}
+      </p>
+    {{/equals}}
+
+
+    <div class="item-info">
+      <ul class="item-info-list clearfix" {{#equals _DATA_.item.tags.blocktrade 1}}style="height:50px"{{/equals}}>
+        {{#equals _DATA_.item.tags.blocktrade 1}}
+          <li class="supperPro_li" style="width: 100%" data-id="{{_DATA_.item.shopId}}"
+              data-cid="{{_DATA_.item.categoryId}}">
+            <label style="font-size: 14px;color: #666666;">下浮率：</label><span class="percent"
+                                                                             style="font-size: 20px;color: #FF7900;">0%</span>
+          </li>
+        {{else}}
+          <li class="price-li">
+            <label class="first-line">
+              {{#equals type "hall"}}
+                销售价：
+              {{else}}
+                {{#equals _DATA_.item.isNetSuper "true"}}
+                  网超价：{{else}}零售价：
+                {{/equals}}
+              {{/equals}}
+              <span class="item-price">
+                            {{_CURRENCY_}}
+                <span id="js-item-price" class="price"
+                  {{#equals _DATA_.item.lowPrice _DATA_.item.highPrice}}
+                      data-range="{{formatPrice _DATA_.item.lowPrice}}"
+                  {{else}}
+                      data-range="{{formatPrice _DATA_.item.lowPrice}}-{{formatPrice _DATA_.item.highPrice}}"
+                  {{/equals}}>
+                  {{#equals _DATA_.item.lowPrice _DATA_.item.highPrice}}
+                    <span style="font-weight: 100;">￥</span>{{formatPrice _DATA_.item.lowPrice}}
+                  {{else}}
+                    <span style="font-weight: 100;">￥</span>{{formatPrice _DATA_.item.lowPrice}}-{{formatPrice
+                    _DATA_.item.highPrice}}
+                  {{/equals}}
+                </span>
+                        </span>
+            </label>
+            {{inject "buyer/item_price_curve"}}
+          </li>
+          <li class="outer-li {{#equals _DATA_.item.tags.vaccine 1}}hide{{/equals}}">
+            <label class="first-line">电商平台价：
+              <span class="outer-price">
+                {{#if _DATA_.item.extra.selfPlatformLink}}
+                  <a href="{{_DATA_.item.extra.selfPlatformLink}}" target="_blank" title="点击跳转到自营平台">
+                              <div id="js-item-platform-price" data-range="-" data-currency="{{_CURRENCY_}}">
+                                {{#equals (size _DATA_.groupedSkuAttrs) 0}}
+                                  {{#if _DATA_.skus.[0].extraPrice.platformPrice}}
+                                    ￥{{formatPrice _DATA_.skus.[0].extraPrice.platformPrice}}
+                                  {{/if}}
+                                {{/equals}}
+                              </div>
+                            </a>
+                {{else}}
+                  <del id="js-item-platform-price" data-range="-" data-currency="{{_CURRENCY_}}">
+                    {{#equals (size _DATA_.groupedSkuAttrs) 0}}
+                      {{#if _DATA_.skus.[0].extraPrice.platformPrice}}
+                        ￥{{formatPrice _DATA_.skus.[0].extraPrice.platformPrice}}
+                      {{/if}}
+                    {{/equals}}
+                  </del>
+                {{/if}}
+              </span>
+            </label>
+            {{#if _DATA_.item.extra.selfPlatformLink}}
+              <a style="font-size: 13px;padding-left: 8px;" href="{{_DATA_.item.extra.selfPlatformLink}}"
+                 target="_blank" title="点击跳转到自营平台">查看详情&nbsp;&gt;</a>
+            {{/if}}
+          </li>
+          <li class="discount-li {{#equals _DATA_.item.tags.vaccine 1}}hide{{else}}{{#equals _DATA_.item.tags.mfacture
+                                                                                             1}}hide{{/equals}}{{/equals}}">
+            <label class="first-line">优惠率：
+              <span class="discount-precent js-discount-precent"
+                    data-discountprecent="{{#if _DISCOUNT_}}{{formatPrice
+                      _DISCOUNT_}}{{else}}98{{/if}}"></span>
+              <span class="percent-unit"></span>
+            </label>
+          </li>
+        {{/equals}}
+      </ul>
+      <ul class="item-info-list-pj">
+        <li class="{{#equals _DATA_.item.tags.vaccine 1}}hide{{/equals}}">
+          <label>累计评价：<span class="total-sold">{{#if
+            _STATISTICS_.realEvaluateTimes}}{{_STATISTICS_.realEvaluateTimes}}{{else}}
+            0{{/if}}</span></label>
+        </li>
+        <li>
+          <label>总销量：
+            <span class="total-sold">
+              {{#equals _USER_.currentCategory 12}}
+                －
+              {{else}}
+                {{#if _DATA_.item.saleQuantity}}{{_DATA_.item.saleQuantity}}{{else}}0{{/if}}
+              {{/equals}}
+            </span>
+          </label>
+        </li>
+        <li class="{{#equals _DATA_.item.tags.vaccine 1}}hide{{/equals}}">
+          <label>满意度：
+            <span class="satisfaction">
+              {{#if _DATA_.item.saleQuantity}}
+                {{#if _STATISTICS_.currentScore}}{{_STATISTICS_.currentScore}}{{else}}100{{/if}}
+                <span class="satisfaction-unit">%</span>
+              {{else}}
+                -
+              {{/if}}
+            </span>
+          </label>
+        </li>
+      </ul>
+    </div>
+
+    {{#equals _DATA_.item.status "1"}}
+      <div class="item-skus">
+        <a href="javascript:void(0);" class="close-warning" style="display:none;">×</a>
+        <ul id="choose" data-skus="{{json _DATA_.skus}}"
+            data-attrs="{{json _DATA_.groupedSkuAttrs}}">
+          <li id="choose-region">
+            <div class="controls">
+              {{inject "common/address_select_down"}}
+            </div>
+          </li>
+          {{#each _DATA_.groupedSkuAttrs}}
+            <li class="sku-choose js-attr-sort" data-index="{{@index}}">
+              <div class="control-group">
+                <label class="dt sku-items-label" for="input-name">{{attrKey}}：</label>
+                <div class="smdd sku-items">
+                  <div class="wrap-input">
+                    {{#each skuAttributes}}
+                      <a class="{{#if image}}hasImage{{/if}} js-sku-attr sku-attr"
+                         data-show="{{showImage}}"
+                         {{#if image}}data-src="{{image}}"{{/if}} data-id="{{id}}"
+                         href="javascript:void(0)" title="{{attrVal}}"
+                         data-attr="{{attrKey}}:{{attrVal}}" data-key="{{attrKey}}">{{#if image}}
+                        <img src="{{cdnPath image "60"}}" alt="{{attrVal}}"
+                             data-src="{{image}}">{{else}}{{attrVal}}{{/if}}</a>
+                    {{/each}}
+                  </div>
+                </div>
+              </div>
+            </li>
+          {{/each}}
+          <li id="choose-amount">
+            <div class="control-group">
+              <label class="dt sku-items-label" for="input-name">{{i18n "Purchase quantity "
+                                                                        bundle="all_mix"}}：</label>
+              <div class="controls">
+                <div class="input-amount js-item-stock-quantity" data-max="">
+                  <a href="javascript:void(0);" class="disabled minus">-</a>
+                  <input type="number" value="0" class="count-number" id="item-quantity" data-old="1"
+                         data-max-stock="" style="width:70px">
+                  <a href="javascript:void(0);" class="plus">+</a>
+                </div>
+                <span>&nbsp;&nbsp;{{_DATA_.item.extra.unit}}</span>
+                &nbsp;&nbsp;&nbsp;
+                <span class="total-stock {{#equals _DATA_.item.tags.vaccine 1}}hide{{/equals}}">
+                库存<span class="item-quantity" id="js-item-stock"
+                        data-stock="">{{_DATA_.item.stockQuantity}}</span>{{_DATA_.item.extra.unit}}</span>
+              </div>
+            </div>
+          </li>
+          {{#if _COMPARE_PRICE_}}
+            <li class="compare-price">
+              <div class="control-group">
+                <label class="dt sku-items-label">
+                  价格对比：
+                  <p class="compare-price-more"><a
+                    href="/eevees/search?bids={{_DATA_.item.brandId}}&specification={{_DATA_.item.specification}}">查看更多</a>
+                  </p>
+                </label>
+                <!--制造馆没有优惠率-->
+                <ul class="controls">
+                  {{#each _COMPARE_PRICE_}}
+                    <li data-id="{{id}}">
+                      <div class="price">￥{{formatPrice price}}</div>
+                      <div class="discount {{#equals ../_DATA_.item.tags.mfacture 1}}hide{{/equals}}">
+                        <span class="key">优惠率：</span>
+                        <span class="value js-compare-primeDiscount"
+                              data-primeDiscount="{{formatPrice primeDiscount}}">
+                          {{#if lowFavoriteRateStr}}
+                            {{#equals lowFavoriteRateStr highFavoriteRateStr}}
+                              {{lowFavoriteRateStr}}%
+                            {{else}}
+                              {{lowFavoriteRateStr}}%-{{highFavoriteRateStr}}%
+                            {{/equals}}
+                          {{else}}
+                            --
+                          {{/if}}
+                        </span>
+                      </div>
+                      <div class="name" title="{{shopName}}">{{shopName}}</div>
+                    </li>
+                  {{/each}}
+                </ul>
+              </div>
+            </li>
+          {{/if}}
+          <li id="choose-btns">
+            <button class="btn btn-large btn-primary btn-icon js-add-cart" type="button" style="display: none">
+              <i class="icon-zcy icon-cart"></i>&nbsp;&nbsp;
+              加入购物车
+            </button>
+            {{#unless _DATA_.item.tags.blocktrade}}
+              {{#unless _DATA_.item.tags.vaccine}}
+                <button class="btn btn-large js-buy-now createRequisition" type="button" data-org="{{_USER_.orgId}}"
+                        style="display: none">
+                  {{i18n "Item submit purchase requisition" bundle="all_mix"}}
+                </button>
+              {{/unless}}
+            {{/unless}}
+            <button class="btn btn-large js-buy-now createPurchase" type="button" data-org="{{_USER_.orgId}}"
+                    style="display: none">
+              直接生成预购单
+            </button>
+            <button class="btn btn-large js-buy-now createOrder" type="button"
+                    data-org="{{_USER_.orgId}}" data-item-data="{{json _DATA_}}"
+                    data-seller-id="{{sellerId}}" style="display: none">
+              直接生成订单
+            </button>
+            <span class="warning-words required" style="display:none;">
+              {{i18n "Please tick the product info you want " bundle="all_mix"}}
+            </span>
+            <span class="stock-empty hide required">
+                      {{i18n "Insufficient product in inventory  " bundle="all_mix"}}，
+              {{i18n "Please choose other item" bundle="all_mix"}}
+                    </span>
+          </li>
+          <li class="hide gfrzBZ">
+            <div class="control-group">
+              <label class="" style="font-size: 14px;">官方认证：</label>
+              <div class="jieneng-box hide" style="font-size: 13px;margin-right: 40px;">
+                <i class="icon-jieneng icon-zcy" style="
+                          font-size: 28px;
+                          margin-right: 4px;
+                          margin-left: 2px;
+                          color: rgb(245,191,35);"></i>
+                <span>节能（节水）商品</span>
+              </div>
+              <div class="huanbao-box hide" style="font-size: 13px;">
+                <i class="icon-huanbao icon-zcy" style="
+                          font-size: 28px;
+                          margin-right: 4px;
+                          margin-left: 2px;
+                          color: rgb(126,211,33);"></i>
+                <span>环保商品</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    {{else}}
+      <div class="item-not-on">
+        <div class="status-desc">
+          <p>
+            {{#equals _DATA_.item.status "0"}}
+              亲，你来早了，{{i18n "This item has not been listed " bundle="all_mix"}}{{/equals}}
+            {{#equals _DATA_.item.status "-1"}}
+              亲，你来晚了，{{i18n "This item has been removed from list " bundle="all_mix"}}{{/equals}}
+            {{#equals _DATA_.item.status "-2"}}
+              亲，你来晚了，{{i18n "This item is suspend" bundle="all_mix"}}{{/equals}}
+            {{#equals _DATA_.item.status "-3"}}
+              亲，你来晚了，{{i18n "This item has been deleted " bundle="all_mix"}}{{/equals}}
+          </p>
+        </div>
+      </div>
+    {{/equals}}
+    <div class="service-protocol">
+      <div style="display: inline-block">服务承诺：</div>
+      <div class="js-item-service"
+           data-item-id="{{itemId}}"
+           style="display: inline-block;white-space: normal;vertical-align: text-top; max-width: 520px;">
+      </div>
+    </div>
+  </div>
+{{/component}}

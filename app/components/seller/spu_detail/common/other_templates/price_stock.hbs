@@ -1,0 +1,10 @@
+<div class="form-section clearfix">
+  <div class="section-title">价格库存</div>
+  <div class="pull-left section-content no-bg sku-info-area" id="js-sku-info-area">
+    <div id="js-price-and-stock" class="js-sku-table-area">
+      {{> component:seller/spu_detail/common/all_templates/_sku_table}}
+    </div>
+    <div id="js-sku-table-area" class="js-sku-table-area"
+      {{#if skus}}data-sku="{{json skus}}"{{/if}}></div>
+  </div>
+</div>

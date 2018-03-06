@@ -1,0 +1,60 @@
+.purchase-organization-list {
+  width: 1200px;
+
+
+  .list-header {
+    height: 30px;
+    line-height: 28px;
+    margin-bottom: 10px;
+    .icon {
+      height: 20px;
+      margin-right: 5px;
+      background: #126ee3;
+      width: 6px;
+      display: inline-block;
+      vertical-align: sub;
+    }
+    .name {
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+  .list-body {
+    height: 120px;
+    background: #ffffff;
+  }
+  .visible-area {
+    float: left;
+    width: 1060px;
+    height: 120px;
+    padding: 20px 0;
+    overflow: hidden;
+    .scroll-list {
+      float: left;
+      height: 80px;
+    }
+  }
+  .scroll-arrow {
+    margin: 50px 20px;
+    float: left;
+    height: 20px;
+    width: 30px;
+    line-height: 20px;
+    .icon-zcy {
+      font-size: 28px;
+      color: #aaaaaa;
+    }
+  }
+
+  .purchaseOrgs {
+    width: 164px;
+    height: 60px;
+    text-align: center;
+    margin: 10px 60px 10px 0;
+    float: left;
+    img {
+      max-width: 164px;
+      max-height: 60px;
+    }
+  }
+}

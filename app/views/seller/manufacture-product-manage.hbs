@@ -1,0 +1,23 @@
+{{#partial "realTitle"}}商品管理-制造商品管理{{/partial}}
+{{#partial "realBody"}}
+  {{#inject "common/breadcrumb"}}
+    {
+    "breadcrumb":
+    [{
+    "crumb": "商品管理",
+    "url": "#"
+    },
+    {
+    "crumb": "制造商品管理",
+    "url": "#"
+    }],
+    "menuPath": "/seller/manufacture-product-manage"
+    }
+  {{/inject}}
+  {{#inject "seller/product_manage_manufacture"}}
+    {
+      "step": "8"
+    }
+  {{/inject}}
+{{/partial}}
+{{> user_layout}}

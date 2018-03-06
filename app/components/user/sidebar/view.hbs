@@ -1,0 +1,31 @@
+{{#component "sidebar js-comp"}}
+<div class="hide">{{json this}}</div>
+<div class="sidebar">
+  <ul class="nav">
+  {{#each _DATA_}}
+    <li class="nav-list">
+      <div class="nav-list-header" href="{{href}}">
+        <div class="nav-icon"><em class="icon-zcy {{icon}}"></em></div>
+        <div class="nav-header">
+          <label>{{name}}</label>
+          {{#if child}}
+          <span><i class="icon-zcy icon-xiangxiazhedie"></i></span>
+          {{/if}}
+        </div>
+      </div>
+      {{#if child}}
+      <ul class="nav-list-body">
+        {{#each child}}
+        <li class="subnav-list">
+          <div class="subnav-list-header " href="{{href}}"><label>{{name}}</label></div>
+        </li>
+        {{/each}}
+      </ul>
+      {{/if}}
+    </li>
+  {{/each}}
+  </ul>
+  <!-- <button type="button" class="btn-collapse" id="collapse-nav"> ||| </button> -->
+  <div class="nav-floating"></div>
+</div>
+{{/component}}

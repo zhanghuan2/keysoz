@@ -1,0 +1,59 @@
+<div class="modal pur-modal">
+  <div class="modal-header">
+    <h2>文件浏览</h2>
+  </div>
+  <div class="modal-items-lists">
+    <div class="modal-items">
+      <div class="modal-body">
+        <div class="js-item-list clearfix">
+          {{!-- {{json _DATA_}} --}}
+          <table class="table  center-tex delivery-item-table">
+            <thead>
+              <tr>
+                <th class="left-text" width="150px"><label for="select-batch">图片名称</label> </th>
+                <th>单位</th>
+                <th>上传人</th>
+                <th>上传时间</th>
+                <th width="150px" class="td-operation">操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each _DATA_}}
+                <tr class="item-tr">
+                  <td class="gallery clearfix">
+                    <img data-original="{{#cdnPath filePath "100"}}{{/cdnPath}}" width="60" height="60" src="{{#cdnPath filePath "100"}}{{/cdnPath}}"></img>
+                  </td>
+                  <td>{{orgName}}</td>
+                  <td>{{userName}}</td>
+                  <td>{{formatDate createdAt}}</td>
+                  <td data-fileid="{{id}}" class="td-operation">
+                    <a href="{{filePath}}" target="_blank">查看</a>&nbsp;&nbsp;
+                    {{#ifCond ../status "<=" 6}}
+                    {{#equals 2  ../usertype}}
+                    {{#equals userId  ../id}} 
+        						{{!-- {{#equals 1 ../isOwner}} --}}
+        						<a class="js-delete-select-file">删除</a>
+        						{{!-- {{/equals}} --}}
+                    {{/equals}}
+                    {{else}}
+                    {{#equals 1 ../isOwner}}
+                    <a class="js-delete-select-file">删除</a>
+                    {{/equals}}
+                    {{/equals}}
+        					 {{/ifCond}}
+                  </td>
+                </tr>
+              {{else}}
+                <tr><td colspan="2" class="center-text">无可展示信息</td></tr>
+              {{/each}}
+            </tbody>
+          </table>
+          <div class="shipmentItems-pagination selected-pagination pagination-danger"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+          <button class="btn btn-primary btn-medium js-select-ok close">确定</button>
+      </div>
+    </div>
+  </div>
+</div>

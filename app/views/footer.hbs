@@ -1,0 +1,19 @@
+{{!-- <div style="clear:both;"></div>
+<div class="footer fake-footer">
+  <div class="session">
+      {{#if _SITE_}}
+        {{#designPart "footer" scope="SITE" rule="0" key=_MAIN_SITE_.id}}
+
+        {{/designPart}}
+      {{else}}
+        {{#designPart "footer" rule="-1"}}
+        {{/designPart}}
+      {{/if}}
+  </div>
+</div>
+ --}}
+{{#designPart "site-footer" scope="SITE" rule="0" key=_MAIN_SITE_.id}}
+{{/designPart}}
+{{#designPart "customer-service" scope="GLOBAL"}}
+{{/designPart}}
+{{inject "common/footer"}}

@@ -1,0 +1,27 @@
+{{#component "district-select-input js-comp"}}
+  <div class="districtBox">
+    <input type="text"
+           name="districtName"
+           placeholder="请选择"
+           value="{{districtName}}"
+           readonly>
+    <b class="arrow">▾</b>
+    <input type="hidden" name="districtCode" value="{{districtCode}}">
+  </div>
+
+  <div class="districtList hide">
+    <div class="control-group input-group-append district-search">
+      <input class="district-input" type="text" placeholder="请输入关键字">
+      <button class="btn btn-info district-search-btn"
+              type="button">
+        <span class="icon-zcy icon-sousuo-"></span>
+      </button>
+    </div>
+    <div class="tree-container">
+      <div class="district-tree">加载中...</div>
+      <div class="district-search-tree hide"></div>
+    </div>
+    <button type="button" class="btn btn-small pull-right btn-info" name="district-clear-btn">清空</button>
+    <button type="button" class="btn btn-small pull-right btn-info" name="district-cancel-btn">取消</button>
+  </div>
+{{/component}}

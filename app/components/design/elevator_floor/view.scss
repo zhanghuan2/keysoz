@@ -1,0 +1,144 @@
+@import "pokeball/theme";
+@import "compass/css3/inline-block";
+@import "compass/css3/box-sizing";
+
+$color-border: #eee;
+
+.elevator-floor {
+  * {
+    @include box-sizing(content-box);
+  }
+
+  min-height: 200px;
+  padding-bottom: 30px;
+
+  .floor-info {
+    font-size: 26px;
+    line-height: 26px;
+    .icon-zcy {
+      font-size: 26px;
+      margin-right: 4px;
+      position: relative;
+      top: -3px;
+    }
+  }
+
+  .floor-index {
+    color: $color-primary;
+    margin-right: 8px;
+  }
+
+  .floor-header {
+    padding-bottom: 15px;
+  }
+
+  .floor-body {
+    border: 1px solid $color-border;
+    border-width: 1px 0;
+    padding: 15px 0 20px;
+  }
+
+  .floor-image {
+    width: 190px;
+    height: 370px;
+    float: left;
+  }
+
+  .floor-products {
+    float: left;
+    width: 750px;
+  }
+
+  .products-list {
+    width: 730px;
+    padding: 0 10px;
+
+    .product-item {
+      width: 345px;
+      padding: 10px;
+      height: 165px;
+    }
+
+    .product-image {
+      float: left;
+      width: 165px;
+      height: 165px;
+    }
+
+    .product-info {
+      float: right;
+      width: 165px;
+    }
+
+    .product-name {
+      color: $navy;
+      max-height: 36px;
+      overflow: hidden;
+    }
+
+    .product-price {
+      color: $navy;
+      font-size: 14px;
+
+      .currency {
+        font-size: 18px;
+      }
+    }
+
+    .product-sale {
+      color: $navy;
+    }
+  }
+
+  .floor-brands {
+    float: left;
+    width: 249px;
+    border-left: 1px solid $color-border;
+  }
+
+  .brands-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 30px;
+    color: $navy;
+  }
+
+  .brand-list {
+    width: 230px;
+    padding: 0 10px 0 9px;
+
+    .brand-item {
+      width: 95px;
+      padding: 0 10px;
+      text-align: center;
+    }
+
+    p {
+      color: $navy;
+      margin-bottom: 0;
+    }
+
+    .brand-name {
+      word-break: break-all;
+      overflow: hidden;
+      width: 100%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    img {
+      width: 95px;
+      height: 60px;
+    }
+  }
+
+  ol {
+    list-style-type: none;
+    margin: 0;
+
+    li {
+      float: left;
+    }
+  }
+}

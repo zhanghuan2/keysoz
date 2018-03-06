@@ -1,0 +1,80 @@
+<div class="modal warehouse-info-modal js-warehouse-modal">
+  <div class="modal-header">
+    <a href="#" class="close">×</a>
+    <h2>编辑仓库信息</h2>
+  </div>
+  <form action="" class="form form-aligned js-warehouse-form">
+    <div class="modal-body">
+      <div class="control-group">
+        <input type="hidden" name="warehouseId" value="{{data.id}}">
+        <label class="control-label"><b class="required">*</b>仓库名称：</label>
+        <input type="text" name="name" placeholder="请输入仓库名称" pattern="^.{1,30}$" value="{{data.name}}" required>
+        <span class="note-error">1-30个字符</span>
+        <span class="note-error-empty">1-30个字符</span>
+      </div>
+      <div class="control-group">
+        <label class="control-label"><b class="required">*</b>仓库编码：</label>
+        <input type="text" name="code" placeholder="请输入仓库编码" pattern="^((?!_).){1,30}$" value="{{splitter data.code '_' 1}}" required>
+        <span class="note-error">不包含_的1-30个字符</span>
+        <span class="note-error-empty">请输入仓库编码</span>
+      </div>
+      <div class="control-group">
+        <label class="control-label"><b class="required">*</b>仓储面积：</label>
+        <input type="text" name="area" placeholder="请输入仓储面积" pattern="^\d+(\.\d+)?$" value="{{data.area}}" required> ㎡
+        <span class="note-error">请输入数字</span>
+        <span class="note-error-empty">请输入数字</span>
+      </div>
+      <div class="control-group js-warehouse-address">
+        <label class="control-label"><b class="required">*</b>所在地区：</label>
+        {{#gt properties.resource.address.sellerWarehouseLevel 0}}
+          <select name="provinceId" class="address-select" data-level="1">
+            {{#if data.addressCode}}
+            <option value="{{splitter data.addressCode ':' 0}}" selected></option>
+            {{/if}}
+          </select>
+          &nbsp;
+        {{/gt}}
+        {{#gt properties.resource.address.sellerWarehouseLevel 1}}
+          <select name="cityId" class="address-select" data-level="2">
+            {{#if data.addressCode}}
+            <option value="{{splitter data.addressCode ':' 1}}" selected></option>
+            {{/if}}
+          </select>
+          &nbsp;
+        {{/gt}}
+        {{#gt properties.resource.address.sellerWarehouseLevel 2}}
+          <select name="regionId" class="address-select" data-level="3">
+            {{#if data.addressCode}}
+            <option value="{{splitter data.addressCode ':' 2}}" selected></option>
+            {{/if}}
+          </select>
+          &nbsp;
+        {{/gt}}
+        {{#gt properties.resource.address.sellerWarehouseLevel 3}}
+          <select name="streetId" class="address-select" data-level="4">
+            {{#if data.addressCode}}
+            <option value="{{splitter data.addressCode ':' 3}}" selected></option>
+            {{/if}}
+          </select>
+        {{/gt}}
+      </div>
+      <div class="control-group">
+        <label class="control-label"><b class="required">*</b>详细地址：</label>
+        <input type="text" name="detail" placeholder="请输入详细地址" class="input-large" value="{{data.detail}}" pattern="^.{1,200}$" required>
+        <span class="note-error">1-200个字符</span>
+        <span class="note-error-empty">1-200个字符</span>
+      </div>
+      <div class="js-template-item template-address-area">
+        <label class="control-label"><b class="required">*</b>配送范围：</label>
+        <div class="template-area js-template-area">
+          {{> "seller/area_select/templates/_province_list"}}
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary close" type="button">取消</button>
+      &nbsp;
+      <button class="btn btn-primary js-submit-warehouse" type="submit">确定</button>
+    </div>
+  </form>
+</div>

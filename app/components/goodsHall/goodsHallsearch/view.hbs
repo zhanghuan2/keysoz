@@ -1,0 +1,214 @@
+{{#component "component-items-search-list2 js-comp"}}
+<style type="text/css">
+  .zcy-pagination [data-index]{
+    list-style: none!important;
+    padding: 0!important;
+    margin: 0!important;
+    font-size: 12px!important;
+    line-height: 32px!important;
+    height: 32px!important;
+    width: 62px!important;
+    padding-left: 10px!important;
+  }
+  #goodslist-table tbody td a{
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+</style>
+{{#gt (size _DATA3_.data) 0}}
+   <div class="items-search-list">
+    <div class="current-location-dark clearfix" data-user="{{_USER_}}">
+      <span class="items-total">
+        <span>有效期:</span>
+        <select name="tab" class="select">
+          <option value="EFFECTIVE">当年</option>
+          <option {{#equals tab "NEXT"}}selected{{/equals}}  value="NEXT">下一年</option>
+        </select>
+      </span>
+      <span class="current-location-span">
+        <!-- 获得采购目录 -->
+        {{#if _DATA2_}}
+          <a class="font-12 js-bread-category-selector" href="javascript:;">全部分类</a>&nbsp;&nbsp;<i class="font-12 icon-zcy icon-nextstep"></i>&nbsp;
+          {{#if _DATA2_.node}}
+          <a class="font-12 js-bread-category-selector" href="javascript:;" data-id="{{_DATA2_.node.nodeId}}">{{_DATA2_.node.name}}</a>&nbsp;&nbsp;
+          {{/if}}
+        {{else}}
+          <a class="font-12 js-bread-category-selector" href="javascript:;" data-id="0">所有分类</a>&nbsp;&nbsp;
+        {{/if}}
+
+
+         <!-- 循环品牌 -->
+        {{#each _DATA1_}}
+            {{#if this}}
+            <a class="bread-selector font-12 js-bread-brand-selector" href="javascript:;" data-id="{{this}}" data-selector="{{this}}">{{this}}
+              <i class="font-12 icon-zcy icon-close"></i>
+            </a>
+            {{/if}}
+        {{/each}}
+
+      </span>
+    </div>
+    <div class="nav-group category-nav">
+        <dl>
+          <dt title="{{i18n "Brand " bundle="all_mix"}}">{{i18n "Brand " bundle="all_mix"}}：</dt>
+          <div class="brand-list">
+            <div class="list-more">
+              {{#each _LOG_.data}}
+                <dd class="brand-dd dd-cancel">
+                  <label for="{{brand}}" class="hide">
+                    <input type="checkbox" value="{{brand}}" id="{{brand}}" class="brand-select input-checkbox"> {{brand}}
+                  </label>
+                  <a data-id="{{brand}}" class="js-brand-selector" href="javascript:void(0);">{{brand}}</a>
+                  <span>({{count}})</span>
+                </dd>
+              {{/each}}
+            </div>
+            <div class="brand-buttons hide">
+              <button class="btn js-brand-confirm btn-small btn-primary" type="button">{{i18n "Submit" bundle="all_mix"}}</button>&nbsp;
+              <button class="btn btn-info js-brand-cancel btn-small" type="button">{{i18n "Cancel" bundle="all_mix"}}</button>
+            </div>
+          </div>
+          {{#gt (size _LOG_.data) 1}}
+            <dd class="more-options">
+              <button class="btn btn-info btn-small js-elects">{{i18n "Options " bundle="all_mix"}}</button>
+            </dd>
+          {{/gt}}
+          {{#gt (size _LOG_.data) 6}}
+            <dd class="more-dd">
+              <a href="javascript:void(0);" class="js-more">{{i18n "more" bundle="all_mix"}}</a>
+              <i class="font-12 icon-zcy icon-xiangxiazhedie"></i>
+            </dd>
+          {{/gt}}
+        </dl>
+
+    </div>
+    <div class="filter">
+      <div class="filter-banner">
+        <label>排序：</label>
+        <button class="btn btn-small btn-info js-item-sort-brand">品牌<i class="icon-barrowdown12"></i></button>
+        <button class="btn btn-small btn-info js-item-sort-price">协议价<i class="icon-triangle-mt-slctd"></i><i class="icon-triangle-md-slctd"></i></button>
+      </div>
+      <form class="form filter-form" style="position: relative">
+        <fieldset>
+          <span class="span3" style="position: relative;z-index: 10">
+            <label for="">{{i18n "Price" bundle="all_mix"}}&nbsp;
+              <input type="number" class="input-small p_f" name="p_f" value="{{p_f}}" > - <input type="number" class="input-small p_t" name="p_t" value="{{p_t}}" >
+            </label>
+            <button type="submit" class="btn btn-small btn-primary" style="margin-left: 28px;    margin-right: 15px;" id="js-price-range">{{i18n "Filter" bundle="all_mix"}}</button>
+          </span>
+          {{!--<span style="color:#999;position: absolute;left: 195px;">
+                <input type="checkbox" name="filterByDealer" {{#equals filterByDealer false}}{{else}}checked{{/equals}}> &nbsp;本区划有供货商
+          </span>--}}
+        </fieldset>
+      </form>
+      <div class="filter-style">
+      <label class="listStyle" {{#equals showType "list"}}{{else}}style="border:1px solid #197aff;
+    color:#197aff;"{{/equals}}>
+
+        <i class="icon-zcy icon-jigouguanli"></i> &nbsp大图
+      </label>
+      </div>
+      <div class="filter-style" >
+        <label class="tableStyle" {{#equals showType "list"}}style="border:1px solid #197aff;
+    color:#197aff;"{{/equals}}><i class="icon-zcy icon-xieyiruweiguanli"></i> &nbsp列表</label>
+      </div>
+    </div>
+    <div class="list clearfix">
+      {{#if _DATA_.data}}
+        {{#equals showType "list"}}
+            <table id="goodslist-table" class="table table_style table-fixed">
+                <thead>
+                <tr>
+                    <th width="4%"></th>
+                    <th width="18%">商品名称</th>
+                    <th width="10%">商品类目</th>
+                    <th width="16%">品牌</th>
+                    <th width="16%">型号</th>
+                    <th width="9%">市场价</th>
+                    <th width="9%">协议单价</th>
+                    <th width="8%">优惠率</th>
+                    <th width="10%">累计成交量</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each _DATA_.data.list.data}}
+                    <tr>
+                        <td style="width:30px">
+                            <input type="checkbox" style="margin-right: 0" class="compare-checkbox input-checkbox" data-itemid="{{id}}" value="{{goodsId}}">
+                        </td>
+                        <td>
+                            <a title="{{goodsName}}" target="_blank" name="goodsName" href="/hall/detail?goodsId={{id}}&itemId={{goodsId}}&sellerId={{shopId}}">{{goodsName}}</a>
+                        </td>
+                        <td title="{{goodsItem}}">
+                            <label>{{goodsItem}}</label>
+                        </td>
+                        <td name="brand" class="quarter-width" title="{{brand}}"><label>{{brand}}</label></td>
+                        <td title="{{mode}}"><label>{{mode}}</label></td>
+                        <td title="{{marketPrice}}"><label class="currency">{{marketPrice}}</label></td>
+                        <td title="{{agreementPrice}}"><label class="currency">{{agreementPrice}}</label></td>
+                        <td title="{{discountRate}}%"><label>{{discountRate}}%</label></td>
+                        <td>
+                            <label >{{#if saleAmount}}{{saleAmount}}{{else}}0{{/if}}</label>
+                        </td>
+                    </tr>
+                {{/each}}
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td colspan="2">
+                    </td>
+                    <td colspan="8" class="text-right">
+                        {{inject "common/basetable/pagination" _DATA_=_DATA_.data.list}}
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+        {{else}}
+            <ul class="list_style">
+                {{#each _DATA_.data.list.data}}
+                    <li class="product {{#mod @index 4}}last{{/mod}}" style="{{#if marginRight}}margin-right: {{marginRight}}px;{{/if}}">
+                        {{!-- todo <a href="javascript:void(0)" class="check-select"><i class="iconfont icon-check"></i></a> --}}
+                        <a href="/hall/detail?goodsId={{id}}&itemId={{goodsId}}&sellerId={{shopId}}" target="_blank">
+                            <div class="product-image">
+                                <img src="{{cdnPath mainImage "260"}}" alt="{{name}}" width="206" height="206">
+                            </div>
+                        </a>
+                        <p class="product-price"><span class="currency">{{agreementPrice}}</span><span class="sale-volume">优惠率：{{discountRate}}%</span></p>
+                        <p class="product-descp">
+                            市场价：<span class="currency">{{marketPrice}}</span>
+                        </p>
+                        <p class="product-desc">
+                            <strong><a href="/hall/detail?goodsId={{id}}&itemId={{goodsId}}&sellerId={{shopId}}" target="_blank">{{goodsName}}</a></strong>
+                        </p>
+                        {{#equals showShop "0"}}
+                        {{else}}
+                            <br>
+                            <span class="product-ownerp">{{i18n "Sold " bundle="all_mix"}}: {{#if saleAmount}}{{saleAmount}}{{else}}0{{/if}}</span><label class="insert-compare font-12" for="compare"><input type="checkbox" id="compare" class="compare-checkbox input-checkbox" data-itemid="{{id}}" value="{{goodsId}}">对比</label>
+                        {{/equals}}
+                    </li>
+                {{/each}}
+            </ul>
+        {{/equals}}
+        {{else}}
+        <ul class="noData">.</ul>
+        {{/if}}
+    </div>
+    {{#equals showType "list"}}
+    {{else}}
+    <div class="list-pagination">
+        <div class="main-pagination"  data-total="{{_DATA_.data.list.total}}"></div>
+    </div>
+    {{/equals}}
+  </div>
+  <div class="component-select-product js-select-product hide">
+    <div class="close-compare"><i class="icon-zcy icon-close"></i></div>
+    <ul class="product-contrast-select">
+      <li class="product-contrast-li inner-content"><strong class="font-16">商品对比</strong></li>
+      <li class="product-contrast-li select-function hide-mydefine"><div class="btn btn-medium anon-contrast">立即对比</div><div class="btn btn-medium empty-product">清空商品</div></li>
+    </ul>
+  </div>
+{{else}}
+<p style="padding:50px  200px">该区划下协议大厅的功能暂未开放，请联系客服处理</p>
+  {{/gt}}
+{{/component}}

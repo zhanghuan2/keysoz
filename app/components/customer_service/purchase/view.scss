@@ -1,0 +1,21 @@
+.customer-purchase {
+  .search-panel {
+    table tr td{
+      .money-input {
+        width: 120px;
+      }
+      .selectric {
+        width: 190px;
+      }
+    }
+
+  }
+  .panel{
+    padding: 18px;
+    background: #ffffff;
+  }
+}
+
+.pagination input[name="go-page"] {
+  width: 44px;
+}

@@ -1,0 +1,105 @@
+@import "pokeball/theme";
+@import "compass/css3/inline-block";
+
+.stock-manage {
+  .stock-manage-body {
+    padding: 10px;
+    background-color: white;
+
+    .form {
+      .span3 {
+        width: auto;
+        margin-right: 10px;
+      }
+
+      button {
+        margin-right: 10px;
+      }
+    }
+
+    .stock-manage-table {
+      margin-top: 20px;
+      border: 0;
+
+      .stock-xiangxiazhedie-style {
+        padding: 10px 3px;
+        margin-right: -11px;
+        margin-top: -1px;
+        margin-bottom: -1px;
+        cursor: pointer;
+        border: 1px solid #E7E9EA;
+      }
+
+      .opearting-th {
+        text-align: right;
+      }
+      .first-level-tr {
+        background-color: #F2F6F9;
+      }
+
+      .second-level-tr {
+        .sku-information-list {
+
+          span {
+            color: #9F9F9F;
+          }
+        }
+
+        td {
+          &:last-child {
+            padding-right: 5px;
+            text-align: center;
+            padding: 0;
+          }
+          .add-stock {
+            cursor: pointer;
+          }
+        }
+
+        .second-level-inner-table {
+
+          table {
+            border: none;
+            border-left: 1px solid #e7e9ea;
+            border-right: 1px solid #e7e9ea;
+            tr {
+              border: none;
+              border-top: 1px solid #e7e9ea;
+              td{
+                border: none;
+                padding: 0;
+                input {
+                  width: 60px;
+                }
+                &:first-child {
+                  padding-left: 10px;
+                }
+              }
+            }
+          }
+          .operating-list {
+            text-align: center;
+
+            a {margin-right: 8px;}
+
+            .in-out-stock-input {
+              position: relative;
+            }
+          }
+
+          .add-stock-tr {
+            border-bottom: 1px solid #e7e9ea;
+          }
+          .first {
+            border-width: 0;
+          }
+        }
+      }
+    }
+    .pagination-stock-manage {
+      text-align: right;
+      padding: 10px 0;
+      background-color: #F7F7F7;
+    }
+  }
+}

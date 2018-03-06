@@ -1,0 +1,13 @@
+<ul class="attribute-list clearfix attribute-data attribute-composites" data-attr="{{json composites}}">
+  {{#each composites}}
+    {{#if attributeRule}}
+      {{#with attributeRule}}
+        {{> seller/item_issue/all_templates/_composites_item attrVal=../attrVal}}
+      {{/with}}
+    {{else}}
+      {{#with categoryAttribute}}
+        {{> seller/item_issue/all_templates/_composites_item}}
+      {{/with}}
+    {{/if}}
+  {{/each}}
+</ul>

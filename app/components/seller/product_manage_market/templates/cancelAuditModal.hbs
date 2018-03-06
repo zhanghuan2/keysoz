@@ -1,0 +1,25 @@
+<div class="modal">
+    <div class="modal-header" style="width:550px;">
+      <span>商品撤销审核</span>
+      <a href="javascript:;" class="close pull-right">x</a>
+    </div>
+    <form class="form" id="js-cancel-order-form">
+      <div class="modal-body">
+        <div style="padding-left: 50px;">
+          <div>
+            <label for="js-goods-name" style="margin-bottom: 20px;width: 70px;"><b class="required">*</b>商品名称：</label>
+            <span>{{name}}</span>
+          </div>
+          <div>
+            <label for="js-goods-mark" style="margin-bottom: 20px;width: 70px;"><b class="required">*</b>原因：</label>
+            <textarea id="js-cancel-reason" name="reason" placeholder="请输入撤销原因" style="height:150px" required></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+          <button class="btn btn-info btn-medium close" type="button">取消</button>
+          &nbsp;
+          <button class="btn btn-primary btn-medium js-cancel-submit" type="button" disabled>提交</button>
+      </div>
+    </form>
+  </div>

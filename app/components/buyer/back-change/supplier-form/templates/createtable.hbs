@@ -1,0 +1,69 @@
+<table class="table-create" cellpadding="10px" id="addressTable">
+  <tr>
+    <td>
+      <label for="code" class="pull-right"><span class="required">*</span>收货人：</label>
+    </td>
+    <td>
+      <input name="code" id="receiverName" type="text" max-length="25" placeholder="长度不超过25个字符" value="" required/>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label for="name" class="pull-right"><span class="required">*</span>所在地区：</label>
+    </td>
+    <td class="address">
+      <select class="address-select init" id="creatProvince" name="province" data-level='1'>
+        <option value="" disabled="" selected="">--选择省份--</option>
+      </select>
+      <select class="address-select init" id="creatCity" name="city" data-level='2'>
+        <option value="" disabled="" selected="">--选择城市--</option>
+      </select>
+      <select class="address-select init" id="creatRegion" name="region" data-level='3'>
+        <option value="" disabled="" selected="">--选择区/县--</option>
+      </select>
+      <select class="address-select init" id="creatStreet" name="street" data-level='4'>
+        <option value=""  selected="selected">--选择街道--</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label for="name" class="pull-right"><span class="required">*</span>详细地址：</label>
+    </td>
+    <td>
+      <textarea id="details" name="addComment" style="height: 60px;width: 260px;"  max-length="100" rows="8" placeholder="建议您如实填写详细收货地址，例如街道名称，门牌号码，楼层和房间号等信息." icon="false" value="" required></textarea>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label for="name" class="pull-right">邮政编码：</label>
+    </td>
+    <td>
+      <input name="name" id="zip" type="text" placeholder=""  value="" checker-pattern="^[1-9][0-9]{5}$" checker-text="输入无效"/>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label for="name" class="pull-right"><span class="required">*</span>手机号码：</label>
+    </td>
+    <td>
+      <input name="name" id="mobile" type="text" placeholder="" value="" checker-type="mobile" icon="true" required/>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label for="name" class="pull-right">电话号码：</label>
+    </td>
+    <td>
+      <input name="name" id="areaCode" type="text" placeholder="区号" value="" />
+      <input name="name" id="phone" type="text" placeholder="电话号码" value="" />
+      <input name="name" id="phoneExt" type="text" placeholder="分机" value="" />
+    </td>
+  </tr>
+  <tr>
+    <td rospan="2"></td>
+    <td>
+      <input class="defc input-checkbox" type="checkbox" id="isDefault">设为默认收货地址</input>
+    </td>
+  </tr>
+</table>

@@ -1,0 +1,18 @@
+<div class="js-category-attr-input category-attr-input" data-key="{{attrKey}}" data-type="STRING" data-required="false">
+  <input type="text" class="js-group-item" value="{{../attrVal}}"
+    data-group="{{group}}" data-key="{{attrKey}}" data-property-id="{{propertyId}}"
+    {{#if property.unit}}
+      data-unit="{{property.unit}}"
+    {{/if}} required readonly
+    {{#equals attrMetasForK.IMPORTANT "true"}}
+      {{#equals _DATA_.item.status "1"}}
+        {{#equals _DATA_.item.tags.vaccine "1"}}
+          data-tag="vaccine" disabled
+        {{/equals}}
+      {{/equals}}
+    {{/equals}}
+  />
+</div>
+{{#if ../property.unit}}
+  <span class="attr-unit-show">&nbsp;{{property.unit}}</span>
+{{/if}}

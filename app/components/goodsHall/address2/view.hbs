@@ -1,0 +1,15 @@
+{{#component "address js-comp "}}
+  <input data-type="address_type" value="{{_type}}" hidden=""></input>
+  <select class="address-select init search" name="province" data-level='1' data-code="{{_provinceCode}}" value="{{_provinceId}}">
+    <option value="" selected="">省</option>
+  </select>
+  <select class="address-select init search" name="city" data-level='2' data-code="{{_cityCode}}" value="{{_cityId}}">
+    <option value="" disabled selected="">市</option>
+  </select>
+  <select class="address-select init search" name="region" data-level='3' data-code="{{_regionCode}}" value="{{_regionId}}">
+    <option value="" disabled selected="">区/县</option>
+  </select>
+  {{#unless _hideStreet}}
+  <input class="address-input" type="text" name="street" placeholder="街道" value="{{_street}}" max-length="50">
+  {{/unless}}
+{{/component}}

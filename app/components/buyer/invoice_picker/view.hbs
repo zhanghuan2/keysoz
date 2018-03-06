@@ -1,0 +1,12 @@
+{{#component "invoice-picker js-comp clearfix"}}
+  <div class="invoice-mode-select">
+    <input type="radio" class="input-radio" name="invoice-mode" id="invoice-mode-waybill" value="2" {{#equals mode 1}}{{else}}checked{{/equals}}><label for="invoice-mode-waybill">&nbsp;货票同行</label>
+    <input type="radio" class="input-radio" name="invoice-mode" id="invoice-mode-unify" value="1" {{#equals mode 1}}checked{{/equals}}><label for="invoice-mode-unify">&nbsp;集中开票</label>&nbsp;&nbsp;&nbsp;
+  </div>
+  <div class="hide js-evn-href" data-env-href="{{json _ENV_HREF_}}"></div>
+  <div class="invoice-table hidden"
+       data-table-status="fold"
+       data-org-id="{{orgId}}"
+       data-user-id="{{userId}}"
+       data-selected-id="{{selectedId}}"></div>
+{{/component}}

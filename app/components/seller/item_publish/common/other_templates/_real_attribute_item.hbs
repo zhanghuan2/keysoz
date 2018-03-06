@@ -1,0 +1,41 @@
+{{#if @root.spuId}}
+  {{#if attrVal}}
+    {{#if ../composites}}
+      {{> component:seller/item_publish/common/all_templates/_attribute_composites}}
+    {{else}}
+      {{#equals property.valueType "2"}}
+        {{> component:seller/item_publish/common/all_templates/_attribute_multi}}
+      {{else}}
+        {{> component:seller/item_publish/common/all_templates/_attribute_dropdown}}
+      {{/equals}}
+    {{/if}}
+  {{else}}
+    {{#if ../composites}}
+      {{> component:seller/item_publish/common/all_templates/_attribute_composites}}
+    {{else}}
+      {{#equals property.valueType "2"}}
+        {{> component:seller/item_publish/common/all_templates/_attribute_multi}}
+      {{else}}
+        {{> component:seller/item_publish/common/all_templates/_attribute_dropdown}}
+      {{/equals}}
+    {{/if}}
+  {{/if}}
+{{else}}
+  {{#equals group "SPU"}}
+    {{> component:seller/item_publish/common/all_templates/_attribute_input}}
+  {{else}}
+    {{#if readOnlyBySeller}}
+      {{> component:seller/item_publish/common/all_templates/_attribute_input}}
+    {{else}}
+      {{#if ../composites}}
+        {{> component:seller/item_publish/common/all_templates/_attribute_composites}}
+      {{else}}
+        {{#equals property.valueType "2"}}
+          {{> component:seller/item_publish/common/all_templates/_attribute_multi}}
+        {{else}}
+          {{> component:seller/item_publish/common/all_templates/_attribute_dropdown}}
+        {{/equals}}
+      {{/if}}
+    {{/if}}
+  {{/equals}}
+{{/if}}

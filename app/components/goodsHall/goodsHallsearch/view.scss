@@ -1,0 +1,348 @@
+@import "compass/css3/inline-block";
+@import "pokeball/theme";
+@import "compass/css3/box-sizing";
+.component-items-search-list2{
+  display: inline-block;
+  width:965px;
+  vertical-align:top;
+.component-select-product{
+  margin-left:-225px;
+}
+.items-search-list{
+  a{color: inherit;}
+
+  .more-options {
+    margin: 0;
+  }
+  .more-dd {
+    margin: 0 10px 0 5px;
+    float: right;
+
+    i {
+      color: $color-text-secondary-assist;
+    }
+  }
+
+  .items-total{
+    line-height: 30px;
+    float: right;
+  }
+
+  .current-location-dark{
+    padding: 10px 0;
+    font-size: 14px;
+  }
+  .print-btn {
+    height: 30px;
+    width: 127px;
+    border: 1px solid #0476FB;
+    font-size: 14px;
+    color: #24344E;
+    margin-right: 20px;
+    &:hover {
+      color: #FFF;
+      background-color: #0476FB;
+    }
+  }
+  .js-item-sort-price{
+    position:relative;
+    padding-right: 20px;
+    height: 26px;
+    top: 1px;
+    i{
+      display:block;
+      position:absolute;
+      border: 4px solid transparent;
+      height:0;
+      width:0;
+      right:5px;
+    }
+    .icon-triangle-mt-slctd{
+      border-bottom: 4px solid #806F66;
+      top: 2px;
+    }
+    .icon-triangle-md-slctd{
+      border-top: 4px solid #806F66;
+      bottom: 2px;
+    }
+  }
+  .current-location-span{
+    height: 30px;
+    line-height: 28px;
+    i{
+      @include inline-block(baseline);
+      margin-left: 5px;
+      color: $color-text-secondary-assist;
+
+      &.chosen-close{
+        @include inline-block(bottom);
+      }
+    }
+
+    .bread-selector {
+      @include inline-block(middle);
+      background-color: #fff;
+      border: 1px solid #e6e6e6;
+      padding: 3px 10px 3px 6px;
+      margin-right: 6px;
+
+      &:hover {
+        border-color:  #3366ff;
+      }
+    }
+  }
+  .list .list_style li{
+    height:340px;
+  }
+  .nav-group dl {
+    padding: 0;
+
+    dt, dd {
+      vertical-align: top;
+    }
+
+    dt {
+      width: 110px;
+      padding: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .list-more {
+      dd {
+        width: auto;
+        margin: 0 20px;
+      }
+    }
+
+    dd {
+      button {
+        margin-top: 4px;
+      }
+    }
+  }
+
+  .attr-list,
+  .brand-list,
+  .categories-list{
+    @include inline-block(middle);
+    width: 685px;
+    margin-top: 1px;
+    overflow: hidden;
+
+    .brand-buttons{
+      text-align: center;
+      padding-bottom: 10px;
+    }
+  }
+
+  .categories-list{
+    overflow: hidden;
+  }
+
+  .js-more{
+    color: $navy;
+    text-decoration: none;
+    margin-right: 8px;
+    &:hover{
+      text-decoration: none;
+    }
+  }
+
+  .s-more {
+    text-align: center;
+    height: 36px;
+    line-height: 36px;
+    top: -1px;
+    position: relative;
+    border-top: 1px solid $color-border-dark;
+
+    .sm-wrap {
+      position: relative;
+      display: inline-block;
+      margin-top: -1px;
+      height: 28px;
+      line-height: 28px;
+      padding: 0 40px 0 20px;
+      border-width: 1px;
+      border-style: solid;
+      border-color: $white $color-border-dark $color-border-dark;
+      background: $white;
+      cursor: pointer;
+      color: $default-front-body-color;
+      -webkit-transition: border-color .15s ease-in-out;
+      -moz-transition: border-color .15s ease-in-out;
+      transition: border-color .15s ease-in-out;
+    }
+    .sm-text {
+      margin-right: 5px;
+    }
+  }
+
+  .dd-cancel {
+    label {
+      color: $color-text;
+    }
+  }
+
+  .list-more.active{
+    overflow: auto;
+    max-height: 102px;
+  }
+
+  .category-nav{
+    margin-bottom: 10px;
+    padding: 5px 0 0 10px;
+    border: 1px solid $color-border;
+
+    .list-more {
+      height: 33px;
+    }
+
+    .sl-text {
+      dd {
+        width: auto;
+      }
+    }
+  }
+
+  .filter{
+    background-color:  $color-background;
+    .filter-banner{
+      margin-left: 10px;
+      @include inline-block(middle);
+      i{
+        font-size: 12px;
+        margin-left: 10px;
+        &.icon-barrowdown12{
+          @include inline-block(middle);
+        }
+      }
+    }
+    .js-item-sort{
+      vertical-align: baseline;
+    }
+    .filter-form{
+      width: 525px;
+      @include inline-block(middle);
+      margin-left: 10px;
+    }
+    .filter-style{
+      padding:5px 0;
+      display: inline;
+      font-size: 14px;
+      line-height: 30px;
+      float:right;
+      label{
+        height:32px;
+        border:1px solid transparent;
+        padding:0 5px;
+        cursor:pointer;
+      -webkit-transition: border-color .15s ease-in-out,color .15s ease-in-out;
+      -moz-transition: border-color .15s ease-in-out,color .15s ease-in-out;
+      transition: border-color .15s ease-in-out,color .15s ease-in-out;
+      }
+      label:hover{
+        border:1px solid #197aff;
+        color:#197aff;
+      }
+    }
+  }
+  .list{
+    margin-top: 10px;
+    li{
+
+      &:hover {
+        box-shadow: 0 0 1px #000;
+        border: 0px ;
+      }
+
+      .check-select{
+        position: absolute;
+        i{
+          font-size: 20px;
+          color: $color-secondary;
+        }
+        &.active{
+          i{
+            color: $color-danger;
+          }
+        }
+      }
+      .add-cart{
+        float: right;
+        margin-right: 20px;
+        i{
+          font-size: 30px;
+          color: black;
+        }
+      }
+    }
+.selectric-items li.selected {
+    background: #EFEFEF;
+    color: #24344e;
+}
+.selectric-items li {
+    display: block;
+    padding: 6px 10px;
+    color: #666;
+    cursor: pointer;
+}
+.selectric-items ul, .selectric-items li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
+    line-height: 20px;
+    min-height: 20px;
+}
+  }
+
+  .product-ownerp{
+    width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: middle;
+    position: absolute;
+    left: 10px;
+    top: 316px;
+  }
+
+  .insert-compare {
+    position: absolute;
+    right: 10px;
+    bottom: 4px;
+
+    .compare-checkbox {
+      float: right;
+      margin: 2px 0 0 10px;
+    }
+  }
+
+  .list-pagination{
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    text-align: right;
+    font-size: 14px;
+    .selectric,.selectric-items{
+      width:64px;
+    }
+  }
+  .disappear{
+    display: none;
+  }
+
+  .product-desc em {
+    color: $color-danger;
+  }
+  .product-descp{
+    height:20px;margin:-5px 0 10px 0;
+  }
+  .sale-volume {
+    float: right;
+  }
+}
+}

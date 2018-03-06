@@ -1,0 +1,77 @@
+{{#component "invoice-invoiceSettings trade-manage js-comp"}}
+  <div class="trade-panel">
+    <div class="trade-panel-top">
+      <div class="trade-panel-title">发票配置</div>
+      <button class="btn btn-primary pull-right js-create" 
+              data-org-id="{{_USER_.orgId}}" 
+              data-total="{{size _DATA_}}" >添加发票</button>
+      <span class="top-tips pull-right">已添加{{size _DATA_}}条发票，最多添加100条发票&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </div>
+    <div class="hide js-evn-href" data-env-href="{{json _ENV_HREF_}}"></div>
+    <div class="trade-panel-body">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>发票抬头</th>
+          <th>发票类型</th>
+          <th>纳税人识别号<i class="icon-zcy icon-warningfill js-invoice-popover"></i></th>
+          <th>开户行</th>
+          <th>开户行账号</th>
+          <th>发票内容</th>
+          <th>默认</th>
+          <th class="text-right" width="10%">操作</th>
+        </tr>
+        </thead>
+        <tbody class="table table-horizontal">
+        {{#unless _DATA_}}
+          <tr>
+            <td colspan="8" class="text-muted text-center">您还没有发票，请&nbsp;<a data-orgid="{{_USER_.orgId}}" class="js-create">添加发票</a></td>
+          </tr>
+        {{/unless}}
+        {{#each _DATA_}}
+          <tr class="chy">
+            <td>{{title}}</td>
+            <td>
+              {{#equals type "1"}}增值税普通发票{{/equals}}
+              {{#equals type "2"}}增值税专用发票{{/equals}}
+            </td>
+            <td>{{#if taxNumber}}{{taxNumber}}{{else}}－{{/if}}</td>
+            <td>{{#if bank}}{{bank}}{{else}}－{{/if}}</td>
+            <td>{{#if bankAccount}}{{bankAccount}}{{else}}－{{/if}}</td>
+            <td>
+              {{#equals content 1}}类目{{/equals}}
+              {{#equals content 2}}商品{{/equals}}
+              {{#equals content 3}}<div class="custom-content">{{customContent}}</div>{{/equals}}
+              {{#equals content 4}}办公用品{{/equals}}
+              {{#equals content 5}}耗材{{/equals}}
+              {{#equals content 6}}电脑配件{{/equals}}
+            </td>
+            {{#equals isDefault true}}
+              <td>
+                <label>默认发票</label>
+              </td>
+            {{else}}
+              <td class="set-default">
+                <a href="javascript:void(0)" class="js-set-default" data-id="{{id}}">设为默认</a>
+              </td>
+            {{/equals}}
+            <td class="text-right">
+              <a href="javascript:void(0)" class="js-edit" data-invoice="{{json this}}" data-id="{{id}}">编辑</a>
+              <a href="javascript:void(0)" class="js-delete" data-id="{{id}}">删除</a>
+            </td>
+          </tr>
+        {{/each}}
+        </tbody>
+        {{!--  发票查询接口目前还不支持翻页！！
+        <tfoot>
+        <tr>
+          <td colspan="8" class="text-right">
+            {{inject "common/basetable/pagination" _DATA_=_DATA_}}
+          </td>
+        </tr>
+        </tfoot>
+        --}}
+      </table>
+    </div>
+  </div>
+{{/component}}

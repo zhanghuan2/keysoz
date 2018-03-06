@@ -1,0 +1,567 @@
+{{#component "customer-order-detail customer-service-common js-comp"}}
+  <p class="hide">{{json _DATA_}}</p>
+  <p class="hide">{{json _ENV_HREF_}}</p>
+  <input type="hidden" id="skuEvaluationMap" value="{{json _DATA_.skuEvaluationMap}}">
+  {{#with _DATA_.orderDetailInfo}}
+    <div class="panel">
+      <div class="panel-header">
+        <label class="panel-title">订单概览</label>
+      </div>
+      <div class="panel-body">
+        <div class="detail-row">
+          <table class="detail-table" id="order-preview-table">
+            <tbody>
+            <tr>
+              <td>
+                <label class="text-muted">提交人：</label>
+                <label class="big">{{order.purchaserName}}</label>
+              </td>
+              <td>
+                <label class="text-muted">采购机构：</label>
+                <label class="big">{{order.purchaserOrgName}}</label>
+              </td>
+              <td>
+                <label class="text-muted">预购单号：</label>
+                <label class="big">
+                  <a
+                    {{#equals _USER_.currentCategory 99}}
+                    href="/customer/purchase/detail?purchaseId={{order.purchaserOrderId}}"
+                    {{else}}
+                      {{#equals order.orderType 0}}
+                    href="/customer/purchase/netsuper-detail?purchaseId={{order.purchaserOrderId}}"
+                      {{/equals}}
+                      {{#equals order.orderType 1}}
+                    href="/customer/purchase/netsuper-detail?purchaseId={{order.purchaserOrderId}}"
+                      {{/equals}}
+                      {{#equals order.orderType 2}}
+                    href="/customer/purchase/vaccine-detail?purchaseId={{order.purchaserOrderId}}"
+                      {{/equals}}
+                      {{#equals order.orderType 3}}
+                    href="/customer/purchase/blocktrade-detail?purchaseId={{order.purchaserOrderId}}"
+                      {{/equals}}
+                    {{/equals}}
+                  >{{order.purchaserOrderId}}</a>
+                </label>
+              </td>
+              <td>
+                <label class="text-muted">创建时间：</label>
+                <label class="big">{{formatDate order.createdAt}}</label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="text-muted">订单号：</label>
+                <label class="">{{order.id}}</label>
+              </td>
+              <td>
+                <label class="text-muted">供应商：</label>
+                <label class="big price">{{order.supplierName}}</label>
+              </td>
+              <td>
+                <label class="text-muted">订单状态：</label>
+                {{#equals order.status 0}}<label class="text-muted">等待处理</label>{{/equals}}
+                {{#equals order.status 1}}<label class="text-success">已接收,待发货</label>{{/equals}}
+                {{#equals order.status 2}}<label class="text-success">部分发货</label>{{/equals}}
+                {{#equals order.status 3}}<label class="text-success">全部发货,待确认收货</label>{{/equals}}
+                {{#equals order.status 4}}<label class="text-success">已确认收货,待验收</label>{{/equals}}
+                {{#equals order.status 5}}<label class="text-danger">已验收,待结算</label>{{/equals}}
+                {{#equals order.status 6}}<label class="text-muted">启动结算</label>{{/equals}}
+                {{#equals order.status 7}}<label class="text-muted">已结算,交易完成</label>{{/equals}}
+                {{#equals order.status -2}}<label class="text-muted">订单关闭</label>{{/equals}}
+                {{#equals order.status -4}}<label class="text-muted">订单取消中</label>{{/equals}}
+                {{#equals order.status -5}}<label class="text-muted">订单已取消</label>{{/equals}}
+                {{#equals order.status 10}}<label class="text-muted">退换货中</label>{{/equals}}
+                {{#equals order.status -6}}<label class="text-muted">全部退货</label>{{/equals}}
+                {{#equals order.status 11}}<label class="text-muted">待定价</label>{{/equals}}
+                {{#equals order.status 12}}<label class="text-muted">定价中</label>{{/equals}}
+                {{#equals order.status 13}}<label class="text-muted">定价驳回</label>{{/equals}}
+              </td>
+              <td>
+                <label class="text-muted">验收单：</label>
+                <label class="files">
+                  {{#each acceptanceFiles}}
+                    <a href="{{filePath}}" name="acceptance-file" download="download">{{fileName}}</a>
+                    <br>
+                  {{/each}}
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="text-muted">卖家得分：</label>
+                <label class="">{{sellerEvaluation}}</label>
+              </td>
+              <td>
+                <label class="text-muted">买家得分：</label>
+                <label class="">{{buyerEvaluation}}</label>
+              </td>
+            </tr>
+            <tr title="{{order.comment}}">
+              <td colspan="4">
+                <label class="text-muted pull-left">备注：</label>
+                <label class="big"
+                       style="overflow:hidden;width:900px;white-space: nowrap;text-overflow: ellipsis;">{{#if
+                  order.comment}}{{order.comment}}{{else}}--{{/if}}</label>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="tab">
+      <ul class="tab-navs clearfix">
+        {{#each deliverInfos}}
+          <li class="{{#equals @index 0}}active{{/equals}} item-nav">
+            <a href="javascript:void(0)" data-target="delivery-{{@index}}">收货地址{{add @index 1}}</a>
+          </li>
+        {{/each}}
+      </ul>
+      {{#each deliverInfos}}
+        <div name="delivery-{{@index}}" class="tab-content {{#gt @index 0}}hidden{{/gt}}"
+             style="width: 100%; padding: 10px;">
+          {{#with delivery}}
+            <div class="address-row mv">
+              <label class="text-muted">收货地址：</label>
+              <label>{{province}} {{city}} {{region}} {{street}} {{detail}} （{{receiver}} 收） {{mobile}}
+                ，邮编：{{zip}}</label>
+            </div>
+          {{/with}}
+          <div class="panel toggle-panel">
+            <div class="panel-header">
+              <label class="panel-title">商品详情</label>
+            </div>
+            <div class="panel-body">
+              <table class="table">
+                <thead>
+                <tr>
+                  <th>商品</th>
+                  <th>商品编号</th>
+                  <th>单价（元）</th>
+                  <th>数量</th>
+                  <th>已发货</th>
+                  <th>未发货</th>
+                  <th class="text-right">评价状态</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each deliveryItems}}
+                  <tr>
+                    <td class="item-name">
+                      <a href="/buyer/trading-snapshot?orderId={{orderId}}&skuId={{skuId}}" title="{{itemName}}">{{itemName}}</a>
+                      <br/>
+                      <label class="text-muted">
+                        {{#each skuAttr}}
+                          {{@key}}：{{this}} &nbsp;
+                        {{/each}}
+                      </label>
+                      <span class="js-item-services" data-services="{{json services}}"></span>
+                    </td>
+                    <td><label>{{itemId}}</label></td>
+                    <td class="price">{{formatPrice skuPrice}}</td>
+                    <td><label>{{quantity}}</label></td>
+                    <td>
+                      <label name="shippedQuantity"
+                             data-quantity={{quantity}} data-unshippedquantity={{waitDeliveryQuantity}}></label>
+                    </td>
+                    <td><label>{{waitDeliveryQuantity}}</label></td>
+                    <td class="text-right">
+                      <label>评价得分：<span class="js-item-score" data-sku-id="{{skuId}}"></span></label>
+                    </td>
+                  </tr>
+                {{/each}}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="panel toggle-panel">
+            <div class="panel-header">
+              <label class="panel-title">发货信息</label>
+            </div>
+            <div class="panel-body">
+              <table class="table" id="delivery-table">
+                <thead>
+                <tr>
+                  <th>发货单号</th>
+                  <th>物流公司</th>
+                  <th>运单号</th>
+                  <th>商品详情</th>
+                  <th class="text-right">状态</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each shipmentWithCounts}}
+                  {{#with shipment}}
+                    <tr>
+                      <td>
+                        <a href="/buyer/order-shipment-detail?shipmentId={{id}}">{{id}}</a>
+                      </td>
+                      <td>
+                        <label>{{expressName}}</label>
+                      </td>
+                      <td>
+                        <label>{{shipmentNo}}</label>
+                      </td>
+                      <td>
+                        <a href="javascript:void(0)" name="item-list" data-deliveryid="{{id}}">商品详情(<span
+                          name="item-quantity">{{quantity}}</span>)</a>
+                      </td>
+                      <td class="text-right">
+                        {{#equals status 0}}<label>待收货</label>{{/equals}}
+                        {{#equals status 1}}<label>部分收货</label>{{/equals}}
+                        {{#equals status 2}}<label>全部收货</label>{{/equals}}
+                      </td>
+                    </tr>
+                  {{/with}}
+                {{else}}
+                  <tr>
+                    <td colspan="5" class="text-center">暂无发货信息</td>
+                  </tr>
+                {{/each}}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+
+    {{#equals order.orderType 3}}
+
+      <div class="panel toggle-panel">
+        <div class="panel-header">
+          <label class="panel-title">定价管理</label>
+        </div>
+        <div class="panel-body">
+          <table class="table">
+            <thead>
+            <tr>
+              <th width="35%">商品</th>
+              <th width="20%">单价（元）</th>
+              <th width="10%">数量</th>
+              <th width="10%">下浮率</th>
+              <th width="10%">折后价</th>
+              <th width="15%">附件</th>
+            </tr>
+            </thead>
+            <tbody class="price-set-form">
+            {{#each orderItemsToSetPrice}}
+              <tr data-sku-id="{{orderItem.skuId}}">
+                <td class="left-text">
+                <span><a href="/items/{{orderItem.itemId}}">{{orderItem.itemName}}</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                  <span class="sku-attrs">
+                    {{#each orderItem.attributeMap}}
+                      {{this}}&nbsp;&nbsp;
+                    {{/each}}
+                  </span>
+                </span>
+                </td>
+                <td>
+                  <span class="price">{{formatPrice orderItem.skuOriginPrice}}</span>
+                </td>
+                <td>{{orderItem.quantity}}</td>
+                <td class="js-decreaseRate" data-extra="{{orderItem.extra}}"></td>
+                <td class="js-discount-price">{{formatPrice orderItem.skuPrice}}</td>
+                <td class="text-right">
+                  {{#each outerPriceFiles}}
+                    <div class="image-show-block">
+                      <img src="{{filePath}}">
+                    </div>
+                  {{/each}}
+                </td>
+              </tr>
+            {{/each}}
+            </tbody>
+          </table>
+          <div class="order-total-price">
+            累积金额：<span class="js-total-price price">
+            {{#if _DATA_.priceSetAmount}}{{formatPrice _DATA_.priceSetAmount}}{{else}}0.00{{/if}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="panel toggle-panel">
+        <div class="panel-header">
+          <label class="panel-title">验收单与检测报告</label>
+        </div>
+        <div class="panel-body">
+          <div class="images-list acceptance-files">
+            <label class="title">验收单</label>
+            <ul>
+              {{#each acceptanceFiles}}
+                <li>
+                  <div class="image-show-block">
+                    <img src="{{filePath}}">
+                  </div>
+                </li>
+              {{/each}}
+            </ul>
+          </div>
+          <div class="images-list qualification-certificate-files">
+            <label class="title">资质证书</label>
+            <ul>
+              {{#each qualificationCertificateFiles}}
+                <li>
+                  <div class="image-show-block">
+                    <img src="{{filePath}}">
+                  </div>
+                </li>
+              {{/each}}
+            </ul>
+          </div>
+        </div>
+      </div>
+    {{/equals}}
+
+    {{#if invoiceWithCounts}}
+      <div class="panel toggle-panel">
+        <div class="panel-header">
+          <label class="panel-title">发票信息</label>
+        </div>
+        <div class="panel-body">
+          <table class="table" id="invoice-table">
+            <thead>
+            <tr>
+              <!--<th>发票寄送地址</th>-->
+              <th>货票同行</th>
+              <th>发票类型</th>
+              <th>发票抬头信息</th>
+              <th>开户行</th>
+              <th>开户行账号</th>
+              <th>纳税人识别号<i class="icon-zcy icon-warningfill js-invoice-popover"></i></th>
+              <th>商品详情</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each invoiceWithCounts}}
+            {{#with invoice}}
+              <tr>
+                <td>
+                  {{#equals invoiceBillingMode 1}}
+                    否
+                  {{else}}
+                    是
+                  {{/equals}}
+                </td>
+                <td>
+                  {{#equals invoiceType 0}}<label>普通发票</label>{{/equals}}
+                  {{#equals invoiceType 1}}<label>增值税普通发票</label>{{/equals}}
+                  {{#equals invoiceType 2}}<label>增值税增值发票</label>{{/equals}}
+                </td>
+                <td>
+                  <label>{{invoiceTitle}}</label>
+                </td>
+                <td>{{#if depositeBank}}{{depositeBank}}{{else}}－{{/if}}</td>
+                <td>{{#if bankAccount}}{{bankAccount}}{{else}}－{{/if}}</td>
+                <td>{{#if taxId}}{{taxId}}{{else}}－{{/if}}</td>
+                <td>
+                  <a href="javascript:void(0)" name="item-list" data-invoiceid="{{id}}">商品列表(<span
+                    name="item-quantity">{{../invoiceTotalCount}}</span>)</a>
+                </td>
+              </tr>
+            {{/with}}
+            {{/each}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    {{/if}}
+
+    <div class="panel toggle-panel">
+      <div class="panel-header">
+        <label class="panel-title">预算信息</label>
+      </div>
+      <div class="panel-body">
+        <label class="sub-title">关联采购计划</label>
+        <div class="requisition-items-list">
+          <table class="table">
+            <thead>
+            <tr>
+              <th width="20%">商品名称</th>
+              <th width="15%">采购目录</th>
+              <th width="7%">小计数量</th>
+              <th width="10%">小计金额（元）</th>
+              <th width="10%">未关联数量</th>
+              <th width="10%">未关联金额（元）</th>
+              <th width="8%">状态</th>
+              <th width="20%">关联计划书</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each itemWithPayInfos}}
+              <tr data-item="{{json orderItem}}">
+                <td>{{orderItem.itemName}}</td>
+                <td class="js-item-catalog" data-catalog="{{json catalogNodes}}"></td>
+                <td>{{orderItem.quantity}}</td>
+                <td>{{formatPrice orderItem.fee}}</td>
+                <td>{{orderItem.bindRemainQuantity}}</td>
+                <td>{{formatPrice unBindAmount}}</td>
+                <td>
+                  {{#equals bindStatus 0}}<span class="red-text">未关联</span>{{/equals}}
+                  {{#equals bindStatus 2}}<span class="red-text">部分关联</span>{{/equals}}
+                  {{#equals bindStatus 1}}<span class="green-text">完成关联</span>{{/equals}}
+                </td>
+                <td>
+                  {{#each orderPays}}
+                    <div class="purchase-plan-no">
+                      {{confirmationName}}
+                    </div>
+                  {{/each}}
+                </td>
+              </tr>
+            {{/each}}
+            </tbody>
+          </table>
+
+        </div>
+        <label class="sub-title">本次总使用情况</label>
+        <table class="table">
+          <tr>
+            <td>
+              <label class="">已关联采购计划总金额（元）：</label>
+              <label class="price big">{{formatPrice planAmount}}</label>
+            </td>
+            <td>
+              <label class="">计划外资金总额（元）：</label>
+              <label class="price big">{{formatPrice unplanAmount}}</label>
+            </td>
+            <td>
+              <label class="">订单总额（元）：</label>
+              <label class="price big">{{formatPrice order.fee}}</label>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  {{/with}}
+
+  {{!-- 网超合同信息 --}}
+  {{#if _DATA_.orderDetailInfo.cmMainDto}}
+  <div class="panel toggle-panel" data-contractInfo="{{json _DATA_.cmMainDto}}">
+      <div class="panel-header">
+          <label class="panel-title">网超合同</label>
+      </div>
+      <div class="panel-body">
+          <table class="table contract-info-table js-contract-info-table">
+              <thead>
+              <tr>
+                  <th width="150">合同编号</th>
+                  <th width="200">合同名称</th>
+                  <th width="200">采购单位</th>
+                  <th width="80">成交金额（元）</th>
+                  <th width="80">状态</th>
+                  <th width="80">操作</th>
+              </tr>
+              </thead>
+              <tbody>
+              {{#with _DATA_.orderDetailInfo.cmMainDto}}
+                  <tr class="item-tr contract-info-tr">
+                      <td>{{contractCode}}</td>
+                      <td>{{contractName}}</td>
+                      <td>{{purchaser}}</td>
+                      <td>{{contactTotalPrice}}</td>
+                      <td>{{contractStateStr}}</td>
+                      <td><a href="{{../_ENV_HREF_.vienna}}/contract/manage/view?id={{id}}">查看</a></td>
+                  </tr>
+              {{/with}}
+              </tbody>
+          </table>
+      </div>
+  </div>
+  {{/if}}
+
+  {{#if _DATA_.finalStatements}}
+    <div class="panel toggle-panel">
+      <div class="panel-header">
+        <label class="panel-title">结算单信息</label>
+      </div>
+      <div class="panel-body">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>结算单号</th>
+            <th>结算单名称</th>
+            <th>采购机构</th>
+            <th>供应商</th>
+            <th>金额</th>
+            <th>创建时间</th>
+            <th>状态</th>
+          </tr>
+          </thead>
+          <tbody>
+          {{#each _DATA_.finalStatements}}
+            <tr>
+              <td>
+                {{#equals _USER_.currentCategory 99}}
+                  <a href="{{_ENV_HREF_.customer}}/customer-service/reporting/settlement/detail?finalStatementId={{finalStatementId}}">{{finalStatementNo}}</a>
+                {{else}}
+                  <a href="{{_ENV_HREF_.settlement}}/settlement/purchaser-manage/superviser-detail?finalStatementId={{finalStatementId}}">{{finalStatementNo}}</a>
+                {{/equals}}
+              </td>
+              <td>
+                <label>{{finalStatementName}}</label>
+              </td>
+              <td>
+                <label>{{purchaserName}}</label>
+              </td>
+              <td>
+                <label>{{supplierName}}</label>
+              </td>
+              <td>
+                <label>{{formatPrice totalAmount}}</label>
+              </td>
+              <td>
+                <label>{{formatDate createAt}}</label>
+              </td>
+              <td>
+                <label>{{status}}</label>
+              </td>
+            </tr>
+          {{else}}
+            <tr>
+              <td colspan="7" class="text-center">没有相关数据</td>
+            </tr>
+          {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  {{/if}}
+  {{!-- 流转日志 --}}
+  <div class="panel toggle-panel">
+    <div class="panel-header">
+      <label class="panel-title">流转日志</label>
+    </div>
+    <div class="panel-body">
+      {{#inject "common/flow_log"}}
+        {
+        "bizType": 10001,
+        "targetId": "{{orderId}}"
+        }
+      {{/inject}}
+    </div>
+  </div>
+  <div class="modal customer-order-detail" id="item-modal" style=" display: none;">
+    <div class="modal-header">
+      <label class="modal-title"></label>
+      <a href="javascript:void(0)" class="close">&times;</a>
+    </div>
+    <div class="modal-body">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>商品</th>
+          <th>商品编号</th>
+          <th>供应商</th>
+          <th>单价（元）</th>
+          <th>数量</th>
+          <th class="text-right">小计（元）</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-minor text-right close">关闭</button>
+    </div>
+  </div>
+{{/component}}

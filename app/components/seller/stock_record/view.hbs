@@ -1,0 +1,71 @@
+{{#component "js-comp stock-record trade-manage"}}
+  <div class="page-body-option clearfix">
+    <div class="page-title">库存记录</div>
+  </div>
+  <div class="stock-record-body" data-type="{{type}}"
+                                 data-total="{{_DATA_.total}}">
+    <div id="block" class="block">
+      <form id="form4">
+        <span class="span4 js-common-date">
+          <label for="">时间:</label>
+          <span class="date-input-wrapper"><input class="datepicker input-datepicker js-start-date js-common-start-at" type="text" placeholder='开始时间' value="{{createdStartAt}}"><i class="icon-pokeball icon-pokeball-date"></i></span>&nbsp;-&nbsp;
+          <span class="date-input-wrapper"><input class="datepicker js-common-end-at input-datepicker js-end-date" type="text"  placeholder='结束时间' value="{{createdEndAt}}"><i class="icon-pokeball icon-pokeball-date"></i></span>
+        </span>
+        <span class="span3">
+          <label>变化类型:</label>
+          <select class="js-select-type">
+            <option value="">请选择</option>
+            <option value="0" {{#equals type 0}}selected{{/equals}}>入库</option>
+            <option value="1" {{#equals type 1}}selected{{/equals}}>出库</option>
+            <option value="2" {{#equals type 2}}selected{{/equals}}>交易扣减</option>
+            <option value="3" {{#equals type 3}}selected{{/equals}}>恢复库存</option>
+            <option value="4" {{#equals type 4}}selected{{/equals}}>交易锁定</option>
+            <option value="5" {{#equals type 5}}selected{{/equals}}>交易解锁</option>
+          </select>
+        </span>
+        <button class="btn btn-primary btn-ghost pull-right js-search-reset">重置</button>
+        <button class="btn btn-primary btn-minor pull-right form-search-button js-search-button">搜索</button>
+      </form>
+    </div>
+    <table class="table table-striped warahouse-list-table">
+      <thead>
+        <th width="19%">时间</th>
+        <th width="9%">变化类型</th>
+        <th width="11%">库存数量变化</th>
+        <th width="11%">实际库存数量</th>
+        <th width="10%">锁定数量变化</th>
+        <th width="10%">已锁定数量</th>
+        <th width="13%">可用库存数量</th>
+        <th width="17%">备注</th>
+      </thead>
+      <tbody>
+        {{#if _DATA_}}
+        {{#each _DATA_.data}}
+        <tr>
+          <td>{{formatDate createAt}}</td>
+          <td>
+            {{#equals type 0}}入库{{/equals}}
+            {{#equals type 1}}出库{{/equals}}
+            {{#equals type 2}}交易扣减{{/equals}}
+            {{#equals type 3}}恢复库存{{/equals}}
+            {{#equals type 4}}交易锁定{{/equals}}
+            {{#equals type 5}}交易解锁{{/equals}}
+          </td>
+          <td><span class="{{#of type "0,1,2,3"}}{{#of type "0,3"}}error{{else}}success{{/of}}{{/of}}">{{realQuantityDiffer}}</span>{{unit}}</td>
+          <td>{{realStockQuantity}}{{unit}}</td>
+          <td><span class="{{#of type "2,4"}}{{#equals type "4"}}error{{else}}success{{/equals}}{{/of}}">{{lockQuantityDiffer}}</span>{{unit}}</td>
+          <td>{{lockStockQuantity}}{{unit}}</td>
+          <td>{{availableQuantity}}{{unit}}</td>
+          <td>{{comment}}</td>
+        </tr>
+        {{/each}}
+        {{else}}
+          <tr><td colspan="8" class="center-text">无可展示信息</td></tr>
+        {{/if}}
+      </tbody>
+    </table>
+    <div class="pagination"
+        data-size="{{#if pageSize ~}}{{pageSize}}{{else}}20{{~/if}}"
+        data-total="{{_DATA_.total}}"></div>
+  </div>
+{{/component}}

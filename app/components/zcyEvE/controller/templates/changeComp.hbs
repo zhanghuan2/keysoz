@@ -1,0 +1,16 @@
+<table>
+  <tbody>
+    <tr>
+      <td>
+        选择需要替换的组件：
+      </td>
+      <td>
+        <select>
+          {{#each this}}
+            <option value="{{this}}">{{@key}}</option>
+          {{/each}}
+        </select>
+      </td>
+    </tr>
+  </tbody>
+</table>

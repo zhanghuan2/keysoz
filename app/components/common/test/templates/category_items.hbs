@@ -1,0 +1,38 @@
+<div class="category category-{{data.[0].node.level}} js-category-component">
+  <div class="category-header">
+    <p class="item-name-p"><strong class="item-name">
+      {{#equals data.[0].node.level 1}}一级类目{{/equals}}
+      {{#equals data.[0].node.level 2}}二级类目{{/equals}}
+      {{#equals data.[0].node.level 3}}三级类目{{/equals}}
+      {{#equals data.[0].node.level 4}}四级类目{{/equals}}
+      {{#equals data.[0].node.level 5}}产品SPU{{/equals}}
+    </strong></p>
+  </div>
+  <div class="form category-body">
+    <ul class="divide-ul">
+      {{#each data}}
+        <li class="divide-li"
+            data-category="{{json node}}"
+            data-children="{{json children}}"
+            data-category-id="{{node.id}}"
+          {{#each node.tagList}}
+            {{#equals this "bp(SPU)lm"}}
+            data-bzlm="1"
+            {{/equals}}
+          {{/each}}
+        >
+          <div class="normal-status" {{#if node.status}}{{else}}title="类目即将删除，无法发布商品或spu，请选择其他类目" {{/if}}>
+            {{#if node.hasChildren}}
+              <i class="icon-mewtwo icon-mewtwo-right next"></i>
+            {{/if}}
+            {{#if node.status}}
+            {{else}}
+              <label class="status">冻结中</label>
+            {{/if}}
+            <a href="javascript:void(0)" class="item-pop {{#if node.status}}{{else}}frozen{{/if}}"><span>{{node.name}}</span></a>
+          </div>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+</div>

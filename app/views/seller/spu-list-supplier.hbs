@@ -1,0 +1,18 @@
+{{#partial "realTitle"}}SPU列表{{/partial}}
+{{#partial "realBody"}}
+  {{#inject "common/breadcrumb"}}
+    {
+      "breadcrumb":
+      [{
+        "crumb": "商品管理",
+        "url": "#"
+      },
+      {
+        "crumb": "SPU列表",
+        "url": "#"
+      }]
+    }
+  {{/inject}}
+  {{inject "seller/spu_list_supplier"}}
+{{/partial}}
+{{> user_layout}}

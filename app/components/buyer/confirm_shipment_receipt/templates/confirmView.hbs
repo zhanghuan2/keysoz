@@ -1,0 +1,109 @@
+<div class="modal pur-modal">
+  <p class="hide">{{json this}}</p>
+  <div class="modal-header">确认收货
+    <a class="close" href="javascript:void(0)">&times;</a>
+  </div>
+  <div class="received-items">
+    <div class="modal-body">
+      <div><strong><span class="req-title">需求商品列表</span></strong></div>
+      <table class="table invoice-item-table">
+        <thead>
+        <tr>
+          <th class="left-text" colspan="" width="250"><span class="">商品</span></th>
+          <th width="150">商品编号</th>
+          <th width="150">单价(元)</th>
+          <th width="100">发货数量</th>
+          <th width="100">收货数量</th>
+          {{#equals data.[0].orderType 0}}
+            <th width="150">锁定仓库</th>
+            <th width="150" class="last">发货仓库</th>
+          {{/equals}}
+          {{#equals data.[0].orderType 2}}
+            <th width="400">生产批号</th>
+          {{/equals}}
+        </tr>
+        </thead>
+        <tbody>
+        {{#ifCond total '>' 0}}
+          {{#each data}}
+            <tr class="item-tr" data-sku-id="{{skuId}}"
+                data-id="{{id}}"
+                data-item-id={{itemId}}>
+              <td class="left-text"><span>{{itemName}}</span></td>
+              <td class="left-text"><span>{{itemId}}</span></td>
+              <td>
+                {{#equals ../data.[0].orderType 3}}
+                  <!--大宗商品没有单价信息-->
+                  <span class="text-center">-</span>
+                {{else}}
+                  <span class="price item-price">{{formatPrice skuPrice}}</span>
+                {{/equals}}
+              </td>
+              <td>
+                {{#if hasReissue}}
+                  {{reissueQuantity}}
+                {{else}}
+                  {{quantity}}
+                {{/if}}
+              </td>
+              <td>
+                {{#if hasReissue}}
+                  <!--补发货确认收货不能选择数量-->
+                  {{reissueQuantity}}
+                  <input type="hidden" class="count-number" value="{{reissueQuantity}}">
+                {{else}}
+                  <div class="input-amount" data-min="0"
+                       data-max="{{#if hasReissue}}{{reissueQuantity}}{{else}}{{quantity}}{{/if}}">
+                    <a href="javascript:void(0)" class="minus">-</a>
+                    <input type="number" class="count-number" style="width: 100px;text-align: left;"
+                           value="{{#if hasReissue}}{{reissueQuantity}}{{else}}{{quantity}}{{/if}}"
+                           data-old="{{#if hasReissue}}{{reissueQuantity}}{{else}}{{quantity}}{{/if}}"
+                           data-init="{{#if hasReissue}}{{reissueQuantity}}{{else}}{{quantity}}{{/if}}">
+                    <a href="javascript:void(0)" class="plus">+</a>
+                  </div>
+                {{/if}}
+              </td>
+              {{#equals orderType 0}}
+                <td>
+                  {{#each lockWarehouses}}
+                    <span class="lock-warehouse-list">{{lockWarehouseName}}&nbsp;</span>
+                  {{/each}}
+                </td>
+                <td class="last">{{shipWarehouseName}}</td>
+              {{/equals}}
+              {{#equals orderType 2}}
+                <td>
+                  {{#each vaccineItemExts}}
+                    <div class="batchNumber">
+                      <span>{{batchNum}}</span>
+                      <span>(数量：{{quantity}})</span>
+                      <span>&nbsp;&nbsp;有效期：{{effectiveDateStart}}~{{effectiveDateEnd}}</span><br>
+                      <span class="js-ossFile" data-file="{{json ossFileIds.[0]}}"></span>
+                      <span class="js-ossFile" data-file="{{json ossFileIds.[1]}}"></span>
+                      <span class="js-ossFile" data-file="{{json ossFileIds.[2]}}"></span>
+                    </div>
+                  {{/each}}
+                </td>
+              {{/equals}}
+            </tr>
+          {{/each}}
+        {{else}}
+          <tr>
+            <td colspan="5">无可展示信息</td>
+          </tr>
+        {{/ifCond}}
+        </tbody>
+      </table>
+      <div class="pagination" data-total="{{total}}"></div>
+      <div id="invoiceBox" style="margin-top: 20px;"></div>
+
+    </div>
+    <div class="modal-footer">
+      <label class="quantityTotalLabel">
+        <input type="checkbox" class="input-checkbox quantityTotal"> 验收完毕&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </label>
+      <button class="btn btn-info btn-medium close">取消</button>&nbsp;&nbsp;&nbsp;
+      <button class="btn btn-primary btn-medium js-received-items-submit">确认收货</button>
+    </div>
+  </div>
+</div>

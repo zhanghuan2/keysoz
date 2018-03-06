@@ -1,0 +1,23 @@
+
+{{!标题}}
+{{#partial "realTitle"}}
+    采购意向管理
+{{/partial}}
+
+{{!内容}}
+{{#partial "realBody"}}
+
+    {{!面包屑}}
+    {{#inject "common/breadcrumb"}}
+        {
+            "breadcrumb":[
+                {"crumb": "采购意向管理","url": "#"},
+                {"crumb": "采购意向列表","url": "#"}
+            ]
+        }
+    {{/inject}}
+
+{{/partial}}
+
+{{!嵌入}}
+{{> user_layout}}

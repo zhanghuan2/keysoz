@@ -1,0 +1,31 @@
+{{#component "item-publish-with-category"}}
+<div class="hide">{{json}}</div>
+  {{> component:agreement/item_publish/common/other_templates/base_info isEdit=false}}
+
+  <div class="propertyContainer">
+  {{#each _DATA_}}
+    {{#equals group "普通属性"}}
+      {{> component:agreement/item_publish/common/other_templates/other_attrs attrGroup="普通属性"}}
+    {{/equals}}
+  {{/each}}
+
+  {{#each _DATA_}}
+    {{#of group "服务信息,政策信息"}}
+      {{> component:agreement/item_publish/common/other_templates/other_attrs attrGroup="服务信息,政策信息"}}
+    {{/of}}
+  {{/each}}
+
+  {{#each _DATA_}}
+    {{#of group "普通属性,服务信息,政策信息,USER_DEFINED,销售规格"}}
+    {{else}}
+      {{> component:agreement/item_publish/common/other_templates/attrs_temp}}
+    {{/of}}
+  {{/each}}
+
+  {{> component:agreement/item_publish/common/other_templates/category_user_defined_attrs}}
+
+  </div>
+
+  {{> component:agreement/item_publish/common/other_templates/rich_editor}}
+
+{{/component}}

@@ -1,0 +1,19 @@
+{{#component "tax-hall-category-index nav-category navbar navbar-condensed js-comp"}}
+  <div class="navbar-collapse" id="navbar_collapse" data-href="{{_HREF_.main}}">
+  <input type="hidden" name="" value="{{json}}">
+  <input type="hidden" name="envHref" value="{{_ENV_HREF_.protocol}}">
+    <ul>
+      <li class="home-channel-container home-catgeory-show">
+        <div class="navbar-desc">
+          <a class="all-category-show" href="javascript:void(0);"><strong>全部商品分类</strong></a>
+        </div>
+        <div class="home-channel js-category-list {{#unless _IS_FIRST_SCREEN_}}{{/unless}}">
+
+        </div>
+      </li>
+    </ul>
+    <div class="navbar-icon">
+      <div class="icon-400-tel"></div>
+    </div>
+  </div>
+{{/component}}

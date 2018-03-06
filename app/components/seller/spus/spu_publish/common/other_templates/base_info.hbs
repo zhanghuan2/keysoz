@@ -1,0 +1,75 @@
+<div class="form-section section-top-bottom clearfix">
+  <div class="section-title">基本信息</div>
+    <div style="display: none;">{{json}}</div>
+  <div class="pull-left section-content clearfix">
+    <div class="clearfix">
+      <div class="form-left">
+        <div class="control-group">
+          <label class="group-title line-title"><b class="required">*</b>品牌：</label>
+          <div class="group-content">
+              <select class="noselectric" id="js-item-select-brand" name="select-brand" {{#if spu}}data-id="{{spu.brandId}}" data-name="{{spu.brandName}}"{{/if}} required>
+              </select>
+          </div>
+        </div>
+      </div>
+      <div class="form-right">
+        <div class="control-group xhbox last-line">
+            <label class="group-title line-title"><b class="required">*</b>型号：</label>
+            <div class="group-content">
+                <input type="text" id="input-specification" class="input-text" name="specification" maxLength="200" placeholder="请输入型号" value="{{spu.specification}}" required />
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix">
+      <div class="form-left">
+          <div class="control-group">
+            <label class="group-title line-title"><b class="required">*</b>SPU 名称：</label>
+            <div class="group-content">
+              <input type="text" id="input-name" class="input-text is-filled" name="name" maxLength="200" placeholder="请输入spu名称" value="{{spu.name}}" required />
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="control-group image-area">
+      <label class="group-title"><b class="required">*</b>图片：</label>
+      <div class="group-content">
+        <div class="image-tip">请上传小于1MB的PNG或JPG的图片</div>
+        <div class="main-image {{#unless spu.mainImage}}empty{{/unless}} image-container js-main-image js-item-image" id="js-item-main-image">
+          {{#if spu.mainImage}}
+            <img src="{{spu.mainImage}}" alt="">
+          {{else}}
+            <span class="image-tip-add">+</span>
+          {{/if}}
+          <input type="hidden" name="mainImage" value="{{spu.mainImage}}">
+        </div>
+        <ul class="images-list js-images-list clearfix">
+          {{#if spuDetail.images}}
+            {{#each spuDetail.images}}
+              <li class="pull-left image-container js-item-image-container item-image js-item-image">
+                <img src="{{url}}" alt="" data-src="{{url}}" data-name="{{name}}"/>
+                <span class="image-operate">
+                  <i class="icon-alakazam icon-alakazam-left-arrow js-move-image" data-direct="left"></i>
+                  <i class="icon-alakazam icon-alakazam-trash js-delete-image"></i>
+                  <i class="icon-alakazam icon-alakazam-right-arrow js-move-image" data-direct="right"></i>
+                </span>
+              </li>
+              {{#if @last}}
+                {{#gt @index 3}}
+                {{else}}
+                  <li class="pull-left image-container image-end empty js-item-image">
+                    <span class="image-tip-add">+</span>
+                  </li>
+                {{/gt}}
+              {{/if}}
+            {{/each}}
+          {{else}}
+            <li class="pull-left image-container image-end empty js-item-image">
+              <span class="image-tip-add">+</span>
+            </li>
+          {{/if}}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

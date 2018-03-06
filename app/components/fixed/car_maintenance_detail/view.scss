@@ -1,0 +1,438 @@
+@import 'compass/css3/inline-block';
+@import 'pokeball/theme';
+@import 'compass/css3/box-sizing';
+
+$blue-carrepairdetail: #24344e;
+$orange-carrepairdetail: #ff7900;
+$black-carrepairdetail: #2a2d33;
+$w-carrepairdetail: #fffefa;
+$w2-carrepairdetail: #fbedce;
+$whi-carrepairdetail: #fafafa;
+
+.fixed-car-maintenance-detail {
+
+  .fixed-protocol {
+    word-wrap: break-word;
+
+    .fixedpro-info {
+      overflow: hidden;
+      position: relative;
+      zoom: 1;
+
+      .fixedpro-left {
+        float: left;
+        height: 200px;
+        margin-right: 40px;
+        position: relative;
+        width: 930px;
+
+        .fixedpro-logo {
+          background: $whi-carrepairdetail;
+          border: 1px solid $panel-border-color;
+          float: left;
+          height: 196px;
+          overflow: hidden;
+          width: 264px;
+
+          img {
+            height: 100%;
+            width: 100%;
+          }
+        }
+
+        .fixedpro-summary {
+          float: left;
+          margin: 0 0 0 40px;
+          width: 620px;
+
+          p {
+            border-top: 1px dotted $border-color;
+            height: 36px;
+            margin: 0;
+
+            span {
+              color: $gray;
+              display: inline-block;
+              padding: 9px 0;
+              width: 150px;
+            }
+
+            .summay-val {
+              color: $blue-carrepairdetail;
+              margin-left: 36px;
+              width: 420px;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              overflow: hidden;
+            }
+
+            .feerate-color {
+              color: $orange-carrepairdetail;
+            }
+
+            &:last-child {
+              border-bottom: 1px dotted $border-color;
+            }
+
+          }
+        }
+
+      }
+
+      .fixedpro-right {
+        background: $w-carrepairdetail;
+        border: 1px solid $w2-carrepairdetail;
+        float: left;
+        height: 196px;
+        //padding: 18px;
+        padding: 34px 14px 68px 14px; // 修改
+        width: 208px;
+
+        //.protcolscore-comp {
+        //  height: 60px;
+        //}
+
+        .customer-satisfaction {
+          .cussatif-key {
+            color: $blue-carrepairdetail;
+            display: inline-block;
+            margin-right: 12px;
+          }
+
+          .cussatif-val {
+            color: $blue-carrepairdetail;
+            display: inline-block;
+          }
+
+          .car-amount {
+            color: $orange-carrepairdetail;
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 18px;
+          }
+
+          .supplier-web {
+            background: $white;
+            border: 1px solid $border-color;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            margin-top: 20px;
+            a {
+              color: $gray;
+            }
+          }
+
+        }
+
+      }
+
+    }
+
+    .fixedpro-content {
+
+      .tab {
+        margin-top: 20px;
+
+        .tab-navs {
+          margin: 0 0 20px;
+
+          a {
+            color: $black-carrepairdetail;
+          }
+
+          li {
+            border: 1px solid $border-color;
+            margin-right: 0;
+          }
+
+          li + li {
+            border-left: 0;
+          }
+        }
+
+      }
+
+      .tab-contents {
+        margin-bottom: 20px;
+      }
+
+      .tab-content {
+        border: 1px solid $border-color;
+        margin-bottom: 50px;
+
+        table {
+          td {
+            white-space: normal;
+          }
+        }
+      }
+
+      #introduction {
+        h3 {
+          font-size: 16px;
+          height: 56px;
+          line-height: 56px;
+          margin: 0;
+          padding: 0 15px;
+        }
+
+        table {
+          width: 100%;
+          tr {
+            td {
+              border: 1px solid $border-color;
+            }
+            td:first-child {
+              background-color: $whitesmoke;
+              border-left: 0;
+            }
+            td:nth-child(3) {
+              background-color: $whitesmoke;
+            }
+            td:last-child {
+              border-right: 0;
+            }
+          }
+        }
+
+        .enterpriseInfo {
+          padding: 20px 50px;
+        }
+      }
+
+      #service-promise {
+
+        h3 {
+          font-size: 16px;
+          height: 56px;
+          line-height: 56px;
+          margin: 0;
+          padding: 0 15px;
+          border-bottom: 1px solid $border-color;
+        }
+
+        .servicePromiseInfo {
+          padding: 20px 50px;
+        }
+      }
+      #deal-record {
+        h3 {
+          font-size: 16px;
+          height: 56px;
+          line-height: 56px;
+          margin: 0;
+          padding: 0 15px;
+          border-bottom: 1px solid $border-color;
+        }
+        tbody{
+          tr{
+            &>td:nth-child(2){
+              white-space: nowrap;
+              padding-right: 207px;
+            }
+          }
+        }
+        #deal-record-list {
+          margin: 8px auto;
+          width: 90%;
+        }
+      }
+
+      #repair-content {
+        h3 {
+          font-size: 16px;
+          height: 56px;
+          line-height: 56px;
+          margin: 0;
+          padding: 0 15px;
+        }
+
+        table {
+          width: 100%;
+
+          td {
+            border: 1px solid $border-color;
+          }
+        }
+
+        #repair-table {
+
+          tr {
+
+            td {
+              padding-left: 20px;
+            }
+
+            td:first-child {
+              background-color: $whitesmoke;
+              border-left: 0;
+              height: 60px;
+
+              // 修改页面结构(td中增加div)，使td宽度生效
+              div {
+                margin: 0;
+                padding: 0;
+                border: 0;
+                width: 240px;
+              }
+            }
+
+            td:nth-child(2) {
+              border-right: 0;
+            }
+
+          }
+        }
+
+        #expense-table {
+          tr {
+            height: 42px;
+
+            td {
+              &:first-child {
+                border-left: 0;
+              }
+
+              &:last-child {
+                border-right: 0;
+              }
+            }
+
+            &:last-child {
+
+              td {
+                border-bottom: 0;
+              }
+            }
+
+          }
+
+          td {
+            padding-left: 20px;
+            width: 239px;
+          }
+
+          .bgc-center {
+            background-color: $whitesmoke;
+            padding-left: 0;
+            text-align: center;
+          }
+
+          .sty-center {
+            padding-left: 0;
+            text-align: center;
+          }
+        }
+
+      }
+
+      #fitting-price {
+
+        h3 {
+          border-bottom: 1px solid $border-color;
+          font-size: 16px;
+          height: 56px;
+          line-height: 56px;
+          margin: 0;
+          padding: 0 15px;
+        }
+
+        #fitting-form {
+          margin: 16px auto;
+          width: 950px;
+
+          // 分页
+          .fixed-fitting-list-pagination {
+            font-size: 14px;
+            height: 40px;
+            margin-top: 5px;
+            text-align: right;
+            width: 100%;
+          }
+
+        }
+
+        #fitting-search {
+          border: 1px solid $border-color;
+          height: 60px;
+          padding: 8px;
+          position: relative;
+
+          div:first-child {
+            color: $darkgray;
+            display: inline-block;
+            margin: 5px 0 5px 12px;
+            position: relative;
+          }
+
+          #partsSelect {
+            background-color: $white;
+            height: 210px;
+            left: 80px;
+            position: absolute;
+            overflow: auto;
+            margin-left: 8px;
+            width: 160px;
+          }
+
+          label:nth-child(2) {
+            margin: 5px 0 5px 50px;
+          }
+
+          span {
+            position: absolute;
+            right: 8px;
+            top: 15px;
+
+            button {
+              background-color: $whitesmoke;
+              border: 1px solid $lightgray;
+              color: $gray;
+              height: 30px;
+              width: 56px;
+
+              &:first-child {
+                margin-right: 10px;
+              }
+
+              &:nth-child(2) {
+                background-color: $white;
+              }
+
+            }
+          }
+        }
+
+        #fitting-list {
+          margin-top: 28px;
+
+          table {
+            width: 100%;
+
+            tr {
+              border: 1px solid $border-color;
+              color: $gray;
+              height: 40px;
+
+              td {
+                width: 105px; //9列中每列宽度都相同，某几列可能需要调整
+              }
+            }
+
+            thead tr {
+              background-color: $whitesmoke;
+              color: $darkgray;
+              height: 32px;
+            }
+
+          }
+        }
+
+      }
+
+    }
+
+  }
+
+}

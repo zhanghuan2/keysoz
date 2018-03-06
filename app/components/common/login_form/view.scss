@@ -1,0 +1,148 @@
+.login-form-block {
+  .login-block {
+    height: auto;
+    width: 374px;
+    float: right;
+    padding: 20px;
+    background-color: #FFFFFF;
+
+    .login-form {
+      margin: 30px 0px;
+    }
+
+    .login-title {
+      border-bottom: 1px solid #DFDFDF;
+      padding: 0px 26px;
+      margin: 0px -20px;
+
+      label {
+        font-size: 1.8em;
+        border-bottom: 3px solid #1a67fe;
+        height: 100%;
+        padding: 10px 0px;
+      }
+    }
+
+    .input-group {
+      margin: 0;
+      padding: 0;
+      width: 334px;
+      height: 100%;
+      box-sizing: border-box;
+
+      .input {
+        width: 276px;
+        margin: 0 auto;
+        height: 100%;
+        border-radius: 0;
+        border: 1px solid #DFDFDF;
+        margin-bottom: 20px;
+        float: left;
+        border-left-width: 0px;
+        box-sizing: border-box;
+        /* modify for IE8 */
+        line-height: 30px; 
+      }
+
+      .input-icon {
+        width: 46px;
+        height: 46px;
+        float: left;
+        text-align: center;
+        margin: 0 auto;
+        font-size: 20px;
+        padding: 14px 0px;
+        border: 1px solid #DFDFDF;
+        border-right-width: 0px;
+        box-sizing: border-box;
+      }
+
+      .input-captcha {
+        width: 194px;
+        margin: 0 auto;
+        height: 100%;
+        border-radius: 0;
+        border: 1px solid #DFDFDF;
+        margin-bottom: 20px;
+        float: left;
+        border-left-width: 1px;
+        box-sizing: border-box;
+      }
+
+      .img-captcha {
+        width: 100px;
+        height: 46px;
+        line-height: 46px;
+        margin-left: 20px;
+      }
+
+      &:focus {
+        .input, .input-icon {
+          border-color: #1a67fe;
+        }
+      }
+    }
+
+    .input-row {
+      height: 46px;
+      margin: 10px auto;
+      vertical-align: middle;
+    }
+
+    .auto-login, .forget-password {
+      height: 100%;
+      vertical-align: middle;
+      font-size: 14px;
+      padding: 16px 0px;
+      color: black;
+    }
+
+    .auto-login-check {
+      height: 14px;
+      width: 14px;
+      padding: 0px;
+      margin: 16px 0px;
+      vertical-align: middle;
+      border-radius: 0px;
+      border: 1px solid #DFDFDF;
+    }
+
+    .login-btn {
+      width: 100%;
+      height: 100%;
+      background-color: #1a67fe;
+      color: #FFFFFF;
+
+      &.disabled {
+        background-color: #BBBBBB;
+        color: #F7F7F7;
+      }
+    }
+
+    .login-error {
+      height: 46px;
+      border: 1px solid #fd2400;
+      vertical-align: middle;
+      padding: 8px;
+      background-color: #fef7f8;
+    }
+
+    .login-error-icon {
+      font-size: 32px;
+      color: #fd2400;
+      padding: 6px 0px;
+      background-color: #fef7f8;
+    }
+
+    .error-text {
+      font-size: 14px;
+      vertical-align: middle;
+      color: #9a9b98;
+      margin-left: 20px;
+    }
+
+    .hidden {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{{#component "caibao-assist js-comp"}}
+  <div class="assist-wrap">
+    <div class="mascot">
+      <div>
+        <img src="/lunatone/assets/images/other-images/RobcloseEye.png" alt="采宝1" class="js-img js-hide-assist closeEye">
+        <img src="/lunatone/assets/images/other-images/RobopenEye.png" alt="采宝2" class="js-img js-hide-assist openEye">
+        <img src="/lunatone/assets/images/other-images/hi.png" alt="采宝hi" class="jImg sayhi hide">
+      </div>
+    </div>
+    <div class="assist-btn">
+      <a target="_blank" href = "{{#if serviceUrl}}{{serviceUrl}}{{else}}https://cschat.cloud.alipay.com/pcportal.htm?tntInstId=KMQNW3CN&scene=SCE00000041{{/if}}" class="mod-btn">{{#if serviceText}}{{serviceText}}{{else}}智能客服{{/if}}</a>
+      <a target="_blank" href="{{#if messageUrl}}{{messageUrl}}{{else}}http://help.zcy.gov.cn{{/if}}" class="mod-btn">{{#if messageText}}{{messageText}}{{else}}留言咨询{{/if}}</a>
+      <div class="toTop js-return-top mod-btn"><i class="icon-zcy icon-top"></i></div>
+    </div>
+  </div>
+{{/component}}

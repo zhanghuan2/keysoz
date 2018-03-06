@@ -1,0 +1,125 @@
+.vaccine-sale-manage{
+  min-width: 1220px;
+  .top-line{
+    margin: 10px 0;
+    width: 1192px;
+    height: 34px;
+    .forbid-sale-label{
+      float: right;
+      font-size: 12px;
+      color: #666666;
+      line-height: 34px;
+    }
+  }
+  .calendar{
+    width: 1192px;
+    border-top: solid 1px #dddddd;
+    border-left: solid 1px #dddddd;
+    .calendar-day{
+      display: inline-block;
+      vertical-align: top;
+      width: 170px;
+      height: 130px;
+      border-right: solid 1px #dddddd;
+      border-bottom: solid 1px #dddddd;
+      .day-no{
+        display: inline-block;
+        margin-top: 10px;
+        margin-left: 10px;
+        font-size: 16px;
+        color: #333333;
+      }
+      .white-list{
+        margin-top: 10px;
+        margin-left: 10px;
+        .white-org-name{
+          font-size: 12px;
+          width: 150px;
+          color: #666666;
+          line-height: 20px;
+          span{
+            width: 120px;
+            text-overflow: ellipsis;
+          }
+          i{
+            display: none;
+            float: right;
+          }
+          &:hover{
+            background: #F3FAFD;
+            span {
+              color: #129fea;
+            }
+            i{
+              display: inline-block;
+            }
+          }
+        }
+      }
+    }
+    .calendar-day.forbid-sale{
+      background: #f5f5f5;
+      .day-no{
+        color: #999999;
+      }
+      .manage-button{
+        display: none;
+      }
+      &:hover{
+        background: #F3FAFD;
+        .manage-button{
+          display: inline-block;
+          margin-top: 10px;
+          margin-right: 10px;
+          float: right;
+          width: 75px;
+          height: 24px;
+          background: #197AFF;
+          color: #ffffff;
+          font-size: 12px;
+          padding: 0;
+        }
+      }
+    }
+  }
+}
+
+.modal.add-white-list{
+  width: 420px;
+  .modal-body{
+    padding-left: 100px;
+    min-height: 100px;
+  }
+}
+
+.modal.whole-white-list{
+  width: 300px;
+  .modal-body{
+    padding-left: 20px;
+    min-height: 100px;
+    padding-bottom: 20px;
+    .white-org-name{
+      font-size: 12px;
+      width: 240px;
+      color: #666666;
+      line-height: 20px;
+      span{
+        width: 210px;
+        text-overflow: ellipsis;
+      }
+      i{
+        display: none;
+        float: right;
+      }
+      &:hover{
+        background: #F3FAFD;
+        span {
+          color: #129fea;
+        }
+        i{
+          display: inline-block;
+        }
+      }
+    }
+  }
+}

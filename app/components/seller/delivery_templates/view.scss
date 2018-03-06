@@ -1,0 +1,216 @@
+@import "compass/css3/inline-block";
+@import "compass/css3/box-sizing";
+@import "pokeball/theme";
+
+$delivery-list-background-color: #F9F9F9;
+
+.delivery-template-manage {
+  min-height: 500px;
+
+  .delivery-templates {
+    list-style: none;
+  }
+
+  .template-item {
+    margin-bottom: 20px;
+  }
+
+  .name-error {
+    @include inline-block(baseline);
+  }
+
+  .template-name {
+    color: #000;
+    font-size: 14px;
+  }
+
+  .template-container {
+    border-left: 4px solid #E7E9EA;
+
+    .save-status {
+      display: none;
+    }
+
+    &.active {
+      border-left: 4px solid $color-primary;
+
+      .template-main {
+        border: 1px solid #D4F1FE;
+        background-color: #EAF8FE;
+      }
+
+      .edit-status {
+        display: none;
+      }
+
+      .save-status {
+        @include inline-block(none);
+      }
+    }
+  }
+
+  .template-main {
+    padding: 20px 0;
+    border: 1px solid #E7E9EA;
+    border-left-width: 0;
+    background-color: #F3F6F9;
+  }
+
+  &.active {
+    background-color: #EAF8FE;
+    border: 1px solid #D4F1FE;
+    border-left: 4px solid $color-primary;
+  }
+  .template-info {
+    width: 70%;
+    float: left;
+    text-align: left;
+
+    p {
+      padding-left: 30px;
+    }
+  }
+
+  .template-operation {
+    float: right;
+    width: 30%;
+    text-align: right;
+
+    button {
+      margin: 15px 20px 0 0;
+    }
+  }
+
+  .delivery-list {
+    background-color: $delivery-list-background-color;
+    padding: 0 10px 20px;
+  }
+
+  .all-select {
+    padding: 18px 0 0 10px;
+    margin-top: 0;
+  }
+
+  .province-list {
+    list-style-type: none;
+  }
+
+  .province-li {
+    float: left;
+    width: 130px;
+    padding: 8px 10px;
+    @include inline-block(none);
+    position: relative;
+
+    label {
+      vertical-align: text-bottom;
+      cursor: pointer;
+      width: auto;
+      margin: 0;
+      line-height: 14px;
+    }
+
+    input[type=checkbox] {
+      vertical-align: baseline;
+    }
+  }
+
+  .province-li,.city-li {
+    &.selected {
+
+      & > label,
+        > span {
+        color: $color-primary;
+      }
+
+      .city-list {
+        display: block;
+      }
+    }
+  }
+
+  .icon-caret {
+    font-size: 12px;
+  }
+
+  .drop-entrance {
+    @include inline-block(baseline);
+    margin-left: 2px;
+    height: 14px;
+    cursor: pointer;
+  }
+
+  .city-count {
+    color: $color-primary;
+    @include inline-block(top);
+    margin-top: -5px;
+  }
+
+  .city-list {
+    left: -1px;
+    top: 30px;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid $color-border;
+    width: 450px;
+    z-index: 9;
+    display: none;
+  }
+
+  .city-list,.region-list {
+    p {
+      padding: 0 10px 10px;
+      margin: 0;
+    }
+  }
+
+  .city-ul {
+    list-style-type: none;
+    background-color: #fff;
+  }
+
+  .city-li {
+    background-color: #fff;
+    float: left;
+    text-align: left;
+    padding: 10px;
+    width: 130px;
+
+    &.last {
+      width: 430px;
+
+      &.second-last {
+        width: 280px;
+      }
+
+      &.third-last {
+        width: 130px;
+      }
+    }
+  }
+
+  .create-operation {
+    margin-top: 0;
+  }
+
+  .region-list {
+    background-color: $delivery-list-background-color;
+  }
+
+  .region-ul {
+    list-style: none;
+    background-color: $delivery-list-background-color;
+  }
+
+  .region-li {
+    background-color: $delivery-list-background-color;
+    float: left;
+    text-align: left;
+    padding: 10px;
+    width: 130px;
+  }
+
+  .hide {
+    display: none;
+  }
+}

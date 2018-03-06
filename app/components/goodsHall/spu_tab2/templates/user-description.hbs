@@ -1,0 +1,32 @@
+{{#each data.evaluateItems}}
+<tr class="content-exist {{#mod @index 2}}oddColor{{else}}evenColor{{/mod}}">
+  <td width="200">
+    <span>{{evaluateItem.departName}}</span>
+  </td>
+  <td width="100">数量: {{evaluateItem.itemNum}}</td>
+  <td width="100">评分: {{divide evaluateItem.score 20}}</td>
+  <td width="500" class="th-style">
+    {{#if evaluateItems}}
+      <i class="icon-zcy icon-xiangxiazhedie js-expand-add-evaluation toggle-icon"></i>
+      <i class="icon-zcy icon-xiangshangzhedie js-hide-add-evaluation toggle-icon hide"></i>
+    {{/if}}
+    <span class="content-span">{{#if evaluateItem.content}}{{evaluateItem.content}}{{else}}该用户没有评价{{/if}}</span><br>
+    {{#each evaluateItem.urlLst}}
+      <img class="js-comment-image" src="{{this}}"></img><br>
+    {{/each}}
+    <span class="content-span">{{formatDate evaluateItem.createTime}}</span><br>
+    {{#if evaluateItems}}
+    <div class="item-add-evaluation expand-add-evaluation">
+      {{#each evaluateItems}}
+        <p>{{content}}</p>
+        {{#each urlLst}}
+          <img src="{{this}}">
+        {{/each}}
+        <p>{{formatDate createTime}}</p>
+      {{/each}}
+    </div>
+    {{/if}}
+  </td>
+</tr>
+{{/each}}
+<div class="pagination"></div>

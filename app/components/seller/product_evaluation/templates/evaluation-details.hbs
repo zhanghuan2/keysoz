@@ -1,0 +1,126 @@
+<div class="modal pur-modal evaluation-details-modal modal-evaluation">
+  <div class="modal-header short-title">
+    <span class="modal-tile font-16">评价详情</span>
+    <a href="#" class="close pull-right">x</a>
+  </div>
+  <div class="evaluation-modal">
+    <ul class="order-border-ul">
+      {{#each data.[0].evaluateTargetScores}}
+      <li class="order-evaluation-li">
+        <div class="left-title">{{targetName}}:</div>
+        <div class="right-star js-product-star" data-score="{{score}}"
+                                data-evaluatetype="2"
+                                data-itemid="{{id}}"
+                                data-evaluatename="{{targetName}}"
+                                data-weightruleid="{{evaTargetId}}">
+          <input name="rating-select{{id}}" type="radio" class="star {split:2}">
+          <input name="rating-select{{id}}" type="radio" class="star {split:2}">
+          <input name="rating-select{{id}}" type="radio" class="star {split:2}">
+          <input name="rating-select{{id}}" type="radio" class="star {split:2}">
+          <input name="rating-select{{id}}" type="radio" class="star {split:2}">
+          <input name="rating-select{{id}}" type="radio" class="star {split:2}">
+          <input name="rating-select{{id}}" type="radio" class="star {split:2}">
+          <input name="rating-select{{id}}" type="radio" class="star {split:2}" checked>
+          <input name="rating-select{{id}}" type="radio" class="star {split:2}">
+          <input name="rating-select{{id}}" type="radio" class="star {split:2}">
+        </div>
+      </li>
+      {{/each}}
+    </ul>
+    <div class="appraise js-change-evaluation-item" style="margin-bottom: 20px;">
+      <span class="left-title">评价:</span>
+      <span class="appraise-content js-commnet-content-text">{{data.[0].evaluateItem.content}}</span>
+      <div class="input-fivehundred-content js-input-fivehundred-content hide">
+        <textarea placeholder="不超过500个字符" class="js-checklog-comment change-evaluation-text" id="add" rows="3"></textarea>
+        <div class="note no-href">
+        （<span class="js-checklog-comment-count checklog-comment-count">0</span> / 500）
+        </div>
+      </div>
+    </div>
+    {{#if data.[0].annexUrl}}
+      <div class="delete-add-photo-item">
+        <span class="left-title">照片:</span>
+        <div class="delete-add-photo-left hide">
+          <div class="btn btn-ghost btn-upload btn-image-upload btn-image">
+            <span class="icon-pokeball icon-pokeball-plus"></span>
+            <input class="image-upload" type="file" name="images" value="">
+          </div>
+          <div class="dash-devide"></div>
+        </div>
+        <div class="image-show-evaluation image-only-select js-change-image gallery clearfix">
+          {{#each data.[0].annexUrl}}
+           <div class='image-single js-image-single'>
+            <img src="{{this}}">
+            <i class='icon-zcy icon-shanchu font-12 js-icon-shanchu hide'></i>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+    {{/if}}
+    <p>
+      <span class="left-title">评价时间:</span>
+      <span class="js-item-first-time" style="margin-left: 15px;">{{formatDate data.[0].evaluateItem.modifyTime}}</span>
+    </p>
+    <div class="button-add-change {{#equals flag 1}}{{else}}hide{{/equals}} js-change-item-evaluation" style="padding-left: 90px;">
+      <div class="btn btn-small btn-minor modify-item-evaluation change-item-evaluated js-change-item-evaluated">修改</div>
+      <div class="btn btn-small btn-minor modify-item-evaluation js-add-item-evaluation">追加</div>
+    </div>
+    <div class="evaluation-modal js-add-area-evauation hide">
+      <div class="appraise js-add-evaluation-item">
+        <span class="add-title">追加评价:</span>
+        <div class="input-fivehundred-content">
+          <textarea placeholder="不超过500个字符" class="js-checklog-comment add-evaluation-text" id="add" rows="3"  ></textarea>
+          <div class="note no-href">（<span class="js-checklog-comment-count checklog-comment-count">0</span> / 500）</div>
+        </div>
+      </div>
+      <div class="delete-add-photo-item js-add-photo-item">
+        <span class="add-title">追加照片:</span>
+        <div class="delete-add-photo-left add-photo-left">
+          <div class="btn btn-ghost btn-upload btn-image-upload btn-image">
+            <span class="icon-pokeball icon-pokeball-plus"></span>
+            <input class="image-upload" type="file" name="images" value="">
+          </div>
+          <div class="dash-devide"></div>
+        </div>
+        <div class="image-show-evaluation js-add-image gallery clearfix">
+        </div>
+      </div>
+    </div>
+    {{!-- 追评查看 --}}
+
+    {{#each data}}
+    {{#gt @index 0}}
+    <div class="divide-dashed-evalaution"></div>
+    <div class="appraise js-select-add-evaluation-item">
+      <span class="left-title">追加评价:</span>
+      <span class="appraise-content">{{evaluateItem.content}}</span>
+    </div>
+    {{#if annexUrl}}
+      <div class="delete-add-photo-item js-add-photo-item">
+        <span class="left-title">追加照片:</span>
+        <div class="image-show-evaluation image-only-select gallery clearfix">
+          {{#each annexUrl}}
+             <div class='image-single js-image-single'>
+              <img src="{{this}}">
+              <i class='icon-zcy icon-shanchu font-12 js-icon-shanchu hide'></i>
+            </div>
+          {{/each}}
+        </div>
+      </div>
+    {{/if}}
+    <div>
+      <span class="left-title">追评时间:</span><span style="margin-left: 15px;">{{formatDate evaluateItem.modifyTime}}</span>
+    </div>
+    {{/gt}}
+    {{/each}}
+  </div>
+  <div class="modal-footer evaluation-footer">
+    {{#equals flag 1}}
+      <button class="btn btn-info btn-medium close js-close-button">确定</button>
+      <button class="btn btn-primary btn-medium js-save hide">保存</button>
+    {{else}}
+      <button class="btn btn-primary btn-medium close">确定</button>
+    {{/equals}}
+  </div>
+</div>
+

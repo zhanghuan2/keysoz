@@ -1,0 +1,21 @@
+{{#component "education-elevator-floor js-comp"}}
+  <p class="hide">{{json this}}</p>
+  <input type="hidden" class="js-env-href" value="{{json _ENV_HREF_}}">
+  <input type="hidden" class="js-front-category-id" value="{{frontCategoryId}}">
+  <input type="hidden" class="js-items-id" value="{{itemWhiteList}}">
+  <div class="floor-item js-floor-item" data-name="{{floorName}}" data-id="js-floor-{{floorName}}">
+    <div class="floor-body clearfix">
+      <div class="floor-left" style="background-image: url('{{mainImg}}')">
+        <a href="{{#if mainUrl}}{{mainUrl}}{{else}}javascript:void(0);{{/if}}">
+          <div class="floor-name">{{floorName}}</div>
+          <div class="floor-tags">
+            {{#each keyWords}}
+              <span class="keyWord js-keyword-search">{{this}}</span>
+            {{/each}}
+          </div>
+        </a>
+      </div>
+      <div class="floor-products"></div>
+    </div>
+  </div>
+{{/component}}

@@ -1,0 +1,29 @@
+.item-publish {
+    .section-content {
+        margin-left: 76px;
+    }
+}
+.dropdown-selector-text,.input-text{
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    padding: 7px 10px;
+}
+
+.spu_detail{
+    label.label.label-yellow{
+        width: auto !important;
+        position: absolute;
+        left: 10px;
+        top: 4px;
+    }
+    label.group-title{
+        width: 75px !important;
+        margin-left: 20px;
+    }
+    .item-publish .sku-table .td-inner-line{
+        .label-yellow{
+            left: 0;
+        }
+    }
+}

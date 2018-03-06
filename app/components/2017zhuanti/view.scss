@@ -1,0 +1,207 @@
+.white-paper-wrap{
+  background:#232535;
+}
+.data-white-paper{
+  margin:0 auto;
+  $color:#89cfe6;
+  $font-family:"兰亭黑-简";
+  .subject-wrap{
+    background:#232535;
+    padding-bottom:100px;
+    .subject-title{
+      color:$color;
+      font-size:36px;
+      font-family:$font-family;
+      margin:0;
+      margin-left:25px;
+      line-height:1;
+    }
+    .subject-img{
+      text-align:center;
+    }
+    .subject-info{
+      width:1025px;
+      margin:15px 0 50px 45px;
+      font-size:18px;
+      color:$color;
+      line-height:30px;
+      &.color-yellow{
+        span{
+          color:#ffe91f;
+        }
+      }
+      &.color-green{
+        span{
+          color:#20fc92;
+        }
+      }
+      &.color-purple{
+        span{
+          color:#cb27ff;
+        }
+      }
+      span{
+        color:#fb367a;
+      }
+    }
+    .part-1{
+      position: relative;
+      height: 500px;
+      width: 100%;
+      overflow:hidden;
+      img{
+        position: absolute;
+        left: 50%;
+        margin-left: -700px;
+      }
+    }
+    .part-2{
+      padding-top:120px;
+      background:url("/lunatone/assets/images/other-images/bg01-02.png")no-repeat right -111%;
+    }
+    .part-3{
+      background:url("/lunatone/assets/images/other-images/bg01-02.png")no-repeat right 72%;
+      .info{
+        font-size:20px;
+        color:$color;
+        font-family: $font-family;
+        margin-left:45px;
+        margin-bottom:100px;
+        span{
+          font-size:36px;
+          color:#cb27ff;
+        }
+      }
+    }
+    .part-4{
+      background:url("/lunatone/assets/images/other-images/bg03-04.png")no-repeat left -200%;
+    }
+    .part-5{
+      background:url("/lunatone/assets/images/other-images/bg03-04.png")no-repeat left -55%;
+    }
+    .part-6{
+      background:url("/lunatone/assets/images/other-images/bg06-07.png")no-repeat right -160%;
+    }
+    .part-7{
+      background:url("/lunatone/assets/images/other-images/bg06-07.png")no-repeat right 254%;
+    }
+    .part-8{
+      position:relative;
+      background:url("/lunatone/assets/images/other-images/bg09-10.png")no-repeat left -445%;
+      &:after{
+        content:'';
+        position:absolute;
+        width:152px;
+        height:386px;
+        right:0;
+        bottom:-300px;
+        background:url("/lunatone/assets/images/other-images/element-right.png")no-repeat;
+      }
+    }
+    .part-9{
+      background:url("/lunatone/assets/images/other-images/bg09-10.png")no-repeat left 90%;
+    }
+    .part-10{
+      background:url("/lunatone/assets/images/other-images/bg11-12.png")no-repeat right -370%;
+    }
+    .part-11{
+      position:relative;
+      background:url("/lunatone/assets/images/other-images/bg11-12.png")no-repeat right 250%;
+      &:before{
+        content:'';
+        position:absolute;
+        width:188px;
+        height:464px;
+        left: -38px;
+        top: -140px;
+        background:url("/lunatone/assets/images/other-images/element-left.png")no-repeat;
+      }
+    }
+    .part-12{
+      background:url("/lunatone/assets/images/other-images/bg14-15.png")no-repeat left 148%;
+    }
+    .part-13{
+      background:url("/lunatone/assets/images/other-images/bg14-15.png")no-repeat left -675%;
+    }
+    .part-14{
+      position:relative;
+      background:url("/lunatone/assets/images/other-images/bg16-17.png")no-repeat right 25%;
+      &:after{
+        content:'';
+        position:absolute;
+        width:188px;
+        height:464px;
+        left: 0;
+        top: 50%;
+        background:url("/lunatone/assets/images/other-images/element-left.png")no-repeat;
+      }
+    }
+    .part-16{
+      background:url("/lunatone/assets/images/other-images/bg19-20.png")no-repeat left -160%;
+    }
+    .part-17{
+      position:relative;
+      background:url("/lunatone/assets/images/other-images/bg19-20.png")no-repeat left 517%;
+      &:after{
+        content:'';
+        position:absolute;
+        width:152px;
+        height:386px;
+        right: 0;
+        top: 80%;
+        background:url("/lunatone/assets/images/other-images/element-right.png")no-repeat;
+      }
+    }
+    .part-18{
+      background:url("/lunatone/assets/images/other-images/bg16-17.png")no-repeat right -54%;
+    }
+    .part-19{
+      background:url("/lunatone/assets/images/other-images/bg16-17.png")no-repeat right 1475%;
+    }
+    .mt-100{margin-top:100px;}
+    .mt-120{margin-top:120px;}
+    .mt-150{padding-top:150px;}
+    .mt-200{margin-top:200px;}
+    .mb-66{margin-bottom:66px;}
+  }
+  .video-wrap{
+    position:relative;
+    width:100%;
+    padding:120px 0 100px;
+    background:#e94609 url("/lunatone/assets/images/other-images/foot-bg.png") no-repeat 50% -208%;
+    .text-center{
+      text-align:center;
+    }
+    h2{
+      color:#fff;
+      text-align:center;
+      font-size: 56px;
+      margin: 0 0 10px 0;
+      line-height: 1;
+    }
+    h1{
+      color:#fff;
+      text-align:center;
+      font-size:80px;
+      line-height:1;
+      margin:30px 0;
+    }
+    .ued-logo{
+      position:absolute;
+      right:30px;
+      top:30px;
+    }
+    .video-title{
+      color:#fff;
+      text-align:center;
+      font-size:30px;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+    .video-area{
+      width:800px;
+      height:475px;
+      margin:0 auto;
+    }
+  }
+}

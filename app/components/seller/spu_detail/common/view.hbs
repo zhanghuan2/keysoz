@@ -1,0 +1,17 @@
+{{#component "item-publish js-comp"}}
+  <form method="POST" class="form form-aligned item-publish-form" id="js-item-form"
+      {{#if spuId}}
+        data-id="{{spuId}}"
+      {{/if}}>
+
+    {{#if spuId}}
+      {{#if workflowId}}
+        {{inject "seller/spu_detail/with_spu_changed"}}
+      {{else}}
+        {{inject "seller/spu_detail/with_spu"}}
+      {{/if}}
+    {{else}}
+      {{inject "seller/spu_detail/with_category"}}
+    {{/if}}
+  </form>
+{{/component}}

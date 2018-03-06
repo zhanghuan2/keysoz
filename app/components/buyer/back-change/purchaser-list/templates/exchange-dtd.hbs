@@ -1,0 +1,19 @@
+<div class="modal buyer_back-change_purchaser-list exchange">
+
+    {{!标题}}
+    <div class="modal-header">
+        <label class="modal-title">确认信息</label><a href="javascript:;" class="close">×</a>
+    </div>
+
+    {{!内容}}
+    <div class="modal-body component-body text">
+        确认退货，等待供应商上门取件<br>预计取件时间：{{address.pickupTime}}
+    </div>
+
+    {{!行为}}
+    <div class="modal-footer text-right">
+        <input name="cancel-btn" class="btn btn-secondary close" type="button" value="取消">
+        <input name="accept-btn" class="btn btn-primary" type="button" value="确认">
+    </div>
+
+</div>

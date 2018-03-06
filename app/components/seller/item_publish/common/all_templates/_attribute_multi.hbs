@@ -1,0 +1,24 @@
+<div class="js-category-attr-input category-attr-input js-group-item multi-content js-multi-input"
+     data-input-type="multi"
+     data-property-id="{{property.id}}"
+     data-key="{{attrKey}}"
+     data-group="{{group}}"
+     data-type="2"
+     data-required="false"
+     data-multi-value="{{../attrVal}}">
+  {{#each attrVals}}
+    <label name="{{this}}">
+      <input type="checkbox" name="multiCheckbox">
+      <span>{{this}}</span>
+    </label>
+  {{/each}}
+  {{#equals attrMetasForK.USER_DEFINED "true"}}
+    <a href="javascript:void(0)" class="multi-add" style="white-space: nowrap;">添加</a>
+    <div class="multi-input-append">
+      <input type="text" class="js-multi-item-append-text js-attr-val-input">
+      <span class="input-group-btn pull-right">
+        <button class="btn btn-info js-multi-item-append" type="button">添加</button>
+      </span>
+    </div>
+  {{/equals}}
+</div>

@@ -1,0 +1,32 @@
+.elevator-hot-floor {
+  &.carousel-wrap {
+    .carousel {
+      .carousel-container {
+        li {
+          img {
+            width: 98%;
+          }
+        }
+      }
+    }
+  }
+  .floor-body {
+    border: none;
+  }
+  .production {
+    line-height: 30px;
+    margin: 5px 10px;
+    &-name {
+      font-size: 14px;
+      display: inline-block;
+      white-space: normal;
+      line-height: 18px;
+      color: #000;
+      height: 36px;
+      overflow: hidden;
+    }
+    &-price {
+      font-size: 16px;
+    }
+  }
+}

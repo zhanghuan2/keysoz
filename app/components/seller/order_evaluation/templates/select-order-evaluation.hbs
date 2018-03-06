@@ -1,0 +1,57 @@
+<div class="evaluation-modal evaluation-nomodal">
+  <ul class="order-evaluation-ul order-border-ul">
+    {{#each data.evaluateTargetScoreLst}}
+    <li class="order-evaluation-li">
+      <div class="left-title"
+           >{{targetName}}:</div>
+      <div class="right-star js-star-order" data-score="{{score}}"
+                                            data-evatargetid="{{evaTargetId}}"
+                                            data-targetname="{{targetName}}">
+        <input name="rating-order{{evaTargetId}}" type="radio" class="star {split:2}">
+        <input name="rating-order{{evaTargetId}}" type="radio" class="star {split:2}">
+        <input name="rating-order{{evaTargetId}}" type="radio" class="star {split:2}">
+        <input name="rating-order{{evaTargetId}}" type="radio" class="star {split:2}">
+        <input name="rating-order{{evaTargetId}}" type="radio" class="star {split:2}">
+        <input name="rating-order{{evaTargetId}}" type="radio" class="star {split:2}">
+        <input name="rating-order{{evaTargetId}}" type="radio" class="star {split:2}">
+        <input name="rating-order{{evaTargetId}}" type="radio" class="star {split:2}" checked>
+        <input name="rating-order{{evaTargetId}}" type="radio" class="star {split:2}">
+        <input name="rating-order{{evaTargetId}}" type="radio" class="star {split:2}">
+      </div>
+    </li>
+    {{/each}}
+  </ul>
+  <div class="appraise">
+    <span class="left-title">评价:</span>
+    <span class="font-12 appraise-content" id="remark-order-evaluation-content">{{data.evaluateOrder.[0].content}}</span>
+    <div class="input-fivehundred-content js-order-evaluation-change hide">
+      <textarea placeholder="不超过500个字符" class="js-checklog-comment" id="add" rows="3"></textarea>
+      <div class="note no-href">
+      （<span class="js-checklog-comment-count checklog-comment-count">0</span> / 500）
+      </div>
+    </div>
+  </div>
+  <div>
+    <span class="left-title">评价时间:</span><span class="js-order-first-time" style="margin-left: 15px;">{{formatDate data.evaluateOrder.[0].modifyTime}}</span>
+  </div>
+</div>
+<div style="padding-left: 100px;" class="js-evaluation-btn hide">
+  <div class="btn btn-small btn-minor js-modify-order-evaluation modify-evaluation">修改</div>
+  <div class="btn btn-small btn-minor js-add-order-evaluaiton modify-evaluation">追加</div>
+</div>
+<button type="submit" class="btn btn-primary deliver-evalution js-modify-evaluation-submit hide">发表评价</button>
+{{#each data.evaluateOrder}}
+  {{#gt @index 0}}
+  <div class="js-add-evaluation-area evaluation-modal add-evaluation-nomodal">
+    <div class="appraise js-add-evaluation-item">
+      <span class="font-12 add-title">追加评价:</span>
+      <span class="font-12 appraise-content">{{content}}</span>
+    </div>
+    <div>
+      <span class="add-title">追评时间:</span><span style="margin-left: 15px;">{{formatDate modifyTime}}</span>
+    </div>
+  </div>
+  {{/gt}}
+{{/each}}
+
+

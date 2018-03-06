@@ -1,0 +1,193 @@
+{{#component "req-list trade-manage js-comp clearfix"}}
+  <div class="float-hidden" hidden></div>
+  <div class="buyer-req-lists" data-req-lists-total="{{_DATA_.total}}"></div>
+  <div class="page-body-option clearfix">
+    <div class="page-title">需求单列表</div>
+    <div class="page-button right-text">
+      {{#equals _ELEMENT_.createPurchase true}}
+        <button class="btn btn-primary btn-medium js-show-select-modal" data-type="purchase">创建预购单</button>
+      {{else}}
+        {{#equals _ELEMENT_.createOrder true}}
+          <button class="btn btn-primary btn-medium js-show-select-modal" data-type="order">创建订单</button>
+        {{/equals}}
+      {{/equals}}
+    </div>
+  </div>
+  <div class="req-list-body">
+    <div class="page-list-search clearfix">
+      <div class="search-table">
+        <div class="search-row">
+          <span class="search-label"><label>申请时间：</label></span>
+          <span class="search-cell">
+            <span class="time-interval-input create-time"></span>
+          </span>
+          <span class="search-label"><label>状态：</label></span>
+          <span class="search-cell">
+            <select class="js-select-status select">
+              <option value="">全部状态</option>
+              <option value="1" {{#equals status 1}}selected{{/equals}}>审核中</option>
+              <option value="0" {{#equals status 0}}selected{{/equals}}>草稿</option>
+              <option value="2" {{#equals status 2}}selected{{/equals}}>待采购</option>
+              <option value="10" {{#equals status 10}}selected{{/equals}}>已提交至预购单</option>
+              <option value="11" {{#equals status 11}}selected{{/equals}}>已提交至订单</option>
+              <option value="-1" {{#equals status -1}}selected{{/equals}}>已驳回</option>
+              <option value="-4" {{#equals status -4}}selected{{/equals}}>已撤消</option>
+            </select>
+          </span>
+          <span class="search-label"><label>商品名称：</label></span>
+          <span class="search-cell">
+            <input name="itemName" type="text" placeholder='请输入商品名称' value="{{itemName}}">
+          </span>
+        </div>
+        <div class="search-row">
+          <span class="search-label"><label>需求单金额(元)：</label></span>
+          <span class="search-cell">
+            <input class="js-search-minFee money-input"
+                   name="minFee" type="text" placeholder='请输入最小价格'
+                   value="{{minFee}}"> -
+            <input class="js-search-maxFee money-input"
+                   name="maxFee" type="text" placeholder='请输入最大价格'
+                   value="{{maxFee}}">
+          </span>
+          <span class="search-label"><label>供应商名称：</label></span>
+          <span class="search-cell">
+            <select name="supplierOrg" class="noselectric" data-org-name="{{supplierOrgName}}" data-org-id="{{supplierOrgId}}"></select>
+          </span>
+          <span class="search-label"><label>采购经办人：</label></span>
+          <span class="search-cell">
+            <select name="purchaser" class="noselectric" data-name="{{purchaserName}}" data-user-id="{{purchaserId}}"></select>
+          </span>
+        </div>
+        <div class="search-row">
+          <span class="search-label"><label>需求单号：</label></span>
+          <span class="search-cell">
+            <input name="rno" type="text" placeholder='请输入（支持后6位搜索）' value="{{rno}}" style="margin-right: 92px;">
+          </span>
+          {{!疫苗采购单位支持搜索下级采购单位}}
+          {{#equals _ELEMENT_.purchaserList true}}
+            <span class="search-label"><label>采购单位：</label></span>
+            <span class="search-cell">
+              <select class="noselectric" data-org-name="{{purchaseOrgName}}" data-org-id="{{orgId}}" name="purchaseOrg"></select>
+            </span>
+          {{/equals}}
+        </div>
+      </div>
+      <div class="search-button">
+        <a class="btn btn-info js-search">搜索</a>
+        <a class="btn btn-info js-search-reset">重置</a>
+      </div>
+    </div>
+    <table class="table  center-tex req-list-table">
+      <thead>
+        <tr>
+          <th width="15%">需求申请单号</th>
+          <th width="10%">需求人</th>
+          <th width="15%">需求单位</th>
+          <th width="10%">需求单金额(元)</th>
+          <th width="10%">申请时间</th>
+          <th width="10%">状态</th>
+          <th width="12%">当前责任人</th>
+          <th width="6%"></th>
+          <th width="12%">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each _DATA_.data}}
+          <tr data-requisition="{{requisition.id}}" class="requisition-tr first-level-tr">
+            <td>
+              <a href="/buyer/requisitions/detail?reqId={{requisition.id}}">{{requisition.id}}</a>
+            </td>
+            <td><a class="js-get-phone" data-user-id="{{requisition.buyerId}}" data-user-type="1"><span>{{buyerName}}</span></a></td>
+            <td><span>{{buyerOrgName}}</span></td>
+            <td><strong class="price">{{_CURRENCY_}}<span class="requisition-subtotal"></span></strong></td>
+            <td>
+              <span class="requisition-span"><span class="">{{formatDate requisition.createdAt "day"}}</span></span>
+            </td>
+            <td>
+              {{#equals requisition.status 0}}草稿{{/equals}}
+              {{#equals requisition.status 1}}审核中{{/equals}}
+              {{#equals requisition.status 2}}待采购{{/equals}}
+              {{#equals requisition.status 10}}已提交至预购单{{/equals}}
+              {{#equals requisition.status 11}}已提交至订单{{/equals}}
+              {{#equals requisition.status -1}}已驳回{{/equals}}
+              {{#equals requisition.status -2}}已取消{{/equals}}
+              {{#equals requisition.status -4}}已撤消{{/equals}}
+
+            </td>
+            <td data-current-operator-id="{{requisition.currentOperatorId}}"><a class="js-get-phone" data-user-id="{{requisition.currentOperatorId}}" data-user-type="1">{{requisition.currentOperatorName}}</a></td>
+            <td class="js-items-valid"></td>
+            <td>
+            {{#of requisition.status "0,-1,-4"}}
+                {{#equals _USER_.id requisition.buyerId}}
+                <a href="/buyer/requisition-process?reqId={{requisition.id}}&orgId={{_USER_.orgId}}">处理需求</a><br>
+                {{/equals}}
+              {{else}}
+                {{#equals requisition.status 1}}{{#equals _USER_.id requisition.currentOperatorId}}
+                <a href="/buyer/requisition-check?reqId={{requisition.id}}&orgId={{_USER_.orgId}}">审核 </a>{{/equals}}
+                {{/equals}}
+            {{/of}}
+            {{#of requisition.status "0,-2,-4"}}
+              {{#equals _USER_.id requisition.buyerId}}
+              <a class ="js-req-delete">删除</a><br>
+              {{/equals}}
+            {{/of}}
+            {{#of requisition.status "1,2"}}{{#equals _USER_.id requisition.buyerId}} <a href="javascript:void(0)" class="reversed" data-toggle="modal" data-target="#reversedModal">撤销</a>{{/equals}}{{/of}}
+              <a href="/buyer/requisitions/detail?reqId={{requisition.id}}">详情</a>
+            </td>
+          </tr>
+          {{#each requisitionItems}}
+            <tr class="item-tr second-level-tr" data-site="{{../requisition.id}}" data-id="{{sku.id}}" data-sku-status="{{sku.status}}">
+              <td colspan="6" class="left-text">
+                <div class="select-req-list-item">
+                  <div class="item-description">
+                    <span class="item-name">{{requisitionItem.itemName}}&nbsp;&nbsp;&nbsp;&nbsp;<span class="sku-attrs">{{#each sku.attrs}}{{@attrKey}}:{{attrVal}}&nbsp;&nbsp;{{/each}}</span></span>
+                    {{#equals sku.status -1}}<span class="red-text">（已下架）</span>{{/equals}}
+                    {{#equals sku.status -2}}<span class="red-text">（已冻结）</span>{{/equals}}
+                    {{#equals sku.status -3}}<span class="red-text">（已删除）</span>{{/equals}}
+                    {{#equals sku.status 2}}<span class="red-text">（待审核）</span>{{/equals}}
+                    {{#equals sku.status -4}}<span class="red-text">（审核不通过）</span>{{/equals}}
+                    {{#equals sku.status 5}}<span class="red-text">（解冻审核中）</span>{{/equals}}
+                  </div>
+                </div>
+              </td>
+              <td colspan="3" class="left-text">
+                <span class="hide">单价(元)：<span class="sku-price">{{formatPrice sku.price}}</span></span>
+                数量：<span class="count-number">{{requisitionItem.quantity}}</span>
+                <span class="subtotal-price">小计(元)：</span><span>{{_CURRENCY_}}<span class="item-subtotal"></span></span>
+              </td>
+            </tr>
+          {{else}}
+            <tr><td colspan="9" class="text-center">无可展示信息</td></tr>
+          {{/each}}
+        {{else}}
+          <tr><td colspan="9" class="text-center">无可展示信息</td></tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  <div class="req-list-footer trade-list-footer">
+    <div class="req-pagination pagination-danger clearfix"
+        data-size="{{#if pageSize ~}}{{pageSize}}{{else}}20{{~/if}}"
+        data-total="{{_DATA_.total}}"></div>
+  </div>
+
+  {{!-- 弹框 --}}
+  <div id="reversedModal" class="modal" style="display:none;">
+    <div>
+      <div class="modal-header">
+      <span style="font-size:14px;">取消需求单</span>
+      </div>
+      <div class="modal-body" style="">
+        <div>
+          <div style="margin-bottom:20px;"><label class="required">*</label>取消理由：</div>
+          <textarea name="reverseModalRemark" id="" cols="30" rows="10" style="width:400px;height:100px;" placeholder="请输入取消理由" required ></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn  btn-primary btn-medium" id="reversedConfirm">确定</button>&nbsp;&nbsp;
+        <button class="btn btn-secondary btn-medium close">取消</button>
+
+      </div>
+    </div>
+  </div>
+{{/component}}

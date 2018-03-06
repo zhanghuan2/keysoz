@@ -1,0 +1,62 @@
+{{#if editable}}
+  <div class="sku-attribute-template js-extend-template">
+    <form action="" class="form form-aligned form-inline clearfix">
+      <div class="control-group">
+        <label class="attr-label">属性：</label>
+        <select name="attrKey">
+          {{#isEmpty attrs}}
+            <option value="">无可添加的销售属性</option>
+          {{else}}
+            {{#each attrs}}
+              <option value="{{this}}">{{this}}</option>
+            {{/each}}
+          {{/isEmpty}}
+        </select>
+      </div>
+      <div class="control-group">
+        {{#isEmpty attrs}}
+          <button class="btn btn-secondary close" type="button">确定</button>&nbsp;
+        {{else}}
+          <button class="btn btn-secondary close" type="button">取消</button>&nbsp;
+          <button class="btn js-select-new-sku-key btn-primary" type="button">确定</button>
+        {{/isEmpty}}
+      </div>
+    </form>
+  </div>
+{{else if value}}
+  <form action="post" class="form form-aligned form-inline js-sku-value">
+    <fieldset>
+      <div class="control-group js-attr-val-container">
+        <label class="group-title">属性值：</label>
+        <div class="group-content">
+          <input type="hidden" name="attrKey" value="{{attrKey}}">
+          <input type="text" name="attrVal" placeholder="请输入属性值" data-parent=".control-group" class="js-attr-sku-val" required
+          {{#equals type "NUMBER"}}
+              pattern="^[+-]?\d+(\.\d+)?$"
+          {{else}}
+            {{#equals type "DATE"}}
+              pattern="^\d{4}-\d{2}-\d{2}$" class="datepicker"
+            {{else}}
+              pattern="^((?![:_]).){1,30}$"
+            {{/equals}}
+          {{/equals}}>
+          <span class="note-error note-icon hint--top"
+            {{#equals type "NUMBER"}}aria-label="请输入数字"{{/equals}}
+            {{#equals type "DATE"}}aria-label="请输入日期"{{/equals}}
+            {{#equals type "STRING"}}aria-label="不包含冒号及下划线的1-30个字符"{{/equals}}>
+            <i class="icon-pokeball icon-pokeball-error"></i>
+          </span>
+          <i class="icon-pokeball icon-pokeball-success note-success note-icon"></i>
+        </div>
+      </div>
+      <div class="control-group">
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-secondary js-close" type="button">取消</button>
+        &nbsp;
+        <button class="btn btn-primary" type="submit">添加</button>
+      </div>
+    </fieldset>
+  </form>
+{{else}}
+  {{> seller/spu_detail/common/all_templates/_sku_attr isEdit="true"}}
+{{/if}}

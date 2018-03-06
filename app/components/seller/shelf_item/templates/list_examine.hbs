@@ -1,0 +1,26 @@
+<div class="modal">
+	  <div class="modal-header" style="width:550px;">
+	    <span>商品上架申请</span>
+	    <a href="javascript:;" class="close pull-right">x</a>
+	  </div>
+	  <form class="form" id="js-cancel-order-form">
+	    <div class="modal-body">
+	      <div style="padding-left: 50px;">
+	        <div>
+	          <label for="js-goods-name" style="margin-bottom: 20px;width: 70px;"><b class="required">*</b>商品名称：</label>
+	          <span>{{name}}</span>
+	          <input type="hidden" name="orderId" value="{{orderId}}">
+	        </div>
+	        <div>
+	       	  <label for="js-goods-mark" style="margin-bottom: 20px;width: 70px;"><b class="required">*</b>备注：</label>
+	          <textarea id="js-examine-reason" name="comment" placeholder="请输入审核理由" style="height:150px" required></textarea>
+	        </div>
+	      </div>
+	    </div>
+	    <div class="modal-footer">
+	    		<button class="btn btn-info btn-medium close" type="button">取消</button>
+	    		&nbsp;
+	      	<button class="btn btn-primary btn-medium js-examine-submit" type="button" disabled>提交</button>
+	    </div>
+	  </form>
+	</div>

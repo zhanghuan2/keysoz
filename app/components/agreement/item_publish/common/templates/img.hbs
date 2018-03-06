@@ -1,0 +1,10 @@
+{{#each this}}
+<li class="pull-left image-container js-item-image-container item-image js-item-image">
+  <img src="{{url}}" alt="" data-src="{{url}}" data-name="{{name}}" />
+  <span class="image-operate">
+    <i class="icon-mewtwo icon-mewtwo-left-arrow js-move-image" data-direct="left"></i>
+    <i class="icon-mewtwo icon-mewtwo-trash js-delete-image"></i>
+    <i class="icon-mewtwo icon-mewtwo-right-arrow js-move-image" data-direct="right"></i>
+  </span>
+</li>
+{{/each}}

@@ -1,0 +1,189 @@
+<div class="hide">{{json this}}</div>
+<div class="current-location-dark clearfix" data-user="{{_USER_}}">
+    {{#equals searchType 1}}
+        <button class="btn btn-info filter-btn pull-right js-filter-toggle" type="button">
+            <span>收起筛选</span>
+            <i class="font-12 icon-zcy icon-xiangshangzhedie"></i>
+        </button>
+    {{else}}
+        <button class="btn btn-info print-btn pull-right js-print-search-result" type="button">搜索结果打印</button>
+    {{/equals}}
+    <span class="current-location-span">
+            {{#each this.searchWithAggs.breadCrumbs}}
+                <a class="font-12 js-bread-category-selector" href="javascript:void(0)" data-id="{{id}}" data-top-id="{{topId}}">{{name}}</a>&nbsp;&nbsp;<i class="font-12 icon-zcy icon-nextstep"></i>&nbsp;
+            {{/each}}
+            {{#each this.searchWithAggs.chosen}}
+                {{#of type "1,2,4"}}
+                <a class="bread-selector font-12 {{#equals type 1}}js-bread-brand-selector{{else}}{{#equals type 2}}js-bread-property-selector{{else}}js-bread-catalog-selector{{/equals}}{{/equals}}" href="javascript:void(0)" data-id="{{key}}" data-selector="{{key}}:{{name}}">{{#equals type 2}}{{key}}:{{name}}{{else}}{{#equals type 1}}品牌: {{name}}{{else}}{{name}}{{/equals}}{{/equals}}
+                    <i class="font-12 icon-zcy icon-close"></i>
+                </a>
+                {{/of}}
+            {{/each}}
+        <div class="hide">{{this.chosenPPlans}}</div>
+        {{#if this.chosenPPlans}}
+            {{#each this.chosenPPlans}}
+                <a href="javascript:void(0)" class="bread-selector font-12 js-bread-plan-selector" data-id="{{purchaseplanDOCNO}}">{{purchaseplanDOCNO}}
+                    <i class="font-12 icon-zcy icon-close"></i>
+                </a>
+            {{/each}}
+        {{/if}}
+        </span>
+</div>
+<div class="nav-group category-nav">
+    {{#if this.searchWithAggs.catalogs}}
+        <dl>
+            <dt title="采购目录" class="bold">采购目录</dt>
+            <div class="catalogs-list list-more">
+                {{#each this.searchWithAggs.catalogs}}
+                    <dd class="category-dd dd-cancel">
+                        <label for="{{key}}" class="hide">
+                            <input type="checkbox" value="{{key}}" id="{{key}}" class="brand-select input-checkbox"> {{name}}
+                        </label>
+                        <a class="js-catalogs-selector" data-id="{{key}}" href="javascript:void(0);" title="{{name}}">{{name}}</a>
+                        <span>({{count}})</span>
+                    </dd>
+                {{/each}}
+            </div>
+            {{#gt (size this.searchWithAggs.catalogs) 7}}
+                <dd class="more-dd btn btn-info btn-small js-more-dd">
+                    <a href="javascript:void(0);" class="js-more">更多</a>
+                    <i class="font-12 icon-zcy icon-xiangxiazhedie"></i>
+                </dd>
+            {{/gt}}
+        </dl>
+    {{/if}}
+    {{#if this.searchWithAggs.frontCategories}}
+        <dl>
+            <dt title="商品类目" class="bold">商品类目</dt>
+            <div class="categories-list list-more">
+                {{#each this.searchWithAggs.frontCategories}}
+                    <dd class="category-dd dd-cancel">
+                        <label for="{{key}}" class="hide">
+                            <input type="checkbox" value="{{key}}" id="{{key}}" class="brand-select input-checkbox"> {{name}}
+                        </label>
+                        <a class="js-category-selector" data-id="{{key}}" href="javascript:void(0);" title="{{name}}">{{name}}</a>
+                        <span>({{count}})</span>
+                    </dd>
+                {{/each}}
+            </div>
+            {{#gt (size this.searchWithAggs.frontCategories) 7}}
+                <dd class="more-dd btn btn-info btn-small js-more-dd">
+                    <a href="javascript:void(0);" class="js-more">更多</a>
+                    <i class="font-12 icon-zcy icon-xiangxiazhedie"></i>
+                </dd>
+            {{/gt}}
+        </dl>
+    {{/if}}
+    {{#if this.searchWithAggs.brands}}
+        <dl>
+            <dt class="title" title="品牌">品牌</dt>
+            <div class="brand-list">
+                <div class="list-more">
+                    {{#each this.searchWithAggs.brands}}
+                        <dd class="brand-dd dd-cancel">
+                            <label for="{{key}}" class="hide">
+                                <input type="checkbox" value="{{key}}" id="{{key}}" class="brand-select input-checkbox">
+                                <span title="{{name}}" class="name">{{name}}</span>
+                            </label>
+                            <a data-id="{{key}}" class="js-brand-selector selector" href="javascript:void(0);">{{name}}</a>
+                            <span>({{count}})</span>
+                        </dd>
+                    {{/each}}
+                </div>
+                <div class="brand-buttons hide">
+                    <button class="btn js-brand-confirm btn-small btn-primary" type="button">确定</button>&nbsp;
+                    <button class="btn btn-info js-brand-cancel btn-small" type="button">取消</button>
+                </div>
+            </div>
+            {{#gt (size this.searchWithAggs.brands) 7}}
+                <dd class="more-dd btn btn-info btn-small js-more-dd pull-right">
+                    <a href="javascript:void(0);" class="js-more">更多</a>
+                    <i class="font-12 icon-zcy icon-xiangxiazhedie"></i>
+                </dd>
+            {{/gt}}
+            {{#gt (size this.searchWithAggs.brands) 1}}
+                <dd class="more-options btn btn-info btn-small pull-right">
+                    <a href="javascript:void(0);" class="js-elects">多选</a>
+                    <i class="font-12 icon-zcy icon-add"></i>
+                </dd>
+            {{/gt}}
+        </dl>
+    {{/if}}
+    {{#if this.searchWithAggs.attributes}}
+        <dl class="js-other-attr-selector" data-attrs="{{json this.searchWithAggs.attributes}}">
+            <dt title="其他选项">其他选项</dt>
+            <span class="other-attr-box">
+                <div class="brand-list other-options">
+                    {{#each this.searchWithAggs.attributes}}
+                        <a class="attr" data-index="{{@index}}">{{group}} <i class="font-12 icon-zcy icon-xiangxiazhedie"></i></a>
+                    {{/each}}
+                    {{#each this.searchWithAggs.attributes}}
+                        <div class="otherAttrSearch hide" id="attr-box{{@index}}">
+                            <div class="hide">{{json this}}</div>
+                            <div class="attr-list">
+                                <div class="list-more">
+                                    {{#each nameAndCounts}}
+                                        <dd class="attr-dd dd-cancel">
+                                            <label for="{{name}}" class="hide">
+                                                <input type="checkbox" id="{{name}}" value="{{name}}" class="brand-select input-checkbox">
+                                                <span title="{{name}}" class="name">{{name}}</span>
+                                            </label>
+                                            <a class="js-property-selector selector" data-attr="{{name}}" href="javascript:void(0);">{{name}}</a>
+                                            <span>({{count}})</span>
+                                        </dd>
+                                    {{/each}}
+                                </div>
+                                <div class="brand-buttons hide">
+                                    <button class="btn js-attrs-confirm btn-small btn-primary" type="button">确定</button>&nbsp;
+                                    <button class="btn btn-info js-brand-cancel btn-small" type="button">取消</button>
+                                </div>
+                            </div>
+                            {{#gt (size nameAndCounts) 1}}
+                            <div class="more-options btn btn-info btn-small">
+                                <a href="javascript:void(0);" class="js-elects">多选</a>
+                                <i class="font-12 icon-zcy icon-add"></i>
+                            </div>
+                            {{/gt}}
+                        </div>
+                    {{/each}}
+                </div>
+            </span>
+            </dt>
+        </dl>
+    {{/if}}
+</div>
+<div class="nav-group plan-nav hide">
+    <dl>
+    <span title="采购计划">您可用的采购计划：</span>
+    {{#if this.purchasePlans}}
+            <div class="categories-list list-more">
+                {{#each this.purchasePlans}}
+                    <dd class="plan-dd dd-cancel">
+                        <label for="{{id}}" class="hide">
+                            <input type="checkbox" value="{{id}}" id="{{id}}" class="brand-select input-checkbox"> {{purchaseplanDOCNO}}
+                        </label>
+                        <a class="js-plans-selector selector" data-id="{{id}}" href="javascript:void(0);" title="{{purchaseplanDOCNO}}">{{purchaseplanDOCNO}}</a>
+                    </dd>
+                {{/each}}
+                <div class="brand-buttons hide">
+                    <button class="btn js-plan-confirm btn-small btn-primary" type="button">确定</button>&nbsp;
+                    <button class="btn btn-info js-brand-cancel btn-small" type="button">取消</button>
+                </div>
+            </div>
+            {{#gt (size this.purchasePlans) 1}}
+                <dd class="more-options btn btn-info btn-small">
+                    <a href="javascript:void(0);" class="js-elects">多选</a>
+                    <i class="font-12 icon-zcy icon-add"></i>
+                </dd>
+            {{/gt}}
+            {{#gt (size this.purchasePlans) 4}}
+                <dd class="more-dd btn btn-info btn-small js-more-dd">
+                    <a href="javascript:void(0);" class="js-more">更多</a>
+                    <i class="font-12 icon-zcy icon-xiangxiazhedie"></i>
+                </dd>
+            {{/gt}}
+    {{else}}
+        <span> 目前暂无可使用的采购计划，可使用自有资金！</span>
+    {{/if}}
+    </dl>
+</div>

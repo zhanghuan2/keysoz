@@ -1,0 +1,17 @@
+.search_box {
+  border: 1px solid #d0cbcb;
+  position: absolute;
+  width: 160px;
+  height: 200px;
+  color: #807e7e !important;
+  background-color: white;
+  padding: 5px;
+  z-index: 9;
+  overflow-y: auto;
+  li {
+    cursor: pointer;
+    &:hover {
+      background-color: rgb(88,151,251);
+    }
+  }
+}

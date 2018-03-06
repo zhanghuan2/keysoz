@@ -1,0 +1,19 @@
+{{! 商品发布，选择类目页面}}
+{{#partial "realTitle"}}选择SPU{{/partial}}
+{{#partial "realBody"}}
+  {{#inject "common/breadcrumb"}}
+    {
+    "breadcrumb":
+    [{
+    "crumb": "商品管理",
+    "url": "#"
+    },
+    {
+    "crumb": "标品类目编辑商品",
+    "url": "#"
+    }]
+    }
+  {{/inject}}
+  {{inject "seller/select_spu" ptype=ptype}}
+{{/partial}}
+{{> user_layout}}

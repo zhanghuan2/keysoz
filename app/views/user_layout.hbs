@@ -1,0 +1,20 @@
+{{#partial "bodyClass"}}ZCYbacklayout{{/partial}}
+{{#partial "title"}}{{{block "realTitle"}}}{{/partial}}
+{{#partial "body"}}
+
+  <div class="main-top">
+    {{inject "user/header"}}
+  </div>
+  <div class="main-left">
+    {{inject "user/sidebar"}}
+  </div>
+  <div class="main-right">
+    {{{block "realBody"}}}
+  </div>
+
+  <div class="notify-container"></div>
+  <div class="assist-part">
+    {{inject "common/assist"}}
+  </div>
+{{/partial}}
+{{> layout}}

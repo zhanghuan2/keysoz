@@ -1,0 +1,29 @@
+render:
+  editorLayout: "/eevee/editor"
+  modes:
+    PC: "/"
+    MOBILE: "/mobile"
+    PC_SHOP: "/"
+    MOBILE_SHOP: "/mobile"
+  defaultMode: PC
+  layouts:
+    "PC-DEFAULT":
+      mode: PC
+      root: "/"
+      name: "默认 PC 端模板"
+      desc: "默认主题的 PC 端模板"
+    "MOBILE-DEFAULT":
+      mode: MOBILE
+      root: "/mobile"
+      name: "默认移动端模板"
+      desc: "默认主题的移动端模板"
+    "PC-SHOP":
+      mode: PC_SHOP
+      root: "/layouts/shop"
+      name: "默认 PC 端店铺模板"
+      desc: "默认主题的 PC 端模板"
+    "MOBILE-SHOP":
+      mode: MOBILE_SHOP
+      root: "/mobile/layouts/shop"
+      name: "默认移动端店铺模板"
+      desc: "默认主题的移动端模板"

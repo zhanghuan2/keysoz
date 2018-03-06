@@ -1,0 +1,83 @@
+<div class="list-wrap">
+  <div class="hide">{{json this}}</div>
+  {{#if DATA.result.data}}
+    <div class="list clearfix view-{{mode}}">
+        <ul class="view-mode-thumb">
+          {{#each DATA.result.data}}
+            <li data-id="{{id}}" class="product" style="{{#if marginRight}}margin-right: {{marginRight}}px;{{/if}}">
+              <a href="{{_ENV_HREF_.front}}/items/{{id}}?searchType=1{{#equals ../type "hall"}}&type=hall{{/equals}}{{#equals ../type "vaccine"}}&type=vaccine{{/equals}}" target="_blank">
+                <div class="product-image">
+                  <img class="lazy" data-original="{{cdnPath mainImage "260"}}" alt="loading..." width="208" height="208" />
+                  <div class="availablePlan js-available-plan hide"><span></span></div>
+                  <div class="regionSell hide">此商品仅在其他区划销售</div>
+                </div>
+              </a>
+              <p class="product-desc ">
+                <a href="{{_ENV_HREF_.front}}/items/{{id}}{{#equals ../type "hall"}}?type=hall{{/equals}}" target="_blank" class="goods-info text-over">{{{name}}}</a>
+              </p>
+              <div class="product-price clearfix">
+                <div class="currency pull-left">
+                  {{#if isDepreciate}}<i class="icon-zcy icon-jiangjiatongzhi-icon"></i>{{/if}}
+                  &yen {{formatPrice price}}
+                  {{#if isDepreciate}}
+                    <div class="price_discount">
+                      <span>降价</span><span class="js-compare-primeDiscount" data-rate="{{depreciateRate}}"></span>
+                    </div>
+                  {{/if}}
+                </div>
+                <span class="sale-volume pull-right">已购买{{buyCount}}次</span>
+              </div>
+              <div class="company-info text-overflow">
+                <a href="/eevees/shop?searchType=1&shopId={{shopId}}" target="_blank">{{shopName}}</a>
+              </div>
+              <div class="icon-gather">
+                <div class="hide">{{json this.tags}}</div>
+                <div class="js-item-service" data-service="{{json services}}">
+                    {{#each services}}
+                      <span class="box">
+                            <img src="{{iconSmall}}" alt="{{name}}" />
+                            <span class="serviceName"> {{name}} </span>
+                        </span>
+                    {{/each}}
+                </div>
+              </div>
+              <span class="product-cart">
+                    <button class="btn btn-zcy addToCart js-product-cart">
+                        <i class="font12 icon-zcy icon-gouwuche2"></i>
+                        加入购物车
+                    </button>
+                    <span class="font12 insert-compare js-enter-shop" data-shop-id="{{shopId}}">
+                        <i class="icon-zcy icon-home"></i>
+                        进入店铺
+                    </span>
+                    <div class="tooltips hide addToCartForm">
+
+                    </div>
+                </span>
+            </li>
+          {{/each}}
+        </ul>
+    </div>
+    <div class="list-pagination">
+      <div class="js-pagination" data-total="{{DATA.result.total}}"></div>
+    </div>
+  {{else}}
+    <div class="no-always-buy ">
+      <div class="clearfix mod-always-buy">
+        <img src="/assets/images/other-images/noAlwaysBuy.png" alt="" class="pull-left">
+        <div class="pull-left info-tip">
+          {{#if DATA.keyword}}
+            <p>抱歉，没有找到您想要搜索的商品！</p>
+          {{else}}
+            <p>抱歉，还没有适合您的常购商品哦，下次再看看吧！</p>
+          {{/if}}
+          <div class="btn-wrap">
+            <a href="/buyer/netsuper-orders" class="btn btn-check-all">查看全部订单</a>
+            <a href="/" class="btn">去首页看看</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/if}}
+</div>
+

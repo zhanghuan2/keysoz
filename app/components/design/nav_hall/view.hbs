@@ -1,0 +1,32 @@
+{{#component "nav-hall js-comp"}}
+<div style="display: none;">{{json this}}</div>
+<div class="nav-categorys" {{#if bgColor}}style="background-color: {{bgColor}}"{{/if}}>
+  <ul class="nav-categorys-container">
+  {{#each _DATA_}}
+  <li class="category-li" data-id="{{current.id}}">
+    <div class="child-category" title="{{current.name}}">{{current.name}}</div>
+    <div class="expand-panel disappear">
+      <div class="attach">&nbsp;</div>
+      <ul class="expand-category">
+        {{#each children}}
+          {{#equals ../../type "vaccine"}}
+            <li>
+              <a class="child-name" href="{{../../_HREF_.main}}?normal=2&type=vaccine&fcid={{current.id}}">{{current.name}}</a>
+            </li>
+            {{else}}
+            <li>
+              <a class="child-name" href="{{#if domain}}{{domain}}{{else}}{{_HREF_.main}}/search{{/if}}?normal=1&type=hall&fcid={{current.id}}">{{current.name}}</a>
+            </li>
+          {{/equals}}
+        {{else}}
+        <li>
+          <a class="child-name child-empty" href="javascript:;">&nbsp;</a>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+  </li>
+  {{/each}}
+  </ul>
+</div>
+{{/component}}

@@ -1,0 +1,50 @@
+.tax-hall-hot-floor{
+  .title {
+    text-align: center;
+    .title-text {
+      font-size: 20px;
+    }
+    .title-split {
+      color: #0876FF;
+      font-size: 8px;
+      font-weight: bold;
+      vertical-align: bottom;
+      margin: 5px;
+    }
+  }
+
+  .item-list {
+    .item {
+      width: 220px;
+      height: 315px;
+      padding: 12px 12px 0px 12px;
+      background: #FFFFFF;
+      margin: 10px;
+      float: left;
+      .img-div {
+        margin-bottom: 10.3px;
+        img {
+          width: 200px;
+          height: 200px;
+        }
+      }
+      .item-desc {
+        color: #666666;
+        display: block;
+        overflow: hidden;
+        height: 36px;
+        line-height: 18px;
+      }
+      .item-price {
+        color: #FF7900;
+        font-size: 16px;
+      }
+      .item-sales {
+        color: #999999;
+        float: right;
+      }
+    }
+
+  }
+
+}

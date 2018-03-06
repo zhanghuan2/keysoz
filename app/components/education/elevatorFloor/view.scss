@@ -1,0 +1,128 @@
+@import "pokeball/theme";
+@import "compass/css3/inline-block";
+@import "compass/css3/box-sizing";
+
+$color-border: #eee;
+
+.education-elevator-floor {
+  * {
+    @include box-sizing(content-box);
+  }
+
+  width: 1200px;
+  min-height: 200px;
+
+  .floor-body {
+    padding: 0;
+  }
+
+  .floor-left {
+    width: 232px;
+    height: 500px;
+    float: left;
+    background-repeat:no-repeat;
+    background-position: 0% 0%;
+    .floor-name {
+      margin: 15px;
+      font-size: 26px;
+      color: #FFFFFF;
+      line-height: 37px;
+      height: 37px;
+    }
+    .floor-tags {
+      margin-left: 15px;
+      .keyWord {
+        white-space: nowrap;
+        display: inline-block;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        background: rgba(255,255,255,0.20);
+        height: 22px;
+        padding: 0 4px;
+        color: #ffffff;
+        font-size: 12px;
+        line-height: 22px;
+        &:hover {
+          background: #ffffff;
+          color: #ff7900;
+        }
+      }
+    }
+    .floor-image {
+      position: relative;
+
+    }
+  }
+
+  .floor-products {
+    margin: 10px 0 0 0;
+    float: left;
+    width: 968px;
+  }
+
+  .products-list {
+    width: 968px;
+    padding: 0 10px;
+
+    .product-item {
+      width: 240px;
+      height: 240px;
+      text-align: center;
+      margin-top: 4px;
+    }
+
+    .product-image {
+      width: 150px;
+      height: 150px;
+      img {
+        max-width: 150px;
+        max-height: 150px;
+      }
+    }
+
+    .product-info {
+      text-align: left;
+      width: 165px;
+    }
+
+    .product-name {
+      color: $navy;
+      font-size: 14px;
+      max-height: 36px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis
+    }
+
+    .product-price {
+      color: $navy;
+      font-size: 14px;
+
+      .currency {
+        font-size: 14px;
+      }
+    }
+
+    .product-sale {
+      color: $navy;
+    }
+  }
+
+
+  ol {
+    list-style-type: none;
+    margin: 0;
+
+    li {
+      float: left;
+    }
+
+    .separator-line {
+      margin: 0 -10px;
+      float: left;
+      width: 968px;
+      height: 1px;
+      background: #EEEEEE;
+    }
+  }
+}

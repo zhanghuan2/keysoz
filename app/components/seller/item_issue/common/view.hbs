@@ -1,0 +1,93 @@
+{{#component "item-issue js-comp"}}
+  <div class="js-env-params" data-href="{{json _ENV_HREF_}}" data-user="{{json _USER_}}"></div>
+  <div class="panel">
+    <div class="panel-header">
+      {{#equals ptype 5}}
+        {{#if spuAuditId}}
+          {{#if update}}变更申请{{else}}查看申请{{/if}}
+        {{else if spuId}}
+          变更SPU
+        {{else}}
+          新增SPU
+        {{/if}}
+      {{else}}
+        {{#if itemId}}
+          编辑商品
+        {{else}}
+          发布商品
+        {{/if}}
+      {{/equals}}
+    </div>
+    <div class="panel-body">
+      <div class="top-tips"></div>
+      {{#if spuAuditId}}
+        <div class="spu-audit-status clearfix"></div>
+      {{/if}}
+      <div class="selected-category-box clearfix" data-category-path="{{categoryPath}}">
+      </div>
+      <form method="POST" id="item-issue-form">
+        {{#equals ptype 5}}
+          <div class="base-info"></div>
+          <div class="normal-attribute"></div>
+          <div class="approve-info"></div>
+          <div class="remark-content"></div>
+        {{else}}
+        {{! 用于存放价格变更的原因}}
+          <input type="hidden" id="auditComment" name="auditComment">
+
+          <div class="base-info"></div>
+          <div class="normal-attribute"></div>
+          <div class="sales-specification"></div>
+          <div class="price-stock"></div>
+          <div class="other-attribute"></div>
+          <div class="custom-attribute"></div>
+          <div class="item-detail-editor"></div>
+        {{/equals}}
+
+        {{#if spuAuditId}}
+          {{#if update}}
+            {{#assign "showSubmit"}}showSubmit{{/assign}}
+          {{/if}}
+        {{else}}
+          {{#assign "showSubmit"}}showSubmit{{/assign}}
+        {{/if}}
+
+        {{#if showSubmit}}
+          <div class="control-group item-submit-area">
+            <p class="error-tip js-form-error-tip hide">
+              <i class="icon-mewtwo icon-mewtwo-alert-fill"></i> 商品信息有误，请向上查看红色标出的具体错误位置
+            </p>
+            {{#equals ptype 5}}
+              <div class="check-tip">
+                <input type="checkbox" class="js-submit-check input-checkbox">政采云将根据您提交的内容，有权修改您所提交的信息
+              </div>
+            {{/equals}}
+            <button class="btn btn-primary btn-medium" type="submit" id="js-item-submit">确定</button>
+            <span class="error-tip show">&nbsp;&nbsp;&nbsp;带 * 的项是必填项，请确认无未填的必填项</span>
+          </div>
+        {{/if}}
+      </form>
+    </div>
+  </div>
+  {{! 编辑时才显示流转日志}}
+  {{#if itemId}}
+    <div class="panel">
+      <div class="panel-header">
+        <span class="panel-title">流转日志</span>
+      </div>
+      <div class="panel-body">
+        {{inject "seller/item_issue/flow_log"}}
+      </div>
+    </div>
+  {{/if}}
+  {{! SPU流转日志}}
+  {{#if spuAuditId}}
+    <div class="panel">
+      <div class="panel-header">
+        <span class="panel-title">流转日志</span>
+      </div>
+      <div class="panel-body js-flow-log">
+      </div>
+    </div>
+  {{/if}}
+{{/component}}

@@ -1,0 +1,122 @@
+.on-off-shelf {
+  .tab .tab-label {
+    width: auto;
+    margin-left: 10px;
+    background-color: transparent;
+    color: #4c97ff
+  }
+  .component-header {
+    padding: 0 !important;
+  }
+  .span3.date_picker {
+    width: 335px;
+  }
+  .span3 {
+    text-align: left;
+  }
+
+  .text-warn {
+    color: #F2C200 !important;
+  }
+  .text-link {
+    color: #2687d0 !important;
+  }
+  .text-success {
+    color: #2DC12D !important;
+  }
+  .text-muted {
+    margin: 0 15px 0 5px;
+  }
+  .category-tree {
+    height: auto;
+    width: 190px;
+    position: absolute;
+    border: 1px solid #eee;
+    background-color: #fff;
+    max-height: 250px;
+    overflow: auto;
+    padding: 10px;
+  }
+  .price {
+    color: #F2C200;
+    white-space: nowrap;
+  }
+  .old-price {
+    color: #999999;
+    white-space: nowrap;
+  }
+}
+
+.item-check-modal {
+  width: 550px;
+  .modal-header .modal-title {
+    margin: 0;
+    font-size: 16px;
+  }
+  .modal-body {
+    padding-left: 50px;
+    label {
+      width: 70px;
+      text-align: right;
+    }
+    .item-info {
+      margin-bottom: 20px;
+      .item-name {
+        display: inline-block;
+        max-width: 400px;
+        vertical-align: top;
+      }
+      .price {
+        color: #F2C200;
+        white-space: nowrap;
+      }
+      .old-price {
+        color: #999999;
+        white-space: nowrap;
+      }
+    }
+    .price-change {
+      margin-bottom: 20px;
+      .skus {
+        display: inline-block;
+        max-width: 400px;
+        vertical-align: top;
+        .sku-attrs {
+          display: inline-block;
+          max-width: 200px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          vertical-align: bottom;
+          white-space: nowrap;
+        }
+      }
+      .price {
+        color: #F2C200;
+        white-space: nowrap;
+      }
+      .old-price {
+        color: #999999;
+        white-space: nowrap;
+      }
+    }
+    .audit-result {
+      margin-bottom: 20px;
+      input {
+        vertical-align: text-top;
+      }
+    }
+    .first_check {
+      margin-bottom: 20px;
+    }
+    .audit-comment {
+      margin-bottom: 20px;
+      textarea {
+        height:150px;
+        width: 336px;
+        resize: none;
+      }
+    }
+  }
+}
+
+

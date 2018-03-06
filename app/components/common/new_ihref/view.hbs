@@ -1,0 +1,47 @@
+{{#component "js-comp common-new_ihref"}}
+  <div class="hide dataStore" data-showdc="{{showDistrictCode}}">{{json this}}</div>
+  <div class="title_text" data-color="{{defaultColorProperty}}">
+    <span>{{#if currentTabName}}{{currentTabName}}{{else}}特许商品馆{{/if}}<i class="icon-zcy"></i></span>
+    <div class="select-box">
+      {{#if _USER_}}
+        {{#of _USER_.currentCategory "99,12,01,03,06"}}
+          {{#equals _USER_.currentCategory "01"}}
+            {{#of _USER_.detailCategory "010401,010402,010403"}}
+              <a href="{{#if href1}}{{href1}}{{else}}/{{/if}}"
+                 {{#if newPage}}target="_blank"{{/if}}>疫苗馆</a>
+            {{else}}
+              <a href="https://vaccine.zcy.gov.cn/pages/no_permission"
+                 {{#if newPage}}target="_blank"{{/if}}>疫苗馆</a>
+            {{/of}}
+          {{else}}
+            <a href="{{#if href1}}{{href1}}{{else}}/{{/if}}"
+               {{#if newPage}}target="_blank"{{/if}}>疫苗馆</a>
+          {{/equals}}
+        {{else}}
+          <a href="{{#if vaccineNoPermissionHref}}{{vaccineNoPermissionHref}}{{else}}https://vaccine.zcy.gov.cn/pages/no_permission{{/if}}"
+             {{#if newPage}}target="_blank"{{/if}}>疫苗馆</a>
+        {{/of}}
+        {{#equals _DATA_ true}}
+          <a href="{{#if href2}}{{href2}}{{else}}https://block.zcy.gov.cn/supperPro{{/if}}"
+             {{#if newPage}}target="_blank"{{/if}} style="font-size: {{fontSize}}px;">大宗商品</a>
+        {{else}}
+          <a href="{{#if blocktradeNoPermissionHref}}{{blocktradeNoPermissionHref}}{{else}}https://block.zcy.gov.cn/pages/no_permission{{/if}}"
+             {{#if newPage}}target="_blank"{{/if}}>大宗商品</a>
+        {{/equals}}
+      {{else}}
+        <a href="{{#if vaccineNoPermissionHref}}{{vaccineNoPermissionHref}}{{else}}https://vaccine.zcy.gov.cn/pages/no_permission{{/if}}"
+           {{#if newPage}}target="_blank"{{/if}}>疫苗馆</a>
+        <a href="{{#if blocktradeNoPermissionHref}}{{blocktradeNoPermissionHref}}{{else}}https://block.zcy.gov.cn/pages/no_permission{{/if}}"
+           {{#if newPage}}target="_blank"{{/if}}>大宗商品</a>
+      {{/if}}
+      {{#each extraSites}}
+        <a href="{{siteUrl}}" {{#if ../newPage}}target="_blank"{{/if}}>{{siteName}}</a>
+      {{/each}}
+      {{#if _USER_}}
+        <a href="https://medical.zcy.gov.cn/medical/index" target="_blank">医疗馆</a>
+      {{else}}
+        <a href="https://medical.zcy.gov.cn/medical/login">医疗馆</a>
+      {{/if}}
+    </div>
+  </div>
+{{/component}}

@@ -1,0 +1,9 @@
+{{#partial "realTitle"}}{{i18n "My shopping cart" bundle="all_mix"}}{{/partial}}
+{{#partial "realBody"}}
+  {{#inject "supperPro/cart"}}
+    {
+    "pageId": "tradeCartPage"
+    }
+  {{/inject}}
+{{/partial}}
+{{> index_layout}}

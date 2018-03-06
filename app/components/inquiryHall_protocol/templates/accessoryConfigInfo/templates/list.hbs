@@ -1,0 +1,28 @@
+<table class="table table-fixed accessory-table">
+  <thead>
+  <tr>
+    <th width="16%">配件类别</th>
+    <th width="32%">标准配件</th>
+    <th width="52%">采购配置</th>
+  </tr>
+  </thead>
+  <tbody>
+  {{#each _ACCESSORY_CONFIG_INFO_}}
+    <tr class="accessory-tr">
+      <td>{{componentName}}</td>
+      <td class="standard-accessory" data-price="{{asRequireItemDto.protocolPrice}}">
+        {{#if asRequireItemDto.accessDetail}}{{asRequireItemDto.accessDetail}}{{/if}}
+      </td>
+      <td class="adjust-accessory" data-price="{{accessChooses.0.protocolPrice}}" 
+        {{#equals asRequireItemDto.accPartId accessChooses.0.accPartId}}{{else}}style="color: #ff7900"{{/equals}}>
+        {{#if accessChooses.0.accessDetail}}{{accessChooses.0.accessDetail}}{{/if}}
+      </td>
+    </tr>
+  {{/each}}
+  <tr class="price-info">
+    <td>价格</td>
+    <td>¥<span class="standard-price-info"></span></td>
+    <td style="color: #ff7900">¥<span class="adjust-price-info"></span></td>
+  </tr>
+  </tbody>
+</table>

@@ -1,0 +1,134 @@
+{{#component "component-supplierMsg js-comp"}}
+  <div class="hide">{{json this}}</div>
+  <input class="common_shopid hide" value="{{shopId}}" type="text" />
+  <ul class="supplierMsg" style="padding:{{#if padding}}{{padding}}{{else}}0{{/if}};">
+    <li class="content-qq">
+      <div class="supplierLine supplierName" title="{{_DATA_.supplierInfo.name}}">{{_DATA_.supplierInfo.name}}</div>
+      <!--制造馆供应商图片-->
+      {{#equals _DATA_.supplierInfo.supplierType "生产制造"}}
+        <span class="supplier-tags" data-tags="{{json _DATA_.tags}}"></span>
+        <span class="zzg hide">
+          <a href="javascript:;" class="supplier-content"><img src="/lunatone/assets/images/other-images/manuSupplier.png" alt=""></a>
+        </span>
+        <span class="not-zzg hide">
+          <a class="supplierLine supplier-content" data-qqid="{{_DATA_.supplierInfo.qqMaps.[0].code}}" data-site="{{_HREF_.main}}"><div class="qq-icon"></div>联系供应商</a>
+        </span>
+      {{else}}
+        <a class="supplierLine supplier-content" data-qqid="{{_DATA_.supplierInfo.qqMaps.[0].code}}" data-site="{{_HREF_.main}}"><div class="qq-icon"></div>联系供应商</a>
+      {{/equals}}
+    </li>
+    <li class="supplier-avg-score-box">
+      <div class="js-supplier-avg-score-li" data-original-title="" title="">
+        <div class="arrow-content js-supplier-avg-score-div" data-targetid="5">
+          <span class="content-span js-target-name">供货</span>
+          <span class="js-average-score js-supplier-avg-gh">
+            {{_DATA_.evaluateTargetScoreStatistics.0.averageScore}}
+            <i class="icon-zcy"></i>
+          </span>
+        </div>
+        <div class="arrow-content js-supplier-avg-score-div" data-targetid="5">
+          <span class="content-span js-target-name">服务</span>
+          <span class="js-average-score js-supplier-avg-fw">
+            {{_DATA_.evaluateTargetScoreStatistics.1.averageScore}}
+            <i class="icon-zcy"></i>
+          </span>
+        </div>
+        <div class="arrow-content js-supplier-avg-score-div" data-targetid="5">
+          <span class="content-span js-target-name">价格</span>
+          <span class="js-average-score js-supplier-avg-jg">
+            {{_DATA_.evaluateTargetScoreStatistics.2.averageScore}}
+            <i class="icon-zcy"></i>
+          </span>
+        </div>
+        <div class="arrow-content js-supplier-avg-score-div" data-targetid="5">
+          <span class="content-span js-target-name">质量</span>
+          <span class="js-average-score js-supplier-avg-zl">
+            {{_DATA_.evaluateTargetScoreStatistics.3.averageScore}}
+            <i class="icon-zcy"></i>
+          </span>
+        </div>
+        <div class="arrow-content arrow-choose">
+          <i class="icon-zcy icon-more"></i>
+        </div>
+        <input type="text" class="hide js-supplier-avg-save" name="js-supplier-avg-gh" value="{{_DATA_.evaluateTargetScoreStatistics.0.averageScore}}_{{_DATA_.evaluateWeightAverages.0.averageScore}}" />
+        <input type="text" class="hide js-supplier-avg-save" name="js-supplier-avg-fw" value="{{_DATA_.evaluateTargetScoreStatistics.1.averageScore}}_{{_DATA_.evaluateWeightAverages.1.averageScore}}" />
+        <input type="text" class="hide js-supplier-avg-save" name="js-supplier-avg-jg" value="{{_DATA_.evaluateTargetScoreStatistics.2.averageScore}}_{{_DATA_.evaluateWeightAverages.2.averageScore}}" />
+        <input type="text" class="hide js-supplier-avg-save" name="js-supplier-avg-zl" value="{{_DATA_.evaluateTargetScoreStatistics.3.averageScore}}_{{_DATA_.evaluateWeightAverages.3.averageScore}}" />
+
+        <div class="popover-box hide">
+          <div class="box-log">
+            <img src="{{#if _DATA_.supplierInfo.logoPath}}{{_DATA_.supplierInfo.logoPath}}{{else}}/{{/if}}" alt="">
+          </div>
+          <div class="box-content">
+            <h1>{{_DATA_.supplierInfo.name}}</h1>
+            <table>
+              <tr>
+                <td width="16%"><span class="font-space">所在地</span>：</td>
+                <td width="35%">{{_DATA_.supplierInfo.addrProvinceName}}&nbsp;{{_DATA_.supplierInfo.addrCityName}}&nbsp;{{_DATA_.supplierInfo.addrRegionName}}</td>
+                <td class="grey">供应商动态评分</td>
+                <td class="grey">于其他供应商相比</td>
+              </tr>
+              <tr class="js-supplier-avg-gh-tr">
+                <td class="font-space"><span class="font-space">规模</span>：</td>
+                <td>{{_DATA_.supplierInfo.enterpriseScale}}</td>
+                <td>
+                  <span>供货：</span>
+                  <span>{{_DATA_.evaluateTargetScoreStatistics.1.averageScore}}</span>
+                </td>
+                <td class="show-scor">
+                  <i class="icon-zcy"></i>
+                  <span>0.8%</span>
+                </td>
+              </tr>
+              <tr class="js-supplier-avg-fw-tr">
+                <td class="font-space"><span class="font-space">商品数</span>：</td>
+                <td>{{_DATA_.onsaleItemCount}}</td>
+                <td class="js-supplier-avg-fw-td">
+                  <span>服务：</span>
+                  <span>{{_DATA_.evaluateTargetScoreStatistics.1.averageScore}}</span>
+                </td>
+                <td class="show-scor">
+                  <i class="icon-zcy"></i>
+                  <span>0.8%</span>
+                </td>
+              </tr>
+              <tr class="js-supplier-avg-jg-tr">
+                <td><span class="font-space">主营类目</span>：</td>
+                <td rowspan="2">{{#each _DATA_.categoryList}} {{this.name}},{{/each}}</td>
+                <td>
+                  <span>价格：</span>
+                  <span>{{_DATA_.evaluateTargetScoreStatistics.2.averageScore}}</span>
+                </td>
+                <td class="show-scor">
+                  <i class="icon-zcy"></i>
+                  <span>0.8%</span>
+                </td>
+              </tr>
+              <tr class="js-supplier-avg-zl-tr">
+                <td></td>
+                <td>
+                  <span>质量：</span>
+                  <span>{{_DATA_.evaluateTargetScoreStatistics.3.averageScore}}</span>
+                </td>
+                <td class="show-scor">
+                  <i class="icon-zcy"></i>
+                  <span>0.8%</span>
+                </td>
+              </tr>
+            </table>
+            <div class="online-box">
+              {{#of "1" _ROLES_}}
+                <button class="btn btn-info js-add-favor" data-shop-id="{{shopId}}">关注店铺</button>
+              {{else}}
+                {{#unless _USER_}}
+                  <button class="btn btn-info js-add-favor" data-shop-id="{{shopId}}">关注店铺</button>
+                {{/unless}}
+              {{/of}}
+              <a href="{{_ENV_HREF_.front}}/pages/supplierdetail?shopId={{shopId}}&searchType=1">查看明细</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+{{/component}}

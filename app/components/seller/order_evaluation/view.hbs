@@ -1,0 +1,75 @@
+{{#component "js-comp order-evaluation order-self trade-manage"}}
+<div class="t-breadcrumb">
+  {{#equals flagSelf 1}}
+  <label>订单管理</label>
+  <label> / </label>
+  <a href="/buyer/orders">订单列表</a>
+  <label> / </label>
+  <label>订单详情</label>
+  {{else}}
+    {{#equals flag 1}}
+    <label>订单管理</label>
+    <label> / </label>
+    <a href="/buyer/orders">订单列表</a>
+    <label> / </label>
+    <label>订单详情</label>
+    {{else}}
+    <label>评价管理</label>
+    {{!-- <label> / </label>
+    <a href="{{_ENV_HREF_.middle}}/evaluation/evaluation-manage">评价自查</a> --}}
+    <label> / </label>
+    <label>详情</label>
+    {{/equals}}
+  {{/equals}}
+</div>
+<div class="order-whole-evaluation" data-hascomment="{{hasComment}}"
+                                    data-orderid="{{orderId}}"
+                                    data-hassuppliercomment="{{hasSupplierComment}}"
+                                    data-orgid="{{orgId}}"
+                                    data-user-orgid="{{_USER_.orgId}}"
+                                    {{#equals flagSelf 1}}data-flag-self="{{flagSelf}}"{{/equals}}>
+  <p class="font-14 p-title">订单整体评价</p>
+  <div class="order-whole-list modal-evaluation order-evaluation-style clearfix">
+    <div class="order-info-container">
+      {{inject "seller/order_info"}}
+    </div>
+    <div class="order-border">
+        <ul class="order-evaluation-ul order-border-ul pull-left">
+            {{#each _DATA_}}
+                <li class="order-evaluation-li">
+                    <div class="js-left-evaluation-content left-title"
+                         data-weightruleid="{{weightRuleID}}"
+                         data-evaluatevalue="{{evaluateValue}}"
+                         data-evaluatetype="1"
+                         data-targetname="{{evaluateName}}">{{evaluateName}}:</div>
+                    <div class="right-star">
+                        <input name="rating{{weightRuleID}}" type="radio" class="hide star {split:2}">
+                        <input name="rating{{weightRuleID}}" type="radio" class="hide star {split:2}">
+                        <input name="rating{{weightRuleID}}" type="radio" class="hide star {split:2}">
+                        <input name="rating{{weightRuleID}}" type="radio" class="hide star {split:2}">
+                        <input name="rating{{weightRuleID}}" type="radio" class="hide star {split:2}">
+                        <input name="rating{{weightRuleID}}" type="radio" class="hide star {split:2}">
+                        <input name="rating{{weightRuleID}}" type="radio" class="hide star {split:2}">
+                        <input name="rating{{weightRuleID}}" type="radio" class="hide star {split:2}" checked>
+                        <input name="rating{{weightRuleID}}" type="radio" class="hide star {split:2}">
+                        <input name="rating{{weightRuleID}}" type="radio" class="hide star {split:2}">
+                    </div>
+                </li>
+            {{/each}}
+        </ul>
+        <div class="input-fivehundred-content js-order-evaluation-change pull-right">
+            <label for="remark-order-evaluation" class="font-12 left-title">评价:</label>
+            <textarea placeholder="不超过500个字符" class="js-checklog-comment" id="remark-order-evaluation" rows="3"></textarea>
+            <div class="note no-href">
+                （<span class="js-checklog-comment-count checklog-comment-count">0</span> / 500）
+            </div>
+        </div>
+    </div>
+  </div>
+  {{#equals _USER_.type 1}}
+    {{#equals hasComment false}}<button type="submit" class="btn btn-primary deliver-evalution">发表评价</button>{{/equals}}
+  {{else}}
+    {{#equals hasSupplierComment false}}<button type="submit" class="btn btn-primary deliver-evalution">发表评价</button>{{/equals}}
+  {{/equals}}
+</div>
+{{/component}}

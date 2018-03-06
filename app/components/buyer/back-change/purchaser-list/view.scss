@@ -1,0 +1,128 @@
+
+    .buyer_back-change_purchaser-list {
+
+        & {
+
+            .component-header {
+                font-size: 14px;
+                line-height: 40px;
+                text-indent: 20px;
+            }
+
+            .component-body {
+
+                .search-panel {
+
+                    th {
+                        font-weight: normal;
+                        white-space: nowrap;
+                    }
+
+                    th:after {
+                        content: "：";
+                    }
+
+                    th {
+                        padding-left: 10px;
+                    }
+
+                    th:first-child {
+                        padding-left: 0;
+                    }
+
+                    .btn {
+                        margin-left: 10px;
+                    }
+
+                }
+
+                .table-list {
+
+                    .action {
+                        overflow: hidden;
+                        width: 200px;
+
+                        a {
+                            float: left;
+                            margin-left: 10px;
+                        }
+
+                        a:first-child {
+                            margin-left: 0;
+                        }
+
+                    }
+
+                }
+
+                .color.\#2687D0 {
+                    color: #2687D0;
+                }
+
+            }
+
+        }
+
+    }
+
+    .buyer_back-change_purchaser-list.exchange {
+        width: 650px;
+
+        .table {
+
+            th, td {
+                border: none;
+            }
+
+            tbody {
+
+                td {
+                    line-height: 50px;
+                }
+
+            }
+
+            tfoot {
+                background-color: transparent;
+
+                th, td {
+                    padding-left: 0;
+                    padding-right: 0;
+                    padding-top: 15px;
+                }
+
+                th {
+                    text-align: right;
+                }
+
+                th:after {
+                    content: "：";
+                }
+
+            }
+
+        }
+
+        .form {
+
+            .error {
+                border: 1px solid #ff0000;
+                -webkit-box-shadow: 0 0 2px #ff0000;
+                -moz-box-shadow: 0 0 2px #ff0000;
+                box-shadow: 0 0 2px #ff0000;
+            }
+
+            .error, .error * {
+                color: #666666;
+            }
+
+        }
+
+        .text {
+            padding-left: 200px;
+            padding-top: 75px;
+            font-size: 14px;
+            line-height: 24px;
+        }
+
+    }

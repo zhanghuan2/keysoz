@@ -1,0 +1,220 @@
+<div class="order-detail-print-content">
+  <style>
+    .order-detail-print-content{
+      width: 21cm;
+      /*min-height: 29.7cm;*/
+      padding: 0 1.5cm;
+      margin: 1cm auto;
+
+      background: #FAFAFA;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+    .order-detail-print-content .orderTitle {
+      text-align: center;
+      font-weight: bold;
+      font-size: 36px;
+      color: #353535;
+
+    }
+    .order-detail-print-content .baseInfo {
+      margin-top: 40px;
+      height: 30px;
+      font-size: 12px;
+      color: #24344e;
+    }
+    .order-detail-print-content .order-code {
+      display: inline-block;
+      width: 71%;
+    }
+    .order-detail-print-content .create-time {
+      display: inline-block;
+      width: 28%;
+    }
+    .check-time {
+      display: inline-block;
+      width: 30%;
+    }
+
+    .order-detail-print-content .table-tile {
+      font-size: 16px;
+      color: #24344e;
+    }
+
+    .order-detail-print-content div.table-tile {
+      line-height: 20px;
+      margin-bottom: 5px;
+    }
+
+    .order-detail-print-content .table {
+      margin-bottom: 20px;
+    }
+    .order-detail-print-content .table td {
+      border: solid 1px #d8d8d8;
+      font-size: 14px;
+    }
+    .order-detail-print-content .total-money {
+      float: right;
+    }
+    .order-detail-print-content .label {
+      color: #666666;
+    }
+    .order-detail-print-content thead td {
+      background: #EEEEEE;
+    }
+    .order-detail-print-content .content {
+      color: #24344e;
+    }
+
+    .operator-btn {
+      margin: 20px auto;
+      text-align: center;
+    }
+    .order-detail-print-content table.shyj{
+      height: 220px;
+    }
+    .shyj td.content {
+      width: 100px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    @page
+    {
+      size: A4;
+      margin: 30px 0 0 0;
+    }
+    @media print
+    {
+      .review-editor
+      {
+        margin: 0;
+        border: initial;
+        border-radius: initial;
+        width: initial;
+        min-height: initial;
+        box-shadow: initial;
+        background: initial;
+        page-break-after: always;
+      }
+    }
+  </style>
+  <div class="orderTitle">
+    政采云网上超市预购单
+  </div>
+  <div class="baseInfo">
+    <span class="order-code">预购单编号：{{this.purchase.id}}</span>
+    <span class="create-time">创建时间：{{formatDate  this.purchase.createdAt}}</span>
+  </div>
+  <table class="table purchaser-info">
+    <thead>
+    <tr>
+      <td colspan="6" class="table-tile">采购单位信息</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td width="16%" class="label">采购单位名称</td>
+      <td width="20%" class="content">{{this.purchase.purchaserOrganizationName}}</td>
+      <td width="12%" class="label">联系人</td>
+      <td width="20%" class="content">{{this.purchase.purchaserName}}</td>
+      <td width="12%" class="label">联系电话</td>
+      <td width="20%" class="content">{{this.purchasePhone}}</td>
+    </tr>
+    <tr>
+      <td>收货地址</td>
+      <td colspan="5" class="content">
+        {{#each this.deliveries}}
+          {{#with delivery}}
+            {{receiverProvinceName}}{{receiverCityName}}{{receiverDistrictName}}&nbsp;&nbsp;{{receiverAddress}}({{receiverName}} 收)&nbsp;
+          {{/with}}
+        {{/each}}
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <table class="table supplier-info">
+    <thead>
+    <tr>
+      <td colspan="6" class="table-tile">供应商信息</td>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each this.suppliers}}
+      <tr>
+        <td width="16%" class="label">供应商名称</td>
+        <td width="20%" class="content">{{name}}</td>
+        <td width="12%" class="label">联系人</td>
+        <td width="20%" class="content">{{contactPersonName}}</td>
+        <td width="12%" class="label">联系电话</td>
+        <td width="20%" class="content">{{contactPhone}}</td>
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
+  <div class="table-tile">商品列表</div>
+  <table class="table item-list">
+    <thead>
+    <tr>
+      <td width="10%" class="label">序号</td>
+      <td width="20%" class="label">商品名称</td>
+      <td width="20%" class="label">品牌</td>
+      <td width="15%" class="label">型号</td>
+      <td width="10%" class="label">数量</td>
+      <td width="10%" class="label">单位</td>
+      <td width="15%" class="label">小记（元）</td>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each this.items}}
+      <tr class="item-tr-price">
+        <td class="js-items-no content">{{add @index 1}}</td>
+        <td class="content">{{itemName}}</td>
+        <td class="content">{{brand}}</td>
+        <td class="content">{{specification}}</td>
+        <td class="content count_td">{{currentCount}}</td>
+        <td class="content">{{unit}}</td>
+        <td class="content price_td" data-price="{{formatPrice skuPrice}}"> </td>
+      </tr>
+    {{/each}}
+    <tr>
+      <td colspan="7" class="content"><span class="total-money">金额合计:&nbsp;{{formatPrice orderItemWithPrintExt.totalPrice}}元</span></td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="table-tile">发票列表</div>
+  <table class="table invoice-list">
+    <thead>
+    <tr>
+      <td width="20%" class="label">购买方名称</td>
+      <td width="20%" class="label">发票类型</td>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each invoices}}
+      <tr>
+        {{#with invoice}}
+          <td class="content">{{invoiceTitle}}</td>
+          <td class="content">
+            {{#equals invoiceType 0}}普通发票{{/equals}}
+            {{#equals invoiceType 1}}增值税普通发票{{/equals}}
+            {{#equals invoiceType 2}}增值税专用发票{{/equals}}
+          </td>
+        {{/with}}
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
+  <table class="table shyj">
+    <thead>
+    <tr>
+      <td width="100%" class="label">审核意见</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td class="content">
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

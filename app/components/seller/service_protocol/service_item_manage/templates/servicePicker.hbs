@@ -1,0 +1,24 @@
+<select name="service" class="noselectric">
+  {{#each data}}
+    <option value="{{id}}" data-icon="{{iconSmall}}" {{#equals id ../protocolId}}selected{{/equals}}>{{name}}</option>
+  {{/each}}
+</select>
+<span class="overview">
+  服务商品数量：<span class="js-service-item-count text-orange">－</span>
+  服务商品设置率：<span class="js-service-item-rate text-orange">--</span>
+</span>
+{{!--
+<span class="tip-info">
+  <i class="icon-zcy icon-messagealertfill"></i>
+  您对服务商品的任何操作在24小时后才会在前台真正生效
+</span>
+--}}
+<div class="search-box">
+</div>
+<div class="operations">
+  <button class="btn btn-info js-batch-set">批量设置</button>
+  <button class="btn btn-primary js-set-all">设置所有商品</button>
+</div>
+<table class="items-table">
+
+</table>

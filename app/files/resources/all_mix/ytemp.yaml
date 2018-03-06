@@ -1,0 +1,52 @@
+"Message": true
+"My Return": true
+"Still can type": true
+"Your description has bad words, please edit and submit": true
+"Order": true
+"can use": true
+"per": true
+"can use one": true
+
+
+"Message": "消息"
+"My Return": "我的退货款订单"
+"Still can type": "还可以输入"
+"Your description has bad words, please edit and submit": "您的描述含有敏感词汇,请输入后提交"
+"Order": "订单"
+"can use": "可以使用"
+"per": "每满"
+"can use one": "可以使用一张"
+
+
+==================================================
+
+"Set read": true
+"Show all messages": true
+"Your has no ": true
+"unchecked ": true
+"messages": true
+
+
+"Set read": "设为已读"
+"Show all messages": "显示所有消息"
+"Your has no ": "您还没有"
+"unchecked ": "未读"
+"messages": "消息"
+
+
+====================================================
+
+"Phone No": true
+
+
+"Phone No": "手机号码"
+
+====================================================
+
+"Returning": true
+"Sale tax": true
+
+
+"Returning": "已进入退货款流程"
+"Sale tax": "消费税"
+

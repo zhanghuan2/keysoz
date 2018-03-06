@@ -1,0 +1,475 @@
+---
+## 字段说明
+# menus: 菜单资源
+# category: 用户类别编码
+# pages: 页面列表
+# pageId: 页面ID
+# resources: 资源列表
+# resourceId: 资源ID
+# privilege: 权限编码
+
+
+#菜单资源定义
+menus:
+  #平台运营菜单
+  - category: 99
+    pages:
+      - pageId: default
+        resources:
+          #权限管理菜单
+          - resourceId: systemPrivilegeCenter               #系统权限管理
+            privilege: zcy.user.sysPrivilege
+          - resourceId: privilegeManage                     #-功能管理
+            privilege: zcy.user.sysPrivilege.privilegeManage
+          - resourceId: roleManage                          #-角色管理
+            privilege: zcy.user.sysPrivilege.roleManage
+          - resourceId: positionManage                      #-岗位管理
+            privilege: zcy.user.sysPrivilege.postManage
+          - resourceId: categoryManage                      #-用户类别管理
+            privilege: zcy.user.sysPrivilege.categoryManage
+          #组织管理菜单
+          - resourceId: orgCenter                           #组织管理
+            privilege: zcy.user.orgUser
+          - resourceId: userSearch                          #-用户查询
+            privilege: zcy.user.orgUser.userSearch
+          - resourceId: userManage                          #-用户管理
+            privilege: zcy.user.orgUser.userManage
+          - resourceId: dptQuery                            #-部门查询
+            privilege: zcy.user.orgUser.depSearch
+          - resourceId: dptManage                           #-部门管理
+            privilege: zcy.user.orgUser.depManage
+          - resourceId: dptInfo                             #-部门信息
+            privilege: zcy.user.orgUser.depInfo
+          - resourceId: orgInfo                             #-机构信息
+            privilege: zcy.user.orgUser.orgInfo
+          #行政区管理菜单
+          - resourceId: district                            #行政区管理
+            privilege: zcy.district.sys
+          - resourceId: districtManage                      #-行政区划管理
+            privilege: zcy.district.sys.manage
+          #商品管理
+          - resourceId: systemItem                          #-商品管理
+            privilege: zcy.item.sys
+          - resourceId: systemItemManage                    #-商品管理
+            privilege: zcy.item.sys.manage
+          #供应商管理
+          - resourceId: supplierManage                      #-供应商管理
+            privilege: zcy.supplier.sys
+          - resourceId: supplierSerach                      #-供应商查询
+            privilege: zcy.supplier.sys.search
+          #诚信管理
+          - resourceId: veracityManager                     #诚信管理
+            privilege: zcy.credit.sys.punish
+          - resourceId: veracityConf                        #-诚信类型配置
+            privilege: zcy.credit.sys.punish.conf
+          #申诉管理
+          - resourceId: appealManager
+            privilege: zcy.credit.sys.appeal
+          - resourceId: appealConf
+            privilege: zcy.credit.sys.appeal.conf
+
+  #行政区管理员菜单
+  - category: 88
+    pages:
+      - pageId: default
+        resources:
+          #权限管理菜单
+          - resourceId: privilegeCenter                     #权限管理
+            privilege: zcy.user.distPrivilege
+          - resourceId: privilegeSearch                     #-功能查询
+            privilege: zcy.user.distPrivilege.privilegeSearch
+          - resourceId: roleSearch                          #-角色查询
+            privilege: zcy.user.distPrivilege.roleManage
+          - resourceId: positionSearch                      #-岗位查询
+            privilege: zcy.user.distPrivilege.postManage
+          - resourceId: categorySearch                      #-用户类别管理
+            privilege: zcy.user.sysPrivilege.categorySearch
+          #组织管理菜单
+          - resourceId: orgCenter                           #组织管理
+            privilege: zcy.user.distUser
+          - resourceId: userSearch                          #-用户查询
+            privilege: zcy.user.distUser.userSearch
+          - resourceId: userManage                          #-用户管理
+            privilege: zcy.user.distUser.userManage
+          - resourceId: orgManage                           #-机构管理
+            privilege: zcy.user.distUser.orgManage
+          #行政区管理菜单
+          - resourceId: district                            #行政区管理
+            privilege: zcy.district.dist
+          - resourceId: districtManage                      #-行政区划管理
+            privilege: zcy.district.dist.manage
+          - resourceId: districtManageCheck                 #-行政区划审核
+            privilege: zcy.district.dist.check
+
+  #采购人菜单
+  - category: 01
+    pages:
+      - pageId: default
+        resources:
+          #权限管理菜单
+          - resourceId: privilegeCenter                     #权限管理
+            privilege: zcy.user.orgPrivilege
+          - resourceId: privilegeSearch                     #-功能查询
+            privilege: zcy.user.orgPrivilege.privilegeSearch
+          - resourceId: roleSearch                          #-角色查询
+            privilege: zcy.user.orgPrivilege.roleSearch
+          - resourceId: positionSearch                      #-岗位查询
+            privilege: zcy.user.orgPrivilege.postSearch
+          #组织管理菜单
+          - resourceId: orgCenter                           #组织管理
+            privilege: zcy.user.orgUser
+          - resourceId: userSearch                          #-用户查询
+            privilege: zcy.user.orgUser.userSearch
+          - resourceId: userManage                          #-用户管理
+            privilege: zcy.user.orgUser.userManage
+          - resourceId: dptQuery                            #-部门查询
+            privilege: zcy.user.orgUser.depSearch
+          - resourceId: dptManage                           #-部门管理
+            privilege: zcy.user.orgUser.depManage
+          - resourceId: dptInfo                             #-部门信息
+            privilege: zcy.user.orgUser.depInfo
+          - resourceId: orgInfo                             #-机构信息
+            privilege: zcy.user.orgUser.orgInfo
+          #采购人结算管理
+          - resourceId: purchaseSettlementManage            #采购人结算管理
+            privilege: zcy.settlement.purchase
+          - resourceId: statementCreate                     #结算单创建
+            privilege: zcy.settlement.purchase.create
+          - resourceId: purchaseStatementManage             #-采购人结算单管理
+            privilege: zcy.settlement.purchase.manage
+          - resourceId: statementAudit                      #-采购人结算单审核
+            privilege: zcy.settlement.purchase.check
+          - resourceId: settlementDateManage                #-结算日管理
+            privilege: zcy.settlement.purchase.settleDate
+          - resourceId: paybillManage                       #-支付工单管理
+            privilege: zcy.settlement.purchase.paybill
+          - resourceId: purchaserInvoiceManage              #-采购人发票管理
+            privilege: zcy.settlement.purchase.invoice
+          - resourceId: settlementManage                    #采购人结算管理
+            privilege: zcy.settlement.purchase
+
+          #预算管理
+          - resourceId: budgetManage                        #预算管理
+            privilege:  zcy.budget
+          - resourceId: purchasePlanMange                   #-采购计划管理
+            privilege: zcy.budget.purchasePlan
+          #交易管理
+          - resourceId: tradeCart                           #-我的购物车
+            privilege:  zcy.trade.purchase.cart
+          - resourceId: tradeRequisitionsManage             #-需求单管理
+            privilege:  zcy.trade.purchase.requisitionManage
+          - resourceId: tradeRequisitions                   #-需求单列表
+            privilege:  zcy.trade.purchase.requisitionManage.list
+          - resourceId: tradeRequisitionDetail              #-需求单详情
+            privilege:  tradeRequisitionDetail
+          - resourceId: tradePurchasesManage                #-采购单管理
+            privilege:  zcy.trade.purchase.purchaseManage
+          - resourceId: tradePurchasesSelectRequisitions    #-采购单列表
+            privilege:  zcy.trade.purchase.purchaseManage.selectRequisitions
+          - resourceId: tradePurchases                      #-采购单列表
+            privilege:  zcy.trade.purchase.purchaseManage.list
+          - resourceId: tradePurchaseDetail                 #-采购单详情
+            privilege:  zcy.trade.purchase.purchaseManage.detail
+          - resourceId: tradePurchaseOrderManage           #-订单管理
+            privilege:  zcy.trade.purchase.orderManage
+          - resourceId: tradePurchaseOrders                 #-订单列表
+            privilege:  zcy.trade.purchase.orderManage.list
+          - resourceId: tradePurchaseOrderDetail            #-订单详情
+            privilege: zcy.trade.purchase.orderManage.detail
+          #诚信管理
+          - resourceId: evaluation                          #-评价管理
+            privilege:  zcy.credit.purchase.evaluate
+          - resourceId: evaluationManage                    #-评价自查
+            privilege:  zcy.credit.purchase.evaluate.manage
+          - resourceId: evaluationSearch                    #-评价统计
+            privilege:  zcy.credit.purchase.evaluate.search
+          - resourceId: veracityManager                        #奖惩管理
+            privilege:  zcy.credit.purchase.punish
+          - resourceId: veracityResponse                        #-奖惩反馈
+            privilege: zcy.credit.purchase.punish.response
+          #申诉管理
+          - resourceId: appealManager
+            privilege: zcy.credit.purchase.appeal
+  #供应商菜单
+  - category: 02
+    pages:
+      - pageId: default
+        resources:
+          #权限管理菜单
+          - resourceId: privilegeCenter                     #权限管理
+            privilege: zcy.user.orgPrivilege
+          - resourceId: privilegeSearch                     #-功能查询
+            privilege: zcy.user.orgPrivilege.privilegeSearch
+          - resourceId: roleSearch                          #-角色查询
+            privilege: zcy.user.orgPrivilege.roleSearch
+          - resourceId: positionSearch                      #-岗位查询
+            privilege: zcy.user.orgPrivilege.postSearch
+          #组织管理菜单
+          - resourceId: orgCenter                           #组织管理
+            privilege: zcy.user.orgUser
+          - resourceId: userSearch                          #-用户查询
+            privilege: zcy.user.orgUser.userSearch
+          - resourceId: userManage                          #-用户管理
+            privilege: zcy.user.orgUser.userManage
+          - resourceId: dptQuery                            #-部门查询
+            privilege: zcy.user.orgUser.depSearch
+          - resourceId: dptManage                           #-部门管理
+            privilege: zcy.user.orgUser.depManage
+          - resourceId: dptInfo                             #-部门信息
+            privilege: zcy.user.orgUser.depInfo
+          - resourceId: orgInfo                             #-机构信息
+            privilege: zcy.user.orgUser.orgInfo
+          #供应商结算管理
+          - resourceId: supplierSettlementManage             #-发票设置
+            privilege: zcy.settlement.supplier
+          - resourceId: supplierStatementManage             #-供应商结算单管理
+            privilege: zcy.settlement.supplier.manage
+          - resourceId: supplierInvoiceManage              #-采购人发票管理
+            privilege: zcy.settlement.supplier.invoice
+          #交易管理
+          - resourceId: supplierOrderManage                #-订单管理
+            privilege: zcy.trade.supplier.orderManage
+          - resourceId: supplierOrders                      #-订单列表
+            privilege: zcy.trade.supplier.orderManage.list
+          - resourceId: supplierOrderDetail                 #-订单详情
+            privilege: zcy.trade.supplier.orderManage.detail
+          #诚信管理
+          - resourceId: evaluation                          #-评价管理
+            privilege:  zcy.credit.supplier.evaluate
+          - resourceId: evaluationManage                    #-评价自查
+            privilege:  zcy.credit.supplier.evaluate.manage
+          - resourceId: evaluationSearch                    #-评价统计
+            privilege:  zcy.credit.supplier.evaluate.search
+          - resourceId: veracityManager                        #奖惩管理
+            privilege:  zcy.credit.supplier.punish
+          - resourceId: veracityResponse                        #-奖惩反馈
+            privilege: zcy.credit.supplier.punish.response
+          #商品管理
+          - resourceId: supplierItem                        #-商品管理
+            privilege: zcy.item.supplier
+          - resourceId: supplierItemCategory                #-选择商品类目
+            privilege: zcy.item.supplier.itemCategory
+          - resourceId: supplierItemInfo                    #-编辑商品信息
+            privilege: zcy.item.supplier.itemInfo
+          - resourceId: supplierItemOnShelf                 #-上架商品列表
+            privilege: zcy.item.supplier.itemOnShelf
+          - resourceId: supplierItemOffShelf                #-下架商品列表
+            privilege: zcy.item.supplier.itemOffShelf
+          - resourceId: supplierDelivery                    #-发货区域管理
+            privilege: zcy.item.supplier.delivery
+          #供应商管理
+          - resourceId: supplierInfo                        #-信息资料维护
+            privilege: zcy.supplier.info
+          - resourceId: supplierInfoManage                  #-供应商基本信息
+            privilege: zcy.supplier.info.base
+          - resourceId: supplierInfoLog                     #-注册变更记录
+            privilege: zcy.supplier.info.changelogs
+          - resourceId: supplierCancel                      #-供应商注销
+            privilege: zcy.supplier.info.logout
+          #申诉管理
+          - resourceId: appealManager
+            privilege: zcy.credit.supplier.appeal
+  #采购代理机构
+  - category: 03
+    pages:
+      - pageId: default
+        resources:
+          #权限管理菜单
+          - resourceId: privilegeCenter                     #权限管理
+            privilege: zcy.user.orgPrivilege
+          - resourceId: privilegeSearch                     #-功能查询
+            privilege: zcy.user.orgPrivilege.privilegeSearch
+          - resourceId: roleSearch                          #-角色查询
+            privilege: zcy.user.orgPrivilege.roleSearch
+          - resourceId: positionSearch                      #-岗位查询
+            privilege: zcy.user.orgPrivilege.postSearch
+          #组织管理菜单
+          - resourceId: orgCenter                           #组织管理
+            privilege: zcy.user.orgUser
+          - resourceId: userSearch                          #-用户查询
+            privilege: zcy.user.orgUser.userSearch
+          - resourceId: userManage                          #-用户管理
+            privilege: zcy.user.orgUser.userManage
+          - resourceId: dptQuery                            #-部门查询
+            privilege: zcy.user.orgUser.depSearch
+          - resourceId: dptManage                           #-部门管理
+            privilege: zcy.user.orgUser.depManage
+          - resourceId: dptInfo                             #-部门信息
+            privilege: zcy.user.orgUser.depInfo
+          - resourceId: orgInfo                             #-机构信息
+            privilege: zcy.user.orgUser.orgInfo
+          #供应商管理
+          - resourceId: supplierManage                       #-供应商管理
+            privilege: zcy.supplier.agency
+          - resourceId: supplierInfQuery                     #-供应商查询
+            privilege: zcy.supplier.agency.search
+          #申诉管理
+          - resourceId: appealManager
+            privilege: zcy.credit.agency.appeal
+
+  #采购监管
+  - category: 05
+    pages:
+      - pageId: default
+        resources:
+          #权限管理菜单
+          - resourceId: privilegeCenter                     #权限管理
+            privilege: zcy.user.orgPrivilege
+          - resourceId: privilegeSearch                     #-功能查询
+            privilege: zcy.user.orgPrivilege.privilegeSearch
+          - resourceId: roleSearch                          #-角色查询
+            privilege: zcy.user.orgPrivilege.roleSearch
+          - resourceId: positionSearch                      #-岗位查询
+            privilege: zcy.user.orgPrivilege.postSearch
+
+          #组织管理菜单
+          - resourceId: orgCenter                           #组织管理
+            privilege: zcy.user.orgUser
+          - resourceId: userSearch                          #-用户查询
+            privilege: zcy.user.orgUser.userSearch
+          - resourceId: userManage                          #-用户管理
+            privilege: zcy.user.orgUser.userManage
+          - resourceId: dptQuery                            #-部门查询
+            privilege: zcy.user.orgUser.depSearch
+          - resourceId: dptManage                           #-部门管理
+            privilege: zcy.user.orgUser.depManage
+          - resourceId: dptInfo                             #-部门信息
+            privilege: zcy.user.orgUser.depInfo
+          - resourceId: orgInfo                             #-机构信息
+            privilege: zcy.user.orgUser.orgInfo
+
+          #诚信管理
+          - resourceId: veracityManager                      #诚信管理
+            privilege: zcy.credit.superviser.punish
+          - resourceId: veracityList                         #诚信列表
+            privilege: zcy.credit.superviser.punish.process
+          - resourceId: veracityStatistics                   #诚信统计
+            privilege: zcy.credit.superviser.punish.statistics
+          - resourceId: veracityCreate                       #诚信录入
+            privilege: zcy.credit.superviser.punish.write
+          #申诉管理
+          - resourceId: appealManager
+            privilege: zcy.credit.superviser.appeal
+
+#页面元素定义:
+elements:
+  #采购人
+  - category: 01
+    pages:
+      #购物车页面
+      - pageId: tradeCartPage
+        resources:
+          - resourceId: tradeCartDelSku                     #商品删除
+            privilege:  zcy.trade.purchase.cart.delSku
+          - resourceId: tradeCartBatchDelSku                #清除失效商品
+            privilege: zcy.trade.purchase.cart.cleanupSku
+          - resourceId: tradeCartDelInvalidSku              #继续选购
+            privilege: zcy.trade.purchase.cart.continue.buy
+          - resourceId: tradeCartCreateRequisition          #生成需求单
+            privilege: zcy.trade.purchase.cart.continueBuy
+          - resourceId: tradeCartCreatePurchase             #直接生成采购单
+            privilege: zcy.trade.purchase.cart.createRequisition
+          - resourceId: tradeCartCombineWithOtherReq        #与其他需求单合并下单
+            privilege: zcy.trade.purchase.cart.createPurchase
+      - pageId: depSelectPage
+        resources:
+          - resourceId: depSelector                         #部门选择
+            privilege: zcy.user.orgUser.userManage
+       #结算管理页面
+      - pageId: purchaseStatementManage
+        resources:
+          - resourceId: purchaseStatementWaitInvoice
+            privilege: zcy.settlement.purchase.manage.needInvoice
+          - resourceId: purchaseStatementWaitSubmitAudit
+            privilege: zcy.settlement.purchase.manage.needSubmitAudit
+          - resourceId: purchaseStatementWaitRecord
+            privilege: zcy.settlement.purchase.manage.needRecord
+          - resourceId: purchaseStatementWaitPay
+            privilege: zcy.settlement.purchase.manage.needPay
+          - resourceId: purchaseStatementDone
+            privilege: zcy.settlement.purchase.manage.finish
+          - resourceId: purchaseStatementDetail
+            privilege: zcy.settlement.purchase.manage.detail
+          - resourceId: purchaseStatementBasicEdit
+            privilege: zcy.settlement.purchase.manage.basicEdit
+          - resourceId: purchaseStatementDetailEdit
+            privilege: zcy.settlement.purchase.manage.detailEdit
+       #结算单审核页面
+      - pageId: statementAudit
+        resources:
+          - resourceId: statementPrimalAudit
+            privilege: zcy.settlement.purchase.check.firstCheck
+          - resourceId: statementSecondAudit
+            privilege: zcy.settlement.purchase.check.secondCheck
+          - resourceId: statementFinalAudit
+            privilege: zcy.settlement.purchase.check.finalCheck
+          - resourceId: statementFinishAudit
+            privilege: zcy.settlement.purchase.check.finishCheck
+          - resourceId: purchaseStatementDetail
+            privilege: zcy.settlement.purchase.check.detail
+        #支付工单管理
+      - pageId: paybillManage
+        resources:
+          - resourceId: paybillDetail
+            privilege: zcy.settlement.purchase.paybill.detail
+          - resourceId: paymentUpdate
+            privilege: zcy.settlement.purchase.paybill.update
+          - resourceId: purchaseStatementDetail
+            privilege: zcy.settlement.purchase.paybill.statementDetail
+        #诚信管理页面
+      - pageId: veracityManager
+        resources:
+          - resourceId: veracityResponse
+            privilege: zcy.credit.purchase.punish.response
+
+  #供应商
+  - category: 02
+    pages:
+      - pageId: depSelectPage
+        resources:
+          - resourceId: depSelector                         #部门选择
+            privilege: zcy.user.orgUser.userManage
+      #结算单管理页面
+      - pageId: supplierStatementManage
+        resources:
+          - resourceId: supplierAccountConfirmBtn
+            privilege: zcy.settlement.supplier.manage.confirm
+          - resourceId: supplierStatementDetail
+            privilege: zcy.settlement.supplier.manage.detail
+        #诚信管理页面
+      - pageId: veracityManager
+        resources:
+          - resourceId: veracityResponse
+            privilege: zcy.credit.supplier.punish.response
+  #代理机构
+  - category: 03
+    pages:
+      - pageId: depSelectPage
+        resources:
+          - resourceId: depSelector                         #部门选择
+            privilege: zcy.user.orgUser.userManage
+
+  #监管机构
+  - category: 05
+    pages:
+      - pageId: depSelectPage
+        resources:
+          - resourceId: depSelector                         #部门选择
+            privilege: zcy.user.orgUser.userManage
+      #诚信列表页面
+      - pageId: veracityManager
+        resources:
+          - resourceId: veracityAccept
+            privilege: zcy.credit.superviser.punish.process.accept
+          - resourceId: veracityProcess
+            privilege: zcy.credit.superviser.punish.process.sub
+          - resourceId: veracitySign
+            privilege: zcy.credit.superviser.punish.process.sign
+
+  #运营机构
+  - category: 99
+    pages:
+      - pageId: depSelectPage
+        resources:
+          - resourceId: depSelector                         #部门选择
+            privilege: zcy.user.orgUser.userManage

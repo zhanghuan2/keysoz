@@ -1,0 +1,183 @@
+{{#component "component-hotel-service-detail js-comp"}}
+  <div class="fixed-hotel-service-detail">
+    <div class="hotel-service-left">
+      <div class="hotel-service-info">
+        <h2>{{_DATA_.name}}</h2>
+        <span class="hotelOrange">{{_DATA_.starRatingName}}</span>
+        <p>{{_DATA_.address}}</p>
+        <div class="docs-galley">
+          <ul class="docs-pictures clearfix">
+            {{#each _DATA_.hotelPhotos}}
+              <li>
+                {{#ifCond @index "<=" 1}}
+                  <img class="{{#ifCond @index "==" 0}}first-pic{{/ifCond}}" data-original="{{url}}" src="{{cdnPath url 280 350}}" alt="{{fileName}}">
+                {{else}}
+                  <img data-original="{{url}}" src="{{cdnPath url 138 170}}" alt="{{fileName}}">
+                {{/ifCond}}
+              </li>
+            {{/each}}
+            <button class="btn total-pic-btn">共{{size _DATA_.hotelPhotos}}张图片</button>
+          </ul>
+        </div>
+      </div>
+      <div class="hotel-service-nav">
+        <div id="navbar" class="tab">
+          <ul class="tab-navs clearfix">
+            <li class="menuItem active" data-role="nav"><a href="#roomtype-list">房型列表</a></li>
+            <li class="menuItem" data-role="nav"><a href="#base—info">基本信息</a></li>
+            <li class="menuItem" data-role="nav"><a href="#service-project">服务项目</a></li>
+            <li class="menuItem" data-role="nav"><a href="#service-promise">服务承诺</a></li>
+            <li class="menuItem" data-role="nav"><a href="#deal-record">成交记录</a></li>
+          </ul>
+        </div>
+        <div class="tab-contents clearfix">
+          <div data-role="content" class="tab-content" id="roomtype-list" style="border: 0">
+            <div class="room-mode-select">
+              <label><input type="radio" name="modeRoom" data-id="hotelRoom" value="guestroom" checked>客房</label>
+              <label><input type="radio" name="modeRoom" data-id="hotelMeetingRoom" value="divan">会议室</label>
+              <label><input type="radio" name="modeRoom" data-id="hotelRestaurant" value="restaurant">餐厅</label>
+              <a style="display: none" name="empty-room-btn" class="btn btn-small"
+                 href="/fixed/empty-room?supplierId={{_HOTELROOM_.0.supplierId}}&protocolId={{_HOTELROOM_.0.protocolId}}"
+                 target="_blank">空房查询</a>
+            </div>
+            <div class="room-mode-content">
+              {{> component:fixed/hotel_service_detail/templates/guest_room_list}}
+            </div>
+          </div>
+          <div data-role="content" class="tab-content" id="base—info">
+            <div>
+              <h3>基本信息</h3>
+              <table class="table table-fixed">
+                <tbody>
+                <tr>
+                  <td width="20%">
+                    <div>会议定点场所类型</div>
+                  </td>
+                  <td width="80%">{{#if _DATA_.placeName}}{{_DATA_.placeName}}{{else}}-{{/if}}</td>
+                </tr>
+                <tr>
+                  <td width="20%">
+                    <div>法定代表人</div>
+                  </td>
+                  <td width="80%">{{#if _DATA_.contactPerson}}{{_DATA_.contactPerson}}{{else}}-{{/if}}</td>
+                </tr>
+                <tr>
+                  <td width="20%">
+                    <div>联系方式</div>
+                  </td>
+                  <td width="80%">
+                    {{#if _DATA_.contactName}}<span>联系人 {{_DATA_.contactName}}</span>{{/if}}
+                    {{#if _DATA_.contactPhone}}<span>电话 {{_DATA_.contactPhone}}</span>{{/if}}
+                    {{#if _DATA_.externalServicePhone}}<span>外服电话 {{_DATA_.externalServicePhone}}</span>{{/if}}
+                    {{#if _DATA_.fax}}<span>传真 {{_DATA_.fax}}</span>{{/if}}
+                  </td>
+                </tr>
+                <tr>
+                  <td width="20%">
+                    <div>基本信息</div>
+                  </td>
+                  <td width="80%">
+                    {{#if _DATA_.coverArea}}<span>占地面积 {{formatPrice _DATA_.coverArea}}m<sup>2</sup></span>{{/if}}
+                    {{#if _DATA_.floorArea}}<span>建筑面积 {{formatPrice _DATA_.floorArea}}m<sup>2</sup></span>{{/if}}
+                    {{#if _DATA_.floorCount}}<span>楼层总数 {{_DATA_.floorCount}}层</span>{{/if}}
+                    {{#if _DATA_.roomCount}}<span>客房总数 {{_DATA_.roomCount}}间</span><br>{{/if}}
+                    {{#if _DATA_.startedAt}}<span>开业时间 {{formatDate _DATA_.startedAt "YYYY/MM/dd"}}</span>{{/if}}
+                    {{#if _DATA_.completionAt}}<span>最近装修 {{formatDate _DATA_.completionAt "YYYY/MM/dd"}}</span>{{/if}}
+                  </td>
+                </tr>
+                <tr>
+                  <td width="20%">
+                    <div>经营特色</div>
+                  </td>
+                  <td width="80%">{{_DATA_.operationFeature}}</td>
+                </tr>
+                <tr>
+                  <td width="20%">
+                    <div>描述</div>
+                  </td>
+                  <td width="80%">{{_DATA_.remark}}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div data-role="content" class="tab-content" id="service-project">
+            <div>
+              <h3>服务项目</h3>
+              {{> component:fixed/hotel_service_detail/templates/service_project}}
+            </div>
+          </div>
+          <div data-role="content" class="tab-content" id="service-promise">
+            <div>
+              <h3>服务承诺</h3>
+              {{#with _SERVICEPROMISE_}}
+                <div class="hotel-detail-service-promise">
+                  {{{content}}}
+                </div>
+              {{/with}}
+            </div>
+          </div>
+          <div data-role="content" class="tab-content" id="deal-record">
+            <div>
+              <h3>成交记录</h3>
+              <div id="deal-record-list">
+                <table class="table table-fixed">
+                  <thead>
+                      <tr>
+                          <th width="25%">采购单位</th>
+                          <th width="40%">会议（培训）名称</th>
+                          <th width="15%">总价（元）</th>
+                          <th width="20%">日期</th>
+                      </tr>
+                  </thead>
+                  <tbody id="deal-record-list-tbody">
+                  </tbody>
+                  <tfoot>
+                      <tr id="deal-record-pagination">
+                          <td class="record-pagination col-12" colspan='4' style='text-align:right;'>
+                          </td>
+                      </tr>
+                  </tfoot>
+              </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hotel-service-right">
+      <div class="hotel-location">
+        <div class="hotel-location-map">
+          <!--<img class="location-pic-hotel" data-path="{{cdnPath _DATA_.hotelMapPhotos.0.url 500 600}}" src="{{_DATA_.hotelMapPhotos.0.url}}" alt="{{_DATA_.hotelMapPhotos.0.fileName}}">-->
+          <img class="location-pic-hotel" width="288" height="280" data-original="{{_DATA_.hotelMapPhotos.0.url}}" src="{{cdnPath _DATA_.hotelMapPhotos.0.url 280 288}}" alt="{{_DATA_.hotelMapPhotos.0.fileName}}">
+        </div>
+        <div class="hotel-traf-cont" id="js-trafCont">
+          <div>
+            <i class="icon-zcy icon-jichang"></i>
+            <span>距离机场约 <strong>{{formatPrice _DATA_.distanceAirport}}</strong> 公里</span>
+          </div>
+          <div>
+            <i class="icon-zcy icon-huochezhan"></i>
+            <span>距离火车站约 <strong>{{formatPrice _DATA_.distanceRailwayStation}}</strong> 公里</span>
+          </div>
+          <div>
+            <i class="icon-zcy icon-zhengfu"></i>
+            <span>距离省政府约 <strong>{{formatPrice _DATA_.distanceProvincialGov}}</strong> 公里</span>
+          </div>
+          <div>
+            <i class="icon-zcy icon-zhengfu"></i>
+            <span>距离市政府约 <strong>{{formatPrice _DATA_.distanceMunicipalGov}}</strong> 公里</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--全屏查看大图-->
+    <div class="hotel-pic-container hide">
+      <div class="hotel-pic-canvas">
+        <img class="img-original-hotel"/>
+      </div>
+      <div class="hotel-pic-closebtn"><i class="icon-zcy icon-close"></i></div>
+    </div>
+  </div>
+{{/component}}
+

@@ -1,0 +1,301 @@
+.order-form-shipment-create {
+  .icon-warningfill{
+    color:#aaa;
+    margin-left:2px;
+    margin-top:-2px;
+    cursor:pointer;
+    &:hover{
+      color:#197AFF;
+    }
+  }
+  .selectric{
+    overflow: hidden;
+    b.button{
+      background-color: #fff;
+    }
+  }
+    margin: 10px 0 0 0;
+    .order-title{
+      font-size: 14px;
+      font-weight: 400;
+      color: #000;
+    }
+    .order-info{
+      font-size: 14px;
+    }
+    .order-form-detail-about{
+      background-color: #FFFFFF;
+      //padding: 15px;
+    }
+    .order-deliveries{
+      margin-top: 15px;
+      .tab-contents{
+        background-color: #FFFFFF;
+        padding: 15px;
+        margin-top: 0;
+        .order-title{
+          margin-top: 15px;
+          margin-bottom: 10px;
+          &:first-child{
+            margin-top: 0;
+          }
+        }
+        .deliveryInfo{
+          line-height: 30px;
+          background-color: #FFFFFF;
+          border-width: 0;
+          label{
+            color: black;
+          }
+        }
+      }
+    }
+    .order-invoices{
+      margin-top: 15px;
+      background-color: #FFFFFF;
+      //padding: 15px;
+      label{
+        color: black;
+      }
+    }
+    .order-payments{
+      margin-top: 15px;
+      background-color: #FFFFFF;
+      //padding: 15px;
+
+      .change-confirm-book {
+        float: right;
+        line-height: 35px;
+        font-size: 12px;
+        margin-right: 20px;
+      }
+    }
+    .pur-all-payments{
+      margin-top: 10px;
+      table{
+        margin-top: 10px;
+        border-width: 0 !important;
+        tr{
+          border-width: 0 !important;
+        }
+        td{
+          border-width: 0 !important;
+          background-color: #F7F7F7  !important;
+        }
+      }
+    }
+    .sku-attrs{
+      color: #BBB;
+    }
+    table{
+      //width: 960px;
+      thead{
+        tr{
+          background-color: #F7F7F7;
+          color: #9F9F9F;
+          th{
+            border: 1px solid #CCD0D6;
+            border-width: 0 0 1px 0;
+            &:first-child{
+              border-width: 0 0 1px 1px;
+            }
+            &:last-child{
+              border-width: 0 1px 1px 0;
+              text-align: right;
+            }
+          }
+        }
+      }
+      tbody{
+        tr{
+          border: 1px solid #e7e9ea;
+          td{
+            border-width: 0 0 1px 0;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            &:first-child{
+              border-width: 0 0 1px 1px;
+            }
+            &:last-child{
+              border-width: 0 1px 1px 0;
+              text-align: right;
+            }
+            &.no-border{
+              border-width: 0;
+              padding: 10px;
+            }
+          }
+          &.first-level-tr{
+            border-width: 0 0 1px 2px;
+          }
+          &.no-border{
+            border-width: 0;
+          }
+        }
+      }
+    }
+
+  .delivery-item-table,
+  .contract-info-table,
+  .item-shipment-tr,
+  .contract-info-tr{
+    .disabled {
+      &,
+      *,
+      *::after,
+      *::before {
+        cursor: not-allowed;
+        pointer-events: none;
+        background-color: #eee;
+      }
+    }
+  }
+
+  .contract-info-table {
+    tbody {
+      td {
+        text-align: left;
+      }
+    }
+  }
+
+  table {
+    tbody{
+      tr {
+        a {
+          color: #2687d0
+        }
+      }
+    }
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .note {
+    color: #24344e;
+
+    &.error {
+      color: #ff2200;
+    }
+  }
+
+  .select-shipment{
+    p{
+      display: inline;
+    }
+  }
+
+  .block{
+    background-color: #f2f6f9;
+    line-height: 30px;
+    padding-left: 20px !important;
+  }
+  .select-address-item{
+    border-width: 0;
+  }
+
+    .price, .currency{
+      color: #FE7800;
+    }
+    .no-href{
+      color: #9E9E9C;
+    }
+    .order-form-detail-about{
+      table{
+        border-width: 0;
+        td{
+          border-width: 0;
+          padding:0 !important;
+        }
+      }
+    }
+  .float-hidden {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 0px;
+    height: 0px;
+  }
+
+  .order-form-detail-foot{
+    margin-top: 15px;
+  }
+
+  .btn.btn-ghost.thumbnail {
+    padding: 0;
+  }
+  .upload-image .thumbnail-list li .thumbnail .add-btn {
+    margin-top: -4px;
+    margin-left: 0;
+  }
+
+  .batchNumber {
+    .fileName:hover{
+      color: #0082e1;
+    }
+  }
+
+  .invoices-table {
+    margin-top: 20px;
+    .red-text {
+      color: #ff0000;
+    }
+  }
+
+}
+
+.modal.add-batch-number {
+  .batchNumberList {
+    margin-bottom: 20px;
+    max-height: 300px;
+    overflow: scroll;
+
+    .upload-box {
+      .uploadFile {
+        margin: 0 5px;
+        height: 60px;
+        width: 60px;
+        vertical-align: middle;
+        input {
+          width: 100%;
+          height: 100%;
+        }
+        .btn.btn-ghost{
+          margin:0;
+          padding: 0;
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .fileRow{
+        border: 1px solid;
+        display: inline-block;
+        margin: 0 5px;
+        height: 60px;
+        width: 60px;
+        vertical-align: middle;
+        .deleteFile {
+          position: relative;
+          float: right;
+          left: 10px;
+          top: -5px;
+          .icon-zcy.icon-close {
+            background: gray;
+            color: white;
+            border-radius: 10px;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+          }
+        }
+        .fileMsg {
+          margin-top: 20px;
+          text-align: center;
+        }
+      }
+    }
+  }
+}

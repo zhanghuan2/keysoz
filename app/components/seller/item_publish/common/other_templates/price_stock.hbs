@@ -1,0 +1,29 @@
+  <div class="form-section clearfix">
+    <div class="section-title">价格{{#equals isVaccine 1}}{{else}}库存{{/equals}}</div>
+    <div class="pull-left section-content no-bg sku-info-area" id="js-sku-info-area">
+      <div id="js-price-and-stock" class="js-sku-table-area">
+        {{> component:seller/item_publish/common/all_templates/_sku_table skuAndStocks=skuAndStocks warehouses=_WAREHOUSES_ isVaccine=isVaccine}}
+      </div>
+      <div id="js-sku-table-area" class="js-sku-table-area"
+        {{#if _WAREHOUSES_}}
+           data-warehouses="{{json _WAREHOUSES_}}"
+        {{/if}}
+        {{#if _DATA_.skuTemplates}}
+           data-sku="{{json _DATA_.skuTemplates}}"
+        {{else}}
+          {{#if skus}}
+           data-sku="{{json skus}}"
+          {{/if}}
+        {{/if}}
+        {{#if skuAndStocks}}
+           data-stocks="{{json skuAndStocks}}"
+        {{/if}}
+        {{#if ptype}}
+           data-ptype="{{ptype}}"
+        {{/if}}
+        ></div>
+      <p class="error-tip">
+        <i class="icon-mewtwo icon-mewtwo-alert-fill"></i> 请至少填写一个销售价
+      </p>
+    </div>
+  </div>

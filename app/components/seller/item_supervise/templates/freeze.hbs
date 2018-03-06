@@ -1,0 +1,34 @@
+<div class="modal">
+	  <div class="modal-header" style="width:550px;">
+	    <span>商品冻结</span>
+	    <a href="javascript:;" class="close pull-right">x</a>
+	  </div>
+	    <div class="modal-body">
+	      <div style="padding-left: 50px;">
+	      	<div>
+	          <i class="icon-zcy icon-notify-warning"></i><h2 class="freeze-title">冻结商品</h2>
+	        </div>
+	        <div>
+	          <label for="js-goods-name" style="margin-bottom: 20px;width: 70px;">原因：</label>
+	          <select name="" id="freeze-option">
+	          	<option value="">请选择</option>
+	          	<option value="价格比市场价高">价格比市场价高</option>
+	          	<option value="涉敏感词">涉敏感词</option>
+	          	<option value="涉密">涉密</option>
+	          	<option value="涉黄">涉黄</option>
+	          	<option value="涉毒">涉毒</option>
+	          	<option value="高档商品">高档商品</option>
+	          </select>
+	        </div>
+	        <div>
+	       	  <label for="js-goods-mark" style="margin-bottom: 20px;width: 70px;">备注：</label>
+	          <textarea id="js-examine-reason" name="comment" placeholder="请输入冻结理由" style="height:150px" required></textarea>
+	        </div>
+	      </div>
+	    </div>
+	    <div class="modal-footer">
+	    		<button class="btn btn-info btn-medium close" type="button">取消</button>
+	    		&nbsp;
+	      	<button class="btn btn-primary btn-medium js-examine-submit" type="button" disabled>提交</button>
+	    </div>
+	</div>

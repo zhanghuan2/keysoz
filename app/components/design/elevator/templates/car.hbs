@@ -1,0 +1,30 @@
+<ul class="">
+  <li data-target="" class="">
+    <div class="floor-li-inner">
+      <span class="li-slide kefu-cart">
+        <i class="icon-zcy icon-kefu inner-icon"></i>
+        <span class="inner-text">客户服务</span>
+      </span>
+    </div>
+  </li>
+  <hr/>
+  {{#each data}}
+    <li data-target="{{id}}" class="elevator-li js-elevator-li">
+      <div class="floor-li-inner">
+        <span class="li-slide">
+          <i class="icon-zcy {{icon}} inner-icon"></i>
+          <span class="inner-text">{{name}}</span>
+        </span>
+      </div>
+    </li>
+    <hr/>
+  {{/each}}
+  <li class="tail-li">
+    <div class="floor-li-inner">
+      <span class="li-slide tail-car to-top-car">
+        <i class="icon-zcy icon-fold inner-icon"></i>
+        <span class="inner-text">返回顶部</span>
+      </span>
+    </div>
+  </li>
+</ul>

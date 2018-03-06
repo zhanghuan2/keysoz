@@ -1,0 +1,50 @@
+<div class="modal pur-modal">
+  <div class="modal-header">
+    <h2>计划外商品</h2>
+  </div>
+  <div class="other-payment-items-lists" data-req-lists-total="{{_DATA_.total}}" data-otherpaymentid="{{_DATA_.itemId}}">
+    <div class="other-payment-items">
+      <div class="modal-body clearfix">
+        <div><strong><span class="req-title">商品清单</span></strong></div>
+        {{!-- {{json _DATA_}} --}}
+        <table class="table  center-tex other-payment-item-table">
+          <thead>
+            <tr>
+              <th class="left-text" colspan="1" width="350"> <span class="">商品</span> </th>
+              <th width="100">商品编号</th>
+              <th width="100">供应商</th>
+              <th width="100">单价(元)</th>
+              <th width="100" class="last">当前数量</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each _DATA_.data}}
+              <tr class="item-tr" data-site="{{shopId}}" data-id="{{skuId}}" data-itemid={{itemId}}>
+                {{!-- <td width="24" class="check"><input type="checkbox" class="js-select-item"></td> --}}
+                <td class="left-text"><span><span>{{itemName}}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sku-attrs">{{#each skuAttr}}{{@key}}:{{this}}&nbsp;&nbsp;{{/each}}</span></span></td>
+                <td>{{itemId}}</td>
+                <td>{{shopName}}</td>
+                <td><div><span class="price">{{_CURRENCY_}}</span><span class="price item-price">{{formatPrice skuPrice}}</span></div></td>
+                <td class="last"><span class="js-unbind-item-subCount" data-init="{{unbindPayCount}}">{{unbindPayCount}}</span></td>
+              </tr>
+            {{else}}
+              <tr><td colspan="3" class="center-text">无可展示信息</td></tr>
+            {{/each}}
+          </tbody>
+        </table>
+        <div class="selected-pagination pagination-danger"></div>
+      </div>
+      <div class="modal-footer">
+        <div class="modal-footer-option">
+          <button class="btn btn-info btn-medium close">取消</button>
+          <button class="btn btn-primary btn-medium js-other-payment-items-submit close">确定</button>
+        </div>
+        <div style="float: left; line-height:40px;">
+          {{!-- <label for="select-batch"><input type="checkbox" id="select-batch" class="js-batch-select">{{i18n "Select all " bundle="all_mix"}}</label> --}}
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <label class="js-select-item-info"></label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

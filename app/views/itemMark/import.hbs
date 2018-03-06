@@ -1,0 +1,15 @@
+{{#partial "realTitle"}}模版导入{{/partial}}
+{{#partial "realBody"}}
+    {{#inject "common/breadcrumb"}}
+        {
+        "breadcrumb":
+        [{
+        "crumb": "模版导入",
+        "url": "#"
+        }]
+        }
+    {{/inject}}
+    {{inject "itemMark/import"}}
+{{/partial}}
+{{> user_layout}}
+

@@ -1,0 +1,32 @@
+
+.modal.asocciate-districts-modal {
+  width: 60%;
+  .related-districts {
+    margin-top: 20px ;
+    margin-bottom: 20px;
+    .district-label {
+      margin: 2px 5px;
+      padding: 2px 2px;
+      height: 24px;
+      border-width: 1px;
+      display: inline-block;
+      background: #d8d8d8;
+      .district-text {
+        font-size: 14px;
+      }
+      button {
+        width: 20px;
+        height: 20px;
+        border: none;
+        background: #d8d8d8;
+        i.icon-zcy {
+         color: #9F9F9F;
+        }
+      }
+    }
+  }
+  .district-tree {
+    max-height: 100px;
+    overflow : auto;
+  }
+}

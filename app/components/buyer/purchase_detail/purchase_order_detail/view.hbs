@@ -1,0 +1,299 @@
+{{#component "pur-detail trade-manage js-comp clearfix"}}
+  <div class="float-hidden" hidden="true"></div>
+  <div class="t-breadcrumb">
+    {{#equals _DATA_.purchase.type '3'}}
+      <label>大宗采购管理</label>
+      <label> / </label>
+      <a href="/buyer/blocktrade-purchases">预购单列表</a>
+    {{/equals}}
+    {{#equals _DATA_.purchase.type '2'}}
+      <label>疫苗采购管理</label>
+      <label> / </label>
+      <a href="/buyer/vaccine-purchases">预购单列表</a>
+    {{/equals}}
+    {{#of _DATA_.purchase.type '2,3'}}
+    {{else}}
+      <label>网超采购管理</label>
+      <label> / </label>
+      <a href="/buyer/netsuper-purchases">预购单列表</a>
+    {{/of}}
+    <label> / </label>
+    <label class="active">预购单详情</label>
+  </div>
+  <button type="button" class="btn btn-info btn-print" >打印预购单</button>
+  <div class="pur-detail-body" data-purchaseid={{_DATA_.purchase.id}}>
+    <div class="trade-panel">
+      <div class="trade-panel-top">
+        <div class="trade-panel-title">预购单概览</div>
+      </div>
+      <div class="trade-panel-body">
+        <div class="pur-detail-about">
+          {{!-- <div class="pur-title pur-detail-about-title"><strong><span>预购单信息</span></strong></div> --}}
+          <table class="table table-striped table-about-view">
+            {{!-- <thead>
+              <tr>
+                <th class="left-text" colspan="3"><span>预购单概览</span></th>
+              </tr>
+            </thead> --}}
+            <tbody>
+            {{#with _DATA_.purchase}}
+              <tr class="no-border">
+                <td class="no-border right-text" width="13%"><label class="desc-text">预购单号：</label></td>
+                <td class="no-border" width="20%">{{id}}</td>
+                <td class="no-border right-text" width="13%"><label class="desc-text">采购经办人：</label></td>
+                <td class="no-border" width="20%"><a class="js-get-phone" data-user-id="{{purchaserId}}" data-user-type="1">{{purchaserName}}</a></td>
+                <td class="no-border right-text" width="13%"><label class="desc-text">采购单位：</label></td>
+                <td class="no-border left-text" width="20%">{{purchaserOrganizationName}}</td>
+              </tr>
+              <tr class="no-border">
+                <td class="no-border right-text" width="13%"><label class="desc-text">创建时间：</label></td>
+                <td class="no-border" width="20%">{{formatDate createdAt}}</td>
+                <td class="no-border right-text" width="13%"><label class="desc-text">预购单状态：</label></td>
+                <td class="no-border" width="20%">
+                  {{#equals status -3}}已撤销{{/equals}}
+                  {{#equals status -1}}已取消{{/equals}}
+                  {{#equals status 0}}草稿{{/equals}}
+                  {{#equals status 1}}部门审核中{{/equals}}
+                  {{#equals status 2}}财务审核中{{/equals}}
+                  {{#equals status 3}}单位审批中{{/equals}}
+                  {{#equals status 4}}已驳回{{/equals}}
+                  {{#equals status 5}}审核通过{{/equals}}
+                  {{#equals status 10}}已产生订单{{/equals}}
+                </td>
+                <td class="no-border right-text" width="13%"><label class="desc-text">预购单金额(元)：</label></td>
+                <td class="no-border left-text" width="20%"><span class="css-price currency">{{../_CURRENCY_}}{{formatPrice actuallyFee}}</span></td>
+              </tr>
+              {{#equals status 10}}
+                <tr class="no-border">
+                  <td class="no-border right-text" width="13%"><label class="desc-text">关联的订单号:</label></td>
+                  <td class="no-border left-text" width="20%" colspan="5">{{#each _DATA_.relatedOrderIds}}<a href="/buyer/orders/detail?orderId={{this}}">{{this}}&nbsp;&nbsp;&nbsp;&nbsp;</a>{{/each}}</td>
+                </tr>
+              {{/equals}}
+              <tr class="no-border">
+                <td class="no-border right-text" width="13%"><label class="desc-text">附件:</label></td>
+                <td class="no-border left-text" width="20%" colspan="5">
+                  {{#gt (size _ATTACH_) 0}}
+                    <div id="uploadFile">
+                      <div class="uploadFile">
+                        {{inject "common/uploadFile/download" _FILE_DATA_=_ATTACH_}}
+                      </div>
+                    </div>
+                  {{/gt}}
+                </td>
+              </tr>
+            {{/with}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="trade-panel">
+      <div class="trade-panel-top">
+        <div class="trade-panel-title">商品列表</div>
+      </div>
+      <div class="trade-panel-body">
+        {{inject "buyer/purchase_detail/requisition_items" true}}
+        {{#with _DATA_.purchase}}
+            备注：
+            {{#if orderComment}}{{orderComment}}{{else}}--{{/if}}
+        {{/with}}
+      </div>
+    </div>
+    <div class="trade-panel">
+      <div class="trade-panel-top">
+        <div class="trade-panel-title">地址信息</div>
+      </div>
+      <div class="trade-panel-body">
+        {{!-- <div class="add-or-select-pur-addr clearfix">
+          <div class="pur-addr-title pur-title"><strong><span class="">地址信息</span></strong></div>
+        </div>
+        <hr /> --}}
+        {{!-- {{json _DATA_.deliveries}} --}}
+        <div class="pur-deliveries">
+            <div>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th width="80%" class="first-th">详细地址</th>
+                    <th width="20%">商品详情</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {{#each _DATA_.deliveries}}
+                    {{#with delivery}}
+                    <tr class="itme-tr" data-id="{{id}}">
+                      <td>{{receiverProvinceName}}{{receiverCityName}}{{receiverDistrictName}}&nbsp;&nbsp;{{receiverAddress}}({{receiverName}} 收) &nbsp;&nbsp;&nbsp;&nbsp;{{#if receiverMobile}}{{receiverMobile}}{{else}}{{#if receiverAreaCode}}{{receiverAreaCode}}-{{/if}}{{receiverPhone}}{{#if receiverPhoneExt}}&nbsp;&nbsp;{{receiverPhoneExt}}{{/if}}{{/if}}</td>
+                      <td><a class="js-show-receiver-item-list">查看商品({{../skuTypeCount}})</a>
+                      </td>
+                    </tr>
+                    {{/with}}
+                  {{else}}
+                    <tr><td colspan="2" class="center-text">无可展示信息</td></tr>
+                  {{/each}}
+                </tbody>
+              </table>
+            </div>
+        </div>
+      </div>
+    </div>
+    {{#gt (size _DATA_.invoices) 0}}
+      <div class="trade-panel">
+        <div class="trade-panel-top">
+          <div class="trade-panel-title">发票信息</div>
+        </div>
+        <div class="trade-panel-body">
+          <div class="pur-invoices">
+            <div>
+              <table class="table table-striped">
+                <thead>
+                <tr>
+                  <!--<th width="40%">发票寄送地址</th>-->
+                  <th width="10%">货票同行</th>
+                  <th width="15%">发票类型</th>
+                  <th width="20%">发票抬头信息</th>
+                  <th width="15">开户行</th>
+                  <th width="15">开户行账号</th>
+                  <th width="15">纳税人识别号<i class="icon-zcy icon-warningfill js-invoice-popover"></i></th>
+                  <th width="10%">商品详情</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each _DATA_.invoices}}
+                  {{#with invoice}}
+                    <tr class="itme-tr" data-id="{{id}}">
+                      {{!--<td>{{receiverProvinceName}}{{receiverCityName}}{{receiverDistrictName}}&nbsp;&nbsp;{{receiverAddress}}({{receiverName}} 收) &nbsp;&nbsp;&nbsp;&nbsp;{{#if receiverMobile}}{{receiverMobile}}{{else}}{{#if receiverAreaCode}}{{receiverAreaCode}}-{{/if}}{{receiverPhone}}{{#if receiverPhoneExt}}&nbsp;&nbsp;{{receiverPhoneExt}}{{/if}}{{/if}}</td>--}}
+                      <td>
+                        {{#equals invoiceBillingMode 1}}
+                          否
+                        {{else}}
+                          是
+                        {{/equals}}
+                      </td>
+                      <td>
+                        {{#equals invoiceType 0}}普通发票{{/equals}}
+                        {{#equals invoiceType 1}}增值税普通发票{{/equals}}
+                        {{#equals invoiceType 2}}增值税专用发票{{/equals}}
+                      </td>
+                      <td><span class="js-mulit-inv-title">{{invoiceTitle}}</span>{{!-- <input type="text" class="js-mulit-inv-title" value="{{invoiceTitle}}" /><button class="btn btn-small js-save-mulit-inv-title">保存</button> --}}</td>
+                      <td>{{#if purchaserDepositeBank}}{{purchaserDepositeBank}}{{else}}－{{/if}}</td>
+                      <td>{{#if purchaserBankAccount}}{{purchaserBankAccount}}{{else}}－{{/if}}</td>
+                      <td>{{#if purchaserTaxId}}{{purchaserTaxId}}{{else}}－{{/if}}</td>
+                      <td><a class="js-show-inv-item-list">查看商品({{../skuTypeCount}})</a>
+                      </td>
+                    </tr>
+                  {{/with}}
+                {{else}}
+                  <tr><td colspan="5" class="center-text">无可展示信息</td></tr>
+                {{/each}}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    {{/gt}}
+  {{#of _DATA_.purchase.type '2,3'}}
+      <!-- 疫苗、大宗采购单没有关联采购计划 -->
+  {{else}}
+    <div class="trade-panel">
+      <div class="trade-panel-top">
+        <div class="trade-panel-title">预算信息</div>
+      </div>
+      <div class="trade-panel-body">
+        {{!-- <div class="add-or-select-pur-pay clearfix">
+          <div class="pur-pay-title pur-title"><strong> <span class="">预算信息</span></strong></div>
+        </div>
+        <hr /> --}}
+        {{!-- {{json _DATA_.payments}} --}}
+        <div class="pur-payments">
+          关联采购计划
+          <input type="hidden" id="payments" value="{{json _DATA_.payments}}">
+          {{!--
+          <div class="receiver-mulit-payments">
+            <div>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th width="20%">采购计划文号</th>
+                    <th width="20%">采购类目</th>
+                    <th width="15%">可用金额(元)</th>
+                    <th width="10%">可用数量</th>
+                    <th width="15%">本次使用金额(元)</th>
+                    <th width="10%">本次使用数量</th>
+                    <th width="10%">关联商品</th>
+                  </tr>
+                </t>
+                <tbody>
+                  {{#each _DATA_.payments}}
+                    {{#with payment}}
+                    {{#equals payMethod 10}}
+                    <tr class="itme-tr" data-id="{{id}}">
+                      <td class="js-confirmationname" data-confirmationid="{{confirmationId}}">{{confirmationName}}</td>
+                      <td class="js-gpcatalogname" data-gpcatalogid="{{gpCatalogId}}">{{gpCatalogName}}</td>
+                      <td class=""><span class="price currency js-availableaccount">{{../_CURRENCY_}}{{formatPrice availableAccount}}</span></td>
+                        <td class="js-availablequantity">{{#ifCond availableQuantity "==" -1}}不限{{else}}{{availableQuantity}}{{/ifCond}}</td>
+                      <td class=""><span class="price currency js-fee">{{../_CURRENCY_}}{{formatPrice ../fee}}</span></td>
+                      <td class="js-quantity">{{../quantity}}</td>
+                      <td><a class="js-show-pay-item-list">查看商品({{../skuTypeCount}})</a>
+                      </td>
+                      </td>
+                    </tr>
+                    {{/equals}}
+                    {{/with}}
+                  {{else}}
+                    <tr><td colspan="9" class="center-text">无可展示信息</td></tr>
+                  {{/each}}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          --}}
+          {{inject "buyer/purchase_process/purchase_plan_manage"
+                   purchaseId=purchaseId
+                   confirmationFee=_DATA_.confirmationFee
+                   otherFee=_DATA_.otherFee
+                   actuallyFee=_DATA_.purchase.actuallyFee}}
+        </div>
+      </div>
+    </div>
+  {{/of}}
+    <div class="trade-panel">
+      <div class="trade-panel-top">
+        <div class="trade-panel-title">审核审批信息</div>
+      </div>
+      <div class="trade-panel-body">
+        {{!-- <div class="clearfix"></div>
+        <div class="pur-title"><strong><span>审核审批信息</span></strong></div> --}}
+        {{!-- {{json _DATA_}} --}}
+        {{!-- <hr /> --}}
+          <div class="pur-checklog">
+              <div class="checklog-title">流转日志</div>
+              <div class="checklog-body">
+                <div class="timeline clearfix">
+                  <table class="time-line">
+                    {{#each _DATA_.checkLogs}}
+                    <tr class="time-line">
+                      <td class="first"><div class="point success {{#if @first}}first{{/if}} {{#if @last}}last{{/if}}"></div></td>
+                      <td width="140">{{formatDate createdAt}}</td>
+                      <td width="80">{{checkerRole}}</td>
+                      <td width="80">{{checker}}</td>
+                      <td width="80">{{checkType}}</td>
+                      <td width="90" class="{{#equals checkResult "审核通过"}}success{{else}}{{#equals checkResult "审核不通过"}}error{{else}}{{/equals}}{{/equals}}">{{checkResult}}</td>
+                      <td class="time-line">{{comment}}</td>
+                    </tr>
+                    {{else}}
+                     <tr class="time-line">
+                      <td colspan="7" class="time-line">无数据</td>
+                     </tr>
+                    {{/each}}
+                  </table>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class="order-print-box hide">
+
+  </div>
+{{/component}}

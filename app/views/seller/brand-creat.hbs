@@ -1,0 +1,22 @@
+{{#partial "realTitle"}}品牌创建{{/partial}}
+{{#partial "realBody"}}
+  {{#inject "common/breadcrumb"}}
+    {
+      "breadcrumb":
+      [{
+        "crumb": "商品管理",
+        "url": "#"
+      },
+      {
+        "crumb": "品牌管理",
+        "url": "#"
+      },
+        {
+        "crumb": "品牌创建",
+        "url": "#"
+        }]
+    }
+  {{/inject}}
+  {{inject "seller/brand_creat"}}
+{{/partial}}
+{{> user_layout}}

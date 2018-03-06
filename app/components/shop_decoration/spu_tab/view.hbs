@@ -1,0 +1,162 @@
+{{#component "tab spu-tab js-comp"}}
+<ul class="tab-navs clearfix"  data-item="{{itemId}}">
+  <li class="active" data-role="nav"><a href="javascript:void(0);">商品详情</a></li>
+  <li data-role="nav"><a href="javascript:void(0);">规格参数</a></li>
+{{#equals _DATA_.item.tags.vaccine 1}}
+  {{else}}
+  <li data-role="nav"><a href="javascript:void(0);">用户评价</a></li>
+  <li data-role="nav"><a href="javascript:void(0);">成交记录</a></li>
+{{/equals}}
+</ul>
+<div class="tab-contents">
+  <div data-role="content" class="tab-content">
+    <div class="spu-params">
+      <ul class="spu-info clearfix">
+        {{#if _DATA_.item.brandName}}
+          <li class="attribute-li pull-left">品牌: &nbsp;&nbsp;{{_DATA_.item.brandName}}</li>
+        {{/if}}
+        {{#if _DATA_.item.specification}}
+          <li class="attribute-li pull-left">型号: &nbsp;&nbsp;{{_DATA_.item.specification}}</li>
+        {{/if}}
+        {{#if _DATA_.item.itemCode}}
+          <li class="attribute-li pull-left">商品代码: &nbsp;&nbsp;{{_DATA_.item.itemCode}}</li>
+        {{/if}}
+        {{#each _DATA_.groupedOtherAttributes}}
+        {{#equals group "普通信息"}}
+            {{#each otherAttributes}}
+              <li class="attribute-li pull-left">{{attrKey}}: &nbsp;&nbsp;{{attrVal}}{{unit}}</li>
+            {{/each}}
+          {{/equals}}
+        {{/each}}
+      </ul>
+      <p class="text-right more-par js-more-params"><a>更多参数&nbsp;&gt;&gt;</a></p>
+    </div>
+    {{{_DATA_.itemDetail.detail}}}
+  </div>
+  <div data-role="content" class="tab-content hide">
+    <div class="package-list js-other-attributes-box" data-attrs="{{json _DATA_}}">
+      {{#each _DATA_.groupedOtherAttributes}}
+        {{#equals group "SKU"}}
+        {{else}}
+          <table class="attribute-tab">
+            {{#of group "SPU,USER_DEFINED"}}
+            {{else}}
+              <thead>
+                <th colspan="2" class="attribute-title">
+                  {{group}}
+                </th>
+              </thead>
+            {{/of}}
+            <tbody>
+              {{#each otherAttributes}}
+                <tr class="{{#if composite}}composite-tr{{/if}}">
+                {{#if composite}}
+                  <td class="main-parameter composite-td">
+                    {{composite}}
+                  </td>
+                {{/if}}
+                <td class="main-parameter">
+                  {{#of attrKey "birthday,weight,origin"}}
+                    {{#equals attrKey "birthday"}}上市时间{{/equals}}
+                    {{#equals attrKey "weight"}}重量{{/equals}}
+                    {{#equals attrKey "origin"}}产地{{/equals}}
+                  {{else}}
+                    {{attrKey}}
+                  {{/of}}
+                </td>
+                <td class="parameter-espercial {{#if multi}}multi-td{{/if}}">
+                  {{attrVal}}{{unit}}
+                </td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        {{/equals}}
+      {{/each}}
+    </div>
+  </div>
+  <div data-role="content" class="tab-content hide">
+    <div class="comments-ul" data-beginscore="0"
+                             data-endscore="100">
+      <div class="user-description" data-total="{{_DESC_DATA_.totalNum}}">
+        <div class="costumer-agree">
+          <p><span class="agree-span">{{#if _DESC_DATA_.totalNum}}客户满意度{{else}}该商品暂时没有评价..{{/if}}</span></p><span class="agree-grade">{{_DESC_DATA_.averScore}}</span>
+          <div class="location-grade-heng">
+            <div class="tip-grade">{{_DESC_DATA_.averScore}}</div>{{#if _DESC_DATA_.totalNum}}<div class="arrow-down"></div>
+            <ul class="bar-show">
+              <li class="bar-show-li"></li><li class="bar-show-li"></li><li class="bar-show-li"></li><li class="bar-show-li"></li><li class="bar-show-li"></li></ul>{{else}}{{/if}}
+          </div>
+        </div>
+        <div class="descrip-tab">
+          <div class="descrip-title">
+            <span>
+              <input type="radio" name="star" class="input-radio" value="0" id="all" checked/>
+              <label for="all">全部</label>
+              <label class="star-total-evaluation">
+                ({{#if _DESC_DATA_.totalNum}}{{_DESC_DATA_.totalNum}}{{else}}0{{/if}})
+              </label>
+            </span>
+            <span>
+              <input type="radio" name="star" class="input-radio" value="1" id="four-five" />
+              <label for="four-five">四星五星</label>
+              <label class="star-total-evaluation">
+                ({{#if _DESC_DATA_.goodTimes}}{{_DESC_DATA_.goodTimes}}{{else}}0{{/if}})
+              </label>
+            </span>
+            <span>
+              <input type="radio" name="star" class="input-radio" value="2" id="three" />
+              <label for="three">三星</label>
+              <label class="star-total-evaluation">
+                ({{#if _DESC_DATA_.middleTimes}}{{_DESC_DATA_.middleTimes}}{{else}}0{{/if}})
+              </label>
+            </span>
+            <span>
+              <input type="radio" name="star" class="input-radio" value="3" id="two-one" />
+              <label for="two-one">二星一星</label>
+              <label class="star-total-evaluation">
+                ({{#if _DESC_DATA_.badTimes}}{{_DESC_DATA_.badTimes}}{{else}}0{{/if}})
+              </label>
+            </span>
+            {{!-- <select class="content-descrip">
+              <option class="font-12" value="1">近期评论</option><option class="font-12" value="2">全部评论</option>
+            </select> --}}
+            <span class="pull-right"><input type="checkbox" id="content" name="star" value="4"class="js-content-evaluate input-checkbox">有内容评论</span>
+            <span class="pull-right"><input type="checkbox" id="add" name="star" value="5"class="js-toggle-add-evaluation input-checkbox">显示追评</span>
+          </div>
+          <table class="list-comment table">
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div data-role="content" class="tab-content hide">
+    <div class="record-list" data-attrs="{{json _DATA_}}">
+      <table class="js-record-box">
+        <thead>
+        <tr>
+          <td width="15%">成交时间</td>
+          <td width="20%">采购单位</td>
+          <td width="20%">配置信息</td>
+          <td width="15%" class="price">成交价（元）</td>
+          <td width="10%">成交数量</td>
+          <td width="20%" class="price">成交总价（元）</td>
+        </tr>
+        </thead>
+        <tbody class="js-record-list">
+        </tbody>
+        <tfoot>
+        <tr>
+          <td colspan="3">
+          </td>
+          <td colspan="3" class="js-pagination" >
+            <div class="pagination pull-right">
+            </div>
+          </td>
+        </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>
+
+{{/component}}

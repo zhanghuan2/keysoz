@@ -1,0 +1,65 @@
+{{#component "nav-category navbar navbar-condensed evees-comp js-comp"}}
+  <div class="hide">{{json this}}</div>
+  <div class="navbar-collapse" data-href="{{_HREF_.main}}">
+    <ul>
+      <li class="home-channel-container {{#if _IS_FIRST_SCREEN_}}home-catgeory-show{{/if}}">
+        <div class="navbar-desc">
+          <a class="all-category-show" href="javascript:void(0);"><strong>全部商品分类</strong></a>
+        </div>
+        <div class="home-channel js-category-list {{#unless _IS_FIRST_SCREEN_}}disappear{{/unless}}">
+          <div class="categorys">
+            {{#each _DATA_}}
+              <div class="category-li " data-id="{{current.id}}">
+                <div class="category-logo">
+                  {{#if current.logo}}
+                    <i class="category-icon icon-zcy icon-{{current.logo}}"></i>
+                  {{else}}
+                    <img src="http://showcase.b0.upaiyun.com/2015/6/29/7f67297258d4ff2d6bf2db074738bf64.png" alt="" class="category-icon" >
+                  {{/if}}&nbsp;
+                </div>
+                <div class="parent-category">
+                  <a href="/eevees/search?fcid={{current.id}}" target="_blank" class="child-category">{{current.name}}</a>
+                  <span><i class="icon-zcy icon-nextstep"></i></span>
+                </div>
+                <div class="expand-panel disappear">
+                  <div class="attach"></div>
+                  <div class="expand-category">
+                    <div class="category-info">
+                      {{#each children}}
+                        <div class="second-category {{#if @last}}last{{/if}}">
+                          <div class="parent-name">
+                            <a href="/search?fcid={{current.id}}" target="_blank" class="second-name">{{current.name}}</a>
+                            <i class="icon-zcy icon-nextstep"></i>
+                          </div>
+                          <div class="children-name">
+                            {{#each children}}
+                              <a class="child-name" href="/eevees/search?fcid={{current.id}}" target="_blank">{{current.name}}</a>
+                            {{else}}
+                              <a class="child-name child-empty" href="javascript:;">&nbsp;</a>
+                            {{/each}}
+                          </div>
+                        </div>
+                      {{/each}}
+                    </div>
+                    <div class="category-image">
+                      {{#if _DESIGN_MODE_}}
+                        <img class="category-background lazy" data-original="{{right.background}}" src="" alt="" />
+                      {{else}}
+                        {{#if right.background}}
+                          <img class="category-background lazy" data-original="{{right.background}}" src="{{right.background}}" alt="" />
+                        {{/if}}
+                      {{/if}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      </li>
+    </ul>
+    <div class="navbar-icon">
+      <div class="icon-400-tel"></div>
+    </div>
+  </div>
+{{/component}}

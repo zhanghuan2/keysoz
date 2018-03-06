@@ -1,0 +1,9 @@
+<img src="{{image}}" data-src="{{image}}" alt="" class="attribute-image js-attribute-image" data-key="{{attrKey}}" data-value="{{attrVal}}"
+  {{#equals attrMetasForK.IMPORTANT "true"}}
+    {{#equals _DATA_.item.status "1"}}
+      {{#equals _DATA_.item.tags.vaccine "1"}}
+        data-tag="vaccine"  disabled
+      {{/equals}}
+    {{/equals}}
+  {{/equals}}
+/>

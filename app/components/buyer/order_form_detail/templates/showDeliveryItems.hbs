@@ -1,0 +1,87 @@
+<div class="modal pur-modal">
+  <div class="modal-header">
+    <h2>已关联发货单的商品</h2>
+  </div>
+  <div class="invoice-items-lists" data-req-lists-total="{{_DATA_.total}}" data-invoiceid="{{_DATA_.itemId}}">
+    <div class="invoice-items">
+      <div class="modal-body clearfix">
+        <div><strong><span class="req-title">需求商品列表</span></strong></div>
+        {{!-- {{json this}} --}}
+        <table class="table  invoice-item-table">
+          <thead>
+            <tr>
+              <th width="200"><span class="">商品</span></th>
+              <th width="110">单价(元)</th>
+              <th width="60">数量</th>
+              {{#if hasReissue}}{{else}}<th width="100" class="js-no-need-show-count">小计(元)</th>{{/if}}
+              {{#equals _DATA_.orderType 1}}
+                <th width="60">主/配件</th>
+              {{else}}
+                <th width="100">锁定仓库</th>
+                <th width="100">发货仓库</th>
+              {{/equals}}
+              <th width="80" class="last">已收货数量</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each _DATA_.data}}
+              <tr class="item-tr" data-skuid="{{skuId}}" data-id="{{id}}" data-itemid={{itemId}}>
+                {{!-- <td width="24" class="check"><input type="checkbox" class="js-select-item"></td> --}}
+                <td>
+                  <div>{{itemName}}</div>
+                  <div class="sku-attrs">{{#each attributeMap}}{{this}}&nbsp;&nbsp;{{/each}}</div>
+                </td>
+                <td>
+                    <span class="price">{{_CURRENCY_}}</span>
+                    <span class="price item-price">{{formatPrice skuPrice}}</span>
+                </td>
+                <td>
+                  {{!-- <div class="input-amount" data-min="0" data-max="{{subItemCount}}">
+                    <a href="javascript:void(0);" class="minus {{#equals quantity 0}}disabled{{/equals}}" >-</a>
+                    <input type="number" class="count-number" value="{{quantity}}" data-old="{{quantity}}" data-init="{{quantity}}">
+                    <a href="javascript:void(0);" class="plus {{#equals quantity subItemCount}}disabled{{/equals}}">+</a>
+                  </div> --}}
+                  {{#ifCond reissueQuantity ">" 0}}{{reissueQuantity}}{{else}}{{quantity}}{{/ifCond}}
+                </td>
+                <td  class="js-no-need-show-count">
+                  <span class="price">{{_CURRENCY_}}</span>
+                  <span class="price item-price">{{formatPrice fee}}</span>
+                </td>
+                {{#equals ../_DATA_.orderType 1}}
+                  <td>{{#equals isMaster true}}主商品{{else}}配件{{/equals}}</td>
+                {{else}}
+                  <td>{{#each lockWarehouses}}{{lockWarehouseName}}&nbsp;{{/each}}</td>
+                  <td>{{shipWarehouseName}}</td>
+                {{/equals}}
+                <td class="last">{{receiveQuantity}}</td>
+              </tr>
+            {{else}}
+              <tr>
+                <td colspan="
+                  {{#equals ../_DATA_.orderType 1}}
+                    {{#if hasReissue}}4{{else}}5{{/if}}
+                  {{else}}
+                    {{#if hasReissue}}6{{else}}7{{/if}}
+                  {{/equals}}">
+                  无可展示信息
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+        <div class="selected-pagination pagination-danger clearfix"></div>
+      </div>
+      <div class="modal-footer">
+        <div class="modal-footer-option">
+          <button class="btn btn-success btn-medium js-invoice-items-submit">确定</button>
+          <button class="btn btn-info btn-medium close">取消</button>
+        </div>
+        <div>
+          <label for="select-batch"><input type="checkbox" id="select-batch" class="js-batch-select input-checkbox">全选</label>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <label class="js-select-item-info"></label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

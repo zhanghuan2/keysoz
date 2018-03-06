@@ -1,0 +1,72 @@
+<div class="modal pur-modal">
+  <div class="modal-header">
+  {{!-- {{json this}} --}}
+    <h2>确认收货</h2>
+  </div>
+  <div class="recevied-items-lists" data-req-lists-total="{{_DATA_.total}}" data-invoiceid="{{_DATA_.itemId}}" data-shipmentid = "{{_DATA_.shipmentId}}">
+    <div class="recevied-items">
+      <div class="modal-body clearfix">
+        <div><strong><span class="req-title">需求商品列表</span></strong></div>
+        <table class="table  invoice-item-table">
+          <thead>
+            <tr>
+              <th class="left-text" colspan="" width="250"> <span class="">商品</span> </th>
+              <th width="150">商品编号</th>
+              <th width="150">单价(元)</th>
+              <th width="100">发货数量</th>
+              <th width="100">收货数量</th>
+              {{#ifCond _DATA_.orderType '!=' 1}}
+                <th width="150">锁定仓库</th>
+                <th width="150" class="last">发货仓库</th>
+              {{/ifCond}}
+            </tr>
+          </thead>
+          <tbody>
+            {{#each _DATA_.data}}
+              <tr class="item-tr" data-skuid="{{skuId}}"
+                                  data-id="{{id}}"
+                                  data-itemid={{itemId}}>
+                <td class="left-text"><span>{{itemName}}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sku-attrs">{{#each attributeMap}}{{this}}&nbsp;&nbsp;{{/each}}</span></td>
+                <td class="left-text"><span>{{itemId}}</span></td>
+                <td><div><span class="price">{{_CURRENCY_}}</span><span class="price item-price">{{formatPrice skuPrice}}</span></div></td>
+                <td>
+                  {{#if hasReissue}}
+                    {{reissueQuantity}}
+                  {{else}}
+                    {{quantity}}
+                  {{/if}}
+                </td>
+                <td>
+                  {{#if hasReissue}}
+                    {{reissueQuantity}}
+                  {{else}}
+                    <div class="input-amount" data-min="0" data-max="{{#if hasReissue}}{{reissueQuantity}}{{else}}{{quantity}}{{/if}}">
+                    <a href="javascript:void(0);" class="minus" >-</a>
+                    <input type="number" class="count-number" value="{{#if hasReissue}}{{reissueQuantity}}{{else}}{{quantity}}{{/if}}" data-old="{{#if hasReissue}}{{reissueQuantity}}{{else}}{{quantity}}{{/if}}" data-init="{{#if hasReissue}}{{reissueQuantity}}{{else}}{{quantity}}{{/if}}">
+                    <a href="javascript:void(0);" class="plus">+</a>
+                    </div>
+                  {{/if}}
+                </td>
+                {{#ifCond ../_DATA_.orderType '!=' 1}}
+                  <td>
+                      {{#each lockWarehouses}}
+                        <span class="lockwarehouse-list">{{lockWarehouseName}}&nbsp;</span>
+                      {{/each}}
+                  </td>
+                  <td class="last">{{shipWarehouseName}}</td>
+                {{/ifCond}}
+              </tr>
+            {{else}}
+              <tr><td colspan="{{#equals _DATA_.orderType 1}}5{{else}}7{{/equals}}">无可展示信息</td></tr>
+            {{/each}}
+          </tbody>
+        </table>
+        <div class="selected-pagination pagination-danger clearfix"></div>
+      </div>
+      <div class="modal-footer">
+          <button class="btn btn-info btn-medium close">取消</button>
+          <button class="btn btn-primary btn-medium js-recevied-items-submit">确认收货</button>
+      </div>
+    </div>
+  </div>
+</div>

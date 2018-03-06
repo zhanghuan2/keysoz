@@ -1,0 +1,38 @@
+{{#of group attrGroup}}
+  <div class="form-section clearfix">
+    <div class="section-title">
+      {{group}}
+    </div>
+    <div class="pull-left section-content">
+      <div class="category-attribute attribute-area js-attribute-area">
+        <ul class="attribute-list clearfix attribute-data"
+            id="js-category-attribute-list"
+            {{#if otherAttributeWithRules}}
+              data-attr="{{json otherAttributeWithRules}}"
+            {{else}}
+              data-attr="{{json categoryAttributes}}"
+            {{/if}}>
+          {{#if otherAttributeWithRules}}
+            {{#each otherAttributeWithRules}}
+              {{> component:seller/spu_detail/common/other_templates/_attribute_container}}
+            {{/each}}
+          {{else}}
+            {{#each categoryAttributes}}
+              {{> component:seller/spu_detail/common/other_templates/_attribute_container}}
+            {{/each}}
+          {{/if}}
+        </ul>
+        {{#equals group "普通属性"}}
+          <div class="new-attribute-area
+            {{#if workflowId}}
+              {{#unless _DATA_.changeValue.itemAttribute.otherAttrs}}category-has-not-attribute{{/unless}}
+            {{else}}
+              {{#unless _DATA_.itemAttribute.otherAttrs}}category-has-not-attribute{{/unless}}
+            {{/if}}">
+            {{!--<a id="js-extend-attribute" class="js-attribute-new label-align-btn" href="javascript:void(0);">添加属性</a>--}}
+          </div>
+        {{/equals}}
+      </div>
+    </div>
+  </div>
+{{/of}}

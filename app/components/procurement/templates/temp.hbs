@@ -1,0 +1,52 @@
+<div class="modal confirm-modal" style="width: 550px;">
+    <div class="modal-header">
+        <label class="modal-title">
+            确认响应
+        </label>
+        <a href="javascript:void(0);" class="close">×</a>
+    </div>
+    <div class="modal-body" style="height: 330px">
+        <p>请选择相应状态：
+            <label><input type="radio" class="input-radio" checked="checked" name="has"/>有货
+                <input type="radio" class="input-radio nopro" name="has" />无货
+            </label>
+        </p>
+        <table class="table">
+            <tbody>
+            <tr class="noptr">
+                <th>商品名称</th>
+                <td style="width: 150px;padding: 0;" class="disabledTD">
+                    <select style="width: 150px;border: 0" class="noselectric input-w" id="avoid-comp" name="avoidComp"></select>
+                </td>
+                <th>商品单价（元）</th>
+                <td class="disabledTD"><input class="part-input" type="text" name="unitPrice" /></td>
+            </tr>
+            <tr>
+                <th>供应商名称</th>
+                <td colspan="3" class="gysname">
+                    &nbsp;
+                </td>
+            </tr>
+            <tr class="noptr">
+              <th>商品链接:</th>
+              <td colspan="4"><input type="text" style="width: 100%" name="productUrl" /></td>
+            </tr>
+            <tr>
+                <th>联系人</th>
+                <td><input class="part-input" type="text" name="contact" /></td>
+                <th>联系方式</th>
+                <td><input class="part-input" type="text" name="cellphone"/></td>
+            </tr>
+            <tr>
+                <th>回复内容</th>
+                <td colspan="4"><input type="text" style="width: 100%" name="content" maxlength="200"/></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="modal-footer text-right">
+        <button type="button" name="cancel-btn" class="close btn btn-info">取消</button>
+        <button type="button" name="accept-btn" class="btn btn-primary confirm">确认</button>
+    </div>
+</div>
+                    

@@ -1,0 +1,30 @@
+<div class="form-section clearfix">
+  <div class="section-title">
+    {{group}}
+    {{#equals group '技术参数'}}
+      {{#equals isVaccine 1}}
+        <span style="color: red; font-size: 12px;">(关键属性经过浙江省疾病预防控制中心审核通过后，将不能编辑修改，请谨慎填写。)</span>
+      {{/equals}}
+    {{/equals}}
+  </div>
+  <div class="pull-left section-content">
+    <div class="category-attribute attribute-area js-attribute-area">
+      <ul class="attribute-list clearfix attribute-data" id="js-category-attribute-list"
+      {{#if otherAttributeWithRules}}
+        data-attr="{{json otherAttributeWithRules}}"
+      {{else}}
+        data-attr="{{json categoryAttributeWithProperties}}"
+      {{/if}}>
+      {{#if otherAttributeWithRules}}
+        {{#each otherAttributeWithRules}}
+          {{> component:agreement/item_publish/common/other_templates/_attribute_container}}
+        {{/each}}
+      {{else}}
+        {{#each categoryAttributeWithProperties}}
+          {{> component:agreement/item_publish/common/other_templates/_attribute_container}}
+        {{/each}}
+      {{/if}}
+      </ul>
+    </div>
+  </div>
+</div>

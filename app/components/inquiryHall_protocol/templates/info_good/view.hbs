@@ -1,0 +1,63 @@
+{{#component "component-inquiry-info-good js-comp"}}
+{{!-- 
+{
+  "goodCatalog":"采购类目",
+  "pageTotal":分页总数 ,
+  "biddingMethod":"竞价方式"
+  "goodList":
+  [
+    {
+      "requireItemBrand":"商品品牌",
+      "requireItemModel":"商品型号",
+      "quantity":数量,
+      "protocolPrice":协议单价,
+      "quotePrice":订购单价,
+      "discountRate":优惠率%,
+      "supplierName":"报价供应商"
+    }
+  ], 
+} 
+--}}
+<section>
+  <h2>商品信息</h2>
+  <table class="table table-fixed">
+    <thead>
+      <tr>
+        <th width="12%">商品类目</th>
+        <th width="30%">品牌型号</th>
+        <th width="12%">数量</th>
+        <th width="12%">协议单价(元)</th>
+        {{#ifCond biddingMethod "!=" "直接订购"}}
+        {{!-- <th width="12%">成交优惠率</th> --}}
+        <th width="22%">报价供应商</th>
+        {{else}}
+        <th width="12%">订购单价(元)</th>
+        {{!-- <th width="12%">优惠率</th> --}}
+        <th width="22%">供应商</th>
+        {{/ifCond}}
+      </tr>
+    </thead>
+    <tbody id="goodList" class="bgc-clear">
+      {{#each goodList}}
+      <tr>
+        {{#equals @index 0}}
+        <td id="goodCatalog" rowspan="{{size ../goodList}}">{{../goodCatalog}}</td>
+        {{/equals}}
+        <td>{{requireItemBrand}}/{{requireItemModel}}</td>
+        <td>{{quantity}}</td>
+        <td>{{formatPrice protocolPrice}}</td>
+         {{#ifCond ../biddingMethod "!=" "直接订购"}}
+        {{!-- <td>{{discountRate}}%</td> --}}
+        <td>{{supplierName}}</td>
+        {{else}}
+        <td>{{formatPrice quotePrice}}</td>
+        {{!-- <td>{{discountRate}}%</td> --}}
+        <td>{{supplierName}}</td>
+        {{/ifCond}}
+      </tr>
+      {{/each}}
+    </tbody>
+    <tr class="hide"><td colspan="{{#ifCond biddingMethod "!=" "直接订购"}}5{{else}}7{{/ifCond}}" style="text-align:center"><a id="loadMoreGood" data-bindding-method="{{biddingMethod}}" data-total="{{total}}" data-page="1" data-announcement-id="{{anNouncementId}}">加载更多</a></td></tr>
+  </table>
+</section>
+{{/component}}

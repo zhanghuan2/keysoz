@@ -1,0 +1,50 @@
+
+.selectric {
+  .label {
+    padding: 0;
+  }
+}
+
+.currency {
+  color: #FF7900 !important;
+}
+
+.input-group-datepicker {
+  position: relative;
+  @include inline-block(top);
+
+  &[disabled] {
+    input {
+      @extend input[disabled] !optional;
+    }
+
+    &:after {
+      color: $default-font-disable-color;
+    }
+  }
+
+  &:after {
+    width: 14px;
+    font-size: 14px;
+    height: 14px;
+    color: $color-text-secondary-assist;
+    font-family: "icon-pokeball" !important;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    content: "\e610";
+    position: absolute;
+    right: 10px;
+    top: 5px;
+  }
+}
+
+.table,
+table {
+  td,
+  th {
+    &.last {
+      border-right: 1px solid #e7e9ea;
+    }
+  }
+}

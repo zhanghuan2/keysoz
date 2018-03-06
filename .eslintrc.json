@@ -1,0 +1,86 @@
+{
+  "extends": [
+    "airbnb",
+    "jquery"
+  ],
+  "rules": {
+    "computed-property-spacing": [
+      "error",
+      "never"
+    ],
+    "space-in-parens": [
+      "error",
+      "never"
+    ],
+    "yoda": [
+      "error",
+      "never"
+    ],
+    "max-len": 0,
+    "no-continue":0,
+    "no-param-reassign": 0,
+    "guard-for-in": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/no-unresolved": 0,
+    "eqeqeq": 0,
+    "no-unused-expressions": 0,
+    "no-new": 0,
+    "no-plusplus": 0,
+    "lines-around-comment": 0,
+    "prefer-template": 0,
+    "class-methods-use-this": 0,
+    "no-underscore-dangle": 0,
+    "no-console":0,
+    "array-bracket-spacing":0,
+    "no-restricted-syntax":0,
+    "newline-per-chained-call": [
+      "error",
+      {
+        "ignoreChainWithDepth": 3
+      }
+    ],
+    "space-before-function-paren": ["error", {"anonymous": "always", "named": "always", "asyncArrow": "always"}],
+    "no-useless-escape":0,
+    "quotes": ["error", "single"],
+    "consistent-return": 0,
+    "func-names":0,
+    "no-use-before-define":0,
+    "prefer-rest-params":0,
+    "prefer-const":0,
+    "global-require":0,
+    "import/no-dynamic-require":0,
+    "no-restricted-properties":0
+  },
+  "globals": {
+    "$": false,
+    "jQuery": false,
+    "Handlebars": false,
+    "moment": false,
+    "_": false,
+    "require": false,
+    "module": false,
+    "ZCY": false,
+    "Utils":false,
+    "NP": false,
+    "Router": false,
+    "mxClient": false,
+    "mxConstants": false,
+    "mxGraph": false,
+    "mxUtils": false,
+    "mxPerimeter": false,
+    "echarts":false,
+    "editor":false,
+    "KindEditor":false
+  },
+  "env": {
+    "browser": true,
+    "commonjs": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  }
+}

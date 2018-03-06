@@ -1,0 +1,45 @@
+.on-off-shelf {
+  .inline-block{
+    display:inline-block;
+  }
+  .filter-block{
+    input{
+      width:150px;
+      &.date-input{
+        width:120px;
+      }
+    }
+  }
+  .tab .tab-label {
+    width: auto;
+    margin-left: 10px;
+    background-color: transparent;
+    color: #4c97ff
+  }
+  .component-header {
+    padding: 0 !important;
+  }
+  .span3.date_picker {
+    width: 335px;
+  }
+
+  .text-warn {
+    color: #F2C200 !important;
+  }
+  .text-link {
+    color: #2687d0 !important;
+  }
+  .text-success {
+    color: #2DC12D !important;
+  }
+  .text-link {
+    color: #2687d0 !important;
+  }
+}
+
+.modal {
+  .freeze-title {
+    display: inline-block;
+    margin-left: 15px;
+  }
+}

@@ -1,0 +1,17 @@
+<div class="form-section clearfix">
+  <div class="section-title pull-left">自定义属性</div>
+  <div class="pull-left section-content">
+    <div class="category-attribute attribute-area js-attribute-area">
+      <ul class="attribute-list clearfix attribute-data js-category-attribute-list"
+          style="min-height: 20px;"
+          data-attr="{{json otherAttributeWithRules}}">
+        {{#each otherAttributeWithRules}}
+          {{> seller/item_issue/all_templates/_attribute_container}}
+        {{/each}}
+      </ul>
+      <div class="new-attribute-area">
+        <a id="js-extend-attribute" class="js-attribute-new label-align-btn" href="javascript:void(0);">添加属性</a>
+      </div>
+    </div>
+  </div>
+</div>

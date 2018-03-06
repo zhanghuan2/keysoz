@@ -1,0 +1,101 @@
+{{#component "item-publish js-comp"}}
+  <div class="panel">
+    <div class="panel-header">
+      发布商品
+    </div>
+    <div class="panel-body">
+      <div class="selected-category-box clearfix">
+        <input type="hidden" id="userCategory" value="{{_USER_.currentCategory}}">
+        {{> component:seller/item_publish/common/other_templates/category_path}}
+      </div>
+      <form method="POST" class="form form-aligned item-publish-form" id="js-item-form"
+        {{#if itemId}}
+            data-id="{{itemId}}"
+        {{else}}
+          {{#if spuId}}
+            data-id="{{spuId}}"
+          {{/if}}
+        {{/if}}>
+
+        <input type="hidden" id="auditComment" name="auditComment" />
+        <input type="hidden" id="ptype" value="{{ptype}}" name="ptype">
+        {{#if itemId}}
+          {{#inject "seller/item_publish/with_item"}}
+            {
+            "itemAuditId": null
+            }
+          {{/inject}}
+        {{else}}
+          {{#if spuId}}
+            <input type="hidden" name="spuId" value="{{spuId}}">
+
+            {{inject "seller/item_publish/with_spu"}}
+          {{else}}
+            <input type="hidden" name="categoryId" value="{{categoryId}}">
+
+            {{inject "seller/item_publish/with_category"}}
+          {{/if}}
+          <input type="hidden" name="isVaccine" value="{{isVaccine}}">
+        {{/if}}
+
+        <div class="control-group item-submit-area">
+          <p class="error-tip js-form-error-tip hide">
+            <i class="icon-mewtwo icon-mewtwo-alert-fill"></i> 商品信息有误，请向上查看红色标出的具体错误位置
+          </p>
+          <button class="btn btn-primary btn-medium" type="submit" id="js-item-submit">确定</button>
+          <span class="error-tip show">&nbsp;&nbsp;&nbsp;带 * 的项是必填项，请确认无未填的必填项</span>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="panel-header">
+        <span class="panel-title">流转日志</span>
+    </div>
+    <div class="panel-body">
+          <div class="sr-timeline ml-xl mt zcy-timeline">
+            {{#each _ALLLOGS_}}
+            <div class='sr-row trans-info down'>
+                {{#ifCond @index ">" 0}}<div class='sr-line line-solid'></div>{{/ifCond}}
+                <div class='sr-dot dot-success'></div>
+                <label class="ml mr">{{createAt}}</label>
+                <label class="ml mr" title="{{creatorOrg}}" style="width: 100px;">{{creatorOrg}}</label>
+                <label class="ml mr" title="{{creatorName}}" style="width: 100px;">{{creatorName}}</label>
+                {{#equals auditResult "SUBMIT_FIRST_AUDIT"}}
+                    {{#equals type 0}}
+                        <label class="ml mr" title="{{auditResult}}" style="width: 120px;">商品上架申请</label>
+                    {{/equals}}
+                    {{#equals type 1}}
+                        <label class="ml mr" title="{{auditResult}}" style="width: 120px;">价格上涨申请</label>
+                    {{/equals}}
+                {{/equals}}
+                {{#equals auditResult "FIRST_AUDIT_APPROVE"}}
+                        <label class="ml mr" title="{{auditResult}}" style="width: 120px;">初审通过</label>
+                {{/equals}}
+                {{#equals auditResult "FIRST_AUDIT_REJECT"}}
+                        <label class="ml mr" title="{{auditResult}}" style="width: 120px;">初审不通过</label>
+                {{/equals}}
+                {{#equals auditResult "FINAL_AUDIT_APPROVE"}}
+                    <label class="ml mr" title="{{auditResult}}" style="width: 120px;">终审通过</label>
+                {{/equals}}
+                {{#equals auditResult "FINAL_AUDIT_REJECT"}}
+                    <label class="ml mr" title="{{auditResult}}" style="width: 120px;">终审不通过</label>
+                {{/equals}}
+                {{#equals auditResult "FREEZE"}}
+                    <label class="ml mr" title="{{auditResult}}" style="width: 120px;">商品冻结</label>
+                {{/equals}}
+                {{#equals auditResult "UNFREEZE"}}
+                    <label class="ml mr" title="{{auditResult}}" style="width: 120px;">商品解冻</label>
+                {{/equals}}
+                {{#equals auditResult "CANCEL_AUDIT"}}
+                <label class="ml mr" title="{{auditResult}}" style="width: 120px;">撤消审核</label>
+                {{/equals}}
+
+                <label class="ml mr" title="{{auditResult}}" style="width: 120px;">{{auditComment}}</label>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+ </div>
+
+{{/component}}

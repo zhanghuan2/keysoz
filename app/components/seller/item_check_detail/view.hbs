@@ -1,0 +1,11 @@
+{{#component "js-comp"}}
+  <div class="hide">{{json}}</div>
+  {{inject "seller/item_check_detail/item_cd_p1"}}
+  {{inject "seller/item_check_detail/item_cd_p2"}}
+  {{#if _DATA_}}
+    {{#ifCond _DATA_.length "!==" 0}}
+      {{inject "seller/item_check_detail/item_cd_p3"}}
+    {{/ifCond}}
+  {{/if}}
+  {{inject "seller/item_check_detail/item_cd_p4"}}
+{{/component}}

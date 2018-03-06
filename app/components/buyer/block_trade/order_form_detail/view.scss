@@ -1,0 +1,354 @@
+@import "compass/css3/inline-block";
+@import "pokeball/theme";
+
+.block-trade-order-form-detail{
+  min-width: 1000px;
+  .order-form-detail-body{
+    margin: 10px 0 0 0;
+    .title{
+      margin: 10px;
+    }
+    .order-title{
+      font-size: 14px;
+    }
+    .order-info{
+      font-size: 14px;
+    }
+    .order-form-detail-about{
+      background-color: #FFFFFF;
+      //padding: 15px;
+    }
+    .detailStatus{
+      display:inline-block;
+      margin-left:20px;
+      padding-left:40px;
+      border-left:1px solid #ddd;
+      width:200px;
+    }
+    .order-deliveries{
+      margin-top: 15px;
+      .tab-contents{
+        background-color: #FFFFFF;
+        padding: 15px;
+        margin-top: 0;
+        .order-title{
+          margin-top: 15px;
+          margin-bottom: 10px;
+          &:first-child{
+            margin-top: 0;
+          }
+        }
+        .deliveryInfo{
+          line-height: 30px;
+          background-color: #FFFFFF;
+          border-width: 0;
+          label{
+            color: black;
+          }
+        }
+      }
+    }
+    .order-invoices{
+      margin-top: 15px;
+      background-color: #FFFFFF;
+      //padding: 15px;
+      label{
+        color: black;
+      }
+    }
+    .order-payments{
+      margin-top: 15px;
+      background-color: #FFFFFF;
+      //padding: 15px;
+
+      .change-confirm-book {
+        float: right;
+        line-height: 35px;
+        font-size: 12px;
+        margin-right: 20px;
+      }
+    }
+    .pur-all-payments{
+      margin-top: 10px;
+      table{
+        margin-top: 10px;
+        border-width: 0 !important;
+        tr{
+          border-width: 0 !important;
+        }
+        td{
+          border-width: 0 !important;
+          background-color: #F7F7F7  !important;
+        }
+      }
+    }
+    .sku-attrs{
+      color: #BBB;
+    }
+    table{
+      //width: 960px;
+      thead{
+        tr{
+          background-color: #F7F7F7;
+          color: #9F9F9F;
+          th{
+            border: solid $color-border;
+            border-width: 0 0 1px 0;
+            .icon-warningfill{
+              margin-left:2px;
+              margin-top:-2px;
+              color:#aaa;
+              &:hover{
+                color:#197AFF;
+              }
+            }
+            &:first-child{
+              border-width: 0 0 1px 1px;
+            }
+            &:last-child{
+              border-width: 0 1px 1px 0;
+              text-align: right;
+            }
+          }
+        }
+      }
+      tbody{
+        tr{
+          border: 1px solid #e7e9ea;
+          td{
+            border-width: 0 0 1px 0;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            &:first-child{
+              border-width: 0 0 1px 1px;
+            }
+            &:last-child{
+              border-width: 0 1px 1px 0;
+              text-align: right;
+            }
+            &.no-border{
+              border-width: 0;
+              padding: 10px;
+            }
+          }
+          &.first-level-tr{
+            border-width: 0 0 1px 2px;
+          }
+          &.no-border{
+            border-width: 0;
+          }
+        }
+      }
+    }
+    .order-total-price {
+      margin-top: 10px;
+      height: 30px;
+      line-height: 30px;
+      font-size: 14px;
+      text-align: right;
+    }
+    .price, .currency{
+      color: #FE7800;
+    }
+    .no-href{
+      color: #9E9E9C;
+    }
+    .order-form-detail-about{
+      table{
+        border-width: 0;
+        td{
+          border-width: 0;
+          padding:0 !important;
+        }
+      }
+    }
+    .requireListContent table tr td:last-child{
+      text-align: left;
+    }
+    .requireListContent table tr th:last-child{
+      text-align: left;
+    }
+    .images-list{
+      height: 100px;
+      margin-bottom: 20px;
+      .title{
+        width: 100px;
+        font-size: 12px;
+        float: left;
+      }
+      .image-show-block{
+        margin-right: 20px;
+        float: left;
+        width: 80px;
+        height: 80px;
+        border: none;
+        img {
+          width: 78px;
+          height: 78px;
+        }
+        &:hover{
+          border: solid 1px #1A7AFF;
+          button{
+            display: block;
+          }
+        }
+        button{
+          display: none;
+          position: relative;
+          width: 12px;
+          height: 12px;
+          line-height: 10px;
+          padding: 0;
+          font-size: 10px;
+          color: white;
+          border: none;
+          top: -15px;
+          left: 65px;
+          background: #1A7AFF;
+        }
+      }
+      .upload-file{
+        float: left;
+        width: 80px;
+        height: 80px;
+        padding: 0;
+        border: dashed 1px #dddddd;
+        font-size: 60px;
+        line-height: 60px;
+        text-align: center;
+        color: #dddddd;
+        background: white;
+        .icon-zcy {
+          font-size: 60px;
+          padding-top: 4px;
+          font-weight: bold;
+        }
+      }
+    }
+    .image-show-block{
+      width: 50px;
+      height: 50px;
+      display: inline-block;
+      img{
+        width: 48px;
+        height: 48px;
+      }
+      &:hover{
+        border: solid 1px #1A7AFF;
+        button{
+          display: block;
+        }
+      }
+      button{
+        display: none;
+        position: relative;
+        width: 12px;
+        height: 12px;
+        line-height: 10px;
+        padding: 0;
+        font-size: 10px;
+        color: white;
+        border: none;
+        top: -15px;
+        left: 35px;
+        background: #1A7AFF;
+      }
+    }
+  }
+  .float-hidden {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .order-form-detail-foot{
+    margin-top: 15px;
+  }
+  .popover {
+    max-width: 800px;
+
+    table tr{
+      background-color:#fff !important;
+    }
+    table tr td {
+      border-width: 0 !important;
+    }
+  }
+  .more{
+    font-size: 12px;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+  .oraginCircular{
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color:#666;
+    float: left;
+    border: 2px solid #e5e9ee;
+    margin-top: 8px;
+    margin-right: 10px;
+  }
+
+
+  .listBtnNormal {
+    border: 1px solid #bbb;
+    color: #333;
+    padding: 8px;
+    cursor: pointer;
+  }
+  .list-active {
+    border: 1px solid #1eb6f8;
+    color: #1eb6f8;
+  }
+  .trade-panel-title .tabletop{
+    display:inline-block;
+    font-size:12px;
+  }
+  .sr-flowLog table {
+    border:0 solid #ccd0d6;
+    tbody tr{
+      border:0 solid #ccd0d6;
+    }
+    .sr-line {
+      position: absolute;
+      left: 15px;
+      top: 24px;
+      bottom: 0;
+      width: 1px;
+      height: 100%;
+      border-left: 2px solid #ccd0d6;
+      margin-bottom: 0;
+      margin-left: 0;
+      margin-top: 0;
+
+      &.line-dashed {
+        border-left-style: dashed;
+      }
+    }
+  }
+}
+
+#upload-order-file-modal-acceptance {
+  .mt {
+    margin-bottom: 10px;
+  }
+  .modal-body {
+    .modal-body-heading {
+      margin-bottom: 0;
+    }
+  }
+}
+
+#upload-order-file-modal-qualification {
+  .mt {
+    margin-bottom: 10px;
+  }
+  .modal-body {
+    .modal-body-heading {
+      margin-bottom: 0;
+    }
+  }
+}

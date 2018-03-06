@@ -1,0 +1,24 @@
+.component-header {
+  background-color: $whitesmoke;
+  padding: 6px 10px;
+
+  .component-title {
+    font-size: 14px;
+    color: $navy;
+    @include inline-block(middle);
+    line-height: 28px;
+  }
+
+  button {
+    margin-left: 10px;
+  }
+}
+
+.component-body {
+  background-color: #fff;
+  padding: 20px;
+}
+
+.component-footer {
+
+}

@@ -1,0 +1,28 @@
+@import "pokeball/theme";
+@import "compass/css3/inline-block";
+
+.stock-record {
+
+  .stock-record-body {
+    padding: 10px;
+    background-color: white;
+    .table-striped{
+      margin-top: 10px;
+    }
+
+    #form4 {
+      button {
+        margin-right: 10px;
+      }
+    }
+
+    .date-input-wrapper {
+      position: relative;
+      i {
+        position: absolute;
+        top: -2px;
+        right: 9px;
+      }
+    }
+  }
+}

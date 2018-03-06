@@ -1,0 +1,123 @@
+{{#component "js-comp buyer_back-change_purchaser-list"}}
+{{!json}}
+
+    <div class="component">
+        <div class="component-header">
+            退换货列表
+        </div>
+        <div class="component-body">
+
+            {{!搜索}}
+            <div class="search-panel">
+                <table>
+                    <tbody>
+                    <tr>
+
+                        {{!字段}}
+                        <th>退货单号</th>
+                        <td><input name="returnOrderId" class="search" type="text"></td>
+                        <th>订单号</th>
+                        <td><input name="orderId" class="search" type="text"></td>
+                        <th>状态</th>
+                        <td>
+                            <select name="status" class="search">
+                                <option value="">全部</option>
+                                <option value="1">待供应商确认</option>
+                                <option value="-1">供应商拒绝</option>
+                                <option value="-2">采购人撤销</option>
+                                <option value="2">待采购人退换货</option>
+                                <option value="3">待供应商收货</option>
+                                <option value="4">换货</option>
+                                <option value="5">供应商部分发货</option>
+                                <option value="6">供应商全部发货</option>
+                                <option value="9">待供应商上门取货</option>
+                                <option value="10">退换货结束</option>
+                            </select>
+                        </td>
+
+                        {{!行为}}
+                        <td width="100%"><!-- null --></td>
+                        <td>
+                            <input id="search-submit" class="btn btn-secondary" type="button" value="搜索">
+                            <input id="search-reset" class="btn btn-info" type="button" value="重置">
+                        </td>
+
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            {{!列表}}
+            <div class="table-list">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <td>退货单号</td>
+                        <td>订单号</td>
+                        <td>下单时间</td>
+                        <td>退换货人</td>
+                        <td>退货时间</td>
+                        <td>状态</td>
+                        <td>操作</td>
+                    </tr>
+                    </thead>
+
+                    {{!无数据}}
+                    {{#equals _DATA_.data.length 0}}
+                        <tbody>
+                        <tr>
+                            <td colspan="7" class="text-center">当前的列表中没有内容</td>
+                        </tr>
+                        </tbody>
+
+                    {{!有数据}}
+                    {{else}}
+                        <tbody>
+                        {{#each _DATA_.data}}
+                            <tr data-order-id="{{orderId}}" data-return-id="{{id}}" data-return-type="{{returnType}}">
+                                <td><a class="info" href="javascript:;">{{id}}</a></td>
+                                <td><a href="/buyer/orders/detail?orderId={{orderId}}">{{orderId}}</a></td>
+                                <td>{{createdAt}}</td>
+                                <td>{{createrName}}</td>
+                                <td>{{returnedAt}}</td>
+                                <td>
+                                    {{#equals status  1}}待供应商确认{{/equals}}
+                                    {{#equals status -1}}供应商拒绝{{/equals}}
+                                    {{#equals status -2}}采购人撤销{{/equals}}
+                                    {{#equals status  2}}待采购人退换货{{/equals}}
+                                    {{#equals status  3}}待供应商收货{{/equals}}
+                                    {{#equals status  4}}待供应商换货{{/equals}}
+                                    {{#equals status  5}}供应商部分发货{{/equals}}
+                                    {{#equals status  6}}供应商全部发货{{/equals}}
+                                    {{#equals status  9}}待供应商上门取货{{/equals}}
+                                    {{#equals status 10}}退换货结束{{/equals}}
+                                </td>
+                                <td class="action">
+                                    <a class="info" href="javascript:;">查看详情</a>
+                                    {{#equals status  1}}<a class="withdraw" href="javascript:;">撤回</a>{{/equals}}
+                                    {{#equals status -1}}<a class="afresh" href="javascript:;">重新发起</a><a class="delete" href="javascript:;">删除</a>{{/equals}}
+                                    {{#equals status -2}}<a class="afresh" href="javascript:;">重新发起</a><a class="delete" href="javascript:;">删除</a>{{/equals}}
+                                    {{#equals status  2}}<a class="exchange" href="javascript:;">退换货</a>{{/equals}}
+                                    {{#equals status  5}}<a class="info" href="javascript:;">收货</a>{{/equals}}
+                                    {{#equals status  6}}<a class="info" href="javascript:;">收货</a>{{/equals}}
+                                    {{#equals status  9}}<a class="take" href="javascript:;">上门取件完成</a>{{/equals}}
+                                </td>
+                            </tr>
+                        {{/each}}
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="7" class="text-right">
+                                <div class="list-pagination pagination-danger clearfix" data-size="{{#if pageSize ~}}{{pageSize}}{{else}}20{{~/if}}" data-total="{{_DATA_.total}}"></div>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    {{/equals}}
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+{{/component}}

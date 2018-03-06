@@ -1,0 +1,86 @@
+{{#each data}}
+  <div class="shop-info {{#unless canSale}}cant-sale{{/unless}}" data-shop-id="{{shopId}}">
+    <div class="left-part">
+      <div class="base-info">
+        <div class="info-area">
+          <div class="shop-img"><img src="{{logoUrl}}" class="js-enter-shop" data-shop-id="{{shopId}}"></div>
+          <div class="shop-name" title="{{shopName}}">{{shopName}}</div>
+          <div class="main-business" title="{{categorys}}">主营类目：{{categorys}}</div>
+          <div class="hover-operations">
+            <a class="contact-supplier" href="javascript:void(0)" data-type="qq" data-qq="23123" data-site="www.baidu.com"><i class="icon-zcy icon-detailqq"></i>联系供应商</a>
+          </div>
+          {{#unless canSale}}
+            <div class="extra-info">该店铺不在您所在区划内销售</div>
+          {{/unless}}
+        </div>
+      </div>
+      <div class="foot-operations">
+        <a class="js-enter-shop" href="javascript:void(0)" data-shop-id="{{shopId}}"><i class="icon-zcy icon-home"></i>进入店铺</a>
+        <a href="javascript:void(0)" class="js-unfollow"><i class="icon-zcy icon-guanzhu"></i>取消关注</a>
+      </div>
+    </div>
+    <div class="right-part">
+      <div class="tab">
+        <ul class="clearfix">
+          <li class="active" data-list="new"><a href="javascript:void(0)">新品</a></li>
+          <li a data-list="hot"><a href="javascript:void(0)">热销</a></li>
+        </ul>
+      </div>
+      <div class="scroll-view">
+        <div class="items-list new clearfix">
+          {{#each newItems}}
+            <a class="item" href="/items/{{itemId}}" target="_blank">
+              <img src="{{mainImgUrl}}">
+              <div class="price" title="{{#equals highPrice lowPrice}}
+                  ￥{{formatPrice highPrice}}
+              {{else}}
+                  ￥{{formatPrice lowPrice}} ~ ￥{{formatPrice highPrice}}
+              {{/equals}}">
+                {{#equals highPrice lowPrice}}
+                  ￥{{formatPrice highPrice}}
+                {{else}}
+                  ￥{{formatPrice lowPrice}} ~ ￥{{formatPrice highPrice}}
+                {{/equals}}
+              </div>
+            </a>
+          {{else}}
+            <div class="empty-message">暂无新品</div>
+          {{/each}}
+        </div>
+        <div class="items-list hot clearfix"  style="display: none;">
+          {{#each hotItems}}
+            <a class="item" href="/items/{{itemId}}" target="_blank">
+              <img src="{{mainImgUrl}}">
+              <div class="price" title="{{#equals highPrice lowPrice}}
+                  ￥{{formatPrice highPrice}}
+              {{else}}
+                  ￥{{formatPrice lowPrice}} ~ ￥{{formatPrice highPrice}}
+              {{/equals}}">
+                {{#equals highPrice lowPrice}}
+                  ￥{{formatPrice highPrice}}
+                {{else}}
+                  ￥{{formatPrice lowPrice}} ~ ￥{{formatPrice highPrice}}
+                {{/equals}}
+              </div>
+            </a>
+          {{else}}
+            <div class="empty-message">暂无热销商品</div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+    <div class="mask">
+      <div class="top-checkbox"><i class="icon-zcy icon-dagou"></i></div>
+    </div>
+  </div>
+{{else}}
+  <div class="empty-view">
+    <div class="hint">
+      <img src="/lunatone/assets/images/other-images/favorite-shops.png">
+      <div class="message">
+        <div class="title">您还没有关注过任何店铺哦！</div>
+        <div class="info">可前往<a href="/pages/suppliers">供应商列表</a>寻找您感兴趣的店铺</div>
+      </div>
+    </div>
+  </div>
+{{/each}}

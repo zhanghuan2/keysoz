@@ -1,0 +1,46 @@
+{{#component "seller-shop-design js-comp"}}
+  <p class="components-title"><strong>{{i18n "Edit Store" bundle="all_mix"}}</strong><span></span></p>
+  {{#each _DATA_}}
+  <p class="template-type">{{#equals @key "PC"}}{{i18n "PC-side Store" bundle="all_mix"}}{{else}}{{i18n "Mobile site Store" bundle="all_mix"}}{{/equals}}</p>
+  <table class="table  center-text" data-layouts="{{json _DATA_.layouts}}">
+    <thead>
+      <tr>
+        <th width="35%">{{i18n "Template" bundle="all_mix"}}</th>
+        <th width="35%">{{i18n "Status" bundle="all_mix"}}</th>
+        <th width="30%">{{i18n "Operation " bundle="all_mix"}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each this}}
+        <tr data-id="{{siteId}}">
+          <td>
+            {{layout.name}}
+          </td>
+          <td>
+            {{#if siteId}}
+              {{#if active}}
+              <span class="currency">{{i18n "Enabling" bundle="all_mix"}}</span>
+              {{else}}
+              {{i18n "Not Enabled" bundle="all_mix"}}
+              {{/if}}
+            {{else}}
+              {{i18n "Inactive" bundle="all_mix"}}
+            {{/if}}
+          </td>
+          <td>
+            {{#if siteId}}
+              {{#unless active}}
+              <button class="btn btn-success js-shop-site-active" data-id="{{siteId}}" data-toggle="confirm" data-title="{{i18n "Are you sure to enable it" bundle="all_mix"}}?" data-content="{{i18n "Enable? Once enabled, shop will begin to use this display template, make sure you have complete the editing and publishing. " bundle="all_mix"}}" data-event="shop-site:active">{{i18n "Enable" bundle="all_mix"}}</button>
+              {{/unless}}
+              <button class="btn js-shop-site-release" data-id="{{siteId}}" data-toggle="confirm" data-title="{{i18n "Are you sure to publish it" bundle="all_mix"}}?" data-content="{{i18n "Publish? All site changes will take effect after it is published. You can also choose to use the renoGSTed interface to publish a single page rather than the entire site." bundle="all_mix"}}" data-event="shop-site:release">{{i18n "Publish " bundle="all_mix"}}</button>
+              <a href="/design/sites/{{siteId}}" target="_blank">{{i18n "RenoGSTion" bundle="all_mix"}}</a>
+            {{else}}
+              <a href="#" class="js-shop-site-create" data-layout="{{layoutKey}}" data-app="{{layout.app}}">{{i18n "ActiGSTe" bundle="all_mix"}}</a>
+            {{/if}}
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  {{/each}}
+{{/component}}

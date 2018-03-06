@@ -1,0 +1,53 @@
+<div class="modal buyer_back-change_purchaser-list exchange">
+
+    {{!标题}}
+    <div class="modal-header">
+        <label class="modal-title">确认信息</label><a href="javascript:;" class="close">×</a>
+    </div>
+
+    {{!内容}}
+    <div class="modal-body component-body form">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td colspan="4">供应商收货地址</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="4">
+                        {{#with address.supplierAddr}}
+                            {{province}}
+                            {{region}}
+                            {{city}}
+                            {{street}}
+                            {{details}} ({{receiverName}} 收) {{mobile}}
+                        {{/with}}
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th><span class="required">*</span>选择快递公司</th>
+                    <td>
+                        <select>
+                            <option value="">请选择</option>
+                            {{#each express}}
+                                <option value="{{code}},{{name}}">{{name}}</option>
+                            {{/each}}
+                        </select>
+                    </td>
+                    <th><span class="required">*</span>输入快递单号</th>
+                    <td><input type="text"></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    {{!行为}}
+    <div class="modal-footer text-right">
+        <input name="cancel-btn" class="btn btn-secondary close" type="button" value="取消">
+        <input name="accept-btn" class="btn btn-primary" type="button" value="确认">
+    </div>
+
+</div>

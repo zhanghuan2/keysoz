@@ -1,0 +1,89 @@
+.component-supplierAllList{
+  .supplierAllList{
+    width: 100%;
+    ul.list-li{
+      li{
+        vertical-align: top;
+        padding: 22px 10px 20px 20px;
+        background-color: #fff;
+        display: inline-block;
+        width: 595px;
+        height: 120px;
+        margin:0 6px 10px 0;
+        &.last{
+          margin-right: 0;
+        }
+        .inlineBlock{
+          display: inline-block;
+        }
+        .list-img-box{
+          border-right: 1px solid rgb(218, 220, 218);
+          padding: 13px 30px 17px 0;
+        }
+        .list-word-box{
+          vertical-align: top;
+          padding-left: 30px;
+          margin-top: 7px;
+          height: 81px;
+          p.word-title{
+            font-size: 18px;
+            color: #333333;
+            margin: 0 0 5px 0;
+            height: 21px;
+            a{
+              color: #333333;
+            }
+          }
+          .mainContent{
+            margin:0;
+            font-size: 12px;
+            color:#999999;
+          }
+          .hover-operations {
+            display: none;
+            position: relative;
+            .btn {
+              width: 80px;
+              margin-right:5px;
+            }
+            .btn-info{
+              border-color:#ddd;
+              background-color:#f5f5f5;
+              &:hover{
+                background-color:#0876ff;
+                border-color:#0876ff;
+                color:#fff;
+              }
+            }
+          }
+          &:hover {
+            .mainContent {
+              display: none;
+            }
+            .hover-operations {
+              display: block;
+            }
+          }
+        }
+        a{
+          display:inline-block;
+          &.img-a{
+            width: 167px;
+            height: 50px;
+          }
+          img{
+            width: 167px;
+            height: 50px;
+          }
+        }
+      }
+    }
+  }
+  .overflow-hidden{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: inline-block;
+    width: 300px;
+  }
+}

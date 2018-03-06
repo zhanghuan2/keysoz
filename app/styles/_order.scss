@@ -1,0 +1,235 @@
+@import "compass/css3/inline-block";
+@import "pokeball/theme";
+
+.order-manage {
+  .left-text {
+    padding-left: 20px;
+  }
+  img {
+    width: 60px;
+    height: 60px;
+  }
+  .table-control {
+    text-align: right;
+    padding: 10px 20px 5px;
+
+    .btn {
+      margin-left: 10px;
+    }
+  }
+  .orders-table{
+    margin-bottom: 20px;
+    .trade-status-select{
+      width: 135px;
+    }
+    .orders-tbody{
+      .set-height-tr{
+        td{
+          padding: 0;
+          height:10px;
+        }
+      }
+      .order-info-tr{
+        background-color: $color-background;
+        .left-text{
+          span {
+            margin: 0;
+          }
+        }
+        .shop-name {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          max-width: 250px;
+          @include inline-block(top);
+        }
+        td{
+          border-width: 1px;
+          border-color: $color-border;
+          border-style: solid;
+          height: 45px;
+          line-height: 45px;
+          padding: 0 20px;
+          .address{
+            float: right;
+          }
+          i{
+            @include inline-block(top);
+          }
+        }
+      }
+      .order-tr{
+        >td{
+          padding:0;
+          vertical-align: top;
+        }
+        td.order-items{
+          border: $color-border solid 1px;
+          border-top: none;
+        }
+        td.total-price{
+          border-width: 0 1px 1px 0;
+          border-style: solid;
+          border-color: $color-border;
+          vertical-align: top;
+          padding-top: 10px;
+        }
+        td.order-status{
+          border: 1px solid $color-border;
+          line-height: 20px;
+          padding-top: 10px;
+          p{
+            margin: 0;
+          }
+        }
+        td.presale-td{
+          border-right: 1px solid $color-border;
+        }
+        .time-span{
+          color: $color-warning;
+        }
+      }
+      .order-extra{
+        background-color: $color-background;
+        td{
+          border-width: 0 1px 1px 1px;
+          border-color: $color-border;
+          border-style: solid;
+          height: 20px;
+          padding: 5px 0 5px 10px;
+        }
+      }
+
+      .items-table{
+        width: 100%;
+        tr{
+          td{
+            vertical-align: top;
+            &.last{
+              border-bottom: none;
+            }
+            &.pre-return{
+              border-bottom: none;
+              border-left: 1px solid $color-border;
+            }
+          }
+          &.last{
+            td{
+              border-bottom: none;
+            }
+          }
+        }
+        .item-logo {
+          float: left;
+
+          img{
+            height: 60px;
+            width: 60px;
+            border: 1px solid $color-border;
+          }
+        }
+        .item-description {
+          width: 290px;
+          float: left;
+          margin-left: 10px;
+          overflow: hidden;
+          word-break: break-all;
+        }
+      }
+    }
+  }
+  .order-pagination {
+    margin: 20px 0;
+    text-align: right;
+  }
+}
+
+.order-detail {
+  .light-background {
+    border: 1px solid #ffe2ae;
+    background-color: #fff9ed;
+    box-shadow: 3px 3px 3px $color-background;
+  }
+  .font-14 {
+    font-size: 14px;
+  }
+  .detail-base {
+    margin: 20px 0;
+    padding: 10px;
+    hr {
+      border: 1px dashed $color-border;
+    }
+  }
+  .detail-main {
+    margin-bottom: 40px;
+    background: $color-background;
+    padding: 4px 20px;
+
+    .background-white {
+      background-color: white;
+      padding: 20px;
+    }
+    .details{
+      margin-bottom: 10px;
+
+      span{
+        margin-top: 5px;
+        @include inline-block(baseline);
+
+        &.price, .currency {
+          margin-top: 0;
+        }
+      }
+
+      .orders-table{
+        width: 100%;
+        margin-bottom: 0;
+      }
+
+      .item-description{
+        width: 250px;
+      }
+    }
+  }
+  .high-light{
+    font-size: 14px;
+  }
+}
+.check-logistic{
+  i{
+    font-size: 26px;
+  }
+}
+.modal-express{
+  .logistic-title{
+    width: 580px;
+    height: 20px;
+    padding: 10px;
+    background-color: $color-background;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    .direction{
+      float: right;
+    }
+  }
+  .table{
+    border: 1px solid $color-border;
+    margin-top: 10px;
+    width: 600px;
+    th{
+      border: 1px solid $color-border;
+    }
+    td{
+      padding: 0px;
+      height: 30px;
+    }
+    tr.active{
+      color: $color-primary;
+    }
+    &.active{
+      display: table;
+    }
+  }
+}

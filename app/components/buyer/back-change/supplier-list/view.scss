@@ -1,0 +1,66 @@
+
+    .buyer_back-change_supplier-list {
+
+        & {
+
+            .component-header {
+                font-size: 14px;
+                line-height: 40px;
+                text-indent: 20px;
+            }
+
+            .component-body {
+
+                .search-panel {
+
+                    th {
+                        font-weight: normal;
+                        white-space: nowrap;
+                    }
+
+                    th:after {
+                        content: "：";
+                    }
+
+                    th {
+                        padding-left: 10px;
+                    }
+
+                    th:first-child {
+                        padding-left: 0;
+                    }
+
+                    .btn {
+                        margin-left: 10px;
+                    }
+
+                }
+
+                .table-list {
+
+                    .action {
+                        overflow: hidden;
+                        width: 120px;
+
+                        a {
+                            float: left;
+                            margin-left: 10px;
+                        }
+
+                        a:first-child {
+                            margin-left: 0;
+                        }
+
+                    }
+
+                }
+
+                .color.\#2687D0 {
+                    color: #2687D0;
+                }
+
+            }
+
+        }
+
+    }

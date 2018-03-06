@@ -1,0 +1,24 @@
+<div class="modal js-service-setting-modal service-setting-modal">
+  <input type="hidden"
+         class="js-submit-input"
+         data-item-id="{{itemId}}"
+         data-item-ids="{{itemIds}}">
+  <div class="modal-header">
+    <div class="modal-title">服务设置</div>
+    <a class="close" href="javascript:void(0)">&times;</a>
+  </div>
+  <div class="modal-body">
+    <div class="service-setting">
+      <input type="radio" class="input-radio" name="type" value="0" {{#equals type 1}}{{else}}checked{{/equals}}>未约定<br>
+      <input type="radio" class="input-radio" name="type" value="1" {{#equals type 1}}checked{{/equals}}>自定义
+    </div>
+    <div class="template-address-area js-template-item {{#equals type 1}}{{else}}hide{{/equals}}">
+      <div class="service-area">服务商品生效地区：</div>
+      {{> "seller/area_select/templates/_province_list"}}
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-info close">取消</button>
+    <button class="btn btn-primary js-submit">确定</button>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+
+{{#equals total 0}}
+  <tr>
+    <td colspan="5"><label>未查询到相关商品信息，请确认查询条件</label></td>
+  </tr>
+{{else}}
+  {{#each data}}
+    <tr>
+      <td>
+        <input type="radio" name="confirm-check">
+        <input type="hidden" name="itemId" value="{{id}}">
+      </td>
+      <td title="{{name}}">
+        <span class="word-break" style="width: 160px">
+          {{name}}
+        </span>
+      </td>
+      <td>
+          {{#if spuId}}是{{else}}否{{/if}}
+      </td>
+      <td title="{{brandName}}">
+        <span class="word-break" style="width: 120px">
+          {{brandName}}
+        </span>
+      </td>
+      <td title="{{specification}}">
+        <span class="word-break" style="width: 120px">
+          {{specification}}
+        </span>
+      </td>
+    </tr>
+  {{/each}}
+{{/equals}}

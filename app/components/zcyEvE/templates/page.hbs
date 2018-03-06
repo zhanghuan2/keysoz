@@ -1,0 +1,11 @@
+{{#each this.templateJson}}
+  <div class="eevee-clu-line-{{@key}} eevee-grids" style="{{#each this.css}}{{@key}}:{{this}};{{/each}}">
+    <div class="eevee-col-row">
+      {{#each this.insert}}
+        <div class="eevee-col-box" style="">
+          {{#insert this.path param=this.data data=../../_DATA_}}{{/insert}}
+        </div>
+      {{/each}}
+    </div>
+  </div>
+{{/each}}

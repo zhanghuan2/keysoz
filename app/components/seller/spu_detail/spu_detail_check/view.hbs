@@ -1,0 +1,46 @@
+{{#if type}}
+    {{#ifCond type "!==" ""}}
+        {{#component "auditing-warp clearfix js-comp"}}
+            <span class="auditing-title js-auditing-title" data-type="{{type}}" data-itemid="{{itemAuditId}}">
+                审核意见
+            </span>
+            <div class="auditing-box">
+                <div class="auditing-result clearfix">
+                    <span class="pull-left auditing-title-s">审核结果：</span>
+                    <div class="pull-left result-box">
+                        <ul class="result-radio clearfix">
+                            <li>
+                                <label>
+                                    <input type="radio" class="input-radio no-disabled js-agree-radio" value="true" name="agree" checked />通过
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="radio" class="input-radio no-disabled js-agree-radio" value="false" name="agree" />不通过
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="auditing-opinion clearfix">
+                    <span class="pull-left auditing-title-s">审核意见：</span>
+                    <div class="pull-left opinion-box">
+                        <div class="opinion-box-header">
+                            <select class="no-disabled">
+                                <option>常用意见</option>
+                            </select>
+                            <span>存为常用意见</span>
+                        </div>
+                        <div class="opinion-edit-box">
+                            <textarea class="opinionText" maxlength="500" name="opinion"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-box clearfix">
+                    <div class="submit-btn js-submit-opinion" data-issub=false>提交</div>
+                    <div class="cancel-btn hide">取消</div>
+                </div>
+            </div>
+        {{/component}}
+    {{/ifCond}}
+{{/if}}

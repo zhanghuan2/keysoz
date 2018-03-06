@@ -1,0 +1,15 @@
+{{#partial "title"}}{{{block "realTitle"}}}{{/partial}}
+{{#partial "body"}}
+    {{> header}}
+    {{#designPart "outer-top"}}{{/designPart}}
+    <div class="user-background">
+        <div class="main-container">
+            {{{block "mainBody"}}}
+        </div>
+    </div>
+    {{> footer}}
+{{/partial}}
+{{#partial "tool"}}
+  {{{block "mainTool"}}}
+{{/partial}}
+{{> layout}}

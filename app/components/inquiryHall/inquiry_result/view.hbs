@@ -1,0 +1,295 @@
+{{#component "component-inquiry-result js-comp"}}
+  <div class="hide">{{json}}</div>
+  <div class="inquiry-result-container">
+    <div class="inquiry-title">
+      <h1>{{_DATA_.anNouncementDto.title}}</h1><br/>
+      <ul>
+        <li>日期：<span>{{formatDate _DATA_.anNouncementDto.startTime 'yyyy-MM-dd'}}</span></li>
+      </ul>
+    </div>
+    <div class="inquiry-info">
+      <section>
+        <h2>基本信息</h2>
+        <table class="table table-fixed">
+          <tbody>
+          <tr>
+            <td>询价单编号</td>
+            <td>{{_DATA_.oiOrderDTO.inquiryCode}}</td>
+            <td>采购目录</td>
+            <td>{{_DATA_.oiOrderDTO.catalogName}}</td>
+            <td>项目优先级</td>
+            <td>{{#equals _DATA_.oiOrderDTO.isUrgent 'Y'}}紧急{{else}}非紧急{{/equals}}</td>
+          </tr>
+          <tr>
+            <td>报价开始时间</td>
+            <td>{{formatDate _DATA_.oiOrderDTO.startTime 'yyyy-MM-dd HH:mm:ss'}}</td>
+            <td>报价截止时间</td>
+            <td>{{formatDate _DATA_.oiOrderDTO.endTime 'yyyy-MM-dd HH:mm:ss'}}</td>
+            <td>供应商规模要求</td>
+            <td>{{_DATA_.oiOrderDTO.supScale}}</td>
+          </tr>
+          <tr>
+            <td>供应商资格要求</td>
+            <td colspan="5">{{_DATA_.oiOrderDTO.supBasicQualif}}</td>
+          </tr>
+          <tr>
+            <td>供应商区域范围要求</td>
+            <td colspan="5">{{_DATA_.oiOrderDTO.supSpecificArea}}</td>
+          </tr>
+          <tr>
+            <td>成交规则及确认方式</td>
+            <td colspan="5">
+              {{#equals _DATA_.oiOrderDTO.tradWay '1'}}
+                自动成交：询价单截止时间后，系统对所有参与供应商按照报价由低到高排序，以'最低报价'原则推荐出成交供应商，报价相同的以报价时间优先。
+              {{/equals}}
+
+              {{#equals _DATA_.oiOrderDTO.tradWay '2'}}
+                手动成交：询价单截止时间后，系统对所有参与供应商按照报价由低到高进行排序,采购人可以手动选择成交供应商。如果采购人选择非最低报价供应商且报价超过最低报价一定比例（财政区划配置约束）为成交供应商，则在系统中填写选择理由，系统自动报财政部门进行特殊事项备案确认，确认后生效。
+              {{/equals}}
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </section>
+      <section>
+        <h2>询价商品清单</h2>
+        {{#equals _DATA_.oiOrderDTO.inquiryType '0'}}
+          {{#each _DATA_.oiOrderDTO.oiGoodsDTOList}}
+            <table class="table table-fixed">
+              <thead>
+              <tr>
+                <th>商品类目</th>
+                <th>推荐品牌型号</th>
+                <th>数量</th>
+                <th>控制总价(元)</th>
+              </tr>
+              </thead>
+              <tbody class="bgc-clear">
+              <tr>
+                <td>{{productCatalogName}}</td>
+                <td>{{#each itemList}}{{add @index 1}}、{{brand}}&nbsp;{{model}}<br/>{{/each}}</td>
+                <td>{{itemList.0.quantity}}{{itemList.0.unit}}</td>
+                <td>{{itemList.0.controllerPrice}}</td>
+              </tr>
+              </tbody>
+            </table>
+          {{/each}}
+        {{/equals}}
+        {{#of _DATA_.oiOrderDTO.inquiryType '1, 2'}}
+          {{#each _DATA_.oiOrderDTO.oiGoodsDTOList}}
+            <table class="table table-fixed">
+              <thead>
+              <tr>
+                <th width="15%">商品名称</th>
+                <th width="50%">技术参数或配置要求</th>
+                <th width="15%">建议品牌及型号</th>
+                <th width="8%">数量</th>
+                <th width="12%">控制总价(元)</th>
+              </tr>
+              </thead>
+              <tbody class="bgc-clear">
+              {{#each itemList}}
+                <tr>
+                  <td>{{productCatalogName}}</td>
+                  <td>
+                    主要参数：{{mainParameter}}<br/>
+                    次要参数：{{secondaryParameter}}<br/></td>
+                  <td>{{brand}}&nbsp;{{model}}</td>
+                  <td>{{quantity}}{{unit}}</td>
+                  <td>{{controllerPrice}}</td>
+                </tr>
+              {{/each}}
+              </tbody>
+            </table>
+          {{/each}}
+        {{/of}}
+      </section>
+      <section>
+        <h2>收货信息</h2>
+        <table class="table table-fixed">
+          <tbody>
+          <tr>
+            <td>送货方式</td>
+            <td>{{_DATA_.oiOrderDTO.deliveryMethod}}</td>
+            <td>送货时间</td>
+            <td>{{_DATA_.oiOrderDTO.deliveryTime}}</td>
+            <td>送货期限</td>
+            <td>合同生效后{{_DATA_.oiOrderDTO.deliveryTerm}}个工作日内</td>
+          </tr>
+          <tr>
+            <td>送货地址</td>
+            <td colspan="5">
+              {{#each _DATA_.oiOrderDTO.oiDeliveryDTOList}}
+                {{deliveryAddressProvince}}
+                {{deliveryAddressCity}}
+                {{deliveryAddressRegion}}
+                {{deliveryAddressStreet}}
+                {{deliveryAddressDetails}}
+                <br/>
+              {{/each}}</td>
+          </tr>
+          <tr>
+            <td>备注</td>
+            <td colspan="5">{{_DATA_.oiOrderDTO.deliveryRemark}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </section>
+      <section>
+        <h2>商务要求</h2>
+        <table class="table table-fixed">
+          <tbody>
+          <tr>
+            <td>商务要求</td>
+            <td>
+              {{#each _DATA_.oiOrderDTO.oiSupRequirementDTOList}}
+                {{add @index 1}}、{{content}}<br/>
+              {{/each}}
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </section>
+
+      {{!-- {{#ifCond _DATA_.oiOrderDTO.entrustorderId '!=' null}}
+        <section>
+          <h2>采购人/代理机构信息(仅委托采购)</h2>
+          <table class="table table-fixed">
+            <tbody>
+            <tr>
+              <td>采购单位</td>
+              <td>{{_DATA_.oiOrderDTO}}</td>
+              <td>联系人</td>
+              <td>{{_DATA_.oiOrderDTO}}</td>
+              <td>联系电话</td>
+              <td>{{_DATA_.oiOrderDTO}}</td>
+            </tr>
+            <tr>
+              <td>代理机构</td>
+              <td>{{_DATA_.oiOrderDTO}}</td>
+              <td>联系人</td>
+              <td>{{_DATA_.oiOrderDTO}}</td>
+              <td>联系电话</td>
+              <td>{{_DATA_.oiOrderDTO}}</td>
+            </tr>
+            <tr>
+              <td>监督部门</td>
+              <td>{{_DATA_.oiOrderDTO}}</td>
+              <td>监督电话</td>
+              <td>{{_DATA_.oiOrderDTO}}</td>
+              <td>传真电话</td>
+              <td>{{_DATA_.oiOrderDTO}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </section>
+      {{/ifCond}} --}}
+
+      <section>
+        <h2>成交结果信息</h2>
+        {{#equals _DATA_.oiOrderDTO.state 9}}
+          <table class="table table-fixed">
+            <tbody>
+            <tr>
+              <td>中标供应商</td>
+              <td>{{_DATA_.oiOrderDTO.oiQuote.supName}}</td>
+              <td>成交总价(元)</td>
+              <td>{{_DATA_.oiOrderDTO.oiQuote.totalPrice}}</td>
+              <td>报价时间</td>
+              <td>{{formatDate _DATA_.oiOrderDTO.oiQuote.offerTime 'yyyy-MM-dd HH:mm:ss'}}</td>
+            </tr>
+            </tbody>
+          </table>
+          <table class="table table-fixed" style="margin-top: 20px">
+            <thead>
+            <tr>
+              <th>序号</th>
+              <th>商品名称</th>
+              <th>品牌</th>
+              <th>型号</th>
+              <th>数量</th>
+              <th>单价(元)</th>
+            </tr>
+            </thead>
+            <tbody class="bgc-clear">
+            {{#each _DATA_.oiOrderDTO.oiQuote.oiQuoteItemDTOList}}
+              <tr>
+                <td>{{add @index 1}}</td>
+                <td>{{productCatalogName}}</td>
+                <td>{{brand}}</td>
+                <td>{{model}}</td>
+                <td>{{quantity}}</td>
+                <td>{{referencePrice}}</td>
+              </tr>
+            {{/each}}
+            </tbody>
+          </table>
+        {{/equals}}
+        {{#equals _DATA_.oiOrderDTO.state 15}}
+          <table class="table table-fixed">
+            <tbody>
+            <tr>
+              <td>结果</td>
+              <td>取消询价</td>
+              <td>备注</td>
+              <td>{{_DATA_.oiOrderDTO.userCheckOpinionDto.checkOpinion}}</td>
+            </tr>
+            </tbody>
+          </table>
+        {{/equals}}
+        {{#equals _DATA_.oiOrderDTO.state 16}}
+          <table class="table table-fixed">
+            <tbody>
+            <tr>
+              <td>结果</td>
+              <td>重新询价</td>
+              <td>备注</td>
+              <td>{{_DATA_.oiOrderDTO.userCheckOpinionDto.checkOpinion}}</td>
+            </tr>
+            </tbody>
+          </table>
+        {{/equals}}
+      </section>
+      <section>
+        <h2>参与报价供应商情况</h2>
+        <table class="table table-fixed">
+          <thead>
+          <tr>
+            <th style="width: 150px;">序号</th>
+            <th>供应商名称</th>
+            <th>报价时间</th>
+          </tr>
+          </thead>
+          <tbody class="bgc-clear">
+          {{#each _DATA_.oiOrderDTO.oiQuoteOfferStateList}}
+            <tr>
+              <td>{{add @index 1}}</td>
+              <td>{{supName}}</td>
+              <td>{{formatDate offerTime 'yyyy-MM-dd HH:mm:ss'}}</td>
+            </tr>
+          {{/each}}
+          </tbody>
+        </table>
+      </section>
+    </div>
+    <div class="inquiry-notice">
+      <div>
+        <i class="icon-zcy icon-xiangguangonggao-"></i>
+        <h2>相关信息</h2>
+        <span></span>
+      </div>
+      <div class="inquiry-notice-link">
+        {{#each _DATA_.anNouncementDto.otherAnNouncement}}
+          {{#equals type 1}}<!--询价-->
+            <a href="/inquiryhall/detail?announcementId={{id}}">{{title}}</a><br>
+          {{/equals}}
+          {{#equals type 2}}<!--询价结果-->
+            <a href="/inquiryhall/result?inquiryId={{businessId}}">{{title}}</a>
+          {{/equals}}
+          {{#equals type 3}}
+          {{/equals}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+{{/component}}

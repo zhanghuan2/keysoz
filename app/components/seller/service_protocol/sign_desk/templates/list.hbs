@@ -1,0 +1,39 @@
+{{#each data}}
+  <div class="service-block {{#equals status 3}}signed{{/equals}}" data-service="{{json this}}">
+    <div class="icon">
+      <img src="{{protocol.icon}}">
+    </div>
+    <div class="content">
+      <div class="info">
+        <span class="title" title="{{protocol.name}}">{{protocol.name}}</span>
+        <span class="status">
+          {{#equals status 3}}
+            已加入
+          {{else equals status 1}}
+            暂停
+          {{else equals status -1}}
+            <span class="red-text">禁用</span><a href="javascript:void(0)" class="js-popover" data-reason="{{reason}}"><i class="icon-zcy icon-warningfill"></i></a>
+          {{else}}
+            未加入{{#if ../base}}<a href="javascript:void(0)" class="js-popover base"><i class="icon-zcy icon-warningfill"></i></a>{{/if}}
+          {{/equals}}
+        </span>
+      </div>
+      <div class="operations">
+        {{#if ../base}}
+          <a href="javascript:void(0)" class="js-check-detail">查看服务</a>
+        {{else}}
+          {{#equals status 3}}
+            <a href="/seller/service/service-item-manage?protocolId={{protocol.id}}" class="btn">管理服务</a>
+            <a href="javascript:void(0)" class="js-quit-service" data-protocol-id="{{protocol.id}}">退出</a>
+          {{else equals status 0}}
+            <a href="javascript:void(0)" class="btn js-join-protocol">加入服务</a>
+            <a href="javascript:void(0)" class="js-check-qualification" data-protocol-id="{{protocol.id}}">资质自查</a>
+          {{/equals}}
+        {{/if}}
+      </div>
+    </div>
+    <div class="signed-mark">
+      <i class="icon-zcy icon-dagou"></i>
+    </div>
+  </div>
+{{/each}}

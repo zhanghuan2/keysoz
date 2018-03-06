@@ -1,0 +1,17 @@
+@import "pokeball/theme";
+
+.component-order-info {
+  .component-header {
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+  .component-body {
+    border: 1px solid $color-border-light;
+
+    li {
+      width: 25%;
+      padding: 10px;
+    }
+  }
+}

@@ -1,0 +1,181 @@
+.order-form-create{
+  width: 1200px;
+
+  .operator-btn {
+    margin-bottom: 10px;
+  }
+  .trade-block {
+    display: table;
+    background: #ffffff;
+    margin-bottom: 20px;
+    .block-title {
+      margin-left: 20px;
+      width: 80px;
+      float: left;
+      font-size: 14px;
+      font-weight: bold;
+      color: #333333;
+    }
+    .block-content {
+      width: 1080px;
+      float: left;
+      margin-left: 20px;
+    }
+  }
+
+  .back-cart {
+    float: right;
+  }
+  .order-addition-info {
+    position: fixed;
+    border: 1px solid #ccd0d6;
+    width: 1080px;
+    margin-left: 120px;
+    background: #ffffff;
+    padding-right: 0;
+    bottom: 0;
+    height: 50px;
+    line-height: 50px;
+    margin-top: 10px;
+    clear: both;
+    text-align: right;
+    span {
+      margin-right: 40px;
+    }
+    .price.currency {
+      font-size: 18px;
+    }
+    .btn.btn-primary {
+      height: 50px;
+      width: 120px;
+      font-size: 18px;
+    }
+  }
+
+  .requisition-items-list {
+    .tables-header {
+      border-width: 0 0 1px 0;
+      border-color: #ccd0d6;
+      color: #666666;
+      tbody {
+        tr {
+          height: 30px;
+          vertical-align: text-top;
+          border: none;
+          td {
+            border: none;
+          }
+          td:last-child {
+            text-align: left;
+          }
+        }
+      }
+
+    }
+    div.shop-name {
+      margin-top: 20px;
+      margin-bottom: 10px;
+      font-size: 12px;
+      color: #333333;
+    }
+    table.requisition-items-table {
+      background: #e9f5fd;
+      border: none;
+      tbody {
+        tr {
+          border-color: #ccd0d6;
+          border-width:0 0 1px 0;
+          height: 80px;
+          line-height: 80px;
+          td {
+            .item-info {
+              line-height: 20px;
+              img {
+                float: left;
+              }
+              span {
+                margin-left: 20px;
+                vertical-align: text-top;
+              }
+              .item-name {
+                color: #333333;
+              }
+              .sku-info {
+                color: #666666;
+              }
+
+            }
+
+            .remark-input {
+              width: 300px;
+            }
+          }
+          td:first-child {
+            padding-left: 20px;
+          }
+          td:last-child {
+            text-align: left;
+          }
+        }
+        tr:last-child {
+          height: 50px;
+          line-height: 50px;
+          border: none;
+        }
+      }
+    }
+    .total-money {
+      color: #ff7900;
+    }
+  }
+
+  .purchase-plan-box {
+    display: inline-block;
+    height: 60px;
+    width: 140px;
+    border: solid 1px #ccd0d6;
+    text-align: center;
+    margin: 4px;
+    .purchase-plan-no {
+      margin-bottom: 16px;
+      height: 20px;
+      a{
+        overflow: auto;
+      }
+    }
+    .btn {
+      width: 60px;
+      text-align: center;
+      font-size: 12px;
+      padding: 2px;
+      border-radius: 4px;
+    }
+
+  }
+  .red-text{
+    color: #FF2300;
+  }
+  .green-text {
+    color: #00B22D;
+  }
+  .item-catalog {
+    text-overflow: ellipsis;
+    padding: 0 20px 0 0;
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    max-height: 20px;
+    display: inline-block;
+  }
+  .bottom-tips {
+    color: #666666;
+  }
+  .contract {
+    clear: both;
+    float: right;
+    margin-bottom: 20px;
+    label {
+      color: #333333;
+    }
+  }
+}

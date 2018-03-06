@@ -1,0 +1,63 @@
+<div class="modal pur-modal">
+  <div class="modal-header">
+    <h2>已关联发票的商品</h2>
+  </div>
+  <div class="invoice-items-lists" data-req-lists-total="{{_DATA_.total}}" data-invoiceid="{{_DATA_.itemId}}">
+    <div class="invoice-items">
+      <div class="modal-body clearfix">
+        <div><strong><span class="req-title">商品清单</span></strong></div>
+        {{!-- {{json _DATA_}} --}}
+        <table class="table  center-tex invoice-item-table">
+          <thead>
+            <tr>
+              {{#equals _DATA_.wontNeedShow true}}{{else}}<th class="left-text" width="24"></th>{{/equals}}
+              <th class="left-text" width="200"> <span class="">商品</span> </th>
+              <th width="100">商品编号</th>
+              <th width="100">供应商</th>
+              <th width="100">单价(元)</th>
+              <th width="150">数量</th>
+              <th width="70" class="last">未关联发票数量</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each _DATA_.data}}
+              <tr class="item-tr" data-site="{{shopId}}" data-id="{{skuId}}" data-itemid={{itemId}}>
+                {{#equals ../_DATA_.wontNeedShow true}}{{else}}<td width="24" class="check"><input type="checkbox" class="js-select-item input-checkbox"></td>{{/equals}}
+                <td class="left-text"><span><span>{{itemName}}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sku-attrs">{{#each skuAttr}}{{@key}}:{{this}}&nbsp;&nbsp;{{/each}}</span></span></td>
+                <td>{{itemId}}</td>
+                <td>{{shopName}}</td>
+                <td><div><span class="price">{{_CURRENCY_}}</span><span class="price item-price">{{formatPrice skuPrice}}</span></div></td>
+                <td>
+                  {{#equals ../_DATA_.wontNeedShow true}}{{currentCount}}{{else}}
+                  <div class="input-amount" data-min="0" data-max="{{subItemCount}}">
+                    <a href="javascript:void(0);" class="minus {{#equals currentCount 0}}disabled{{/equals}}" >-</a>
+                    <input type="number" class="count-number" value="{{currentCount}}" data-old="{{currentCount}}" data-init="{{currentCount}}">
+                    <a href="javascript:void(0);" class="plus {{#equals currentCount subItemCount}}disabled{{/equals}}">+</a>
+                  </div>
+                  {{/equals}}
+                </td>
+                <td class="last">
+                  <span class="js-unbind-item-subCount" data-init="{{unbindInvoiceCount}}">{{unbindInvoiceCount}}</span>
+                </td>
+              </tr>
+            {{else}}
+              <tr><td colspan="{{#equals _DATA_.wontNeedShow true}}4{{else}}5{{/equals}}" class="center-text">无可展示信息</td></tr>
+            {{/each}}
+          </tbody>
+        </table>
+        <div class="selected-pagination pagination-danger"></div>
+      </div>
+      <div class="modal-footer">
+        <div class="modal-footer-option">
+          <button class="btn btn-info btn-medium close">取消</button>
+          <button class="btn btn-primary btn-medium js-invoice-items-submit">确定</button>
+        </div>
+        <div style="float: left; line-height:40px;">
+          <label for="select-batch"><input type="checkbox" id="select-batch" class="js-batch-select input-checkbox">全选</label>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <label class="js-select-item-info"></label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

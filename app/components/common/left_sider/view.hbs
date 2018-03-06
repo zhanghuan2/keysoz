@@ -1,0 +1,53 @@
+{{#component "sidebar js-comp"}}
+<nav class="sidebar">
+  <ul class="sidebar-portal">
+    {{#ifCond ../_PORTAL_.currentCategory "==" code}}
+    <li class="portal-item current-portal">
+      <div class="portal-icon"><em class="icon-zcy icon-location"></em></div>
+      <label class="portal-title" data-code="{{code}}">{{name}}</label>
+      {{#gt ../_PORTAL_.count 1}}<span class="portal-expand-icon"><i class="icon-zcy icon-trianglebottom"></i></span>{{/gt}}
+    </li>
+    {{/ifCond}}
+    {{/each}}
+
+    <div class="other-portals hidden">
+      <ul class="">
+        {{#each _PORTAL_.userCategories}}
+        {{#ifCond ../_PORTAL_.currentCategory "!=" code}}
+        <li class="portal-item">
+          <div class="portal-icon"><em class="portal-dot"></em></div>
+          <label class="portal-title" data-code="{{code}}">{{name}}</label>
+        </li>
+        {{/ifCond}}
+        {{/each}}
+      </ul>
+    </div>
+  </ul>
+  <ul class="nav">
+  {{#each _DATA_}}
+    <li class="nav-list">
+      <div class="nav-list-header" href="{{href}}">
+        <div class="nav-icon"><em class="icon-zcy {{icon}}"></em></div>
+        <div class="nav-header">
+          <label>{{name}}</label>
+          {{#if child}}
+          <span><i class="icon-zcy icon-xiangxiazhedie"></i></span>
+          {{/if}}
+        </div>
+      </div>
+      {{#if child}}
+      <ul class="nav-list-body">
+        {{#each child}}
+        <li class="subnav-list">
+          <div class="subnav-list-header " href="{{href}}"><label>{{name}}</label></div>
+        </li>
+        {{/each}}
+      </ul>
+      {{/if}}
+    </li>
+  {{/each}}
+  </ul>
+  <!-- <button type="button" class="btn-collapse" id="collapse-nav"> ||| </button> -->
+  <div class="nav-floating"></div>
+</nav>
+{{/component}}

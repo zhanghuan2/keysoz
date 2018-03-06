@@ -1,0 +1,122 @@
+<td class="center-text" data-tmp="{{json this}}">
+{{#equals isVaccine 1}}
+{{else}}
+    <div class="td-inner-line">
+      <label class="control-group">市场价&nbsp;&nbsp;<input type="text" class="sku-price-input js-sku-origin-price {{#equals ptype 4}}{{else}}js-need-validated{{/equals}}" pattern="^\d+(\.\d{0,2})?$" value="{{formatPrice sku.extraPrice.originPrice}}" placeholder="请输入数字" {{#equals ptype 4}}disabled{{else}}{{/equals}}>&nbsp;元
+        <span class="note-error note-icon hint--top" aria-label="请输入数字">
+        <i class="icon-pokeball icon-pokeball-error "></i>
+      </span>
+      </label>
+    </div>
+{{/equals}}
+  <div class="td-inner-line">
+{{#equals isVaccine 1}}
+  {{#if sku.extraPrice.changedPrice}}
+    <label class="control-group line-h-32"><b class="required">*</b>销售价&nbsp;&nbsp;
+      原价：<input type="text" class="sku-price-input" value="{{formatPrice sku.price}}">&nbsp;元
+      变更后价：<input type="text" class="sku-price-input" value="{{formatPrice sku.extraPrice.changedPrice}}">&nbsp;元
+      <span class="note-error note-icon hint--top" aria-label="请输入数字">
+        <i class="icon-pokeball icon-pokeball-error "></i>
+      </span>
+    </label>
+  {{else}}
+    <label class="control-group line-h-32">
+      {{#equals ptype 4}}{{else}}
+        <b class="required">*</b>销售价&nbsp;&nbsp;
+      {{/equals}}
+      <input type="text" maxlength="9" class="sku-price-input js-sku-price {{#equals ptype 4}}{{else}}js-need-validated{{/equals}}"
+             pattern="^\d+(\.\d{0,2})?$" data-price="{{#if sku.price}}{{formatPrice sku.price}}{{/if}}"
+             value="{{#if sku.price}}{{formatPrice sku.price}}{{/if}}" placeholder="请输入数字"
+             {{#equals ptype 4}}disabled{{else}}required{{/equals}}>&nbsp;元
+      <span class="note-error note-icon hint--top" aria-label="请输入数字">
+        <i class="icon-pokeball icon-pokeball-error "></i>
+      </span>
+    </label>
+  {{/if}}
+{{else}}
+  <label class="control-group line-h-32">
+  {{#equals ptype 4}}{{else}}
+    <b class="required">*</b>销售价&nbsp;&nbsp;
+  {{/equals}}
+    <input type="text" maxlength="9" class="sku-price-input js-sku-price {{#equals ptype 4}}{{else}}js-need-validated{{/equals}}"
+           pattern="^\d+(\.\d{0,2})?$" data-price="{{#if sku.price}}{{formatPrice sku.price}}{{/if}}"
+           value="{{#if sku.price}}{{formatPrice sku.price}}{{/if}}" placeholder="请输入数字"
+           {{#equals ptype 4}}disabled{{else}}required{{/equals}}>&nbsp;元
+    <span class="note-error note-icon hint--top" aria-label="请输入数字">
+        <i class="icon-pokeball icon-pokeball-error "></i>
+      </span>
+  </label>
+{{/equals}}
+  </div>
+{{#equals isVaccine 1}}
+{{else}}
+    <div class="td-inner-line">
+      <label class="control-group line-h-32">
+        {{#if item.isNetSuper}}
+          {{#equals ptype 4}}
+          {{else}}
+            <b class="required">*</b>
+          {{/equals}}
+        {{else}}
+          {{#of ptype "2,6"}}
+            <b class="required">*</b>
+          {{/of}}
+        {{/if}}
+        电商平台价&nbsp;&nbsp;
+        <input type="text" maxlength="7"
+               class="sku-price-input js-sku-platform-price {{#if item.isNetSuper}}{{#equals ptype 4}}{{else}}js-need-validated{{/equals}}{{else}}{{#of ptype "2,6"}}js-need-validated{{/of}}{{/if}}"
+               pattern="^\d+(\.\d{0,2})?$" value="{{formatPrice sku.extraPrice.platformPrice}}"
+               placeholder="请输入数字"
+          {{#if item.isNetSuper}}
+            {{#equals ptype 4}}
+            {{else}}
+              required
+            {{/equals}}
+          {{else}}
+            {{#of ptype "2,6"}}
+              required
+            {{/of}}
+          {{/if}}>&nbsp;元
+        <span class="note-error note-icon hint--top" aria-label="请输入数字">
+        <i class="icon-pokeball icon-pokeball-error "></i>
+      </span>
+      </label>
+    </div>
+{{/equals}}
+
+  {{#if @properties.resource.item.hasSkuStock}}
+    <td>
+      <div class="td-inner-line control-group">
+        <input type="text" class="input-small js-sku-quantity js-need-validated" pattern="^\d+$" value="{{sku.stockQuantity}}" placeholder="输入数字">
+        <span class="note-error note-icon hint--top" aria-label="请输入数字">
+          <i class="icon-pokeball icon-pokeball-error "></i>
+        </span>
+      </div>
+    </td>
+  {{/if}}
+<td class="center-text">
+  <label class="control-group line-h-32">
+    <b class="required">*</b>
+    <input type="text" class="input-small js-sku-code js-need-validated"
+           pattern="^\w+$" value="{{sku.skuCode}}" required>
+  </label>
+</td>
+{{#equals isVaccine 1}}
+  <!-- 疫苗不显示库存 -->
+  <input type="hidden" id="input-warehouse-code" value="{{#if stock.warehouseCode}}{{stock.warehouseCode}}{{else}}{{warehouses.code}}{{/if}}">
+  <input type="hidden" class="input-small js-stock-quantity" value="{{stock.quantity}}">
+{{else}}
+  <td class="center-text">
+    <div class="td-inner-line">
+      <input type="text" value="{{#if stock.warehouseName}}{{stock.warehouseName}}{{else}}{{warehouses.name}}{{/if}}" style="width: 100px;" disabled>
+      <input type="hidden" id="input-warehouse-code" value="{{#if stock.warehouseCode}}{{stock.warehouseCode}}{{else}}{{warehouses.code}}{{/if}}">
+      <span class="control-group">
+      <input type="text" class="input-small js-stock-quantity js-need-validated" pattern="^\d+$" value="{{stock.quantity}}">
+        <span class="note-error note-icon hint--top" aria-label="请输入数字">
+          <i class="icon-pokeball icon-pokeball-error "></i>
+        </span>
+    </span>
+    </div>
+  </td>
+{{/equals}}
+

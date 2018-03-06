@@ -1,0 +1,25 @@
+{{#partial "realTitle"}}预购单查询{{/partial}}
+{{#partial "realBody"}}
+  {{#inject "common/breadcrumb"}}
+    {
+    "badge":"客服查询中心",
+    "breadcrumb":
+    [
+    {
+    "crumb": "业务查询",
+    "url": "#"
+    },
+    {
+    "crumb": "预购单查询",
+    "url": "#"
+    }
+    ]
+    }
+  {{/inject}}
+  {{#inject "customer_service/purchase"}}
+    {
+      "tag": "all"
+    }
+  {{/inject}}
+{{/partial}}
+{{> user_layout}}

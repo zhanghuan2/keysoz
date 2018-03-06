@@ -1,0 +1,213 @@
+{{#component "component-hotel-service js-comp"}}
+  <div class="fixed-hotel-service">
+    <span class="hotel-select-key">
+      <a href="{{configHref}}" style="color: #333; line-height: 27px;">全部</a>
+      <i class="icon-zcy icon-nextstep" style="font-size: 12px"></i>
+      <!--会议定点类型-->
+      {{#if placeTypes}}
+        <a class="js-key-selector js-placeTypes-selector" href="javascript:;"
+           data-selector="会议定点类型:{{CNplaceTypes}}">会议定点类型: {{CNplaceTypes}}
+          <i class="colse-select icon-zcy icon-close" data-key="placeTypes"></i></a>
+      {{/if}}
+      <!--酒店级别-->
+      {{#if starRatings}}
+        <a class="js-key-selector js-starRatings-selector" href="javascript:;"
+           data-selector="酒店级别: {{CNstarRatings}}">酒店级别: {{CNstarRatings}}
+          <i class="colse-select icon-zcy icon-close" data-key="starRatings"></i></a>
+      {{/if}}
+    </span>
+    <div class="nav-group">
+      <!--所属区域-->
+      <dl class="control-group">
+        <dt title="所属区域"><label for="hotel-region" style="color: #666;">所属区域:</label></dt>
+        <div class="attr-list">
+          <div class="list-more hotel-region-container">
+            <input type="text" id="hotel-region" class="validate-required no-error" name="hotelRegion" data-province-id="{{provinceId}}" data-city-id="{{cityId}}" data-region-id="{{regionId}}")>
+          </div>
+        </div>
+      </dl>
+      <!--会议定点类型-->
+      {{#if placeTypes}}{{else}}
+        <dl>
+          <dt title="会议定点类型">会议定点类型:</dt>
+          <div class="attr-list">
+            <div class="list-more">
+              <dd class="attr-dd dd-cancel">
+                <label for="1" class="hide"><!--多选时显示-->
+                  <input type="checkbox" value="1" id="1" class="input-checkbox"> 综合性会议场所
+                </label>
+                <a class="js-fixed-type" data-id="1" href="javascript:void(0);">综合性会议场所</a>
+              </dd>
+              <dd class="attr-dd dd-cancel">
+                <label for="2" class="hide"><!--多选时显示-->
+                  <input type="checkbox" value="2" id="2" class="input-checkbox"> 专业会议场所
+                </label>
+                <a class="js-fixed-type" data-id="2" href="javascript:void(0);">专业会议场所</a>
+              </dd>
+              <dd class="attr-dd dd-cancel">
+                <label for="3" class="hide">
+                  <input type="checkbox" value="3" id="3" class="input-checkbox"> 农家乐
+                </label>
+                <a class="js-fixed-type" data-id="3" href="javascript:void(0);">农家乐</a>
+              </dd>
+            </div>
+          </div>
+          <!--点击多选btn，显示-->
+          <div class="mul-btns hide">
+            <button class="btn btn-small btn-primary js-mul-confirm" type="button">确定</button>
+            &nbsp;
+            <button class="btn btn-info btn-small js-mul-cancel" type="button">取消</button>
+          </div>
+          <!--多选-->
+          <dd class="more-options">
+            <button class="btn btn-info btn-small js-elects">多选</button>
+          </dd>
+        </dl>
+      {{/if}}
+      <!--酒店级别-->
+      {{#if starRatings}}{{else}}
+        <dl>
+          <dt title="酒店级别">酒店级别:</dt>
+          <div class="attr-list">
+            <div class="list-more">
+              <!--五星-->
+              <dd class="attr-dd dd-cancel">
+                <label for="55,54" class="hide"><!--多选时显示-->
+                  <input type="checkbox" value="55,54" id="55,54" class="input-checkbox"> 五星准五星
+                </label>
+                <a class="js-hotel-level" data-id="55,54" href="javascript:void(0);">五星准五星</a>
+              </dd>
+              <!--四星-->
+              <dd class="attr-dd dd-cancel">
+                <label for="45,44" class="hide">
+                  <input type="checkbox" value="45,44" id="45,44" class="input-checkbox"> 四星准四星
+                </label>
+                <a class="js-hotel-level" data-id="45,44" href="javascript:void(0);">四星准四星</a>
+              </dd>
+              <!--三星-->
+              <dd class="attr-dd dd-cancel">
+                <label for="35,34" class="hide">
+                  <input type="checkbox" value="35,34" id="35,34" class="input-checkbox"> 三星准三星
+                </label>
+                <a class="js-hotel-level" data-id="35,34" href="javascript:void(0);">三星准三星</a>
+              </dd>
+              <!--二星及以下-->
+              <dd class="attr-dd dd-cancel">
+                <label for="25,15,5" class="hide">
+                  <input type="checkbox" value="25,15,5" id="25,15,5" class="input-checkbox"> 二星及以下/经济型
+                </label>
+                <a class="js-hotel-level" data-id="25,15,5" href="javascript:void(0);">二星及以下/经济型</a>
+              </dd>
+            </div>
+          </div>
+          <!--点击多选btn，显示-->
+          <div class="mul-btns hide">
+            <button class="btn btn-small btn-primary js-mul-confirm" type="button">确定</button>
+            &nbsp;
+            <button class="btn btn-info btn-small js-mul-cancel" type="button">取消</button>
+          </div>
+          <!--多选-->
+          <dd class="more-options">
+            <button class="btn btn-info btn-small js-elects">多选</button>
+          </dd>
+        </dl>
+      {{/if}}
+      <!--是否加入出差定点-->
+      <dl class="business-fixed">
+        <dt title="出差定点">是否加入出差定点:</dt>
+        <div class="attr-list">
+          <div class="list-more">
+            <dd class="attr-dd dd-cancel">
+              <label for="businessTrip-yes"><input type="checkbox" id="businessTrip-yes" name="business-trip"
+                                                   value="1">&nbsp;</label>
+            </dd>
+          </div>
+        </div>
+      </dl>
+      <!--免费停车场-->
+      <dl class="free-park">
+        <dt title="免费停车场">免费停车场:</dt>
+        <div class="attr-list">
+          <div class="list-more">
+            <dd class="attr-dd dd-cancel">
+              <label><input type="checkbox" name="free-park-select">&nbsp;</label>
+            </dd>
+          </div>
+        </div>
+      </dl>
+      <!--关键字搜索：酒店名称、地址-->
+      <dl class="search-hot">
+        <dt title="关键字"><label for="hot-search" style="color: #666;">关键字:</label></dt>
+        <div class="attr-list">
+          <div class="list-more">
+            <input type="text" id="hot-search" placeholder="酒店名称、地址"><!--回车键绑定事件-->
+          </div>
+        </div>
+      </dl>
+    </div>
+    <div class="filter">
+      <div class="filter-banner">
+        <a class="filter-key filter-active" href="javascript:void(0);" data-qid="0">综合</a><!--默认星级排序-->
+        <a class="filter-key" href="javascript:void(0);" data-qid="1">价格
+          <i id="price-up" class="icon-zcy icon-xiangshangzhedie" data-orderid="1"></i><!--升序-->
+          <i id="price-down" class="icon-zcy icon-xiangxiazhedie" data-orderid="-1"></i><!--降序-->
+        </a>
+      </div>
+      <form class="form filter-form">
+        <fieldset>
+          <span class="price-search">
+            <label>
+              <input type="number" class="input-small p_f" name="p_f" value="{{p_f}}" placeholder="¥"><span id="forins">-</span><input
+                type="number" class="input-small p_t" name="p_t" value="{{p_t}}" placeholder="¥">
+              <button type="submit" class="btn btn-small btn-primary" id="js-price-range">搜索</button>
+            </label>
+          </span>
+        </fieldset>
+      </form>
+    </div>
+    <div class="hotel-restful-container">
+      <div class="list clearfix">
+        <ul class="view-thumb">
+          {{#each _DATA_.data}}
+            <li class="hotel-item">
+              <div class="hotel-image">
+                <a href="/fixed/hotel-service/detail?supplierId={{supplierId}}&protocolId={{protocolId}}"
+                   target="_blank">
+                  <img src="{{cdnPath hotelPhotos.0.url}}" alt="{{name}}" width="206" height="206">
+                </a>
+              </div>
+              <div class="hotel-info" data-placetype="{{placeType}}">
+                <p class="hotel-name">
+                  <a href="/fixed/hotel-service/detail?supplierId={{supplierId}}&protocolId={{protocolId}}"
+                     target="_blank" title="{{name}}">{{name}}</a>
+                </p>
+                <p class="hotel-tax" title="{{companyName}}">开票单位: {{companyName}}</p>
+                <p class="hotel-addr" title="{{address}}">[{{regionName}}]&nbsp;{{address}}</p>
+                <p class="hotel-level">
+                  <a style="display:none;" href="/fixed/empty-room?supplierId={{supplierId}}&protocolId={{protocolId}}"
+                     class="link-room-vacant" target="_blank">空房查询</a>
+                </p>
+                {{#equals placeType 1}}
+                  <p>标准间:&nbsp;<span class="hotel-price hotel-currency">¥{{formatPrice roomNegotiatedRate}}</span></p>
+                  <p class="price-line">会议室:&nbsp;<span class="hotel-price">¥{{formatPrice meetingRoomNegotiatedRate}}</span></p>
+                  <p class="price-line">餐饮折扣率:&nbsp;<span class="hotel-price">{{formatPrice discountRate}}%</span></p>
+                {{else}}
+                  {{#equals placeType 2}}
+                    <p>会议室:&nbsp;<span class="hotel-price">¥{{formatPrice meetingRoomNegotiatedRate}}</span></p>
+                  {{else}}
+                    <p>标准间:&nbsp;<span class="hotel-price hotel-currency">¥{{formatPrice roomNegotiatedRate}}</span></p>
+                    <p class="price-line">会议室:&nbsp;<span class="hotel-price">¥{{formatPrice meetingRoomNegotiatedRate}}</span></p>
+                  {{/equals}}
+                {{/equals}}
+              </div>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+      <div class="hotel-list-pagination">
+        <div class="pagination" data-size="{{#if pageSize ~}}{{pageSize}}{{else}}10{{~/if}}"
+             data-total="{{_DATA_.total}}"></div>
+      </div>
+    </div>
+  </div>
+{{/component}}

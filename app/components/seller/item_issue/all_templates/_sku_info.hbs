@@ -1,0 +1,78 @@
+<td class="center-text">
+  <div class="td-inner-line">
+    <label class="control-group line-h-32">
+      {{#equals ptype 4}}{{else}}<b class="required">*</b>{{/equals}}销售价&nbsp;&nbsp;
+      <input type="text" maxlength="9"
+             class="sku-price-input js-sku-price {{#equals ptype 4}}{{else}}js-need-validated{{/equals}}"
+             pattern="^\d+(\.\d{0,2})?$"
+             data-price=""
+             value=""
+             placeholder="请输入数字"
+             {{#equals ptype 4}}disabled{{else}}required{{/equals}}>&nbsp;元
+      <span class="note-error note-icon hint--top" aria-label="请输入数字">
+        <i class="icon-pokeball icon-pokeball-error "></i>
+      </span>
+    </label>
+  </div>
+  {{#of ptype '3,4'}}
+  {{else}}
+    <div class="td-inner-line">
+      <label class="control-group line-h-32">
+        {{#of ptype "2,6"}}
+          <b class="required">*</b>
+        {{/of}}
+        电商平台价&nbsp;&nbsp;
+        <input type="text" maxlength="9"
+               class="sku-price-input js-sku-platform-price {{#of ptype "2,6"}}js-need-validated{{/of}}"
+               pattern="^\d+(\.\d{0,2})?$" value=""
+               placeholder="请输入数字"
+            {{#of ptype "2,6"}}
+               required
+            {{/of}}>&nbsp;元
+        <span class="note-error note-icon hint--top" aria-label="请输入数字">
+        <i class="icon-pokeball icon-pokeball-error "></i>
+      </span>
+      </label>
+    </div>
+  {{/of}}
+</td>
+<td class="center-text">
+  <div class="td-inner-line">
+    <label class="control-group line-h-32">
+      <b class="required">*</b>
+      <input  type="text" 
+              class="sku-code-input js-sku-code js-need-validated"
+              pattern="^.{1,40}$"
+              data-url="/api/seller/items/check-singleSkuCode"
+              data-method="post"
+              data-key="skuCode"
+              required>
+      <span class="note-error note-icon hint--top" aria-label="sku编码不合法或已经存在" style="margin-left: -24px; padding-right: 4px;">
+        <i class="icon-pokeball icon-pokeball-error "></i>
+      </span>
+    </label>
+  </div>
+</td>
+{{#if showStocks}}
+  <td class="center-text">
+    <div class="td-inner-line">
+      <select class="js-warehouse-select">
+        {{#each warehouses}}
+          <option value="{{code}}">{{name}}</option>
+        {{/each}}
+      </select>
+      <input type="hidden" name="warehouseCode" value="{{warehouses.[0].code}}">
+      <span class="control-group">
+      <input type="text" class="stock-quantity-input js-stock-quantity js-need-validated" pattern="^\d+$" value="">
+        <span class="note-error note-icon hint--top" aria-label="请输入数字" style="margin-left: -24px; padding-right: 0;">
+          <i class="icon-pokeball icon-pokeball-error "></i>
+        </span>
+      </span>
+    </div>
+  </td>
+{{else}}
+  <input type="hidden" name="warehouseCode" value="{{warehouses.[0].code}}">
+  <input type="hidden" class="js-stock-quantity" value="">
+{{/if}}
+
+

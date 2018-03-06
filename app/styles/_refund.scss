@@ -1,0 +1,115 @@
+@import "compass/css3/inline-block";
+@import "pokeball/theme";
+
+.refund-manage {
+  .table-control {
+    text-align: right;
+    padding: 10px 20px 5px;
+  }
+  .table  {
+    // width: 869px;
+    border-color: $color-border;
+
+    td.order-status {
+      border: 1px solid $color-border;
+    }
+  }
+
+  .trade-status-select {
+    width: 130px;
+  }
+
+  .left-text {
+    padding-left: 20px;
+  }
+
+  .set-height-tr{
+    td{
+      padding: 0;
+      height:10px;
+    }
+  }
+
+  .refund-info-tr{
+    background-color: $color-background;
+
+    td{
+      border: 1px solid $color-border;
+      height: 45px;
+      padding: 0 20px;
+
+      .address {
+        float: right;
+      }
+
+      i{
+        @include inline-block(top);
+      }
+    }
+  }
+
+  .refund-tr{
+    >td{
+      border-color: $color-border;
+      vertical-align: top;
+    }
+  }
+
+  .refund-reason {
+    border-left-width: 1px !important;
+    border-left: 1px solid $color-border;
+  }
+
+  .order-pagination{
+    margin: 20px 0;
+    text-align: right;
+  }
+}
+
+.return-detail{
+  .light-background{
+    border: 1px solid #ffe2ae;
+    background-color: #fff9ed;
+    box-shadow: 3px 3px 3px $color-background;
+  }
+  .font-14{
+    font-size: 14px;
+  }
+  .detail-base{
+    margin: 10px 0;
+    padding: 10px;
+    hr{
+      border: 1px dashed $color-border;
+    }
+  }
+  .detail-main{
+    margin-bottom: 40px;
+    background: $color-background;
+    padding: 1px 10px;
+    .background-white{
+      background-color: white;
+      padding: 10px;
+    }
+    .details{
+      margin-bottom: 10px;
+
+      span{
+        margin-top: 5px;
+        @include inline-block(baseline);
+      }
+
+      .orders-table{
+        // width: 940px;
+        margin-bottom: 0;
+      }
+
+      .items-table{
+        width: 800px;
+      }
+
+      .item-description{
+        width: 250px;
+      }
+    }
+  }
+}

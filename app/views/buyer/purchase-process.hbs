@@ -1,0 +1,5 @@
+{{#partial "realTitle"}}确定预购单{{/partial}}
+{{#partial "realBody"}}
+  {{inject "buyer/purchase_process/purchase_order_detail" purchaserId=_USER_.id orgId=_USER_.orgId purchaseId=purchaseId  checked=false user=_USER_}}
+{{/partial}}
+{{> user_layout}}

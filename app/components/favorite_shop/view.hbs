@@ -1,0 +1,29 @@
+{{#component "favorite-shop trade-manage js-comp"}}
+  <div class="trade-panel">
+    <div class="trade-panel-top">
+      <div class="trade-panel-title">我关注的店铺</div>
+      <button class="btn btn-info start-manage js-manage-shops">批量管理</button>
+      <div class="manage-btns">
+        <label><input type="checkbox" class="input-checkbox js-batch-select-shop">全选</label>&nbsp;&nbsp;
+        <button class="btn btn-info js-delete-favor">取消关注</button>
+        <button class="btn btn-info js-end-manage">结束管理</button>
+      </div>
+    </div>
+    <div class="trade-panel-body">
+      <div class="favorite-list"></div>
+
+      <div class="shops-pagination"></div>
+    </div>
+  </div>
+  <div class="trade-panel">
+    <div class="trade-panel-top">
+      <div class="trade-panel-title">根据历史成交为您推荐</div>
+    </div>
+    <div class="trade-panel-body">
+      <div class="recommend-list">
+
+
+      </div>
+    </div>
+  </div>
+{{/component}}

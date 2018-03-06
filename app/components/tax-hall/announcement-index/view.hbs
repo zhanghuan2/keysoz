@@ -1,0 +1,30 @@
+{{#component "component-tax-hall-notice js-comp"}}
+<section>
+  <div class="hide">{{json}}</div>
+  {{!-- <input type="hidden" id="districtId" value="{{_USER_.districtId}}"> --}}
+  <input type="hidden" id="lasvegasPath" value="{{_ENV_HREF_.lasvegas}}">
+  <input type="hidden" id="inquiryPath" value="{{_ENV_HREF_.inquiryhall}}">
+  <input type="hidden" id="ctaxccgphall" value="{{_ENV_HREF_.ctaxccgphall}}">
+  <div class="component-tax-hall-notice">
+    <div><span class="notice-title">采<span class='notice-title-split'>/</span>购<span class='notice-title-split'>/</span>公<span class='notice-title-split'>/</span>告</span></div>
+    <div class ="notice-block notice-left">
+      {{inject "tax-hall/announcement-index/announce-wrapper" 
+        title="最新竞价"
+        host=_ENV_HREF_.inquiryhall
+        moreUrl="/lasvegas/ctax/api/protocol/announcement/initHall?page=1"
+        tableTitle="采购需求"
+        tableTime="离报价截止时间"
+      }}
+    </div>
+    <div class ="notice-block">
+      {{inject "tax-hall/announcement-index/announce-wrapper" 
+        title="采购结果"
+        host=_ENV_HREF_.inquiryhall
+        moreUrl="/lasvegas/ctax/api/protocol/announcement/initHall?page=2"
+        tableTitle="采购结果"
+        tableTime="公告时间"
+      }}
+    </div>
+  </div>
+</section>
+{{/component}}

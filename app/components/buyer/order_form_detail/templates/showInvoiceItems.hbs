@@ -1,0 +1,57 @@
+<div class="modal pur-modal">
+  <div class="modal-header">
+    <h2>已关联发票的商品</h2>
+  </div>
+  <div class="invoice-items-lists" data-req-lists-total="{{_DATA_.total}}" data-invoiceid="{{_DATA_.itemId}}">
+    <div class="invoice-items">
+      <div class="modal-body clearfix">
+        <div><strong><span class="req-title">商品清单</span></strong></div>
+        {{!-- {{json _DATA_}} --}}
+        <table class="table  center-tex invoice-item-table">
+          <thead>
+            <tr>
+              <th class="left-text" colspan="1" width="350"> <span class="">商品信息</span> </th>
+              <th width="200">单价(元)</th>
+              <th width="100">数量</th>
+              <th width="100" class="last">小计(元)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each _DATA_.data}}
+              <tr class="item-tr" data-skuid="{{skuId}}" data-id="{{id}}" data-itemid={{itemId}}>
+                {{!-- <td width="24" class="check"><input type="checkbox" class="js-select-item"></td> --}}
+                <td><span>{{itemName}}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sku-attrs">{{#each attributeMap}}{{this}}&nbsp;&nbsp;{{/each}}</td>
+                <td><div><span class="price">{{_CURRENCY_}}</span><span class="price item-price">{{formatPrice skuPrice}}</span></div></td>
+                <td>
+                  {{!-- <div class="input-amount" data-min="0" data-max="{{subItemCount}}">
+                    <a href="javascript:void(0);" class="minus {{#equals quantity 0}}disabled{{/equals}}" >-</a>
+                    <input type="number" class="count-number" value="{{quantity}}" data-old="{{quantity}}" data-init="{{quantity}}">
+                    <a href="javascript:void(0);" class="plus {{#equals quantity subItemCount}}disabled{{/equals}}">+</a>
+                  </div> --}}
+                  {{quantity}}
+                </td>
+                <td class="last">
+                  <span class="price">{{_CURRENCY_}}</span><span class="price item-price">{{formatPrice fee}}</span>
+                </td>
+              </tr>
+            {{else}}
+              <tr><td colspan="4">无可展示信息</td></tr>
+            {{/each}}
+          </tbody>
+        </table>
+        <div class="selected-pagination pagination-danger clearfix"></div>
+      </div>
+      <div class="modal-footer">
+        <div class="modal-footer-option">
+          <button class="btn btn-success btn-medium js-invoice-items-submit">确定</button>
+          <button class="btn btn-info btn-medium close">取消</button>
+        </div>
+        <div style="float: left; line-height:40px;">
+          <label for="select-batch"><input type="checkbox" id="select-batch" class="js-batch-select input-checkbox">全选</label>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <label class="js-select-item-info"></label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

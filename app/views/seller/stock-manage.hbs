@@ -1,0 +1,18 @@
+{{#partial "realTitle"}}库存管理{{/partial}}
+{{#partial "realBody"}}
+  {{#inject "common/breadcrumb"}}
+    {
+      "breadcrumb":
+      [{
+        "crumb": "库存管理",
+        "url": "#"
+      },
+      {
+        "crumb": "库存管理",
+        "url": "#"
+      }]
+    }
+  {{/inject}}
+{{inject "seller/stock_manage"}}
+{{/partial}}
+{{>user_layout}}

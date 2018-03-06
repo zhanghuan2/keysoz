@@ -1,0 +1,16 @@
+<div class="form-section clearfix">
+  <div class="section-title pull-left">销售规格</div>
+  <div class="pull-left section-content">
+    <div class="sku-attributes attribute-area js-attribute-area" id="js-sku-attribute-area" {{#if spuId}}data-spu="true"{{/if}}>
+      {{#if skuAttrs}}
+        {{#each skuAttrs}}
+          {{> seller/item_issue/all_templates/_sku_attr}}
+        {{/each}}
+      {{else}}
+        {{#each categoryAttributeWithProperties}}
+          {{> seller/item_issue/all_templates/_sku_attr}}
+        {{/each}}
+      {{/if}}
+    </div>
+  </div>
+</div>

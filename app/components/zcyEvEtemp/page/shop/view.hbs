@@ -1,0 +1,51 @@
+{{#component "ZCY-eevee-page-shop js-comp"}}
+  <div class="eevee-clu-line-header eevee-grids">
+    <div class="eevee-col-row" style="margin:25px 0">
+      <div class="eevee-col-box" style="">
+        {{#inject 'zcyEvEtemp/comps/normalLogo'}}
+          {
+            "name": "网上超市"
+          }
+        {{/inject}}
+      </div>
+      <div class="eevee-col-box" style="margin-left: 273px;margin-right: 25px;">
+        {{inject 'zcyEvEtemp/comps/normalSearch'}}
+      </div>
+      <div class="eevee-col-box" style="">
+        {{inject 'zcyEvEtemp/comps/cart'}}
+      </div>
+    </div>
+    <div class="eevee-clu-line-tabs eevee-grids" style="background: url('/lunatone/assets/images/other-images/shopBGM.png');height:120px;background-size: 100%;">
+      <div class="eevee-col-row" style="padding: 22px 0;">
+        {{inject 'zcyEvEtemp/comps/supplierMsg'}}
+      </div>
+    </div>
+    <div class="eevee-clu-line-tabs eevee-grids" style="background-image: linear-gradient(-90deg, #0876FF 1%, #03B0FF 98%);">
+      <div class="eevee-col-row" style="padding: 0;">
+        {{#inject 'zcyEvEtemp/comps/tabline'}}
+          {
+          "active":1
+          }
+        {{/inject}}
+      </div>
+    </div>
+
+    <div class="eevee-clu-line-tabs eevee-grids">
+      <div class="eevee-col-row" >
+        {{#inject 'common/goodsSearchContainer'}}
+          {
+            "searchType":1,
+            "width":"205px",
+            "marginTop":"16px"
+          }
+        {{/inject}}
+      </div>
+    </div>
+    <div class="eevee-clu-line-tabs eevee-grids" style="background-color: rgb(245, 245, 245);">
+      <div class="eevee-col-row">
+        {{inject 'common/page_bottom'}}
+      </div>
+    </div>
+
+  </div>
+{{/component}}

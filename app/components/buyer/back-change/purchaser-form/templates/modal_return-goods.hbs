@@ -1,0 +1,52 @@
+<div class="modal buyer_back-change_purchaser-form return-goods">
+
+    {{!标题}}
+    <div class="modal-header">
+        <label class="modal-title">选择商品</label><a href="javascript:;" class="close">×</a>
+    </div>
+
+    {{!内容}}
+    <div class="modal-body component-body form">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td><label><input class="input-checkbox action-select-all" type="checkbox"> 选择</label></td>
+                    <td>商品名称</td>
+                    <td>单价（元）</td>
+                    <td>总数量</td>
+                    <td>采购计划</td>
+                    <td>数量</td>
+                    <td>退货数量</td>
+                    <td>换货数量</td>
+                </tr>
+            </thead>
+            <tbody>
+
+                {{{data}}}
+
+            </tbody>
+            <tfoot>
+                <tr>
+
+                    {{!全选}}
+                    <td>
+                        <label><input class="input-checkbox action-select-all" type="checkbox"> 全选</label>
+                    </td>
+
+                    {{!分页}}
+                    <td colspan="7">
+                        <div class="list-pagination pagination-danger clearfix" data-total="{{total}}" data-size="4"></div>
+                    </td>
+
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    {{!行为}}
+    <div class="modal-footer text-right">
+        <input name="cancel-btn" class="btn btn-secondary close" type="button" value="取消">
+        <input name="accept-btn" class="btn btn-primary action-submit" type="button" value="确认">
+    </div>
+
+</div>

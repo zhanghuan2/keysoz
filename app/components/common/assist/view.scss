@@ -1,0 +1,205 @@
+.assist{
+  .mascot{
+    position: fixed;
+    bottom: -20px;
+    right: 22px;
+    z-index: 888;
+    cursor: pointer;
+  }
+  .assist-menu {
+    position: fixed;
+    bottom: 20px;
+    right: 22px;
+    z-index: 888;
+    cursor: pointer;
+    display: none;
+    width: 50px;
+    >li {
+      height: 50px;
+      display: inline-block;
+      &.menu {
+        background-color: #ffffff;
+        font-size: 12px;
+        padding: 8px 12px;
+        color: #999;
+        border: 1px solid #DDDDDD;
+        >a{
+          color: #999;
+        }
+        & + .menu{
+          border-top: 0;
+        }
+        &:hover {
+          background-color:#4990E2;
+          color: #ffffff;
+          >a {
+            color: #ffffff;
+          }
+        }
+      }
+      >i {
+        font-size: 50px;
+        height: 50px;
+        display: inline-block;
+        color: #99AAC0;
+        position: relative;
+        top: 20px;
+      }
+    }
+  }
+  .pop-over{
+    background-color: #4990E2;
+    width: 200px;
+    color: #ffffff;
+    position: fixed;
+    bottom: 70px;
+    right: 30px;
+    padding: 9px;
+    border-radius: 5px;
+    font-size: 14px;
+    z-index: 888;
+    .triangle{
+      border: 7px solid transparent;
+      border-top: 10px solid #4990E2;
+      width: 0;
+      height: 0px;
+      position: absolute;
+      bottom: -15px;
+      right: 12px;
+    }
+  }
+}
+.modal-questions{
+  width: 250px;
+  height: 170px;
+  z-index: 999;
+  left:auto!important;
+  top:auto!important;
+  bottom: 70px!important;
+  position: fixed;
+  right: 80px!important;
+  >.modal-header{
+    border-bottom: 0;
+    padding: 5px 10px;
+    background-color: #4990E2;
+    color: #ffffff;
+    vertical-align: bottom;
+    font-size: 12px;
+    >.change{
+      color: inherit;
+      font-size: 12px;
+      line-height: 20px;
+      vertical-align: bottom;
+      text-decoration: underline;
+      margin-right: 5px;
+    }
+  }
+  >.modal-body{
+    min-height: 100px;
+    color: #333333;
+    font-size: 14px;
+    padding: 10px;
+    >ul{
+      height: 115px;
+      overflow-y: hidden;
+      >li{
+        padding-bottom: 5px;
+        width: 230px;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        cursor: pointer;
+        &:hover{
+          color: #4a90e2;
+        }
+      }
+    }
+  }
+}
+.assist-detail{
+  >.modal{
+    width: 550px;
+    z-index: 999;
+    bottom: 70px;
+    right: 332px;
+    position: fixed;
+    box-shadow: 0 0 6px #999999;
+    >.modal-header{
+      font-size: 18px;
+      border-bottom: 0;
+      color: #333;
+      font-weight: bold;
+      >.close{
+        color: #aaaaaa
+      }
+    }
+    >.modal-body{
+      padding-top: 0;
+      >.link{
+        padding-top: 15px;
+        font-size: 12px;
+      }
+      >p {
+        word-wrap: break-word;
+      }
+      .container{
+        width:510px;
+        height:180px;
+        -webkit-box-sizing:border-box;
+        -moz-box-sizing:border-box;
+        box-sizing:border-box;
+        text-align: center;
+        position: relative;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 15px;
+      }
+      .slider_wrapper{
+        overflow: hidden;
+        position:relative;
+        height:160px;
+        top:auto;
+      }
+      .image-slider{
+        position: relative;
+        height: auto;
+        list-style: none;
+        overflow: hidden;
+        float: left;
+        padding:0px;
+        margin:0px;
+        >li{
+          position: relative;
+          float: left;
+          >img{
+            width: 510px;
+            height: 160px;
+          }
+        }
+      }
+      .pager{
+        /* firefox has different center method. this doesn't work for fire fox */
+        /* not in the center*/
+        position:absolute;
+        right: 5px;
+        bottom: 0;
+         li{
+          padding: 0px;
+          margin:5px;
+          width:8px;
+          height:8px;
+          border:1px solid #aaa;
+          list-style: none;
+          float:left;
+          cursor: pointer;
+          &.active{
+            background-color: #4990E2;
+            border-color: #4990E2;
+          }
+          &:hover{
+            opacity:0.9;
+          }
+        }
+      }
+    }
+  }
+}

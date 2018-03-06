@@ -1,0 +1,19 @@
+{{#component "ZCY-select-test js-comp"}}
+  <input type="hidden" id="ptype" value="{{ptype}}">
+  <div class="component-header">
+    <span class="component-title">
+      {{#equals ptype 5}}
+        发布SPU
+      {{else}}
+        发布商品
+      {{/equals}}
+    </span>
+  </div>
+  <div class="component-body">
+    {{#inject 'common/busniss-comp/select_category'}}
+      {
+        "ptype":9
+      }
+    {{/inject}}
+  </div>
+{{/component}}

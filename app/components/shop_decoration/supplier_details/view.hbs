@@ -1,0 +1,96 @@
+{{#component "supplier-details js-comp"}}
+  <div style="display: none">{{json}}</div>
+  <input class="supplier-details-tags" value="{{json _TAGS_}}" type="hidden">
+  <!--制造馆-->
+  {{#each _SELLER_DATA_.tags}}
+      {{#equals this "zzg"}}
+          <div class="manu-title">
+              {{#equals ../_SELLER_DATA_.supplierTypeCode "1"}}
+                  <div><img src="/lunatone/assets/images/other-images/supplier-type1.png" alt=""></div>
+              {{else}}
+                  <div><img src="/lunatone/assets/images/other-images/supplier-type2.png" alt=""></div>
+              {{/equals}}
+          </div>
+      {{/equals}}
+  {{/each}}
+  <!--制造馆-->
+<div class="seller-title">
+  <div class="shop-image">
+    <img src="{{_SELLER_DATA_.logoPath}}" alt="">
+  </div>
+  <span class="store-name">
+    {{#if _SELLER_DATA_.abbreviation}}
+      {{_SELLER_DATA_.abbreviation}}
+    {{else if _SELLER_DATA_.name}}
+      {{_SELLER_DATA_.name}}
+    {{else}}政采云商家{{/if}}
+  </span>
+</div>
+<div class="seller-info-content">
+  <ul class="info-ul">
+    <li class="arrow-content-table info-li hide-ellipsis supplier-avg-score-box" {{#equals _DATA_.item.tags.vaccine 1}}style="display: none"{{/equals}}>
+        <div class="js-supplier-avg-score-li">
+            {{#each _DATA_}}
+                <div class="arrow-content js-supplier-avg-score-div" data-targetid="{{targetId}}"><span class="content-span js-target-name">{{targetName}}</span><br><span class="js-average-score">{{averageScore}}<i class="icon-zcy"></i></span></div>
+            {{/each}}
+            {{#each _AVG_}}
+                <input type="hidden" name="totalAvgScore" data-targetname="{{targetName}}" targetid="{{targetId}}" value="{{averageScore}}" >
+            {{/each}}
+        </div>
+    </li>
+    <li class="info-li" title="{{#if _SELLER_DATA_.contactPhone}}{{_SELLER_DATA_.contactPhone}}{{else}}暂无联系电话{{/if}}"><i class="icon-phone info-icon"></i>联系电话:{{#if _SELLER_DATA_.contactPhone}}{{_SELLER_DATA_.contactPhone}}{{else}}暂无联系电话{{/if}}</li>
+    <li class="info-li hide-ellipsis"><i class="icon-model info-icon"></i>经营模式：{{#if _SELLER_DATA_.supplierType}}{{_SELLER_DATA_.supplierType}}{{else}}批发经销{{/if}}{{#equals _SELLER_DATA_.auditStatus "DONE"}} <i class="icon-audit"></i>{{/equals}}</li>
+    {{!--<li class="info-li hide-ellipsis"><i class="icon-location1 info-icon"></i>{{#if _SELLER_DATA_.affiliationLocName}}所在地区：{{_SELLER_DATA_.affiliationLocName}}{{else}}所在地区：浙江省杭州市西湖区{{/if}}</li>--}}
+    <li class="info-li hide-ellipsis" style="text-align: center;">
+      <button class="btn btn-info js-enter-shop" data-shop-id="{{shopId}}" >进入店铺</button>
+      {{#of "1" _ROLES_}}
+        <button class="btn btn-info js-add-favor" data-user-id="{{_USER_.id}}" data-shop-id="{{shopId}}" >关注店铺</button>
+      {{else}}
+        {{#unless _USER_}}
+          <button class="btn btn-info js-add-favor" data-user-id="{{_USER_.id}}" data-shop-id="{{shopId}}" >关注店铺</button>
+        {{/unless}}
+      {{/of}}
+    </li>
+  </ul>
+</div>
+{{#gt (add (size _SELLER_DATA_.qqMaps) (size _SELLER_DATA_.wangwangMaps)) 0}}
+<div class="seller-info-content last clearfix" style="text-align: center;">
+{{#gt (size _SELLER_DATA_.wangwangMaps) 0}}
+    <div class="contact-box-warp wangwang-warp">
+        <select class="js-select" data-type="ww">
+            <option>旺旺</option>
+            {{#each _SELLER_DATA_.wangwangMaps}}
+                <option data-name="{{name}}" data-code="{{code}}">
+                    {{name}}
+                </option>
+            {{/each}}
+        </select>
+    </div>
+{{/gt}}
+{{#gt (size _SELLER_DATA_.qqs) 0}}
+    <div class="contact-box-warp qq-warp">
+        <select class="js-select" data-type="qq">
+            <option>QQ</option>
+            {{#each _SELLER_DATA_.qqMaps}}
+                <option data-name="{{name}}" data-qqid="{{code}}" data-site="{{@root._HREF_.main}}">
+                    {{name}}
+                </option>
+            {{/each}}
+        </select>
+    </div>
+{{/gt}}
+</div>
+{{/gt}}
+{{#gt (size _SELLER_DATA_.services) 0}}
+  <div class="seller-info-content last-seller-info last">
+    <ul class="clearfix">
+      {{#each _SELLER_DATA_.services}}
+        <li class="pull-left service-item">
+          <div class="service-logo"><img class="icon-zcy" src="https://sitecdn.zcy.gov.cn/{{logoPath}}" style="width: 22px;height: 22px;"></div>
+          <span class="service-title">{{title}}</span>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+{{/gt}}
+{{/component}}

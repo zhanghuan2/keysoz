@@ -1,0 +1,76 @@
+{{#partial "realTitle"}}{{#if spuAuditId}}查看SPU{{else}}申请SPU{{/if}}{{/partial}}
+{{#partial "realBody"}}
+  {{#if spuId}}
+    {{#if update}}
+      {{#inject "common/breadcrumb"}}
+        {
+        "breadcrumb":
+        [{
+        "crumb": "商品管理",
+        "url": "#"
+        },
+        {
+        "crumb": "SPU申请",
+        "url": "#"
+        },{
+        "crumb": "变更SPU",
+        "url": "#"
+        }]
+        }
+      {{/inject}}
+    {{else}}
+      {{#inject "common/breadcrumb"}}
+        {
+        "breadcrumb":
+        [{
+        "crumb": "商品管理",
+        "url": "#"
+        },
+        {
+        "crumb": "SPU申请",
+        "url": "#"
+        },{
+        "crumb": "查看SPU",
+        "url": "#"
+        }]
+        }
+      {{/inject}}
+    {{/if}}
+  {{else if spuAuditId}}
+    {{#inject "common/breadcrumb"}}
+      {
+      "breadcrumb":
+      [{
+      "crumb": "商品管理",
+      "url": "#"
+      },
+      {
+      "crumb": "SPU申请",
+      "url": "#"
+      },{
+      "crumb": "查看申请",
+      "url": "#"
+      }]
+      }
+    {{/inject}}
+  {{else}}
+    {{#inject "common/breadcrumb"}}
+      {
+      "breadcrumb":
+      [{
+      "crumb": "商品管理",
+      "url": "#"
+      },
+      {
+      "crumb": "SPU申请",
+      "url": "#"
+      },{
+      "crumb": "新增SPU",
+      "url": "#"
+      }]
+      }
+    {{/inject}}
+  {{/if}}
+  {{inject "seller/item_issue/common"}}
+{{/partial}}
+{{> user_layout}}

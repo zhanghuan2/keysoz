@@ -1,0 +1,23 @@
+{{#component "manufacturer-elevator-floor js-comp"}}
+  <p class="hide">{{json this}}</p>
+  <input type="hidden" class="js-items-id" value="{{itemWhiteList}}">
+  <input type="hidden" class="js-brands-id" value="{{brandWhiteList}}">
+  <div class="floor-item js-floor-item" data-name="{{floorName}}" data-id="js-floor-{{floorName}}">
+    <div class="floor-body clearfix">
+      <div class="floor-left" style="background-image: url('{{mainImg}}')">
+        <a href="{{#if mainUrl}}{{mainUrl}}{{else}}javascript:void(0);{{/if}}">
+          <div class="floor-name">{{floorName}}</div>
+          <div class="floor-tags">
+            {{#each keyWords}}
+              <span class="keyWord js-keyword-search">{{this}}</span>
+            {{/each}}
+          </div>
+        </a>
+      </div>
+      <div class="floor-products">
+      </div>
+      <div class="floor-brands">
+      </div>
+    </div>
+  </div>
+{{/component}}

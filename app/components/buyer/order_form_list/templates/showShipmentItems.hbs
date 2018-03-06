@@ -1,0 +1,187 @@
+<div class="modal pur-modal show-shipment-items-modal">
+  <div class="modal-header">
+  {{!-- {{json this}} --}}
+    <h2>商品发货</h2>
+  </div>
+  <div class="modal-items-lists" data-req-lists-total="{{_DATA_.total}}" data-deliveryid="{{_DATA_.deliverId}}" data-ordertype="{{_DATA_.orderType}}" data-orderid={{_DATA_.orderId}}>
+    <div class="modal-items">
+      <div class="modal-body">
+        <div class="select-address-div">
+        <div class="title"><p class="order-title">选择收货地址</p></div>
+        <div class="block select-address-item" data-default-deliverid="{{_DATA_.deliverId}}">
+          {{#each _DATA_.deliverys}}
+            <input type="radio" name="chooseAddr" id="select-address{{id}}" class="js-select-address input-radio" data-deliverid="{{id}}" value="{{id}}"/>
+            <label for="select-address{{id}}">
+              <span data-provinceid="{{provinceId}}">{{province}}</span>
+              <span data-cityid="{{cityId}}">{{city}}</span>
+              <span class="js-get-regionid" data-regionid="{{regionId}}" data-id="{{id}}">{{region}}</span>
+              <span data-streetid="{{streetId}}">{{street}}</span>
+              {{detail}}&nbsp;&nbsp;&nbsp;&nbsp;
+              邮编：{{zip}}&nbsp;&nbsp;&nbsp;&nbsp;
+              {{receiver}}&nbsp;&nbsp;&nbsp;&nbsp;
+              {{mobile}}
+            </label><br/>
+          {{/each}}
+        </div>
+        </div>
+        <div class="js-item-list clearfix">
+          <div><p class="order-title">选择发货单商品</p></div>
+          {{#ifCond _DATA_.orderType '!=' 1}}
+            <div>
+              <p>
+                <span class="required">*</span>发货仓库：
+                <select class="js-all-select-warehouse">
+                  <option value="">请选择</option>
+                </select>
+                <span class="note js-select-note">请选择发货仓库</span>
+              </p>
+            </div>
+          {{/ifCond}}
+          <table class="table delivery-item-table js-delivery-item-table disabled">
+            <thead>
+              <tr>
+                {{#ifCond _DATA_.isReissue '!=' true}}
+                  <th class="left-text" width="24">
+                    {{!-- {{#equals _DATA_.isReissue true}}{{else}}<input type="checkbox" id="select-batch" class="js-batch-select input-checkbox">{{/equals}} --}}
+                  </th>
+                {{/ifCond}}
+                <th class="left-text" width="256"><label for="select-batch">商品</label></th>
+                <th width="130">商品编号</th>
+                <th width="100">单价(元)</th>
+                <th width="130">总数量</th>
+                <th width="140">数量</th>
+                {{#equals _DATA_.orderType 1}}
+                  <th width="120" class="last">主/配件</th>
+                {{else}}
+                  <th width="180">锁定仓库</th>
+                  <th width="100" class="last">发货仓库</th>
+                {{/equals}}
+              </tr>
+            </thead>
+            <tbody>
+              {{#each _DATA_.deliveryItemWarehouses.data}}
+                {{#equals ../_DATA_.orderType 1}}
+                  <tr class="item-tr js-item-tr-{{skuId}} js-item-tr item-shipment-tr" data-id="{{id}}"
+                      data-order-delivery-id="{{orderDeliveryId}}" data-skuid="{{skuId}}" data-itemid={{itemId}}>
+                    {{#ifCond ../_DATA_.isReissue '!=' true}}
+                      <td width="24" class="check">
+                        <input type="checkbox" class="js-select-item input-checkbox">
+                      </td>
+                    {{/ifCond}}
+                    <td class="left-text item-name-td">
+                      <div>{{itemName}}</div>
+                      <span class="sku-attrs">{{#each attributeMap}}{{@key}}:{{this}}&nbsp;&nbsp;{{/each}}</span>
+                    </td>
+                    <td>{{itemId}}</td>
+                    <td>
+                      <span class="price">{{_CURRENCY_}}</span>
+                      <span class="price item-price">{{formatPrice skuPrice}}</span>
+                    </td>
+                    <td>{{waitDeliveryQuantity}}</td>
+                    <td>
+                      {{#equals ../_DATA_.isReissue true}}
+                        <label for="" class="waitdeliveryquantity">{{waitDeliveryQuantity}}</label>
+                      {{else}}
+                        <div class="input-amount js-quantity-{{skuId}}" data-min="0" data-max="{{waitDeliveryQuantity}}">
+                          <a href="javascript:void(0);" class="minus {{#equals waitDeliveryQuantity 0}}disabled{{/equals}}" >-</a>
+                          <input type="number" class="count-number" value="0" data-old="{{waitDeliveryQuantity}}" data-init="{{waitDeliveryQuantity}}">
+                          <a href="javascript:void(0);" class="plus">+</a>
+                        </div>
+                      {{/equals}}
+                    </td>
+                    <td class="last">{{#equals isMaster true}}主商品{{else}}配件{{/equals}}</td>
+                  </tr>
+                {{else}}
+                  {{#each lockSkuWarehouses}}
+                    <tr class="item-tr js-item-tr-{{../skuId}} js-item-tr item-shipment-tr" data-id="{{../id}}"
+                    data-order-delivery-id="{{../orderDeliveryId}}" data-skuid="{{../skuId}}" data-itemid={{../itemId}}>
+                      {{#ifCond ../../_DATA_.isReissue '!=' true}}
+                        <td width="24" class="check">
+                          <input type="checkbox" class="js-select-item input-checkbox">
+                        </td>
+                      {{/ifCond}}
+                      <td class="left-text item-name-td">
+                        <div>{{../itemName}}</div>
+                        <span class="sku-attrs">{{#each ../attributeMap}}{{@key}}:{{this}}&nbsp;&nbsp;{{/each}}</span>
+                      </td>
+                      <td>{{../itemId}}</td>
+                      <td>
+                        <span class="price">{{_CURRENCY_}}</span>
+                        <span class="price item-price">{{formatPrice ../skuPrice}}</span>
+                      </td>
+                      <td>{{../waitDeliveryQuantity}}</td>
+                      <td>
+                        {{#equals ../../_DATA_.isReissue true}}
+                          <label for="" class="waitdeliveryquantity">{{../waitDeliveryQuantity}}</label>
+                        {{else}}
+                          <div class="input-amount js-quantity-{{../skuId}}" data-min="0" data-max="{{../waitDeliveryQuantity}}">
+                            <a href="javascript:void(0);" class="minus {{#equals ../waitDeliveryQuantity 0}}disabled{{/equals}}" >-</a>
+                            <input type="number" class="count-number" value="0" data-old="{{../waitDeliveryQuantity}}" data-init="{{../waitDeliveryQuantity}}">
+                            <a href="javascript:void(0);" class="plus">+</a>
+                          </div>
+                        {{/equals}}
+                      </td>
+                      <td class="js-lock-warehouse" data-code="{{lockWarehouseCode}}" data-name="{{lockWarehouseName}}">
+                        <span style="margin-right: 4px;">{{lockWarehouseName}}</span>
+                      </td>
+                      <td class="js-select-warehouse last">
+                        <select class="js-single-select-warehouse">
+                          <option value="">请选择</option>
+                          {{#each ../selectWarehouses}}
+                            <option value="{{zcyWarehouse.code}}" data-name="{{zcyWarehouse.name}}">
+                              {{zcyWarehouse.name}}
+                            </option>
+                          {{/each}}
+                        </select>
+                      </td>
+                    </tr>
+                  {{/each}}
+
+                {{/equals}}
+              {{else}}
+                <tr>
+                  <td colspan="
+                    {{#equals _DATA_.isReissue true}}
+                      {{#equals _DATA_.orderType 1}}6{{else}}7{{/equals}}
+                    {{else}}
+                      {{#equals _DATA_.orderType 1}}7{{else}}8{{/equals}}
+                    {{/equals}}" class="center-text">
+                    商品已发完，请选择其他收货地址发货
+                  </td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+          <div class="shipmentItems-pagination selected-pagination pagination-danger"></div>
+        </div>
+        <div class="js-select-shipment">
+          <div class="title">
+            <span>
+              <p class="order-title">选择物流信息</p>
+            </span>
+          </div>
+          <div class="select-shipment">
+            <p>
+              <input type="radio" class="input-radio shipmentType2" value="2" name="shipmentType" /> 送货上门 &nbsp;&nbsp;
+              <input class="input-radio shipmentType1" type="radio" value="1" name="shipmentType" checked />物流发货 &nbsp;&nbsp;
+              <span class="shipselect">物流公司：<select class="js-select-logistics"></select></span>
+            </p>
+            &nbsp;&nbsp;
+            <p class="yundanhao"><span class="required">*</span>运单号： <input class="js-shipmentNo" type="text" value="" />
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div>
+          <button class="btn btn-info btn-medium close">取消</button>
+          <button class="btn btn-primary btn-medium js-delivery-items-submit">确定</button>
+        </div>
+        <div class="pull-left">
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <label class="js-select-item-info"></label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

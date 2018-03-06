@@ -1,0 +1,33 @@
+{{#component "spu-publish-with-category"}}
+  <input type="hidden" name="categoryId" value="{{categoryId}}">
+
+  {{> component:seller/spus/spu_publish/common/other_templates/base_info}}
+
+  {{#if _DATA_}}
+    {{#each _DATA_}}
+      {{#equals group "普通属性"}}
+        {{> component:seller/spus/spu_publish/common/other_templates/other_attrs attrGroup="普通属性"}}
+      {{/equals}}
+    {{/each}}
+  {{/if}}
+
+  {{#with _DATA_}}
+    {{> component:seller/spus/spu_publish/common/other_templates/sku_attrs}}
+  {{/with}}
+
+  {{> component:seller/spus/spu_publish/common/other_templates/price_stock}}
+
+  {{#each _DATA_}}
+    {{#of group "服务信息,政策信息"}}
+      {{> component:seller/spus/spu_publish/common/other_templates/other_attrs attrGroup="服务信息,政策信息"}}
+    {{else}}
+      {{#of group "普通属性,USER_DEFINED"}}
+      {{else}}
+        {{> component:seller/spus/spu_publish/common/other_templates/attrs_temp}}
+      {{/of}}
+    {{/of}}
+  {{/each}}
+
+  {{> component:seller/item_publish/common/other_templates/category_user_defined_attrs}}
+
+{{/component}}

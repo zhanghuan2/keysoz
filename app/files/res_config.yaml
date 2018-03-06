@@ -1,0 +1,552 @@
+# 全局放行
+global:
+  - index
+  - logout
+  - address
+  - image-list
+  - image-folder-create
+  - image-folder-delete
+  - image-upload
+  - image-delete
+
+# 资源树
+tree:
+  trade_mng:
+    order_sta:
+    order_mng:
+      order_export:
+      # today_order_export:
+      order_transition:
+      order_cancel:
+      order_detail:
+      order_express:
+      order_logistic:
+    refund_center:
+      order_agree_return_fee:
+      order_reject_return_fee:
+      order_return_fee:
+      order_agree_return_good:
+      order_reject_return_good:
+      order_agree_return_good_after_sale:
+      order_reject_return_good_after_sale:
+      order_confirm_recevice_good_after_sale:
+      order_logistic_after_sale:
+      return_export:
+    cmt_mng:
+      coment_reply:
+  item_mng:
+    rls_item:
+      back_c:
+      back_s:
+      deliver_templates_paging:
+      item_publish_detail:
+      item_detail:
+      publish_item:
+      update_item:
+    on_shelf:
+      item_status_update:
+      item_delete:
+      on_shelf_export:
+    off_shelf:
+      item_status_update_1:
+      item_delete_1:
+      off_shelf_export:
+    sort_mng:
+      get_category:
+      save_category:
+    item_sort:
+      edit_item_tag:
+    chart_size:
+      size_create:
+      size_update:
+
+  shop_mng:
+    shop_view:
+    shop_design:
+    shop_detail:
+    story_ban:
+      story_ban_status:
+      story_ban_status_change:
+      story_ban_query:
+      story_ban_save:
+    pro_info:
+    update_pass:
+      change_pass:
+  mkt_mng:
+    coupon:
+      coupon_create:
+      coupon_update:
+      coupon_release:
+      coupon_delete:
+      coupon_stop:
+    send_coupon_mng:
+      coupon_send:
+    mkt_tool:
+  logi_mng:
+    freight:
+      create_freight:
+      update_freight:
+      delete_freight:
+      create_rule:
+      update_rule:
+      delete_rule:
+    delivery:
+      delivery_get:
+      delivery_modify:
+        delivery_create:
+        delivery_update:
+  # settle_mentsz:
+  #   order_settle:
+  help_tur:
+    hep_tut:
+    hep_online:
+  financial_mng:
+    order_seller_sum:
+    order_sum_detail:
+    order_return_sum:
+    check_bill:
+    fund_detail:
+
+# 资源定义，以下资源建议按页面级别的分块配置
+resources:
+  # global resource
+  - key: logout
+    name: logout
+    path: /api/(user|seller)/logout
+    method: GET
+  - key: address
+    name: address
+    path: /api/address/\d+/child
+    method: GET
+
+  # 首页
+  - key: index
+    name: index
+    path: /seller/index
+    method: GET
+
+  # 图片相关
+  - key: image-list
+    name: image-list
+    path: /api/reddeals/images/user
+    method: GET
+  - key: image-folder-create
+    name: image-folder-create
+    path: /api/reddeals/images/createFolder
+    method: POST
+  - key: image-folder-delete
+    name: image-folder-delete
+    path: /api/reddeals/images/[0-9]+/folder
+    method: DELETE
+  - key: image-upload
+    name: image-upload
+    path: /api/reddeals/images/upload
+    method: POST
+  - key: image-delete
+    name: image-delete
+    path: /api/images/[0-9]+
+    method: DELETE
+
+  # 交易管理相关资源
+  - key: trade_mng
+    name: trade_mng
+    virtual: true
+  - key: order_sta
+    name: order_sta
+    path: /seller/order-status
+    method: GET
+  - key: order_mng
+    name: order_mng
+    path: /seller/orders
+    method: GET
+  - key: order_transition
+    name: order_transition
+    path: /api/order/\d+/update
+    method: PUT
+  - key: order_cancel
+    name: order_cancel
+    path: /api/order/\d+/seller/cancel
+    method: PUT
+  - key: order_express
+    name: order_express
+    path: /api/seller/expresses
+    method: GET
+  - key: order_logistic
+    name: order_logistic
+    path: /api/order/logisticsInfo/\d+
+    method: GET
+  - key: order_detail
+    name: order_detail
+    path: /seller/order-detail
+    method: GET
+  - key: order_export
+    name: order_export
+    path: /api/orders/export-xls
+    method: GET
+  # - key: today_order_export
+  #   name: today_order_export
+  #   path:
+  #   method: GET
+
+  # 退货款中心相关资源
+  - key: refund_center
+    name: refund_center
+    path: /seller/return
+    method: GET
+  - key: order_agree_return_fee
+    name: order_agree_return_fee
+    path: /api/order/\d+/agreeRefund
+    method: PUT
+  - key: order_reject_return_fee
+    name: order_reject_return_fee
+    path: /api/order/\d+/refuseRefund
+    method: PUT
+  - key: order_return_fee
+    name: order_return_fee
+    path: /api/order/\d+/refundRequest
+    method: GET
+  - key: order_agree_return_good
+    name: order_agree_return_good
+    path: /api/order/\d+/agreeReturns
+    method: PUT
+  - key: order_reject_return_good
+    name: order_reject_return_good
+    path: /api/order/\d+/refuseReturns
+    method: PUT
+  - key: order_agree_return_good_after_sale
+    name: order_agree_return_good_after_sale
+    path: /api/order/after-sale/\d+/agree
+    method: PUT
+  - key: order_reject_return_good_after_sale
+    name: order_reject_return_good_after_sale
+    path: /api/order/after-sale/\d+/refuse
+    method: PUT
+  - key: order_confirm_recevice_good_after_sale
+    name: order_confirm_recevice_good_after_sale
+    path: /api/order/after-sale/\d+/confirm-receive
+    method: PUT
+  - key: order_logistic_after_sale
+    name: order_logistic_after_sale
+    path: /api/order/item/refund/logisticsInfo/\d+
+    method: GET
+  - key: return_export
+    name: return_export
+    path: /api/orders/refund-export-xls
+    method: GET
+
+  # 评论相关资源
+  - key: cmt_mng
+    name: cmt_mng
+    path: /seller/comments
+    method: GET
+  - key: coment_reply
+    name: coment_reply
+    path: /api/seller/comment/\d+/reply
+    method: PUT
+
+  # 商品管理相关资源
+  - key: item_mng
+    name: item_mng
+    virtual: true
+  - key: on_shelf
+    name: on_shelf
+    path: /seller/on-shelf
+    method: GET
+  - key: off_shelf
+    name: off_shelf
+    path: /seller/off-shelf
+    method: GET
+  - key: item_status_update
+    name: item_status_update
+    path: /api/seller/items/status
+    method: PUT
+  - key: item_status_update_1
+    name: item_status_update
+    path: /api/seller/items/status
+    method: PUT
+  - key: item_delete
+    name: item_delete
+    path: /api/seller/items/delete
+    method: POST
+  - key: item_delete_1
+    name: item_delete
+    path: /api/seller/items/delete
+    method: POST
+  - key: on_shelf_export
+    name: on_shelf_export
+    path: /api/items/on-shelf-export-xls
+    method: GET
+  - key: off_shelf_export
+    name: off_shelf_export
+    path: /api/items/off-shelf-export-xls
+    method: GET
+
+  # 发布商品相关的资源
+  - key: rls_item
+    name: rls_item
+    path: /seller/release-items
+    method: GET
+  - key: back_c
+    name: back_c
+    path: /api/categories/backend/[0-9]+/children
+    method: GET
+  - key: back_s
+    name: back_s
+    path: /api/categories/backend/[0-9]+/spus
+    method: GET
+  - key: deliver_templates_paging
+    name: deliver_templates_paging
+    path: /api/deliver-fee-template/paging
+    method: GET
+  - key: item_publish_detail
+    name: item_publish_detail
+    path: /seller/item-publish-detail
+    method: GET
+  - key: item_detail
+    name: item_detail
+    path: /design/items/\d+
+    method: GET
+  - key: publish_item
+    name: publish_item
+    path: /api/seller/items
+    method: POST
+  - key: update_item
+    name: update_item
+    path: /api/seller/items
+    method: PUT
+
+  # 店铺内类目相关资源
+  - key: sort_mng
+    name: sort_mng
+    path: /seller/sort-manage
+    method: GET
+  - key: get_category
+    name: get_category
+    path: /api/shops/categories
+    method: GET
+  - key: save_category
+    name: save_category
+    path: /api/seller/categories
+    method: POST
+
+  # 商品分类相关资源
+  - key: item_sort
+    name: item_sort
+    path: /seller/item-sort
+    method: GET
+  - key: edit_item_tag
+    name: edit_item_tag
+    path: /api/seller/items/(rm_tags|add_tags)
+    method: POST
+
+    #尺码规范
+  - key: chart_size
+    name: chart_size
+    path: /seller/size-chart
+    method: GET
+  - key: size_create
+    name: size_create
+    path: api/reddeals/size
+    method: POST
+  - key: size_update
+    name: size_update
+    path: api/reddeals/size
+    method: POST
+
+
+  # 店铺管理相关资源
+  - key: shop_mng
+    name: shop_mng
+    virtual: true
+  - key: shop_view
+    name: shop_view
+    path: /shops/[0-9]+
+    method: GET
+  - key: shop_design
+    name: shop_design
+    path: /seller/design
+    method: GET
+  - key: shop_detail
+    name: shop_detail
+    path: /seller/shop_profile
+    method: GET
+  - key: story_ban
+    name: story_ban
+    path: /seller/brand-story
+    method: GET
+  - key: story_ban_status
+    name: story_ban_status
+    path: /api/reddeals/brand_story/status
+    method: GET
+    inherit: true
+  - key: story_ban_status_change
+    name: story_ban_status_change
+    path: /api/reddeals/shop/brand_story/status
+    method: PUT
+    inherit: true
+  - key: story_ban_query
+    name: story_ban_query
+    path: /api/reddeals/seller/brand_story
+    method: GET
+    inherit: true
+  - key: story_ban_save
+    name: story_ban_save
+    path: /api/reddeals/shop/brand_story
+    method: POST
+    inherit: true
+  - key: pro_info
+    name: pro_info
+    path: /seller/promotion-information
+    method: GET
+  - key: update_pass
+    name: update_pass
+    path: /seller/update-password
+    method: GET
+  - key: change_pass
+    name: change_pass
+    path: api/user/change_password
+    method: POST
+
+  # 营销工具相关资源
+  - key: mkt_mng
+    name: mkt_mng
+    virtual: true
+  - key: send_coupon_mng
+    name: send_coupon_mng
+    path: /seller/send-coupon
+    method: GET
+  - key: coupon
+    name: coupon
+    path: /seller/coupons
+    method: GET
+  - key: mkt_tool
+    name: mkt_tool
+    path: /marketing/activities
+    method: GET
+  - key: coupon_create
+    name: coupon_create
+    path: /api/coupon
+    method: POST
+  - key: coupon_update
+    name: coupon_update
+    path: /api/coupon
+    method: PUT
+  - key: coupon_release
+    name: coupon_release
+    path: /api/coupon/\d+/release
+    method: PUT
+  - key: coupon_delete
+    name: coupon_delete
+    path: /api/coupon/\d+/delete
+    method: DELETE
+  - key: coupon_stop
+    name: coupon_stop
+    path: /api/coupon/\d+/stop
+    method: PUT
+  - key: coupon_send
+    name: coupon_send
+    path: /api/coupon/send
+    method: POST
+
+  # 物流管理相关资源
+  - key: logi_mng
+    name: logi_mng
+    virtual: true
+  - key: freight
+    name: freight
+    path: /seller/freight
+    method: GET
+  - key: create_freight
+    name: create_freight
+    path: /api/deliver-template
+    method: POST
+  - key: update_freight
+    name: update_freight
+    path: /api/deliver-template
+    method: PUT
+  - key: delete_freight
+    name: delete_freight
+    path: /api/deliver-template/\d+
+    method: DELETE
+  - key: create_rule
+    name: create_rule
+    path: /api/special-deliver
+    method: POST
+  - key: update_rule
+    name: update_rule
+    path: /api/special-deliver
+    method: PUT
+  - key: delete_rule
+    name: delete_rule
+    path: /api/special-deliver/\d+
+    method: DELETE
+
+  # 配送区域
+  - key: delivery
+    name: delivery
+    path: /seller/delivery
+    method: GET
+  - key: delivery_get
+    name: delivery_get
+    path: /api/deliver-region
+    method: GET
+  - key: delivery_modify
+    name: delivery_modify
+    virtual: true
+  - key: delivery_create
+    name: delivery_create
+    path: /api/deliver-region
+    method: POST
+    inherit: true
+  - key: delivery_update
+    name: delivery_update
+    path: /api/deliver-region
+    method: PUT
+    inherit: true
+
+  #订单结算
+  - key: settle_ments
+    name: settle_ments
+    virtual: true
+  - key: order_settle
+    name: order_settle
+    path: /seller/order-settle-shop
+    method: GET
+
+  #帮助指南
+  - key: help_tur
+    name: help_tur
+    virtual: true
+  - key: hep_tut
+    name: hep_tut
+    path: /seller/tutorials
+    method: GET
+  - key: hep_online
+    name: hep_online
+    path: /seller/tutorials-online
+    method: GET
+
+  # 财务管理
+  - key: financial_mng
+    name: financial_mng
+    virtual: true
+  - key: order_seller_sum
+    name:  order_seller_sum
+    path: /seller/order-seller-sum
+    method: GET
+  - key: order_sum_detail
+    name:  order_sum_detail
+    path: /seller/order-sum-detail
+    method: GET
+  - key: order_return_sum
+    name: order_return_sum
+    path: /seller/order-return-sum
+    method: GET
+  - key: check_bill
+    name: check_bill
+    path: /seller/advise-detail
+    method: GET
+  - key: fund_detail
+    name: fund_detail
+    path: /seller/fund-detail
+    method: GET

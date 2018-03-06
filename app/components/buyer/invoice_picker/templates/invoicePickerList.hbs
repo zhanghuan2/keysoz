@@ -1,0 +1,61 @@
+{{#each data}}
+  <div class="invoice-block {{#if isDefault}}active{{/if}}
+    {{#gt @index 3}}extra{{/gt}}" data-invoice="{{json this}}">
+    <div class="invoice-type">
+      <label>类型：</label>
+      {{#equals type 1}}增值税普通发票{{/equals}}
+      {{#equals type 2}}增值税专用发票{{/equals}}
+    </div>
+    <div class="invoice-head">
+      <label>抬头：</label>
+      <span title="{{title}}">{{title}}</span>
+    </div>
+    <div class="invoice-content">
+      <label>内容：</label>
+      {{#equals content 1}}
+        <a href="javascript:;" class="popover-invoice-detail" data-content-type="{{content}}">类目</a>
+      {{/equals}}
+      {{#equals content 2}}
+        <a href="javascript:;" class="popover-invoice-detail" data-content-type="{{content}}">商品</a>
+      {{/equals}}
+      {{#equals content 3}}
+        <div class="invoice-content-text" title="{{customContent}}">{{customContent}}</div>
+      {{!--
+        <input type="text" class="custom-content-input" placeholder="请输入自定义内容" value="{{customContent}}">
+        <a href="javascript:;" class="edit-content active-sign icon-zcy icon-bi"></a>
+       --}}
+      {{/equals}}
+      {{#equals content 4}}
+        <a href="javascript:;" class="popover-invoice-detail" data-content-type="{{content}}">办公用品</a>
+      {{/equals}}
+      {{#equals content 5}}
+        <a href="javascript:;" class="popover-invoice-detail" data-content-type="{{content}}">耗材</a>
+      {{/equals}}
+      {{#equals content 6}}
+        <a href="javascript:;" class="popover-invoice-detail" data-content-type="{{content}}">电脑配件</a>
+      {{/equals}}
+    </div>
+    <div class="taxNumber">
+      <label>纳税人识别号<i class="icon-zcy icon-warningfill js-invoice-popover"></i>：</label>
+      <span title="{{taxNumber}}">{{#if taxNumber}}{{taxNumber}}{{else}}－{{/if}}</span>
+    </div>
+    <div class="additions">
+      {{#if isDefault}}
+        <span class="text-info">默认</span>
+      {{else}}
+        <a class="hover-sign set-default-invoice" href="javascript:;" data-id="{{id}}">设为默认</a>
+      {{/if}}
+      <a class="hover-sign update-invoice" href="javascript:;" data-invoice="{{json this}}">修改</a>
+    </div>
+    <div class="active-sign angle">&check;</div>
+  </div>
+{{else}}
+  <div class="text-info">没有发票信息</div>
+{{/each}}
+<div class="foot-operations">
+  {{#gt (size data) 4}}
+    <a href="javascript:void(0)" class="expand-all">展开全部</a>
+  {{/gt}}
+  <a href="javascript:void(0)" class="add-invoice">添加发票</a>
+  <a href="javascript:void(0)" class="manage-invoice">管理发票</a>
+</div>

@@ -1,0 +1,22 @@
+<div class="city-list js-address-list" data-level="3" data-id="{{provinceId}}">
+  <ul class="city-ul clearfix">
+    {{#each data}}
+    <li class="city-li {{#equalsRemainder @index 3 2}}second-last{{/equalsRemainder}} {{#mod @index 3}}js-line-end third-last{{/mod}} {{#if @last}}js-line-end last{{/if}}"
+        data-id="{{id}}"
+        data-name="{{name}}">
+      <label for="city-{{id}}">
+        <input type="checkbox" value="{{id}}" {{#if checked}}checked{{/if}} data-name="{{name}}" class="input-checkbox js-select-city-item" id="city-{{id}}"
+        {{#equals check "indeterminate"}}indeterminate="true"{{/equals}}
+        {{#equals check "checked"}}checked{{/equals}}
+        >{{name}}
+      </label>
+      <span class="drop-entrance js-region-list">
+        <span class="city-count js-region-count">
+          {{#equals check "indeterminate"}}({{count}}){{/equals}}
+        </span>
+        <i class="icon-mewtwo icon-mewtwo-caret"></i>
+      </span>
+    </li>
+    {{/each}}
+  </ul>
+</div>

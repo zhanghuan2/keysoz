@@ -1,0 +1,12 @@
+{{#component 'ZCY-eevee-comp-normalLogo evees-comp js-comp'}}
+  <div class="hide">{{json this}}</div>
+  <div class="eevee-image" style="height: 51px;" data-comp-path="eevee/image">
+    <a href="/">
+      <img alt="" style="width: 100%" src="{{#if this.data.logoImage}}{{this.data.logoImage}}{{else}}/lunatone/assets/images/other-images/newlogobgm.png{{/if}}">
+    </a>
+  </div>
+  <div class="text-content inline-block">
+    <div class="logo-text inline-block" style="color:{{this.data.colorCode}}">{{#if this.data.name}}{{this.data.name}}{{else}}网上超市{{/if}}</div>
+  </div>
+{{/component}}
+

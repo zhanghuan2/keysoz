@@ -1,0 +1,25 @@
+<div class="modal service-detail-modal">
+  <div class="modal-header">
+    <div class="modal-title">{{data.protocol.name}}</div>
+    <a class="close" href="javascript:void(0)">&times;</a>
+  </div>
+  <div class="modal-body">
+    <div class="service-content">
+      <p>{{data.protocol.description}}</p>
+      {{#equals type 1}}
+        <div>
+          <input type="checkbox" class="input-checkbox js-check-read">
+          我已阅读并同意<a href="{{data.protocol.descriptionUrl}}" target="_blank">《{{data.protocol.name}}服务规范》</a>
+        </div>
+      {{/equals}}
+    </div>
+  </div>
+  <div class="modal-footer">
+    {{#equals type 1}}
+      <button class="btn btn-info close">取消</button>
+      <button class="btn btn-primary js-join-service" data-protocol-id="{{data.protocol.id}}" disabled>加入服务</button>
+    {{else}}
+      <button class="btn btn-info close">关闭</button>
+    {{/equals}}
+  </div>
+</div>

@@ -1,0 +1,40 @@
+@import "compass/css3/inline-block";
+@import "compass/css3/box-sizing";
+@import "pokeball/theme";
+
+.carousel {
+  .carousel-contents {
+    .carousel-content {
+      a {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+    }
+  }
+  .carousel-indicators {
+    width: 500px;
+    margin-left: -250px;
+    z-index: 2;
+    li {
+      background: none;
+      text-indent: 0;
+      .icon-zcy {
+        color: #4A4A4A;
+      }
+      .icon-yuandiankuang {
+        display: none;
+      }
+      &.active {
+        background: none;
+        .icon-yuandian {
+          display: none;
+
+          &kuang{
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+}

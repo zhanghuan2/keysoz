@@ -1,0 +1,149 @@
+{{#component "ceiling js-comp"}}
+<div class="navbar navbar-top">
+  <div class="navbar-collapse" style="width: {{#equals size "small"}}1000{{else}}1200{{/equals}}px;">
+    <div class="navbar-header">
+        <span class="home-page box"><i class="icon-zcy icon-zhandianguanli"></i><a href="{{#if HomePageLink}}{{HomePageLink}}{{else}}https://www.zcy.gov.cn/ {{/if}}" target="_blank">首页</a></span>
+        <span class="administrative-divisions box">
+          <a href="javascript:void(0)" class="js-switch-region">
+            <i class="icon-zcy icon-location"></i>
+            <span class="js-user-region-show user-region-show"></span>
+          </a>
+        </span>
+        <span id="js-time"></span>，<span class="welcome-info">欢迎来到政采云！</span>
+        <span id="js-user-action" data-front="{{_ENV_HREF_.front}}" data-ctaxccgp="{{_ENV_HREF_.ctaxccgp}}" data-middlehref="{{_ENV_HREF_.middle}}" data-hrefmain="{{_HREF_.main}}" data-supplier-href="{{_ENV_HREF_.supplier}}">
+            <span class="hasUserInfo" style="display: none">
+                <ul class="user-info">
+                    <li class="more-options">
+                        <span>
+                            <span id="js-user-name"></span>
+                            <i class="icon-zcy icon-xiangxiazhedie"></i>
+                        </span>
+                        <div class="select-box">
+                            <span>
+                                <a rel="nofollow" href="{{_ENV_HREF_.userCenter}}">
+                                    帐号信息
+                                </a>
+                            </span>
+                            <span>
+                                <a href="javascript:void(0);" id="js-ceiling-user-logout" class="hide logout-href">退出</a>
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+            </span>
+            <span class="noUserInfo">
+            </span>
+        </span>
+    </div>
+    <ul class="navbar-right">
+      <li class="no-options"><a href="/login">我的工作台</a></li>
+      <li class="more-options">
+        <span>我的关注 <i class="icon-zcy icon-xiangxiazhedie"></i></span>
+        <div class="select-box" style="width:100px;">
+          <span><a target="_blank" href="{{#if regularGoodsLink}}{{regularGoodsLink}}{{else}}/eevees/regular_purchase/goods{{/if}}">我的常购商品</a></span>
+          <span><a target="_blank" href="{{#if favoriteShopsLink}}{{favoriteShopsLink}}{{else}}/eevees/regular_purchase/shops{{/if}}">我的关注店铺</a></span>
+        </div>
+      </li>
+      <li class="more-options">
+          <span>商家支持 <i class="icon-zcy icon-xiangxiazhedie"></i></span>
+          <div class="select-box">
+              <span><a target="_blank" href="{{#if SellerEnrollLink}}{{SellerEnrollLink}}{{else}} http://supplier.zcy.gov.cn/supplier/register {{/if}}">商家入驻</a></span>
+              <span><a target="_blank" href="{{#if SellerRuleLink}}{{SellerRuleLink}}{{else}} http://rule.zcy.gov.cn/web/site_1/2017/01/11/68.html {{/if}}">商家规则</a></span>
+              <span><a target="_blank" href="{{#if SellerHelpLink}}{{SellerHelpLink}}{{else}} http://help.zcy.gov.cn/ {{/if}}">商家帮助</a></span>
+          </div>
+      </li>
+      <li class="more-options">
+          <span>服务大厅 <i class="icon-zcy icon-xiangxiazhedie"></i></span>
+          <div class="select-box">
+              <span><a target="_blank" href="{{#if OnlineHelperLink}}{{OnlineHelperLink}}{{else}} https://cschat.cloud.alipay.com/pcportal.htm?tntInstId=KMQNW3CN&scene=SCE00000041 {{/if}}">在线客服</a></span>
+              <span><a target="_blank" href="{{#if HelpCenterLink}}{{HelpCenterLink}}{{else}} http://help.zcy.gov.cn/ {{/if}}">帮助中心</a></span>
+              <span><a target="_blank" href="{{#if RuleCenterLink}}{{RuleCenterLink}}{{else}} https://rule.zcy.gov.cn/ {{/if}}">规则中心</a></span>
+              <span><a target="_blank" href="{{#if ContactUsLink}}{{ContactUsLink}}{{else}} http://help.zcy.gov.cn/web/site_2/contact/index.html {{/if}}">联系我们</a></span>
+          </div>
+      </li>
+      <li class="more-options">
+          <span><a target="_blank" href="http://edu.zcy.gov.cn/" style="color:#666;">培训中心</a> <i class="icon-zcy icon-xiangxiazhedie"></i></span>
+          <div class="select-box" style="width:120px;">
+              <span><a target="_blank" href="{{#if TrainingCourseLink}}{{TrainingCourseLink}}{{else}} https://edu.zcy.gov.cn/ {{/if}}">培训课程</a></span>
+              <span><a target="_blank" href="{{#if TrainingPartnerLink}}{{TrainingPartnerLink}}{{else}} https://edu.zcy.gov.cn/web/site_7/2017/04-28/341.html {{/if}}">培训授权合作伙伴</a></span>
+              <span><a target="_blank" href="{{#if OnlineLiveLink}}{{OnlineLiveLink}}{{else}} http://zcy.gensee.com/webcast/site/entry/join-2189f3fddc92411a84a0a057ed12002b {{/if}}">在线直播入口</a></span>
+          </div>
+      </li>
+      <li class="more-options">
+          <span>网站导航 <i class="icon-zcy icon-xiangxiazhedie"></i></span>
+          <div class="select-box last" style="width: 178px">
+              <div class="content-box">
+                  <span class="title" style="margin-left:-13px;">电子卖场</span>
+                  <span><a target="_blank" href="https://zcy.gov.cn/">网上超市</a></span>
+                  <span><a target="_blank" href="{{#if OnlineInquiryLink}}{{OnlineInquiryLink}}?districtCode={{_USER_.districtId}}{{else}} https://inquiryhall.zcy.gov.cn/inquiryhall/list?districtCode={{_USER_.districtId}} {{/if}}">在线询价</a></span>
+                  <span><a target="_blank" href="{{#if AgreementSupplyLink}}{{AgreementSupplyLink}}{{else}} https://hall.zcy.gov.cn/ {{/if}}">协议供货</a></span>
+                  <span><a target="_blank" href="{{#if DesignatedServiceLink}}{{DesignatedServiceLink}}{{else}} https://fixedhall.zcy.gov.cn/fixed/hall {{/if}}">定点服务</a></span>
+                  <span><a target="_blank" href="{{#if HighQualityPavilionLink}}{{HighQualityPavilionLink}}{{else}} https://zhizao.zcy.gov.cn/ {{/if}}">精品制造馆</a></span>
+              </div>
+              <div class="content-box right">
+                  <span class="title" style="margin-left:8px;">特许商品馆</span>
+                  <span><a target="_blank" href="{{#if MedicalInstrumentsLink}}{{MedicalInstrumentsLink}}{{else}} https://medexpo.zcy.gov.cn/?normal=1&type=hall {{/if}}">医疗器械 </a></span>
+
+                  {{#if _USER_}}
+                      {{#of _USER_.currentCategory "99,12,01,03,06"}}
+                          {{#equals _USER_.currentCategory "01"}}
+                              {{#of _USER_.detailCategory "010401,010402,010403"}}
+                                  <span><a href="{{#if VaccineLink}}{{VaccineLink}}{{else}}/{{/if}}"
+                                     target="_blank">二类疫苗</a></span>
+                              {{else}}
+                                  <span><a href="{{#if vaccineNoPermissionHref}}{{vaccineNoPermissionHref}}{{else}}https://vaccine.zcy.gov.cn/pages/no_permission{{/if}}"
+                                     target="_blank">二类疫苗</a></span>
+                              {{/of}}
+                          {{else}}
+                              <span><a href="{{#if VaccineLink}}{{VaccineLink}}{{else}}/{{/if}}"
+                                 target="_blank">二类疫苗</a></span>
+                          {{/equals}}
+                      {{else}}
+                          <span><a href="{{#if vaccineNoPermissionHref}}{{vaccineNoPermissionHref}}{{else}}https://vaccine.zcy.gov.cn/pages/no_permission{{/if}}"
+                             target="_blank">二类疫苗</a></span>
+                      {{/of}}
+                      {{#equals _DATA_ true}}
+                          <span><a href="{{#if CommoditiesLink}}{{CommoditiesLink}}{{else}}https://block.zcy.gov.cn/supperPro{{/if}}"
+                             target="_blank">大宗商品</a></span>
+                      {{else}}
+                          <span><a href="{{#if blocktradeNoPermissionHref}}{{blocktradeNoPermissionHref}}{{else}}https://block.zcy.gov.cn/pages/no_permission{{/if}}"
+                             target="_blank">大宗商品</a></span>
+                      {{/equals}}
+                  {{else}}
+                      <span><a href="{{#if vaccineNoPermissionHref}}{{vaccineNoPermissionHref}}{{else}}https://vaccine.zcy.gov.cn/pages/no_permission{{/if}}"
+                         target="_blank">二类疫苗</a></span>
+                      <span><a href="{{#if blocktradeNoPermissionHref}}{{blocktradeNoPermissionHref}}{{else}}https://block.zcy.gov.cn/pages/no_permission{{/if}}"
+                         target="_blank">大宗商品</a></span>
+                  {{/if}}
+                <span>
+                  {{#if _USER_}}
+                    <a href="https://medical.zcy.gov.cn/medical/index" target="_blank">医疗馆</a>
+                  {{else}}
+                    <a href="https://medical.zcy.gov.cn/medical/login">医疗馆</a>
+                  {{/if}}
+                </span>
+              </div>
+          </div>
+      </li>
+
+      <!--<li class="hide">-->
+        <!--<a rel="nofollow" data-class="block-tip" class="js-seller-center-link" href="">商家入驻</a>-->
+      <!--</li>-->
+      <!--<li>-->
+        <!--<a rel="nofollow" data-class="block-tip" href="https://help.zcy.gov.cn/">帮助中心</a>-->
+      <!--</li>-->
+      <!--<li>-->
+        <!--<a rel="nofollow" href="https://rule.zcy.gov.cn/">-->
+            <!--规则中心-->
+        <!--</a>-->
+      <!--</li>-->
+        {{!--{{#equals _USER_.currentCategory 99}}
+          <li>
+            <a rel="nofollow" href="/system/sites">站点管理</a>
+          </li>
+          {{/equals}--}}
+    </ul>
+    <div style="clear: both;"></div>
+  </div>
+</div>
+{{/component}}

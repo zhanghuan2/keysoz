@@ -1,0 +1,11 @@
+<div class="region-list js-address-list" data-level="4" id="city-{{cityId}}" data-id="{{cityId}}">
+  <ul class="region-ul clearfix">
+    {{#each data}}
+    <li class="region-li">
+      <label for="region-{{id}}">
+        <input type="checkbox" value="{{id}}" {{#if checked}}checked{{/if}} data-name="{{name}}" class="input-checkbox js-select-region-item" id="region-{{id}}">{{name}}
+      </label>
+    </li>
+    {{/each}}
+  </ul>
+</div>

@@ -1,0 +1,87 @@
+@import "compass/css3/inline-block";
+@import "compass/css3/box-sizing";
+@import "pokeball/theme";
+
+$height: 30px;
+
+.floor-evevator {
+  * {
+    @include box-sizing(content-box);
+  }
+
+  ul {
+    border: 1px solid $color-border;
+
+    hr {
+      height: auto;
+    }
+  }
+
+  display: none;
+
+  &.active {
+    display: block;
+    top: 50%;
+    margin-top: -93px;
+    right: 5px;
+    position: fixed;
+  }
+
+  li {
+    overflow: hidden;
+    width: $height;
+    height: $height;
+    cursor: pointer;
+    list-style: none;
+
+    .floor-li-inner {
+      padding: 0;
+      transition: .1s;
+    }
+
+    .li-slide {
+      @include inline-block(middle);
+      color: $navy;
+      text-align: center;
+      background-color: #fff;
+      line-height: $height;
+      font-size:12px;
+      width: 100%;
+      color: #016AE6;
+      word-break: break-all;
+
+      .inner-text {
+        display: none;
+        font-size: 10px;
+        line-height: 12px;
+        padding: 3px;
+      }
+      .inner-icon {
+        font-size: 16px;
+        line-height: $height;
+      }
+
+      .icon-shuma {
+        font-size: 14px;
+      }
+    }
+
+    &.active {
+      .li-slide {
+        color: #fff;
+        background-color: #016AE6;
+        .inner-text {
+          display: inline-block;
+        }
+        .inner-icon {
+          display: none;
+        }
+      }
+    }
+
+    .first-car {
+      color: #fff !important;
+      background-color: #000;
+    }
+  }
+}

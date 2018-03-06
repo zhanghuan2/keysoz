@@ -1,0 +1,147 @@
+ {{#component "header js-comp"}}
+ <div class="hide">{{json this}}</div>
+ <input type="hidden" class="csrf-token" value="{{csrfToken}}">
+<div id="env-config" data-user-id="{{_USER_.id}}" data-member-href="{{_ENV_HREF_.member}}" data-middle="{{_ENV_HREF_.middle}}" data-category="{{_USER_.currentCategory}}"></div>
+<div class="header-logo">
+  <a href="{{_ENV_HREF_.middle}}/{{#of _USER_.currentCategory "01,02,03,06,12"}}guide{{else}}dashboard/panel{{/of}}">
+    <div class="logo-wraper">
+      <div class="logo">
+        <div class="logo-img">
+          <div class="logo-img-sm"></div>
+        </div>
+        <div class="logo-text">
+          <div class="logo-title">
+            政府采购云平台
+          </div>
+          <div class="logo-content">{{_DISTRICT_.data.fullName}}</div>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>
+
+<div class="top-nav-wrapper">
+  {{#if _HIDE_APPS_}}{{else}}
+   <ul class="top-nav top-nav-left">
+      <li>
+        <a href="javascript:;" class="nav-toggle-btn">
+          {{#if _APPS_.currentName}}{{_APPS_.currentName}}{{else}}应用中心{{/if}}
+          <i class="zcy-icon icon-CombinedShape toggle-tool" style="font-size: 12px; margin-left: 10px;"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-app" {{#if _APPS_.currentName}}name="app-menu"{{/if}}>
+          {{!--有应用才是新版本--}}
+          {{#if _APPS_.currentName}}
+          <li>
+            <a data-href="{{_ENV_HREF_.middle}}/guide">
+            工作台首页
+            </a>
+          </li>
+          {{/if}}
+        {{#each _APPS_.appList}}
+          {{#if app.url}}
+          <li>
+            <a data-href="{{app.url}}" data-code="{{app.code}}" data-back-code="{{backLogApp}}" class="{{#equals app.name ../_APPS_.currentName}}active{{/equals}}">
+            {{app.name}}
+            </a>
+          </li>
+          {{else}}
+          <li>
+            <a data-code="{{app.code}}" data-href="{{app.url}}" data-back-code="{{backLogApp}}" class="{{#equals app.name ../_APPS_.currentName}}active{{/equals}} disabled">{{app.name}}</a>
+          </li>
+          {{/if}}
+        {{/each}}
+        </ul>
+      </li>
+   </ul>
+   {{/if}}
+   <ul class="top-nav top-nav-right">
+      <li>
+        <a href="{{_ENV_HREF_.front}}" class="go-back-store">< 返回电子卖场</a>
+      </li>
+      <li id='todo-nav'>
+        <a href="{{_ENV_HREF_.middle}}/dashboard/todo?status=UNFINISH#UNFINISH" {{#of _USER_.currentCategory "01,02,03,06,12"}}target="_blank"{{/of}} class="header-todo-more nav-toggle-btn">
+          <i class="icon-zcy icon-daibanshixiang"></i>
+          {{!--待办事项--}}
+          {{#if _TODO_CNT_}}
+          {{#ifCond _TODO_CNT_ "!=" 0}}
+            <label class="label label-danger">{{_TODO_CNT_}}</label>
+          {{/ifCond}}
+          {{/if}}
+        </a>
+        {{#inject "user/header/todo"}}
+        {
+          "pageSize": 5,
+          "pageNo": 1
+        }
+        {{/inject}}
+      </li>
+      <li id='msg-nav'>
+        <a href="{{_ENV_HREF_.middle}}/dashboard/message?read=false#unread" {{#of _USER_.currentCategory "01,02,03,06,12"}}target="_blank"{{/of}} class="header-message-more nav-toggle-btn">
+          <i class="icon-zcy icon-xiaoxi"></i>
+          {{!--消息--}}
+          {{#if _MSG_CNT_}}
+          {{#ifCond _MSG_CNT_ "!=" 0}}
+            <label class="label label-danger">{{_MSG_CNT_}}</label>
+          {{/ifCond}}
+          {{/if}}
+        </a>
+        {{#inject "user/header/message"}}
+        {
+          "read": false,
+          "pageSize": 5,
+          "pageNo": 1
+        }
+        {{/inject}}
+      </li>
+      <li class="help-nav">
+        <a href="https://help.zcy.gov.cn/web/site_2/file/index.html" class="nav-toggle-btn" >
+          <i class="icon-zcy icon-shipinwendang"></i>
+        </a>
+        <div class="dropdown-menu">视频文档</div>
+      </li>
+      <li class="user-info-nav-item">
+        <a href="javascript:;" class="nav-toggle-btn">
+          <div class="user-circle">
+            <i class="radius"></i>
+            <i class="icon-zcy icon-gerenxinxi"></i>
+          </div>
+          {{!--<i class="icon-zcy icon-gerenxinxi pull-left"></i>--}}
+          <div class="user-info pull-left">
+            <div class="user-name">{{_USER_.displayName}}{{#if _USER_.entrustId}}(代办){{/if}}<span>经办人</span></div>
+            <div class="user-position">{{_USER_.orgName}}{{#if _USER_.depName}}-{{_USER_.depName}}{{/if}}</div>
+          </div>
+          &nbsp;
+          <i class="icon-zcy icon-xiangxiazhedie toggle-tool"></i>
+        </a>
+        <div class="dropdown-menu" id="user-dropdown">
+          {{#equals (size _IDENTITY_) 1}}{{else}}
+          <ul>
+            {{#each _IDENTITY_}}
+            <li class="{{#equals currentFlag "true"}}active{{/equals}}" data-emp-id="{{empId}}" data-code="{{categoryName}}">
+              <div class="user-circle">
+                <i class="radius"></i>
+                <i class="icon-zcy icon-gerenxinxi"></i>
+              </div>
+              <div class="user-power pull-left">
+                <div class="user-power-name">{{userDisplayName}}{{#if entrustId}}(代办){{/if}}</div>
+                <div class="user-power-position">{{orgName}}{{categoryDisplayName}}</div>
+              </div>
+              <div class="user-power-icon pull-right">
+                <i class="icon-zcy icon-rightfill"></i>
+              </div>
+            </li>
+            {{/each}}
+          </ul>
+          {{/equals}}
+          <div class="user-operation">
+            <a name="userCenter" class="icon-zcy icon-shezhi" href="{{_ENV_HREF_.userCenter}}">帐号信息</a>
+            {{!--{{#of _USER_.detailCategory "01,0601,030101"}}--}}
+            <a name="entrust" class="zcy-icon icon-header-zddb" href="{{_ENV_HREF_.middle}}/privilege/postEntrust">指定代办</a>
+            {{!--{{/of}}--}}
+            <a name="logout" href="{{_ENV_HREF_.logout}}">退出</a>
+          </div>
+        </div>
+      </li>
+   </ul>
+</div>
+{{/component}}

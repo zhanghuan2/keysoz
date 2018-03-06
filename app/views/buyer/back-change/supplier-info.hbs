@@ -1,0 +1,13 @@
+{{#partial "realTitle"}}订单管理 - 退换货单详情{{/partial}}
+{{#partial "realBody"}}
+  {{#inject "common/breadcrumb"}}
+    {
+    "breadcrumb" : [
+    {"crumb" : "订单管理", "url" : "#"},
+    {"crumb" : "退换货单详情", "url" : "#"}
+    ]
+    }
+  {{/inject}}
+  {{inject "buyer/back-change/supplier-info"}}
+{{/partial}}
+{{> user_layout}}

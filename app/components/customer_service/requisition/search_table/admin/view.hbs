@@ -1,0 +1,70 @@
+<table>
+  <tr>
+    <td class="search-label">需求单金额：</td>
+    <td>
+      <input class="js-search-minFee money-input"
+             name="minFee" type="text" placeholder='请输入最小价格'
+             value="{{minFee}}"> -
+      <input class="js-search-maxFee money-input"
+             name="maxFee" type="text" placeholder='请输入最大价格'
+             value="{{maxFee}}">
+    </td>
+    <td class="search-label">商品名称：</td>
+    <td>
+      <input name="itemName" type="text" placeholder='请输入商品名称' value="{{itemName}}">
+    </td>
+    <td class="search-label">供应商名称：</td>
+    <td>
+      <select name="supplierOrg" class="noselectric" data-org-name="{{supplierOrgName}}" data-org-id="{{supplierOrgId}}"></select>
+    </td>
+    <td width="100%"></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="search-label">采购单位：</td>
+    <td>
+      <select class="noselectric" data-org-name="{{purchaseOrgName}}" data-org-id="{{orgId}}" name="purchaseOrg"></select>
+    </td>
+    <td class="search-label">需求人：</td>
+    <td>
+      <select class="noselectric user-id" name="userId"></select>
+    </td>
+    <td class="search-label">状态：</td>
+    <td>
+      <select name="status">
+        <option value="">全部状态</option>
+        <option value="1" {{#equals status 1}}selected{{/equals}}>审核中</option>
+        <option value="0" {{#equals status 0}}selected{{/equals}}>草稿</option>
+        <option value="2" {{#equals status 2}}selected{{/equals}}>审核通过</option>
+        <option value="10" {{#equals status 10}}selected{{/equals}}>已提交至预购单</option>
+        <option value="11" {{#equals status 11}}selected{{/equals}}>已提交至订单</option>
+        <option value="-1" {{#equals status -1}}selected{{/equals}}>已驳回</option>
+        <option value="-4" {{#equals status -4}}selected{{/equals}}>已撤销</option>
+      </select>
+    </td>
+    <td width="100%"></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="search-label">申请时间：</td>
+    <td>
+      <span class="time-interval-input create-time"></span>
+    </td>
+    <td class="search-label">需求单号：</td>
+    <td>
+      <input type="text" name="rno" placeholder="请输入（支持后6位搜索）" value="{{rno}}">
+    </td>
+    <td class="search-label">区划：</td>
+    <td>
+      {{inject "common/district_select_input"}}
+    </td>
+    <td width="100%"></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td colspan="8" class="text-right">
+      <button class="btn btn-info mr-sm" id="searchBtn">搜索</button>
+      <button class="btn btn-info" id="resetBtn">重置</button>
+    </td>
+  </tr>
+</table>

@@ -1,0 +1,158 @@
+{{#component "supplier query js-comp"}}
+  <span class="hide">{{json}}</span>
+  <div class="tab" name="auditStatus" data-type="switchable">
+    <ul class="tab-navs clearfix">
+      <li data-role="nav" class="waitSubmit">
+        <a href="/seller/item-check?auditStatus=1">待初审</a></li>
+      <li data-role="nav" class="waitOffer">
+        <a href="/seller/item-check?auditStatus=2">待终审</a></li>
+      <li data-role="nav" class="total">
+        <a href="/seller/item-check">全部</a></li>
+    </ul>
+  </div>
+  <div class="component-body">
+    <div class="pt-lg pr-lg pb-lg pl-lg" style="width: 100%;">
+      <div class='search-panel'>
+        <table>
+          <input type="text" class="hide supplierNameStore search" name="supplierName"/>
+          <tr>
+            <td class="search-label">
+              供应商名称：
+            </td>
+            <td>
+              <select name="shopId" class="search noselectric">
+                {{#if shopId}}
+                  <option value="{{shopId}}">{{supplierName}}</option>
+                {{/if}}
+                {{!-- <option value="">全部</option>
+                {{#each _SUPPLIERS_}}
+                  <option value="{{shopId}}">{{supplierName}}</option>
+                {{/each}} --}}
+              </select>
+            </td>
+            <td class="search-label">审核类别：</td>
+            <td>
+              <select name="type" class="search">
+                <option value=>请选择</option>
+                <option value="0" {{#equals type 0}}selected{{/equals}}>上架申请</option>
+                <option value="1" {{#equals type 1}}selected{{/equals}}>价格上涨</option>
+              </select>
+            </td>
+            <td width="100%"> &nbsp; </td>
+            <td>
+              <button class="btn btn-minor mr-sm" id="searchBtn">搜索</button>
+            </td>
+            <td>
+              <button class="btn btn-ghost" id="resetBtn">重置</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div>
+        <table class="table" id="checkTable">
+          <thead>
+          <tr>
+            <th class="left-text">供应商名称</th>
+            <th>商品总数</th>
+            {{#equals auditStatus 1}}
+              <th>待初审</th>
+            {{/equals}}
+            {{#equals auditStatus 2}}
+              <th>待终审</th>
+            {{/equals}}
+            {{#unless auditStatus}}
+              <th>待初审</th>
+              <th>待终审</th>
+              <th>审核通过</th>
+              <th>审核不通过</th>
+            {{/unless}}
+          </tr>
+          </thead>
+          {{#gt (size _DATA_.data) 0}}
+            <tbody>
+            {{#each _DATA_.data}}
+              <tr data-id="{{shopId}}" data-wait-first-audit-count="{{waitFirstAuditCount}}" data-wait-final-audit-count="{{waitFinalAuditCount}}">
+                <td>{{supplierName}}</a></td>
+                <td>{{itemTotalCount}}</td>
+
+                {{#equals ../auditStatus 1}}
+                  <td>
+                    <a href="/seller/item-check-list?shopId={{shopId}}&auditStatus=1#1">{{waitFirstAuditCount}}</a>
+                  </td>
+                {{/equals}}
+
+                {{#equals ../auditStatus 2}}
+                  <td>
+                    <a href="/seller/item-check-list?shopId={{shopId}}&auditStatus=2#2">{{waitFinalAuditCount}}</a>
+                  </td>
+                {{/equals}}
+
+                {{#unless ../auditStatus}}
+                  <td>
+                    <a href="/seller/item-check-list?shopId={{shopId}}&auditStatus=1#1">{{waitFirstAuditCount}}</a>
+                  </td>
+                  <td>
+                    <a href="/seller/item-check-list?shopId={{shopId}}&auditStatus=2#2">{{waitFinalAuditCount}}</a>
+                  </td>
+                  <td>
+                    <a href="/seller/item-check-list?shopId={{shopId}}&auditStatus=3#3">{{auditPassCount}}</a>
+                  </td>
+                  <td>
+                    <a href="/seller/item-check-list?shopId={{shopId}}&auditStatus=0#0">{{auditFailCount}}</a>
+                  </td>
+                {{/unless}}
+              </tr>
+            {{/each}}
+            </tbody>
+            <tfoot>
+            <tr class="tfoot">
+              {{#unless auditStatus}}
+                <td>
+                  {{#of "1" _ROLES_}}
+                    <button class="btn btn-medium btn-info js-item-checkFirst">批量初审</button>
+                  {{/of}}
+                  {{#of "2" _ROLES_}}
+                    <button class="btn btn-medium btn-info js-item-checkFinal">批量终审</button>
+                  {{/of}}
+                  &nbsp;
+                </td>
+                <td colspan="5" class="text-right">
+                  <div class="item-pagination" data-total="{{_DATA_.total}}"
+                       data-size="{{#if pageSize ~}}{{pageSize}}{{else}}100{{~/if}}"></div>
+                </td>
+              {{else}}
+                <td>
+                  {{#of "1" _ROLES_}}
+                    {{#equals auditStatus "1"}}
+                      <button class="btn btn-medium btn-info js-item-checkFirst">批量初审</button>
+                    {{/equals}}
+                  {{/of}}
+                  {{#of "2" _ROLES_}}
+                    {{#equals auditStatus "2"}}
+                      <button class="btn btn-medium btn-info js-item-checkFinal">批量终审</button>
+                    {{/equals}}
+                  {{/of}}
+                  &nbsp;
+                </td>
+                <td colspan="2" class="text-right">
+                  <div class="item-pagination" data-total="{{_DATA_.total}}"
+                       data-size="{{#if pageSize ~}}{{pageSize}}{{else}}100{{~/if}}"></div>
+                </td>
+              {{/unless}}
+            </tr>
+            </tfoot>
+          {{else}}
+            <tbody>
+            <tr>
+              <td {{#unless auditStatus}}colspan="6" {{else}}colspan="3"{{/unless}} class="text-center">
+                <span id="noRecord">没有符合条件的数据</span>
+              </td>
+            </tr>
+            </tbody>
+          {{/gt}}
+        </table>
+      </div>
+    </div>
+  </div>
+{{/component}}

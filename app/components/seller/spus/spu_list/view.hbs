@@ -1,0 +1,20 @@
+{{#component "spu-list js-comp"}}
+  <div class="pull-right">
+    <a class="btn btn-minor" href="/seller/release-items?ptype=5" target="_blank">SPU申请</a>
+  </div>
+  <div class="component-header">
+    <div name="status" class="tab" data-type="switchable">
+      <ul class="tab-navs clearfix">
+        <li {{#equals status 1}}class="active"{{/equals}} value="1"><a href="/seller/spus/spus-list?status=1">待审核<span class="tab-label"></span></a></li>
+        <li {{#equals status 3}}class="active"{{/equals}} value="3"><a href="/seller/spus/spus-list?status=3">审核成功<span class="tab-label"></span></a></li>
+        <li {{#equals status -1}}class="active"{{/equals}} value="-1"><a href="/seller/spus/spus-list?status=-1">审核失败<span class="tab-label"></span></a></li>
+        <li {{#of status '-1,1,3'}}{{else}}class="active"{{/of}} value=""><a href="/seller/spus/spus-list">全部<span class="tab-label"></span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="component-body">
+    <div class="item-list">
+
+    </div>
+  </div>
+{{/component}}

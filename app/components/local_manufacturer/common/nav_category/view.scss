@@ -1,0 +1,68 @@
+.manufacturer-nav-bar {
+  .nav-bar-header {
+    width: 232px;
+    height: 40px;
+    background: #4E5863;
+    color: #ffffff;
+    font-size: 14px;
+    text-align: center;
+    line-height: 40px;
+  }
+
+  .hide {
+    display: none;
+  }
+
+  .categories-nav {
+    z-index: 999;
+    position: absolute;
+    width: 232px;
+    height: 400px;
+    background: #474E56;
+    padding-top: 15px;
+    overflow: hidden;
+    .categories-list {
+      height: 100%;
+      color: #ffffff;
+      .category-1 {
+        display: block;
+        margin-left: 20px;
+        margin-bottom: 15px;
+        .category-logo {
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          .category-icon {
+            color: #ffffff;
+          }
+        }
+        .category-name {
+          display: inline-block;
+          font-size: 14px;
+          cursor:pointer;
+          &:hover {
+            color: #FFCE12;
+          }
+        }
+        .childrens {
+          display: block;
+          margin-left: 24px;
+          height: 40px;
+          overflow: hidden;
+          .category-2 {
+            height: 20px;
+            line-height: 20px;
+            margin-right: 5px;
+            font-size: 12px;
+            white-space: nowrap;
+            cursor:pointer;
+            color: #cbcacc;
+            &:hover {
+              color: #FFCE12;
+            }
+          }
+        }
+      }
+    }
+  }
+}

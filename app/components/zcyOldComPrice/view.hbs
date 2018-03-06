@@ -1,0 +1,44 @@
+{{#component "old-com-price js-comp"}}
+  <div class="hide">{{json this}}</div>
+  <div class="jsQuote">
+    <div class="quote-top-info">
+      <div class="quote-title">
+        <div class="other-quote">同款商品报价</div>
+      </div>
+    </div>
+
+    <div class="quote-info">
+      {{#if _COMPARE_PRICE_}}
+        <ul>
+          {{#each _COMPARE_PRICE_}}
+            {{#gt 3 @index }}
+              <li>
+                <a href="/items/{{id}}?searchType=1">
+                  <div class="product-img"><img src="{{mainImage}}" alt=""></div>
+                </a>
+                <div class="quote-price">
+                  <div class="price_detail">￥{{formatPrice price}}</div>
+                  {{#if primeDiscount}}
+                    {{#equals primeDiscount 10000 }}
+                      {{else}}
+                      <div class="price_discount">
+                        <span>优惠</span><span class="js-compare-primeDiscount" data-primeDiscount="{{formatPrice primeDiscount}}"></span>
+                      </div>
+                    {{/equals}}
+                  {{/if}}
+                  <a href="/eevees/shop?shopId={{shopId}}&searchType=1"><div class="supplier_names">{{shopName}}</div></a>
+                </div>
+              </li>
+            {{/gt}}
+          {{/each}}
+        </ul>
+        <div class="more_link"><a href="/eevees/search?bids={{_DATA_.item.brandId}}&specification={{_DATA_.item.specification}}" class="link_more">查看更多 > </a></div>
+      {{else}}
+        <div class="noSupplier">
+          <div class="empty-image"><img src="/lunatone/assets/images/other-images/noSupplier.png" alt=""></div>
+          <p>对不起，您当前所查看的商品暂时没有其他供应商的报价信息。</p>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+{{/component}}

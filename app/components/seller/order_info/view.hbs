@@ -1,0 +1,49 @@
+{{#component "component-order-info"}}
+  {{#with _DATA_}}
+    <div class="component-header">
+      <span class="component-title">
+        订单概览
+      </span>
+    </div>
+    <div class="component-body">
+      <ol class="clearfix">
+        <li class="pull-left order-info-item">
+          <span class="">采购人：</span>
+          <span class="">{{purchaserName}}</span>
+        </li>
+        <li class="pull-left order-info-item">
+          <span class="">采购单位：</span>
+          <span class="">{{purchaserOrganizationName}}</span>
+        </li>
+        <li class="pull-left order-info-item">
+          <span class="">采购单号：</span>
+          <span class="">{{purchaserOrderId}}</span>
+        </li>
+        <li class="pull-left order-info-item">
+          <span class="">创建时间：</span>
+          <span class="">{{formatDate createdAt}}</span>
+        </li>
+        <li class="pull-left order-info-item">
+          <span class="">订单号：</span>
+          <span class="">{{id}}</span>
+        </li>
+        <li class="pull-left order-info-item">
+          <span class="">供应商：</span>
+          <span class="">{{supplierOrganizationName}}</span>
+        </li>
+        <li class="pull-left order-info-item">
+          <span class="">订单状态：</span>
+          <span class="">
+            {{#equals status 0}}待发货{{!-- 等待处理 --}}{{/equals}}
+            {{#equals status 1}}待发货{{!-- 已接收,待发货 --}}{{/equals}}
+            {{#equals status 2}}部分发货{{/equals}}
+            {{#equals status 3}}{{#equals isNeedReissue false}}全部发货{{/equals}}{{/equals}}
+            {{#equals status 3}}{{#equals isNeedReissue true}}全部发货(待补发货){{/equals}}{{/equals}}
+            {{#equals status 4}}待验收{{/equals}}
+            {{#of status "5,6,7"}}已验收,交易完成{{/of}}
+          </span>
+        </li>
+      </ol>
+    </div>
+  {{/with}}
+{{/component}}

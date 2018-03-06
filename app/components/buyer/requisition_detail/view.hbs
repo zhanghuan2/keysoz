@@ -1,0 +1,186 @@
+{{#component "req-detail trade-manage js-comp clearfix"}}
+  <p class="hide">{{json this}}</p>
+  <div class="float-hidden" hidden="hidden"></div>
+  <div class="t-breadcrumb">
+    <label>需求单管理</label>
+    <label> / </label>
+    <a href="/buyer/requisitions">需求单列表</a>
+    <label> / </label>
+    <label class="active">需求单详情</label>
+  </div>
+  <div class="req-detail-body">
+    <div class="trade-panel">
+      <div class="trade-panel-top">
+        <div class="trade-panel-title">需求单概览</div>
+      </div>
+      <div class="trade-panel-body">
+        <div class="req-detail-about" data-requisition-extra="{{_DATA_.requisition.extra}}">
+          <table class="table table-striped table-about-view">
+            <tbody>
+            {{#with _DATA_.requisition}}
+              <tr class="no-border">
+                <td class="no-border right-text" width="13%"><label class="desc-text">需求申请单号：</label></td>
+                <td class="no-border" width="20%">{{id}}</td>
+                <td class="no-border right-text" width="13%"><label class="desc-text">需求人：</label></td>
+                <td class="no-border" width="20%"><a class="js-get-phone" data-user-id="{{buyerId}}" data-user-type="1">{{../_DATA_.userName}}</a></td>
+                <td class="no-border right-text" width="13%"><label class="desc-text">采购单位：</label></td>
+                <td class="no-border left-text" width="20%">{{../_DATA_.orgName}}</td>
+              </tr>
+              <tr class="no-border">
+                <td class="no-border right-text" width="13%"><label class="desc-text">创建时间：</label></td>
+                <td class="no-border" width="20%">{{formatDate createdAt}}</td>
+                <td class="no-border right-text" width="13%"><label class="desc-text">需求单状态：</label></td>
+                <td class="no-border" width="20%">
+                {{#equals _DATA_.requisition.status 0}}草稿{{/equals}}
+                {{#equals _DATA_.requisition.status 1}}审核中{{/equals}}
+                {{#equals _DATA_.requisition.status 2}}审核通过{{/equals}}
+                {{#equals _DATA_.requisition.status 10}}
+                  已提交至采购单&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/buyer/purchases/detail?purchaseId={{purchaseId}}&businessId={{purchaseId}}&tableCode=zcy_purchase_orders">{{purchaseId}}</a>
+                {{/equals}}
+                {{#equals _DATA_.requisition.status -1}}已驳回{{/equals}}
+                {{#equals _DATA_.requisition.status -2}}已取消{{/equals}}
+                {{#equals _DATA_.requisition.status -4}}已撤销{{/equals}}
+                </td>
+                <td class="no-border right-text" width="13%"><label class="desc-text">需求单金额(元)：</label></td>
+                <td class="no-border left-text" width="20%"><span class="css-price">{{../_CURRENCY_}}{{formatPrice price}}</span></td>
+              </tr>
+            {{/with}}
+            </tbody>
+          </table>
+        </div>
+        <hr />
+        <div class="select-address">
+          <label class="desc-text">收货地址：</label>
+          {{#with _DATA_.tradeInfo}}
+            {{receiverProvinceName}}{{receiverCityName}}{{receiverDistrictName}}{{receiverAddress}}({{receiverName}}收)&nbsp;&nbsp;&nbsp;&nbsp;{{receiverMobile}}
+          {{else}}
+            无收货地址
+          {{/with}}
+        </div>
+      </div>
+    </div>
+    <div class="trade-panel">
+      <div class="trade-panel-top">
+        <div class="trade-panel-title">商品列表</div>
+      </div>
+      <div class="trade-panel-body">
+        {{#each _DATA_.requisitionShopDetails}}
+        <table class="table  center-tex req-detail-table">
+          <thead>
+            <tr>
+              {{!-- <th>需求人</th> --}}
+              <th class="left-text" colspan="1" width="40%"> <span class="cart-title">商品</span> </th>
+              <th width="10%">商品编号</th>
+              <th width="10%">供应商</th>
+              <th width="15%">单价(元)</th>
+              <th width="10%">数量</th>
+              {{!-- <th width="110">{{i18n "freight " bundle="all_mix"}}</th> --}}
+              <th width="15%">金额(元)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-shop="{{shopId}}" class="rqu-tr shop-name">
+              <td class="left-text" colspan="1"><span class="shop-span"><strong>商家：</strong><a href="{{_HREF_.main}}/shops/{{sellerId}}" class="shop-name">{{shopName}}</a></span></td>
+              <td class="left-text" colspan="3"></td>
+            </tr>
+            {{#each requisitionItems}}
+            <tr class="item-tr {{#equals itemStatus "1"}}{{else}}off-shelf-item{{/equals}}" data-site="{{../shopId}}" data-id="{{sku.id}}">
+              <td class="left-text">
+                <div class="req-detail-item">
+                  <div class="item-logo">
+                    <img data-original="{{#cdnPath itemImage "100"}}{{/cdnPath}}" width="60" height="60" src="{{#cdnPath itemImage "100"}}{{/cdnPath}}">
+                  </div>
+                  <div class="item-description">
+                    <div  class="sku-name"><a href="/items/{{sku.itemId}}" target="_blank">{{itemName}}</a></div>
+                    <div class="sku-attrs">{{#each sku.attrs}}{{@attrKey}}:{{attrVal}}&nbsp;&nbsp;&nbsp;&nbsp;{{/each}}</div>
+                    <div class="js-item-services" data-services="{{json services}}"></div>
+                  </div>
+                </div>
+              </td>
+              <td>{{sku.itemId}}</td>
+              <td>{{!-- <a class="js-get-phone" data-user-id="{{../sellerId}}" data-user-type="2"> --}}{{../shopName}}</td>
+              <td>
+                <div><span class="css-price">{{_CURRENCY_}}</span><span class="price css-price">{{formatPrice requisitionItem.skuPrice}}</span></div>
+              </td>
+              <td><span class="count-number">{{requisitionItem.quantity}}</span>
+              </td>
+              <td><span class="css-price">{{_CURRENCY_}}</span><span class="item-subtotal currency css-price"></span></td>
+            </tr>
+            {{else}}
+              <tr><td colspan="4" class="center-text">无可展示信息</td></tr>
+            {{/each}}
+            <tr class="item-comment-tr">
+              <td colspan="6" class="left-text">
+                <div class = "label-comment comment-content">补充说明:
+                  <span class="buyer-comment-content{{shopId}}" data-shop="{{shopId}}"></span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        {{else}}
+          <div class="no-message">无可展示信息</div>
+        {{/each}}
+      </div>
+    </div>
+    <div class="trade-panel">
+      <div class="trade-panel-top">
+        <div class="trade-panel-title">流转日志</div>
+      </div>
+      <div class="trade-panel-body">
+        <div class="pur-checklog">
+            <div class="checklog-timeline">
+              <div class="timeline clearfix">
+                <table class="time-line">
+                  {{#each _DATA_.requisitionCheckLogs}}
+                  <tr class="time-line">
+                    <td class="first"><div class="point success {{#if @first}}first{{/if}} {{#if @last}}last{{/if}}"></div></td>
+                    <td width="140">{{formatDate createdAt}}</td>
+                    <td width="80">{{checkName}}</td>
+                    <td width="100">
+                      {{#equals status 0}}生成需求单(草稿){{/equals}}
+                      {{#equals status 1}}提交需求单{{/equals}}
+                      {{#equals status 2}}{{#equals checkResult "true"}}同意申请{{else}}取消预购单{{/equals}}{{/equals}}
+                      {{#equals status -1}}驳回申请{{/equals}}
+                      {{#equals status -2}}取消需求单{{/equals}}
+                      {{#equals status -4}}撤销需求单{{/equals}}
+                      {{#equals status 10}}提交至预购单{{/equals}}
+                    </td>
+                    <td width="35" class="{{#equals checkResult "true"}}success{{else}}error{{/equals}}">
+                      {{#of status "0,1,-2,-4,10"}}
+                      {{else}}
+                      {{#equals status "2"}}
+                        {{#equals checkResult "true"}}同意{{/equals}}
+                        {{#equals checkResult "false"}}{{/equals}}
+                      {{/equals}}
+                      {{#equals status "-1"}}拒绝{{/equals}}
+                      {{/of}}
+                    </td>
+                    <td class="time-line">{{checkComment}}</td>
+                  </tr>
+                  {{else}}
+                   <tr class="time-line">
+                    <td colspan="6" class="time-line">无数据</td>
+                   </tr>
+                  {{/each}}
+                </table>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="check-submit">
+      {{#with _DATA_.requisition}}
+      {{#equals status 0}}
+        {{#equals _USER_.id currentOperatorId}}
+        <a class="btn btn-primary btn-small" href="/buyer/requisition-process?reqId={{id}}&orgId={{../_USER_.orgId}}">处理需求</a><br>
+        {{/equals}}
+      {{else}}
+        {{#equals status 1}}{{#equals ../_USER_.id requisition.currentOperatorId}}
+        <a class="btn btn-primary btn-small" href="/buyer/requisition-check?reqId={{id}}&orgId={{../_USER_.orgId}}">审核需求单</a><br>{{/equals}}
+        {{/equals}}
+      {{/equals}}
+      {{/with}}
+    </div>
+  </div>
+{{/component}}

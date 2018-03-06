@@ -1,0 +1,169 @@
+{{#component "pur-process trade-manage js-comp clearfix"}}
+  <input type="hidden" class="js-purchase-type" value="{{_DATA_.purchase.type}}">
+  <div class="float-hidden" hidden></div>
+  <div class="t-breadcrumb">
+    <label>预购单管理</label>
+    <label> / </label>
+    <label>创建预购单</label>
+    <label> / </label>
+    {{#of _DATA_.purchase.type '2,3'}}
+      <!--疫苗、大宗预购单没有需求单 -->
+    {{else}}
+      <a href="/buyer/requisitions">选择需求单</a>
+      <label> / </label>
+    {{/of}}
+    <label class="active">确定预购单</label>
+  </div>
+  <div class="pur-process-body"
+       data-purchaseid="{{#if _DATA_.purchase.id}}{{_DATA_.purchase.id}}{{else}}{{purchaseId}}{{/if}}"
+       data-userid="{{_USER_.id}}"
+       data-orgid="{{_USER_.orgId}}">
+    {{#of _DATA_.purchase.type '2,3'}}
+      <!--疫苗、大宗预购单没有需求单 -->
+      {{#inject "common/requisition_progress"}}
+        {
+        "noRequisition": 1,
+        "progress": 1
+        }
+      {{/inject}}
+    {{else}}
+      {{#inject "common/requisition_progress"}}
+        {
+        "progress": 2
+        }
+      {{/inject}}
+    {{/of}}
+    <div class="trade-panel">
+      <div class="trade-panel-top">
+        <div class="trade-panel-title">需求商品列表</div>
+      </div>
+      <div class="trade-panel-body">
+        {{inject "buyer/purchase_process/requisition_items" purchaseStatus = _DATA_.purchase.status}}
+        <div style="overflow:hidden;">
+            <div class="pull-left" style="padding: 10px">备注:</div>
+            <div class="pull-left" style="padding: 10px"><textarea placeholder="对卖家进行留言" name="orderComment" maxlength="500" cols="30" rows="150" style="width: 300px;height:90px; max-width: 95%;"></textarea></div>
+        </div>
+
+      </div>
+    </div>
+
+    {{#of _DATA_.purchase.type '2,3'}}
+      <!-- 疫苗、大宗预购单没有关联采购计划 -->
+    {{else}}
+      <div class="trade-panel">
+        <div class="trade-panel-top">
+          <div class="trade-panel-title">采购计划预算</div>
+        </div>
+        <div class="trade-panel-body">
+          <div class="pur-payments">
+            <input type="hidden" class="js-purchase-plan-bind"
+                   data-plan-count="{{size _DATA_.payments}}"
+                   data-bind-amount="{{_DATA_.confirmationFee}}"
+                   data-unbind-amount="{{_DATA_.otherFee}}">
+
+            {{inject "buyer/purchase_process/purchase_plan_manage"
+                      enableEdit=true
+                      purchaseId=purchaseId
+                      confirmationFee=_DATA_.confirmationFee
+                      otherFee=_DATA_.otherFee
+                      actuallyFee=_DATA_.purchase.actuallyFee}}
+
+          </div>
+        </div>
+      </div>
+    {{/of}}
+
+    <div class="trade-panel">
+      <div class="trade-panel-top">
+        <div class="trade-panel-title">收货地址</div>
+      </div>
+      <div class="trade-panel-body">
+        <input type="hidden" class="js-purchase-address" value="{{_DATA_.deliveries.[0].delivery.outerId}}">
+        {{inject "buyer/delivery_address_picker" userId=_USER_.id middleHref=_ENV_HREF_.middle selectedId=_DATA_.deliveries.[0].delivery.outerId autoSelectDefault=false editAble=false}}
+      </div>
+    </div>
+
+    <div class="trade-panel">
+      <div class="trade-panel-top">
+        <div class="trade-panel-title">发票管理</div>
+      </div>
+      <div class="trade-panel-body">
+        <input type="hidden" class="js-purchase-items" value="{{json _DATA_.purchaseItem}}">
+        <input type="hidden" class="js-purchase-invoice" value="{{_DATA_.invoices.[0].invoice.outerId}}">
+        {{#equals _DATA_.purchase.type '3'}}
+          <!--大宗订单只能集中开票-->
+          <input type="radio" class="input-radio" name="invoice-mode" id="invoice-mode-unify" value="1" checked disabled><label for="invoice-mode-unify">&nbsp;集中开票</label>
+        {{else}}
+          {{inject "buyer/invoice_picker" orgId=_USER_.orgId selectedId=_DATA_.invoices.[0].invoice.outerId userId=_USER_.id mode=_DATA_.purchase.invoiceBillingMode}}
+        {{/equals}}
+      </div>
+    </div>
+
+  {{#of _DATA_.purchase.type '2,3'}}
+      {{else}}
+    <div class="trade-panel">
+        <div class="trade-panel-top">
+            <div class="trade-panel-title">合同管理</div>
+        </div>
+        <div class="trade-panel-body">
+            是否需要网超合同：
+            <div class="contract-select">
+                <label><input type="radio" name="need-contract" class="js-contract-checkbox input-radio"/>是</label>
+                <label><input type="radio" name="need-contract" class="input-radio" checked/>否</label>
+            </div>
+        </div>
+    </div>
+    {{/of}}
+
+    <div class="trade-panel">
+      <div class="trade-panel-top">
+        <div class="trade-panel-title">审核审批信息(确定预购单)</div>
+      </div>
+      <div class="trade-panel-body">
+        <div class="pur-checklog">
+          <table class="table table-striped checklog-table">
+            <tbody>
+              <tr class="checklog-tr">
+                <td width="20%" class="right-text checklog-td">选择{{_CHECK_INFO_.post}}： </td>
+                <td width="80%" class="left-text checklog-td">
+                  <select class="js-select-check select-checker select">
+                    <option value="">--请选择审核人--</option>
+                    {{#each _CHECK_INFO_.users}}
+                    <option value="{{id}}" data-status="{{../_CHECK_INFO_.value}}" data-orgid='{{orgId}}' data-orgname='{{orgName}}'>{{displayName}}</option>
+                    {{/each}}
+                  </select>
+                </td>
+              </tr>
+              <tr class="checklog-tr">
+                <td class="right-text checklog-td">备注： </td>
+                <td class="left-text checklog-td">
+                  <textarea placeholder="请输入备注" class="js-checklog-comment" id="taContent" rows="3"></textarea>
+                  <div class="note no-href">（<div class="js-checklog-comment-count checklog-comment-count">0</div> / 500）</div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pur-process-foot">
+    <div class="pur-result">
+      {{#of _DATA_.purchase.status "0,4,-3"}}
+        {{#of "1" _ROLES_}}
+          {{#ifCond _DATA_.purchase.actuallyFee ">=" 0}}
+            <button class="btn btn-small  btn-primary js-pur-submit" data-check="{{_CHECK_INFO_.value}}">提交</button>
+          {{/ifCond}}
+        {{/of}}
+      {{else}}
+        <div class="block">
+          <label for="" class="error-text">当前预购单状态不是"待处理/草稿/被驳回"状态，所以不能提交！请检查该预购单的状态后再试！
+          </label>
+        </div>
+        {{#with _ERROR_}}
+          <div class="errorInfo">错误信息提示:<br>{{json _ERROR_}}</div>
+        {{/with}}
+      {{/of}}
+    </div>
+  </div>
+{{/component}}

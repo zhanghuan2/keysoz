@@ -1,0 +1,17 @@
+<div class="hide">{{json this}}</div>
+<div class="sku-list hide"
+     data-skulist="{{json this.result.skus.skus}}"
+     data-stock-map="{{json this.result.stockMap}}"
+></div>
+{{#each this.result.skus.groupedSkuAttrs}}
+   <div class="">{{attrKey}}</div>
+   <div class="goods-attr">
+        {{#each skuAttributes}}
+            <input title="{{attrVal}}" type="button" data-attrKey="{{attrKey}}" name="goodsAttr" class="btn btn-info btn-small" value="{{attrVal}}"/>
+        {{/each}}
+   </div>
+{{/each}}
+   <div class="cart-oper">
+       <button class="btn btn-info addToCartSubmit">确定</button>
+       <button class="btn btn-info addToCartCancel">取消</button>
+   </div>

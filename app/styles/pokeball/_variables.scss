@@ -1,0 +1,66 @@
+// Color palette
+$navy: #24344e !default;
+$gray: #666 !default;
+$white: #fff !default;
+$darkgray: #999 !default;
+$lightgray: #bbb !default;
+$stripeblue: #2687d0 !default;
+$blue: #197aff !default;
+$orange: #ff7900 !default;
+$red: #ff2200 !default;
+$green: #2dc12d !default;
+$skyblue: #1eb6f8 !default;
+$lightblue: #4c97ff !default;
+$yellow: #f2c200 !default;
+$lightred: #ff625c !default;
+$lightgreen: #6dcc50 !default;
+$lightnavy: #ccd0d6 !default;
+$platinum: #e5e9ee !default;
+$gainsboro: #d8d8d8 !default;
+$whitesmoke: #f7f7f7 !default;
+$ghostwhite: #f9f9f9 !default;
+$darkblue: #2374e1 !default;
+$transparent: transparent !default;
+$silvergray: #adb1b6 !default;
+
+// Color primary
+$color-primary: $blue !default;
+$color-secondary: $gray !default;
+
+// Color text
+$color-text: $navy !default;
+$color-text-assist: $gray !default;
+$color-text-secondary-assist: $darkgray !default;
+$color-text-disabled: $lightgray !default;
+
+// Color link
+$color-link: $stripeblue !default;
+$color-secondary-link: $navy !default;
+$color-thrid-link: $lightgray !default;
+
+$color-link-visited: $color-link !default;
+$color-link-hover: $color-link !default;
+$color-link-active: $color-link !default;
+
+$color-secondary-link-visited: $color-secondary-link !default;
+$color-secondary-link-hover: $color-secondary-link !default;
+$color-secondary-link-active: $color-secondary-link !default;
+
+$color-thrid-link-visited: $color-thrid-link !default;
+$color-thrid-link-hover: $color-thrid-link !default;
+$color-thrid-link-active: $color-thrid-link !default;
+
+// Color status
+$color-success: $green !default;
+$color-danger: $red !default;
+$color-warning: $orange !default;
+$color-info: $gray !default;
+
+// Color background
+$color-background: #f5f5f5 !default;
+$color-background-dark: #bbb !default;
+
+// Color border
+$color-border: #dfdfdf !default;
+$color-border-dark: #bbb !default;
+$color-border-light: #f0f0f0 !default;

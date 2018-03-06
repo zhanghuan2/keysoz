@@ -1,0 +1,39 @@
+{{#component "release-items-category-bc js-comp"}}
+  <div class="component-body">
+    <div class="category-list fixed-category-bc">
+      <div class="category category-1 js-comp js-category-component"  data-comp-path="seller/brand_creat/item_category" data-type="{{#equals type "1"}}frontCategory{{else}}backCategory{{/equals}}">
+        <div class="category-header">
+          <p class="item-name-p">
+            <strong class="item-name">
+              {{i18n "First Category" bundle="all_mix"}}
+            </strong>
+          </p>
+        </div>
+        <div class="form category-body">
+          <div class="search-item">
+            <div class=" search-item-group">
+              <i class="icon-mewtwo icon-mewtwo-search"></i>
+              <input type="text" class="search-item-input js-search-item-bc" placeholder="{{i18n "Search" bundle="all_mix"}}">
+            </div>
+          </div>
+          <ul class="divide-ul">
+            {{#each _CATEGORY_}}
+              <li class="divide-li-bc" data-category="{{json this}}" id="{{id}}" code="{{code}}">
+                <div class="normal-status">
+                  {{#equals hasChildren "true"}}<i class="icon-mewtwo icon-mewtwo-right next"></i>{{/equals}}
+                  <a href="javascript:void(0);" class="item-pop"><span>{{name}}</span></a>
+                </div>
+              </li>
+            {{/each}}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <input type="hidden" class="selected-path" />
+    <input type="hidden" class="selected-path-id" />
+    <input type="hidden" class="selected-path-code" />
+    <div class="button-submit">
+      <button type="button" class="btn btn-primary btn js-submit-spu" disabled>{{i18n "Confirm" bundle="all_mix"}}</button>
+    </div>
+  </div>
+{{/component}}

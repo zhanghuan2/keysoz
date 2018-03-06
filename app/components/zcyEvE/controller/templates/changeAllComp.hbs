@@ -1,0 +1,16 @@
+<table>
+  <tbody>
+  <tr>
+    <td>
+      组件选择：
+    </td>
+    <td>
+      <select name="coms">
+        {{#each this}}
+          <option value="{{this}}">{{@key}}</option>
+        {{/each}}
+      </select>
+    </td>
+  </tr>
+  </tbody>
+</table>

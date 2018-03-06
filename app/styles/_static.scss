@@ -1,0 +1,64 @@
+.html-content {
+  line-height: 1.5em;
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ol {
+    list-style-position: inside;
+    padding-left: 10px;
+  }
+  h1 {
+    font-weight: bold;
+    font-size: 28px;
+    color: #000;
+    margin-bottom: 15px;
+  }
+  h2 {
+    color: #ec297b;
+    margin-top: 25px;
+    font-size: 24px;
+  }
+  p {
+    font-size: 14px;
+  }
+
+  .wysiwyg-clear-both {
+    clear: both;
+    zoom: 1;
+  }
+  .wysiwyg-clear-both:after {
+    content: "";
+    display: block;
+    clear: both;
+    height: 0;
+  }
+
+  .sc-crumbs {
+    color: #999;
+  }
+  .sc-crumbs span {
+    color: #646464;
+  }
+  .wysiwyg-float-left {
+    float: left;
+    width: 230px;
+    font-size: 14px;
+    line-height: 2em;
+    margin-top: 15px;
+  }
+  .wysiwyg-float-left a {
+    color: #000;
+  }
+  .wysiwyg-float-right {
+    width: 100%;
+    float: right;
+    margin-right: -250px;
+  }
+  .wysiwyg-float-right .wysiwyg-float-right {
+    margin-right: 250px;
+    line-height: 24px;
+    float: none;
+    width: auto;
+  }
+}

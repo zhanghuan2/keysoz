@@ -1,0 +1,11 @@
+<div class="section-title pull-left">
+  审核状态
+</div>
+<div class="pull-left" style="width:auto;">
+  <span style="font-size:16px;">
+   {{#equals status "0"}}<span>待提交</span>{{/equals}}
+    {{#equals status "1"}}<span style="color: #ff7900;">待审核</span>{{/equals}}
+    {{#equals status "3"}}<span style="color: #2DC12D;">审核通过</span>{{/equals}}
+    {{#equals status "-1"}}<span style="color: #f00;">审核失败</span>{{/equals}}
+  </span>
+</div>

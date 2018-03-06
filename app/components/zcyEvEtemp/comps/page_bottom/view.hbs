@@ -1,0 +1,39 @@
+{{#component "component-page-bottom js-comp"}}
+    <div class="container">
+        <ul>
+            <li class="title">平台服务</li>
+            <li><a href="{{#if OnlineConsultLink}} {{OnlineConsultLink}} {{else}} https://cschat.cloud.alipay.com/pcportal.htm?tntInstId=KMQNW3CN&scene=SCE00000041 {{/if}}" target="_blank">智能客服</a></li>
+            <li><a href="{{#if MessageConsultLink}} {{MessageConsultLink}} {{else}} https://customer.zcy.gov.cn/feedback {{/if}}" target="_blank">留言咨询</a></li>
+        </ul>
+        <ul>
+            <li class="title">采购指南</li>
+            <li><a href="{{#if ShoppingProcessLink}} {{ShoppingProcessLink}} {{else}} https://rule.zcy.gov.cn/web/site_1/2016/08/12/70.html {{/if}}" target="_blank">购物流程</a></li>
+            <li><a href="{{#if CommonProblemLink}} {{CommonProblemLink}} {{else}} https://rule.zcy.gov.cn/web/site_1/ruleQuestion/index.html {{/if}}" target="_blank">常见问题</a></li>
+            <li><a href="{{#if ContactServiceLink}} {{ContactServiceLink}} {{else}} https://cschat.cloud.alipay.com/pcportal.htm?tntInstId=KMQNW3CN&scene=SCE00000041 {{/if}}" target="_blank">联系客服</a></li>
+        </ul>
+        <ul>
+            <li class="title">支付方式</li>
+            <li><a href="{{#if DirectPaymentLink}} {{DirectPaymentLink}} {{else}} https://rule.zcy.gov.cn/web/site_1/2016/08/15/78.html {{/if}}" target="_blank">财政直接支付</a></li>
+            <li><a href="{{#if AuthorizePaymentLink}} {{AuthorizePaymentLink}} {{else}} https://rule.zcy.gov.cn/web/site_1/2016/08/15/78.html {{/if}}" target="_blank">财政授权支付</a></li>
+            <li><a href="{{#if SelfPaymentLink}} {{SelfPaymentLink}} {{else}} https://rule.zcy.gov.cn/web/site_1/2016/08/15/78.html {{/if}}" target="_blank">自有资金支付</a></li>
+        </ul>
+        <ul>
+            <li class="title">品质保障</li>
+            <li><a href="{{#if ComparePriceLink}} {{ComparePriceLink}} {{else}} https://rule.zcy.gov.cn/web/site_1/2016/08/12/69.html {{/if}}" target="_blank">比价说明</a></li>
+            <li><a href="{{#if InvoiceLink}} {{InvoiceLink}} {{else}} https://rule.zcy.gov.cn/web/site_1/2016/08/12/67.html {{/if}}" target="_blank">发票制度</a></li>
+        </ul>
+        <ul>
+            <li class="title">商家服务</li>
+            <li><a href="{{#if EnrollInstructionsLink}} {{EnrollInstructionsLink}} {{else}} https://rule.zcy.gov.cn/web/site_1/2016/08/15/79.html {{/if}}" target="_blank">入驻须知</a></li>
+            <li><a href="{{#if EnrollProcessLink}} {{EnrollProcessLink}} {{else}} https://rule.zcy.gov.cn/web/site_1/2016/08/15/80.html {{/if}}" target="_blank">入驻流程</a></li>
+        </ul>
+        <ul style="margin-right: 36px;">
+            <li class="title">官方微博</li>
+            <li><img src="/lunatone/assets/images/other-images/official_webo_QR.png" alt=""/></li>
+        </ul>
+        <ul class="last">
+            <li class="title">微信公众号</li>
+            <li><img src="/lunatone/assets/images/other-images/wechat_QR.png" alt=""/></li>
+        </ul>
+    </div>
+{{/component}}

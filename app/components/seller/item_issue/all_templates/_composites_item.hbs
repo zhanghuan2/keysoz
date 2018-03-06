@@ -1,0 +1,39 @@
+<li class="js-category-attr attr-show-li" data-attr="{{json ..}}">
+  <div class="control-group">
+    <label class="group-title hint--top" title="{{attrKey}}" aria-label="{{attrKey}}">
+          <span class="group-line-title">
+          {{#equals attrMetasForK.REQUIRED "true"}}
+            <b class="required">*</b>
+          {{/equals}}
+            {{attrKey}}：
+          </span>
+    </label>
+    <div class="group-content">
+        {{#if @root.spuId}}
+          {{#if ../attrVal}}
+            {{> seller/item_issue/all_templates/_attribute_input}}
+          {{else}}
+            {{#equals property.valueType "2"}}
+              {{> seller/item_issue/all_templates/_attribute_multi}}
+            {{else}}
+              {{> seller/item_issue/all_templates/_attribute_dropdown}}
+            {{/equals}}
+          {{/if}}
+        {{else}}
+          {{#equals group "SPU"}}
+            {{> seller/item_issue/all_templates/_attribute_input}}
+          {{else}}
+            {{#if readOnlyBySeller}}
+              {{> seller/item_issue/all_templates/_attribute_input}}
+            {{else}}
+              {{#equals property.valueType "2"}}
+                {{> seller/item_issue/all_templates/_attribute_multi}}
+              {{else}}
+                {{> seller/item_issue/all_templates/_attribute_dropdown}}
+              {{/equals}}
+            {{/if}}
+          {{/equals}}
+        {{/if}}
+    </div>
+  </div>
+</li>

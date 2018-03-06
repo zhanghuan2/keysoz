@@ -1,0 +1,180 @@
+@import "compass/css3/inline-block";
+@import "pokeball/theme";
+@import "compass/css3/box-sizing";
+
+$color-border: #eee;
+
+.tax-hall-category-index {
+  border-bottom: 0;
+  background: #016AE6;
+
+  .navbar-collapse {
+    width: 205px;
+    height: 501px;
+    cursor: default;
+    background-color: #197aff;
+  }
+
+  .navbar-item{
+    height: 40px;
+    a{
+      line-height: 15px;
+      @include inline-block(middle);
+      line-height: 15px;
+      height: 16px;
+      padding: 11px 0;
+      font-weight: bold;
+      vertical-align: text-bottom;
+      span{
+        @include inline-block(middle);
+
+        margin-top: 1px;
+      }
+    }
+  }
+  .navbar-icon {
+    float: right;
+    padding: 2px 0;
+  }
+  .home-catgeory-show:hover {
+    background-color: $color-primary !important;
+  }
+
+  .all-category-show {
+    i {
+      float: right;
+      margin-top: 17px;
+    }
+  }
+  .navbar-desc {
+    @include inline-block(middle);
+    width: 205px;
+    text-align: left;
+    line-height: 16px;
+    font-size: 14px;
+    background: #016AE6;
+    a {
+      padding: 0 12px !important;
+      color: white;
+    }
+  }
+  .home-channel {
+    border-top: 0;
+    background-color: #fff;
+    min-height: 40px;
+    position: absolute;
+    width: 205px;
+    text-align: left !important;
+    line-height: 12px;
+    z-index: 998;
+
+    .category-li{
+      position: relative;
+      height: 38px;
+      border-width: 0;
+      font-weight: bold;
+      min-height: 20px;
+      background-color: #197AFF;
+      &:hover {
+        background-color: #fff;
+        color: #197AFF;
+
+        .child-category {
+          text-decoration: underline;
+        }
+        .category-icon{
+          color: #197AFF;
+        }
+        .parent-category{
+          a {
+            color: #197AFF;
+          }
+        }
+      }
+    }
+
+    .category-li-disable{
+      position: relative;
+      height: 38px;
+      border-width: 0;
+      font-weight: bold;
+      min-height: 20px;
+      background-color: #197AFF;
+      .category-icon{
+        color: #77b3ff;
+      }
+      .parent-category a {
+        color: #77b3ff;
+      }
+      &:hover {
+        background-color: #fff;
+        color: #c0dfff;
+
+        .child-category {
+          text-decoration: underline;
+        }
+        .category-icon{
+          color: #c0dfff;
+        }
+        .parent-category a{
+          color: #c0dfff;
+        }
+      }
+    }
+    .child-category {
+      padding: 2px 10px 2px 0;
+      @include inline-block(middle);
+      line-height: 12px;
+      font-size: 12px;
+      color: #fff;
+    }
+    .category-logo {
+      height: 33px;
+      float: left;
+
+      .category-icon{
+        padding: 11px 21px 10px;
+        vertical-align: bottom;
+        float: left;
+        font-size: 15px;
+        color: #fff;
+        font-weight: normal;
+        width: 55px;
+      }
+    }
+    .parent-category{
+      font-size: 16px;
+      line-height: 14px;
+      float: left;
+      padding: 9px 10px 8px 0;
+      width: 135px;
+
+      a {
+        line-height: 16px;
+        font-size: 14px;
+        float: left;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100px;
+        padding: 0;
+      }
+
+      i{
+        float: right;
+      }
+    }
+    .children-category{
+      float: left;
+      line-height: 12px;
+      height: 16px;
+      padding: 0px;
+      overflow: hidden;
+      width: 130px;
+    }
+  }
+
+  .active{
+    display: block;
+  }
+}

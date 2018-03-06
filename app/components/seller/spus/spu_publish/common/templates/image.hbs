@@ -1,0 +1,12 @@
+{{#if type}}
+  <img src="{{imageUrl}}" alt="" data-src="{{imageUrl}}"/>
+{{else}}
+  <li class="pull-left image-container item-image js-item-image-container js-item-image">
+    <img src="{{imageUrl}}" alt="" data-src="{{imageUrl}}"/>
+    <span class="image-operate">
+      <i class="icon-alakazam icon-alakazam-left-arrow js-move-image" data-direct="left"></i>
+      <i class="icon-alakazam icon-alakazam-trash js-delete-image"></i>
+      <i class="icon-alakazam icon-alakazam-right-arrow js-move-image" data-direct="right"></i>
+    </span>
+  </li>
+{{/if}}

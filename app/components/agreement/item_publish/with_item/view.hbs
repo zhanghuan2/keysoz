@@ -1,0 +1,37 @@
+{{#component "item-publish-with-item"}}
+  <div class="hide">{{json _DATA_}}</div>
+  <input type="hidden" name="needRelateSpu" value="{{_DATA_.editProduct.needRelateSpu}}">
+  <input type="hidden" name="categoryPath" value="{{#if _DATA_.editProduct.categoryPath}}{{_DATA_.editProduct.categoryPath}}{{else}}{{_DATA_.editProduct.product.item.categoryName}}{{/if}}">
+  <input type="hidden" name="id" value="{{_DATA_.editProduct.product.item.id}}">
+  <input type="hidden" name="spuId" value="{{_DATA_.editProduct.product.item.spuId}}">
+  <input type="hidden" name="categoryId" value="{{_DATA_.editProduct.product.item.categoryId}}">
+  <input type="hidden" name="status" value="{{_DATA_.editProduct.product.item.status}}">
+  <input type="hidden" name="isVaccine" value="{{_DATA_.editProduct.product.item.tags.vaccine}}">
+  {{#with _DATA_}}
+    {{> component:agreement/item_publish/common/other_templates/base_info item=editProduct.product.item itemDetail=editProduct.product.itemDetail agrGood=agrGood}}
+  {{/with}}
+  {{#if _DATA_.editProduct.otherAttrs}}
+    {{#each _DATA_.editProduct.otherAttrs}}
+      {{#equals group "普通属性"}}
+        {{> component:agreement/item_publish/common/other_templates/default_attrs attrGroup="普通属性,SPU"}}
+      {{/equals}}
+    {{/each}}
+    {{#each _DATA_.editProduct.otherAttrs}}
+      {{#of group "服务信息,政策信息"}}
+        {{> component:agreement/item_publish/common/other_templates/other_attrs attrGroup="服务信息,政策信息"}}
+      {{/of}}
+    {{/each}}
+    {{#each _DATA_.editProduct.otherAttrs}}
+      {{#of group "普通属性,服务信息,政策信息,USER_DEFINED,销售规格"}}
+      {{else}}
+        {{> component:agreement/item_publish/common/other_templates/attrs_temp}}
+      {{/of}}
+    {{/each}}
+  {{/if}}
+
+  {{#with _DATA_}}
+    {{> component:agreement/item_publish/common/other_templates/user_defined_attrs groupedOtherAttributes=editProduct.product.groupedOtherAttributes otherAttrs=editProduct.otherAttrs}}
+    {{> component:agreement/item_publish/common/other_templates/rich_editor data=editProduct.product.richText}}
+  {{/with}}
+
+{{/component}}

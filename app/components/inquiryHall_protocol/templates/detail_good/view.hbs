@@ -1,0 +1,52 @@
+{{#component  "component-inquiry-detail-good js-comp"}}
+{{!-- 
+{
+  "goodCatalog":"商品目录", 
+  "pageTotal"分页总数,
+  "goodList":
+  [
+    {
+      "requireItemBrand":"商品品牌",
+      "requireItemModel":"商品型号",
+      "protocolPrice":单价,
+      "minLadder":最小数量,
+      "maxLadder":"最大数量"
+    }
+  ], 
+} 
+--}}
+<div class="component-inquiry-detail-good">
+  <div id="detailGood" class="hide">{{json}}</div>
+<section>
+  <h2>商品信息</h2>
+  <table class="table table-fixed">
+    <thead>
+      <tr>
+        <th>商品类目</th>
+        <th>品牌型号</th>
+        <th>协议单价(元)</th>
+        <th>需求数量范围</th>
+      </tr>
+    </thead>
+    <tbody id="detailGoodInfo" class="bgc-clear">
+      {{#each goodList}}
+      <tr>
+        {{#equals @index 0}}
+        <td id="detailGoodCatalog" rowspan="{{size ../goodList}}">{{../goodCatalog}}</td>
+        {{/equals}}
+        <td>
+          {{!-- <a href="#">{{requireItemBrand}}/{{requireItemModel}}</a> --}}
+          <span>{{requireItemBrand}}/{{requireItemModel}}</span>
+        </td>
+        <td>{{formatPrice protocolPrice}}</td>
+        <td>{{#if minQuantity}}{{minQuantity}}{{else}}0{{/if}}~{{#if quantity}}{{quantity}}{{else}}0{{/if}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+    {{#ifCond pageTotal ">" 1}}
+    <tr><td colspan="4"  class="load-more"><a id="loadMore" page="1">加载更多</a></td></tr>
+    {{/ifCond}}
+  </table>
+</section>
+</div>
+{{/component}}

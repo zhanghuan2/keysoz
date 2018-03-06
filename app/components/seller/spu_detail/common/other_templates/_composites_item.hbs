@@ -1,0 +1,24 @@
+<li class="js-category-attr attr-show-li" data-attr="{{json ..}}">
+  <div class="control-group" data-model="{{group}}{{attrKey}}">
+    <label class="group-title hint--top" title="{{attrKey}}" aria-label="{{attrKey}}">
+          <span class="group-line-title">
+            {{attrKey}}：
+          </span>
+    </label>
+    <div class="group-content">
+      {{#equals property.valueType "2"}}
+        {{> component:seller/spu_detail/common/all_templates/_attribute_multi}}
+      {{else}}
+        {{> component:seller/spu_detail/common/all_templates/_attribute_dropdown}}
+      {{/equals}}
+      {{#equals attrMetasForK.PROPERTY_TYPE "SKU_CANDIDATE"}}
+        <span class="sku-attr-status">
+              &nbsp;
+              <i class="icon-mewtwo icon-mewtwo-info-fill"></i>
+              <i class="icon-mewtwo icon-mewtwo-success-fill active hide"></i>
+              <span class="sku-attr-show">&nbsp;销售属性</span>
+            </span>
+      {{/equals}}
+    </div>
+  </div>
+</li>

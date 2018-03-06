@@ -1,0 +1,21 @@
+<div class="form-section clearfix">
+  <div class="section-title">
+    普通属性
+  </div>
+  <div class="pull-left section-content">
+    <div class="category-attribute attribute-area js-attribute-area">
+      <ul class="attribute-list clearfix" id="js-category-attribute-list"
+          data-attr="{{json otherAttributeWithRules}}"
+        {{#of group attrGroup}}
+          {{#each otherAttributeWithRules}}
+            {{#equals attributeRule.attrKey "ABCDEFG"}}
+              <!--ABCDEF是特殊属性，不展示，为了使疫苗商品显示普通属性添加按钮-->
+            {{else}}
+              {{> component:seller/item_publish/common/other_templates/_attribute_container}}
+            {{/equals}}
+          {{/each}}
+        {{/of}}
+      </ul>
+    </div>
+  </div>
+</div>

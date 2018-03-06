@@ -1,0 +1,56 @@
+{{#component ""}}
+{{!-- 
+{
+  "corpName":"采购单位",
+  "orderNo":"订购单编号",
+  "orderCatalog":"采购目", 
+  "biddingMethod":"竞价方式:直接订购,批量竞价-单品牌竞价,批量竞价-多品牌竞价",
+  "packageMethod":"全国打包",
+  "packageAreaList":
+  [
+    {
+      "purchaserCount":5,
+      "purchaserArea":"浙江省"
+    },
+    {
+      "purchaserCount":4,
+      "purchaserArea":"江苏省"
+    }
+  ], 
+  "supplierRule":"供应商要求"
+} 
+--}}
+<section>
+  <h2>基本信息</h2>
+  <table class="table table-fixed table-fixed-ie8">
+    <tbody>
+      <tr>
+        <td>采购单位</td>
+        <td>{{corpName}}
+        {{#ifCond biddingMethod "!=" "直接订购"}}
+        <td>竞价单编号</td>
+        {{else}}
+        <td>订购单编号</td>
+        {{/ifCond}}
+        <td>{{orderNo}}</td>
+      </tr>
+      <tr>
+        <td>采购目录</td>
+        <td>{{orderCatalog}}</td>
+        <td>竞价方式</td>
+        <td>{{biddingMethod}}</td>
+      </tr>
+      {{#ifCond biddingMethod "!=" "直接订购"}}
+      {{inject "inquiryHall_protocol/templates/base_package_area"
+        packageMethod=packageMethod
+        packageAreaList=packageAreaList
+      }}
+      <tr>
+        <td>参与报价的供应商要求</td>
+        <td colspan="3">{{supplierRule}}</td>
+      </tr>
+      {{/ifCond}}
+    </tbody>
+  </table>
+</section>
+{{/component}}

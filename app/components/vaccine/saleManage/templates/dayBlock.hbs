@@ -1,0 +1,27 @@
+<div class="calendar-day{{#if forbid}} forbid-sale{{/if}}">
+  <div class="day-no">{{day}}</div>
+  {{#if forbid}}
+    <button class="btn manage-button" data-day="{{day}}" data-orgs="{{json whiteOrgs.orgs}}">添加白名单</button>
+    <div class="white-list" data-orgs="{{json whiteOrgs.orgs}}">
+      {{#gt (size whiteOrgs.orgs) 4}}
+        {{#each whiteOrgs.orgs}}
+          {{#gt @index 2}}
+          {{else}}
+            <div class="white-org-name">
+              <span title="{{name}}">{{name}}</span>
+              <a href="javascript:void(0)" class="js-delete-org" data-id="{{id}}" data-day="{{../day}}"><i class="icon-zcy icon-shanchu"></i></a>
+            </div>
+          {{/gt}}
+        {{/each}}
+        <a href="javascript:void(0)" class="js-show-all-white-list" data-day="{{day}}">查看全部</a>
+      {{else}}
+        {{#each whiteOrgs.orgs}}
+          <div class="white-org-name">
+            <span title="{{name}}">{{name}}</span>
+            <a href="javascript:void(0)" class="js-delete-org" data-id="{{id}}" data-day="{{../day}}"><i class="icon-zcy icon-shanchu"></i></a>
+          </div>
+        {{/each}}
+      {{/gt}}
+    </div>
+  {{/if}}
+</div>

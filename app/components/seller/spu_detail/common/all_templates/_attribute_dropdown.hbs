@@ -1,0 +1,18 @@
+<div class="dropdown clearfix js-category-attr-input" data-key="{{attrKey}}" data-property-id={{property.id}}
+  {{#if attrMetasForK}}
+    {{#equals property.valueType "1"}}data-type="STRING"{{/equals}}
+    {{#equals property.valueType "2"}}data-type="STRING"{{/equals}}
+    {{#equals property.valueType "3"}}data-type="DATE"{{/equals}}
+    {{#equals property.valueType "4"}}data-type="NUMBER"{{/equals}}
+    data-required="{{attrMetasForK.REQUIRED}}"
+  {{else}}
+    data-type="STRING"
+    data-required="false"
+  {{/if}}>
+  <span class="dropdown-selector-text" title="{{attrVal}}">{{attrVal}}</span>
+</div>
+{{#if attrMetasForK}}
+  {{#if property.unit}}
+    <span class="attr-unit-show">&nbsp;{{property.unit}}</span>
+  {{/if}}
+{{/if}}

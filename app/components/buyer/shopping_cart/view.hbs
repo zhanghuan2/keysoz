@@ -1,0 +1,478 @@
+{{#component "shopping-cart js-comp clearfix"}}
+  <div class="float-hidden" hidden="hidden"></div>
+  <p class="hide">{{json this}}</p>
+  <input type="hidden" name="urlInquiry" value="{{_ENV_HREF_.inquiry}}">
+  <div class="shopping-cart-body">
+    <table class="table  center-tex shopping-cart-table">
+      <thead>
+      <tr class="table-tr-title">
+        <th class="left-text" width="44"></th>
+        <th class="left-text" width="320"><span class="cart-title">商品信息</span></th>
+        <th width="150">单价(元)</th>
+        <th width="150">{{i18n "Quantity" bundle="all_mix"}}</th>
+        <th width="150">总价(元)</th>
+        <th width="150">{{i18n "SelectDate" bundle="all_mix"}}</th>
+        <th width="59">{{i18n "Operation " bundle="all_mix"}}</th>
+      </tr>
+      </thead>
+    </table>
+  </div>
+  <!-- 网超购物车 -->
+  <div data-newname class="of wangchao">
+    <h3>网上超市</h3>
+    <table width="100%">
+      <thead>
+      <tr width="100%">
+        <th width="44"></th>
+        <th width="320"></th>
+        <th width="150"></th>
+        <th width="150"></th>
+        <th width="150"></th>
+        <th width="150"></th>
+        <th width="59"></th>
+      </tr>
+      </thead>
+      <tbody>
+      {{#each _NETSUPER_CART_}}
+        <tr style="background-color: #eee;" data-shop="{{shopId}}" class="shop-tr">
+          <td style="padding:10px 0;padding-left: 25px;" width="44" class="check"><input type="checkbox"
+                                                                                         class="js-select-shop-item input-checkbox">
+          </td>
+          <td class="left-text"><span class="shop-span shop-name">{{shopName}}</span></td>
+          {{!-- <td class="left-text" colspan="2"><span class="shop-span"><strong>{{i18n "Shop min consumption" bundle="all_mix"}}：</strong><span class="price">0.00</span></td>
+          <td class="left-text" colspan="3"><span class="shop-span"><strong>{{i18n "The consolidated price" bundle="all_mix"}}：</strong><span class="price">0.00</span></td> --}}
+          <td class="left-text" colspan="2"></td>
+          <td class="left-text" colspan="3"></td>
+        </tr>
+        {{#each cartItems}}
+          <tr class="item-tr {{#equals itemStatus "1"}}{{else}}off-shelf-item{{/equals}}" data-site="{{../shopId}}"
+              data-id="{{sku.id}}" data-item="{{json this}}" data-shop="{{../shopName}}"
+              data-seller-id="{{../sellerId}}">
+            <td style="padding: 10px 0;padding-left: 25px;" width="44" class="check-item">
+              {{#equals itemStatus "1"}}
+                <input data-thirdid="{{cartItem.thirdId}}" type="checkbox" class="js-select-item input-checkbox">
+              {{/equals}}
+            </td>
+            <td class="left-text">
+              <div class="item-logo">
+                {{!-- <img data-original="{{itemImage}}" width="60" height="60" src="{{itemImage}}"></img> --}}
+                <img data-original="{{#cdnPath itemImage "100"}}{{/cdnPath}}" width="60" height="60"
+                     src="{{#cdnPath itemImage "100"}}{{/cdnPath}}">
+              </div>
+              <div class="shop-cart-name">
+                <div class="item-description">
+                  <span><a href="/items/{{sku.itemId}}">{{itemName}}</a></span>
+                  <br>
+                  <span class="sku-attrs">{{#each sku.attrs}}{{@attrKey}}:{{attrVal}}
+                    &nbsp;&nbsp;&nbsp;&nbsp;{{/each}}</span>
+                  <span class="js-item-services" data-services="{{json services}}"></span>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="css-price"><span>{{_CURRENCY_}}</span><span class="price">{{formatPrice sku.price}}</span>
+              </div>
+              {{#equals itemStatus "1"}}
+                <div class="equalsPrice">
+                  {{#ifCond  sku.price ">" cartItem.snapshotPrice}}
+                    <span class="badge price-increased">价格上涨</span>{{/ifCond}}
+                  {{#ifCond  sku.price "<" cartItem.snapshotPrice}}<span class="badge price-fall">价格下跌</span>{{/ifCond}}
+                </div>
+              {{/equals}}
+            </td>
+            <td>
+              {{#equals itemStatus "1"}}
+                <div class="input-amount" data-max="{{sku.stockQuantity}}">
+                  <a href="javascript:void(0);" class="minus {{#equals cartItem.quantity 1}}disabled{{/equals}}">-</a>
+                  <input type="text" maxlength="6" class="count-number" value="{{cartItem.quantity}}"
+                         data-old="{{cartItem.quantity}}" data-init="{{cartItem.quantity}}">
+                  <a href="javascript:void(0);"
+                     class="plus {{#equals cartItem.quantity sku.stockQuantity}}disabled{{/equals}}">+</a>
+                </div>
+                <div class="item-count-warning">
+                  <span class="count-warning" data-stock="{{sku.stockQuantity}}" data-quantity="{{cartItem.quantity}}"
+                        style="display:none;"><span class=" badge badge-info">{{i18n "Tight inventory "
+                                                                                     bundle="all_mix"}}</span></span>
+                  <span class="count-wrong" style="display:none;"><span class="badge stock-not-enough">{{i18n
+                    "Low stocks" bundle="all_mix"}}</span></span>
+                  {{!-- <span class="badge">库存:{{sku.stockQuantity}}</span> --}}
+                </div>
+              {{else}}
+                <div class="item-count-warning">
+                  <span class="count-warning"><span class=" badge badge-info">{{i18n "Removed from catalog  "
+                                                                                     bundle="all_mix"}}</span></span>
+                </div>
+              {{/equals}}
+            </td>
+            <td>
+              <div class="css-price"><span>{{_CURRENCY_}}</span><span class="item-subtotal currency"></span></div>
+            </td>
+            <td><span class="js-item-create-time">{{formatDate cartItem.updatedAt}}</span></td>
+            <td class="td-last"><a href="javascript:void(0);" class="js-delete-item">{{i18n "Delete"
+                                                                                            bundle="all_mix"}}</a></td>
+          </tr>
+        {{else}}
+          <tr>
+            <td colspan="7" class="center-text">无可展示信息</td>
+          </tr>
+        {{/each}}
+        <tr class="shop-tr-gap">
+          <td colspan="7">{{!-- 我是分隔符 --}}</td>
+        </tr>
+      {{else}}
+        <tr>
+          <td colspan="7" class="center-text">购物车空空如也～</td>
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+    <div class="shopping-cart-foot block">
+      <div class="foot-container">
+        <fieldset>
+          <div class="cart-operate">
+            <label for="select-batch"><input type="checkbox" id="select-batch"
+                                             class="js-batch-select input-checkbox">{{i18n "Select all "
+                                                                                           bundle="all_mix"}}</label>
+            &nbsp;
+            <a href="javascript:void(0);" class="js-delete-batch btn btn-info btn-small">{{i18n "Batch delete"
+                                                                                                bundle="all_mix"}}</a>
+            <a href="javascript:void(0);" class="js-delete-invalid btn btn-info btn-small">{{i18n "Invalid delete"
+                                                                                                  bundle="all_mix"}}</a>
+            {{!-- <a href="{{_HREF_.main}}" class="js-continue-to-buy btn btn-info btn-small">{{i18n "Continue to buy" bundle="all_mix"}}</a> --}}
+          </div>
+          {{!-- <div class="cart-status">{{i18n "Cart status" bundle="all_mix"}}：
+            <div class="process">
+              <div class="bar"></div>
+            </div>
+            &nbsp;&nbsp;<span class="fill-count">0</span>/50
+          </div> --}}
+          <div class="cart-result">
+            <span class="total-item">{{i18n "Selected " bundle="all_mix"}}&nbsp;<span
+              class="total-count">0</span>&nbsp;{{i18n "x item(s)" bundle="all_mix"}}</span>
+            <span class="total-price">
+              {{i18n "Total price " bundle="all_mix"}}：<span class="css-price"><span>{{_CURRENCY_}}</span><span
+              class="currency css-price">0.00</span></span>
+            </span>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+    <div class="shopping-cart-foot-operate" data-userid="{{_USER_.id}}" data-orgid={{_USER_.orgId}}>
+      {{#equals _ELEMENT_.tradeCartCreateRequisition true}}
+        <button class="btn btn-primary btn-small js-cart-submit" data-cart-class="0" disabled>生成需求单</button>
+      {{/equals}}
+      {{#equals _ELEMENT_.tradeCartCreatePurchase true}}
+        <button class="btn btn-primary btn-small js-cart-submitOrder" data-cart-class="0" disabled>直接生成预购单</button>
+      {{else}}
+        {{#equals _ELEMENT_.tradeCartCreateOrder true}}
+          <button class="btn btn-primary btn-small js-cart-create-order" data-order-type="0" disabled>直接生成订单</button>
+        {{/equals}}
+      {{/equals}}
+      {{!--
+          <div class="submitRequ">
+            <a class="js-cart-submitRequ hide">与其他需求合并下单</a>
+          </div>
+          --}}
+    </div>
+  </div>
+  <!-- 协议购物车 -->
+  <div data-newname class="of xieyi">
+    <h3>协议供货</h3>
+    <table width="100%">
+      <thead>
+      <tr width="100%">
+        <th width="44"></th>
+        <th width="320"></th>
+        <th width="150"></th>
+        <th width="150"></th>
+        <th width="150"></th>
+        <th width="150"></th>
+        <th width="59"></th>
+      </tr>
+      </thead>
+      <tbody>
+      {{#each _AGREE_CART_}}
+        <tr style="background-color: #eee;" data-shop="{{shopId}}" class="shop-tr">
+          <td style="padding:10px 0;padding-left: 25px;" width="44" class="check"><input type="checkbox"
+                                                                                         class="js-select-shop-item input-checkbox">
+          </td>
+          <td class="left-text"><span class="shop-span shop-name">{{shopName}}</span></td>
+          {{!-- <td class="left-text" colspan="2"><span class="shop-span"><strong>{{i18n "Shop min consumption" bundle="all_mix"}}：</strong><span class="price">0.00</span></td>
+          <td class="left-text" colspan="3"><span class="shop-span"><strong>{{i18n "The consolidated price" bundle="all_mix"}}：</strong><span class="price">0.00</span></td> --}}
+          <td class="left-text" colspan="2"></td>
+          <td class="left-text" colspan="3"></td>
+        </tr>
+        {{#each cartItems}}
+          <tr class="item-tr {{#equals itemStatus "1"}}{{else}}off-shelf-item{{/equals}}" data-site="{{../shopId}}"
+              data-id="{{sku.id}}">
+            <td style="padding: 10px 0;padding-left: 25px;" width="44" class="check-item">
+              {{#equals itemStatus "1"}}
+                <input data-thirdid="{{cartItem.thirdId}}" type="checkbox" class="js-select-item input-checkbox">
+              {{/equals}}
+            </td>
+            <td class="left-text">
+              <div class="item-logo">
+                {{!-- <img data-original="{{itemImage}}" width="60" height="60" src="{{itemImage}}"></img> --}}
+                <img data-original="{{#cdnPath itemImage "100"}}{{/cdnPath}}" width="60" height="60"
+                     src="{{#cdnPath itemImage "100"}}{{/cdnPath}}">
+              </div>
+              <div class="shop-cart-name">
+                <div class="item-description">
+                  <span><a
+                    href="/hall/detail?itemId={{sku.itemId}}&goodsId={{cartItem.thirdId}}&sellerId={{cartItem.sellerId}}">{{itemName}}</a></span>
+                  <br>
+                  <span class="sku-attrs">{{#each sku.attrs}}{{@attrKey}}:{{attrVal}}
+                    &nbsp;&nbsp;&nbsp;&nbsp;{{/each}}</span>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="css-price"><span>{{_CURRENCY_}}</span><span class="price">{{formatPrice sku.price}}</span>
+              </div>
+              {{#equals itemStatus "1"}}
+                <div class="equalsPrice hide">
+                  {{#ifCond  sku.price ">" cartItem.snapshotPrice}}
+                    <span class="badge price-increased">价格上涨</span>{{/ifCond}}
+                  {{#ifCond  sku.price "<" cartItem.snapshotPrice}}<span class="badge price-fall">价格下跌</span>{{/ifCond}}
+                </div>
+              {{/equals}}
+            </td>
+            <td>
+              {{#equals itemStatus "1"}}
+                <div class="input-amount" data-max="9999999">
+                  <a href="javascript:void(0);" class="minus {{#equals cartItem.quantity 1}}disabled{{/equals}}">-</a>
+                  <input type="number" class="count-number" value="{{cartItem.quantity}}"
+                         data-old="{{cartItem.quantity}}" data-init="{{cartItem.quantity}}">
+                  <a href="javascript:void(0);" class="plus">+</a>
+                </div>
+                <div class="item-count-warning">
+                  <span class="count-warning" data-stock="999999999" data-quantity="{{cartItem.quantity}}"
+                        style="display:none;"><span class=" badge badge-info">{{i18n "Tight inventory "
+                                                                                     bundle="all_mix"}}</span></span>
+                  <span class="count-wrong" style="display:none;"><span class="badge stock-not-enough">{{i18n
+                    "Low stocks" bundle="all_mix"}}</span></span>
+                  {{!-- <span class="badge">库存:</span> --}}
+                </div>
+              {{else}}
+                <div class="item-count-warning">
+                  <span class="count-warning"><span class=" badge badge-info">{{i18n "Removed from catalog  "
+                                                                                     bundle="all_mix"}}</span></span>
+                </div>
+              {{/equals}}
+            </td>
+            <td>
+              <div class="css-price"><span>{{_CURRENCY_}}</span><span class="item-subtotal currency"></span></div>
+            </td>
+            <td><span class="js-item-create-time">{{formatDate cartItem.updatedAt}}</span></td>
+            <td class="td-last"><a href="javascript:void(0);" class="js-delete-item">{{i18n "Delete"
+                                                                                            bundle="all_mix"}}</a></td>
+          </tr>
+        {{else}}
+          <tr>
+            <td colspan="7" class="center-text">无可展示信息</td>
+          </tr>
+        {{/each}}
+        <tr class="shop-tr-gap">
+          <td colspan="7">{{!-- 我是分隔符 --}}</td>
+        </tr>
+      {{else}}
+        <tr>
+          <td colspan="7" class="center-text">购物车空空如也～</td>
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+    <div class="shopping-cart-foot block">
+      <div class="foot-container">
+        <fieldset>
+          <div class="cart-operate">
+            <label><input type="checkbox" class="js-batch-select input-checkbox">{{i18n "Select all " bundle="all_mix"}}
+            </label>
+            &nbsp;
+            <a href="javascript:void(0);" class="js-delete-batch btn btn-info btn-small">{{i18n "Batch delete"
+                                                                                                bundle="all_mix"}}</a>
+            <a href="javascript:void(0);" class="js-delete-invalid btn btn-info btn-small">{{i18n "Invalid delete"
+                                                                                                  bundle="all_mix"}}</a>
+            {{!-- <a href="{{_HREF_.main}}" class="js-continue-to-buy btn btn-info btn-small">{{i18n "Continue to buy" bundle="all_mix"}}</a> --}}
+          </div>
+          {{!-- <div class="cart-status">{{i18n "Cart status" bundle="all_mix"}}：
+            <div class="process">
+              <div class="bar"></div>
+            </div>
+            &nbsp;&nbsp;<span class="fill-count">0</span>/50
+          </div> --}}
+          <div class="cart-result">
+            <span class="total-item">{{i18n "Selected " bundle="all_mix"}}&nbsp;<span
+              class="total-count">0</span>&nbsp;{{i18n "x item(s)" bundle="all_mix"}}</span>
+            <span class="total-price">
+              {{i18n "Total price " bundle="all_mix"}}：<span class="css-price"><span>{{_CURRENCY_}}</span><span
+              class="currency css-price">0.00</span></span>
+            </span>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+    <div class="shopping-cart-foot-operate" data-userid="{{_USER_.id}}" data-orgid={{_USER_.orgId}}>
+      <button class="btn btn-primary btn-small js-cart-submit" disabled>生成竞价单</button>
+      <!-- {{#of "1" _ROLES_}}
+        <button class="btn btn-primary btn-small js-cart-submitOrder" disabled>{{i18n
+        "Item submit direct to purchase order" bundle="all_mix"}}</button>
+        <div class="submitRequ">
+          <a class="js-cart-submitRequ hide">{{i18n "Item submit purchase requisition with others" bundle="all_mix"}}</a>
+        </div>
+        {{/of}} -->
+    </div>
+  </div>
+  <!-- 疫苗购物车 -->
+  {{#with _VACCINE_CART_}}
+    <div data-newname class="of vaccine">
+      <h3>疫苗商品</h3>
+      <table width="100%">
+        <thead>
+        <tr width="100%">
+          <th width="44"></th>
+          <th width="320"></th>
+          <th width="150"></th>
+          <th width="150"></th>
+          <th width="150"></th>
+          <th width="150"></th>
+          <th width="59"></th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each this}}
+          <tr style="background-color: #eee;" data-shop="{{shopId}}" class="shop-tr">
+            <td style="padding:10px 0;padding-left: 25px;" width="44" class="check"><input type="checkbox"
+                                                                                           class="js-select-shop-item input-checkbox">
+            </td>
+            <td class="left-text"><span class="shop-span shop-name">{{shopName}}</span></td>
+            {{!-- <td class="left-text" colspan="2"><span class="shop-span"><strong>{{i18n "Shop min consumption" bundle="all_mix"}}：</strong><span class="price">0.00</span></td>
+            <td class="left-text" colspan="3"><span class="shop-span"><strong>{{i18n "The consolidated price" bundle="all_mix"}}：</strong><span class="price">0.00</span></td> --}}
+            <td class="left-text" colspan="2"></td>
+            <td class="left-text" colspan="3"></td>
+          </tr>
+          {{#each cartItems}}
+            <tr class="item-tr {{#equals itemStatus "1"}}{{else}}off-shelf-item{{/equals}}" data-site="{{../shopId}}"
+                data-id="{{sku.id}}" data-item="{{json this}}" data-shop="{{../shopName}}"
+                data-seller-id="{{../sellerId}}">
+              <td style="padding: 10px 0;padding-left: 25px;" width="44" class="check-item">
+                {{#equals itemStatus "1"}}
+                  <input data-thirdid="{{cartItem.thirdId}}" type="checkbox" class="js-select-item input-checkbox">
+                {{/equals}}
+              </td>
+              <td class="left-text">
+                <div class="item-logo">
+                  {{!-- <img data-original="{{itemImage}}" width="60" height="60" src="{{itemImage}}"></img> --}}
+                  <img data-original="{{#cdnPath itemImage "100"}}{{/cdnPath}}" width="60" height="60"
+                       src="{{#cdnPath itemImage "100"}}{{/cdnPath}}">
+                </div>
+                <div class="shop-cart-name">
+                  <div class="item-description">
+                    <span><a
+                      href="/hall/detail?itemId={{sku.itemId}}&goodsId={{cartItem.thirdId}}&sellerId={{cartItem.sellerId}}">{{itemName}}</a></span>
+                    <br>
+                    <span class="sku-attrs">{{#each sku.attrs}}{{@attrKey}}:{{attrVal}}
+                      &nbsp;&nbsp;&nbsp;&nbsp;{{/each}}</span>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="css-price"><span>{{_CURRENCY_}}</span><span class="price">{{formatPrice sku.price}}</span>
+                </div>
+                {{#equals itemStatus "1"}}
+                  <div class="equalsPrice hide">
+                    {{#ifCond  sku.price ">" cartItem.snapshotPrice}}
+                      <span class="badge price-increased">价格上涨</span>{{/ifCond}}
+                    {{#ifCond  sku.price "<" cartItem.snapshotPrice}}
+                      <span class="badge price-fall">价格下跌</span>{{/ifCond}}
+                  </div>
+                {{/equals}}
+              </td>
+              <td>
+                {{#equals itemStatus "1"}}
+                  <div class="input-amount" data-max="9999999">
+                    <a href="javascript:void(0);" class="minus {{#equals cartItem.quantity 1}}disabled{{/equals}}">-</a>
+                    <input type="number" class="count-number" value="{{cartItem.quantity}}"
+                           data-old="{{cartItem.quantity}}" data-init="{{cartItem.quantity}}">
+                    <a href="javascript:void(0);" class="plus">+</a>
+                  </div>
+                  <div class="item-count-warning">
+                    <span class="count-warning" data-stock="999999999" data-quantity="{{cartItem.quantity}}"
+                          style="display:none;"><span class=" badge badge-info">{{i18n "Tight inventory "
+                                                                                       bundle="all_mix"}}</span></span>
+                    <span class="count-wrong" style="display:none;"><span class="badge stock-not-enough">{{i18n
+                      "Low stocks" bundle="all_mix"}}</span></span>
+                    {{!-- <span class="badge">库存:</span> --}}
+                  </div>
+                {{else}}
+                  <div class="item-count-warning">
+                    <span class="count-warning"><span class=" badge badge-info">{{i18n "Removed from catalog  "
+                                                                                       bundle="all_mix"}}</span></span>
+                  </div>
+                {{/equals}}
+              </td>
+              <td>
+                <div class="css-price"><span>{{_CURRENCY_}}</span><span class="item-subtotal currency"></span></div>
+              </td>
+              <td><span class="js-item-create-time">{{formatDate cartItem.updatedAt}}</span></td>
+              <td class="td-last"><a href="javascript:void(0);" class="js-delete-item">{{i18n "Delete"
+                                                                                              bundle="all_mix"}}</a>
+              </td>
+            </tr>
+          {{else}}
+            <tr>
+              <td colspan="7" class="center-text">无可展示信息</td>
+            </tr>
+          {{/each}}
+          <tr class="shop-tr-gap">
+            <td colspan="7">{{!-- 我是分隔符 --}}</td>
+          </tr>
+        {{else}}
+          <tr>
+            <td colspan="7" class="center-text">购物车空空如也～</td>
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
+      <div class="shopping-cart-foot block">
+        <div class="foot-container">
+          <fieldset>
+            <div class="cart-operate">
+              <label><input type="checkbox" class="js-batch-select input-checkbox">{{i18n "Select all "
+                                                                                          bundle="all_mix"}}</label>
+              &nbsp;
+              <a href="javascript:void(0);" class="js-delete-batch btn btn-info btn-small">{{i18n "Batch delete"
+                                                                                                  bundle="all_mix"}}</a>
+              <a href="javascript:void(0);" class="js-delete-invalid btn btn-info btn-small">{{i18n "Invalid delete"
+                                                                                                    bundle="all_mix"}}</a>
+              {{!-- <a href="{{_HREF_.main}}" class="js-continue-to-buy btn btn-info btn-small">{{i18n "Continue to buy" bundle="all_mix"}}</a> --}}
+            </div>
+            {{!-- <div class="cart-status">{{i18n "Cart status" bundle="all_mix"}}：
+              <div class="process">
+                <div class="bar"></div>
+              </div>
+              &nbsp;&nbsp;<span class="fill-count">0</span>/50
+            </div> --}}
+            <div class="cart-result">
+              <span class="total-item">{{i18n "Selected " bundle="all_mix"}}&nbsp;<span class="total-count">0</span>&nbsp;{{i18n
+                "x item(s)" bundle="all_mix"}}</span>
+              <span class="total-price">
+              {{i18n "Total price " bundle="all_mix"}}：<span class="css-price"><span>{{_CURRENCY_}}</span><span
+                class="currency css-price">0.00</span></span>
+            </span>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      <div class="shopping-cart-foot-operate" data-userid="{{_USER_.id}}" data-orgid={{_USER_.orgId}}>
+        {{#equals _ELEMENT_.tradeCartCreatePurchase true}}
+          <button class="btn btn-primary btn-small js-cart-submitOrder" data-cart-class="2" disabled>生成预购单</button>
+        {{else}}
+          {{#equals _ELEMENT_.tradeCartCreateOrder true}}
+            <button class="btn btn-primary btn-small js-cart-create-order" data-order-type="2" disabled>直接生成订单</button>
+          {{/equals}}
+        {{/equals}}
+      </div>
+    </div>
+  {{/with}}
+{{/component}}

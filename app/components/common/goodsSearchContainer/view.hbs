@@ -1,0 +1,15 @@
+{{#component "component-goods-category-tree js-comp"}}
+    {{#equals searchType 1}}
+        <div class="left" {{#if marginTop}}style="margin-top:{{marginTop}}"{{/if}}>
+            {{inject "common/goodsCategoryTree"}}
+        </div>
+        <div class="right">
+            {{inject "buyer/goods_search"}}
+        </div>
+
+        {{else}}
+            <div class="full-right">
+                {{inject "buyer/goods_search"}}
+            </div>
+    {{/equals}}
+{{/component}}

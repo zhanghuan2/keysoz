@@ -1,0 +1,35 @@
+{{#component "js-comp order-evaluation product-self"}}
+
+<div class="order-whole-evaluation js-item-evaluation" data-total="{{_DATA_.total}}"
+  data-user="{{_USER_.type}}" data-orderid="{{orderId}}"
+  {{#equals flagSelf 1}}data-flag-self="1"{{/equals}}>
+  <p class="font-14 p-title">商品评价</p>
+  <div class="order-whole-list">
+    <ul class="product-information-ul">
+      <li class="product-li">
+        <span class="title">商品信息</span><span class="title pull-right">评价状态</span>
+      </li>
+      {{#each _DATA_.data}}
+        <li class="product-li" data-itemid="{{itemId}}"
+                               data-itemshuliang="{{quantity}}"
+                               data-id="{{id}}"
+                               data-skuid="{{skuId}}">
+          {{itemName}}
+          {{#equals hasComment true}}
+            {{#equals _USER_.type 1}}
+              <a href="javascript:;" class="pull-right js-add-select" style="margin-left: 10px;">追加评价</a>
+            {{/equals}}
+          {{/equals}}
+          <a href="javascript:;" class="pull-right {{#equals hasComment true}}js-select{{else}}js-add{{/equals}}">
+            {{#equals hasComment true}}
+              查看评价
+            {{else}}
+              {{#equals _USER_.type 1}}点击评价{{/equals}}
+            {{/equals}}
+          </a>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+</div>
+{{/component}}

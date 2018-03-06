@@ -1,0 +1,118 @@
+@import "compass/css3/inline-block";
+@import "pokeball/theme";
+
+div.select-req-list{
+  .select-req-list-body{
+    //width: 990px;
+    min-height: 600px;
+    background-color: #FFFFFF;
+    padding: 15px;
+    margin: 10px 0 0 0;
+    table{
+      //width: 960px;
+      border-width: 0;
+      thead{
+        tr{
+          background-color: #F7F7F7;
+          color: #9F9F9F;
+          th{
+            text-align: left;
+            border: 1px solid $color-border;
+            border-width: 1px 0 1px 0;
+            &:first-child{
+              border-width: 1px 0 1px 1px;
+              //padding-left: 20px;
+            }
+            &:last-child{
+              border-width: 1px 1px 1px 0;
+              text-align: right;
+            }
+            &.table-top-options{
+              border-width: 0 0 1px 0;
+              padding-left: 0;
+              padding-right: 0;
+            }
+          }
+          &.search-tr{
+            background-color: #FFF;
+          }
+        }
+      }
+      tbody{
+        tr{
+          border: 1px solid #e7e9ea;
+          td{
+            text-align: left;
+            border-width: 0 0 1px 0;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            &:first-child{
+              border-width: 0 0 1px 1px;
+              //padding-left: 20px;
+            }
+            &:last-child{
+              border-width: 0 1px 1px 0;
+              text-align: right;
+              &.requisition-total{
+                margin: 0;
+                padding: 0 !important;
+                display: inline;
+                .show-up-or-down{
+                  height: inherit;
+                  float: right;
+                  border: 1px solid #e7e9ea;
+                }
+              }
+            }
+            .sku-attrs{
+              color: #BBB;
+            }
+            .sku-price{
+              margin-right:20px;
+            }
+            .subtotal-price{
+               margin-left:20px;
+            }
+            .red-text {
+              color: #FF2300;
+            }
+          }
+          &.first-level-tr{
+            //border-width: 0 0 1px 2px;
+            background-color: #F2F6F9;
+          }
+          &.second-level-tr{
+            display: none;
+          }
+        }
+      }
+    }
+    .price, .currency{
+      color: #FE7800;
+    }
+    .no-href{
+      color: #9E9E9C;
+    }
+  }
+  .trade-panel{
+    border: 1px solid #e7e9ea;
+    .trade-panel-footer{
+      text-align: right;
+    }
+  }
+  .req-list-footer{
+    background-color: #FFFFFF;
+    text-align: right;
+    .list-pagination {
+      padding: 15px 0 0 0;
+    }
+  }
+  .select-req-list-footer{
+    background-color: #FFFFFF;
+    text-align: right;
+    .select-req-list-foot-operate{
+      float: left;
+      //padding: 0 15px 15px 15px;
+    }
+  }
+}

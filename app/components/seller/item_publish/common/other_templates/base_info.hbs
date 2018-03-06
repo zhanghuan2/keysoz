@@ -1,0 +1,205 @@
+<div class="form-section section-top-bottom clearfix">
+    <div class="section-title">基本信息</div>
+    <div class="pull-left section-content clearfix">
+        <div class="clearfix">
+          <div class="control-group">
+            <label class="group-title line-title"><b class="required">*</b>{{i18n "Brand" bundle="all_mix"}}：</label>
+            <div class="group-content">
+              <select class="noselectric" id="js-item-brand" name="select-brand" {{#if
+              item}}data-id="{{item.brandId}}" data-name="{{item.brandName}}"{{/if}} required>
+              </select>
+            </div>
+          </div>
+          <div class="control-group xhbox" style="margin-bottom: 0">
+            <label class="group-title line-title"><b class="required">*</b>型号：</label>
+            <div class="group-content">
+              <input type="text" id="input-specification" class="input-text" name="specification"
+                     maxLength="200" style="width: 188px;" placeholder="请输入型号" value="{{item.specification}}" required/>
+            </div>
+          </div>
+          {{#equals ptype 4}}
+            {{#unless item}}
+              <div class="control-group" style="line-height: 32px; margin-bottom: 0;">
+                <label class="group-title line-title"><b class="required">*</b>是否私有协议：</label>
+                <div class="group-content">
+                  <label style="width: auto;"><input type="radio" name="privateProtocol" class="input-radio" value="1">是</label>&nbsp;&nbsp;
+                  <label style="width: auto;"><input type="radio" name="privateProtocol" class="input-radio" value="0">否</label>
+                </div>
+              </div>
+            {{/unless}}
+          {{/equals}}
+        </div>
+        <div class="control-group">
+            <label class="group-title line-title"><b class="required">*</b>{{i18n "Product Title" bundle="all_mix"}}
+                ：</label>
+            <div class="group-content">
+                <input type="text" id="input-name" class="input-text is-filled" name="name" maxLength="200" style="width: 380px;"
+                       placeholder="请输入商品名称" value="{{item.name}}" required/>
+              {{#equals ptype 4}}
+                <div><label style="margin-top: 10px;width: 100%;text-align: left; color: #666;">输入标题请务必填写上规格信息，例”精品大米 36KG/袋““精品大豆油 1L”</label></div>
+              {{/equals}}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="group-title"><b class="required">*</b>{{i18n "Product Images" bundle="all_mix"}}：</label>
+            <div class="image-area group-content">
+                <p class="">请上传小于1MB的PNG或JPG的图片</p>
+                <div class="main-image {{#unless
+                        item.mainImage}}empty{{/unless}} image-container js-main-image js-item-image"
+                     id="js-item-main-image">
+                    {{#if item.mainImage}}
+                        <img src="{{item.mainImage}}" alt="">
+                    {{else}}
+                        <span class="image-tip-add">+</span>
+                    {{/if}}
+                    <input type="hidden" name="mainImage" value="{{item.mainImage}}">
+                </div>
+                <ul class="images-list js-images-list clearfix">
+                    {{#if itemDetail.images}}
+                        {{#each itemDetail.images}}
+                            <li class="pull-left image-container js-item-image-container item-image js-item-image">
+                                <img src="{{url}}" alt="" data-src="{{url}}" data-name="{{name}}"/>
+                                <span class="image-operate">
+                  <i class="icon-mewtwo icon-mewtwo-left-arrow js-move-image" data-direct="left"></i>
+                  <i class="icon-mewtwo icon-mewtwo-trash js-delete-image"></i>
+                  <i class="icon-mewtwo icon-mewtwo-right-arrow js-move-image" data-direct="right"></i>
+                </span>
+                            </li>
+                            {{#if @last}}
+                                {{#gt @index 3}}
+                                {{else}}
+                                    <li class="pull-left image-container image-end empty js-item-image">
+                                        <span class="image-tip-add">+</span>
+                                    </li>
+                                {{/gt}}
+                            {{/if}}
+                        {{/each}}
+                    {{else}}
+                        <li class="pull-left image-container image-end empty js-item-image">
+                            <span class="image-tip-add">+</span>
+                        </li>
+                    {{/if}}
+                </ul>
+            </div>
+        </div>
+        <div class="form-left">
+            <div class="control-group">
+                <label class="group-title line-title">上市时间：</label>
+                <div class="group-content">
+                    <div class="input-group-datepicker">
+                        <input type="text" id="input-birthday" class="input-text datepicker js-input-datepicker"
+                               name="birthday" placeholder="请选择日期" data-key="birthday" readonly
+                               value="{{item.extra.birthday}}"/>
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="group-title line-title">{{#equals ptype 4}}<b class="required">*</b>{{/equals}}计量单位：</label>
+                <div class="group-content">
+                    <input type="text" id="input-unit" class="input-text is-filled" name="unit" maxLength="200"
+                           placeholder="计量单位, 默认为 件" value="{{item.extra.unit}}"
+                      {{#equals ptype 4}}required{{/equals}}>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="group-title line-title"><b class="required">*</b>生产厂商：</label>
+                <div class="group-content">
+                    <input type="text" class="input-text" name="firm" maxLength="200" placeholder="请输入生产厂商"
+                           data-key="origin" value="{{item.extra.firm}}" required>
+                </div>
+            </div>
+              <div class="control-group">
+                <label class="group-title line-title">{{#equals item.tags.vaccine '1'}}{{else}}{{#equals isVaccine '1'}}{{else}}<b class="required">*</b>{{/equals}}{{/equals}}是否需要安装：</label>
+                <div class="group-content">
+                  <select name="needInstalled" id="input-needInstalled" {{#equals item.tags.vaccine '1'}}{{else}}{{#equals isVaccine '1'}}{{else}}required{{/equals}}{{/equals}} data-parent=".group-content">
+                    <option value="">请选择</option>
+                    <option value="1" {{#equals item.extra.needInstalled 1}}selected{{/equals}}>需要</option>
+                    <option value="0" {{#equals item.extra.needInstalled 0}}selected{{/equals}}>不需要</option>
+                  </select>
+                </div>
+              </div>
+            <div class="control-group">
+                <label class="group-title line-title">
+                    {{#if item.isNetSuper}}
+                        <b class="required">*</b>
+                    {{else}}
+                        {{#equals ptype "2"}}
+                            <b class="required">*</b>
+                        {{/equals}}
+                        {{#equals ptype "6"}}
+                            <b class="required">*</b>
+                        {{/equals}}
+                    {{/if}}
+                  电商平台：
+                </label>
+                <div class="group-content">
+                    <input type="text" class="input-text js-need-validated wd-300" name="selfPlatformLink"
+                           placeholder="请输入电商平台链接" value="{{item.extra.selfPlatformLink}}" pattern="^((https|http):\/\/)[^\s]+" {{#if item.isNetSuper}}required{{else}}{{#equals ptype "2"}}required{{/equals}}{{#equals ptype "6"}}required{{/equals}}{{/if}}/>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="group-title line-title"></label>
+                <div class="group-content">
+                    <span class="note">以http://或https://开头</span>
+                    <span class="note-error">以http://或https://开头</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-right">
+            <div class="control-group">
+                <label class="group-title line-title" style="margin-left: -10px; width: 105px"><b class="required">*</b>商品代码(货号)：</label>
+                <div class="group-content">
+                    <input type="text" id="input-itemCode" class="input-text" name="itemCode" maxLength="200"
+                           placeholder="请输入商品代码" value="{{item.itemCode}}" required/>
+                     <i class="icon-zcy icon-warningfill js-item-code-popover"></i>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="group-title line-title">重量：</label>
+                <div class="group-content">
+                    <input type="text" class="input-text" name="weight" maxLength="200" placeholder="请输入重量"
+                           data-key="weight" value="{{item.extra.weight}}"/> kg
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="group-title line-title"><b class="required">*</b>产地：</label>
+                <div class="group-content line-h-32">
+                    <input type="radio" name="limit" value="0" {{#if item.origin}}{{#equals item.origin.limit 0}}checked{{/equals}}{{else}}checked{{/if}}><span class="ml-xs text-muted">境内</span>
+        <input type="radio" name="limit" value="1" {{#if item}}{{#equals item.origin.limit 1}}checked{{/equals}}{{/if}}><span class="ml-xs text-muted">境外</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="group-title line-title"></label>
+                <div class="group-content">
+                    <div class="b-hide limit-0" {{#if item.origin}}{{#equals item.origin.limit 0}}style="display: block;" {{/equals}}{{else}}style="display: block;" {{/if}}>
+                        <div class="select-box">
+                            <select name="provinceId" class="address-select" data-level="1" data-pid="1" {{#if
+                                    item}}data-id="{{item.origin.provinceId}}" data-name="{{item.origin.province.name}}"{{/if}}>
+                                <option value="">请选择省</option>
+                            </select>
+                        </div>
+                        <div class="select-box">
+                            <select name="cityId" class="address-select" data-level="2" {{#if
+                                    item}}data-pid="{{item.origin.provinceId}}" data-id="{{item.origin.cityId}}"{{/if}}>
+                                <option value="">请选择市</option>
+                            </select>
+                        </div>
+                        <div class="select-box">
+                            <select name="regionId" class="address-select" data-level="3" {{#if
+                                    item}}data-pid="{{item.origin.cityId}}" data-id="{{item.origin.regionId}}"{{/if}}>
+                                <option value="">请选择区/县</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="b-hide limit-1" {{#equals item.origin.limit 1}}style="display: block;"{{/equals}}>
+                        <select name="countryId" data-pid="0" {{#if
+                                item}}data-id="{{item.origin.countryId}}"{{/if}} required>
+                            <option value="">请选择国家</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>

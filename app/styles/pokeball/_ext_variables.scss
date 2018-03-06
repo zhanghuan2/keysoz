@@ -1,0 +1,92 @@
+
+$header-height    :   60px;
+$foot-height      :   41px;
+$sidebar-width    :   180px;
+$sidebar-width-mini : 36px;
+$sidebar-bgcolor  : #232936;
+
+$font-color       :    #24344E;
+$border-color     :    #ccc;
+$line-height-computed : 20px;
+$icon-size : 14px;
+
+// Breadcrumbs
+$breadcrumb-padding-vertical:   19px !default;
+$breadcrumb-padding-horizontal: 16px !default;
+//** Breadcrumb background color
+$breadcrumb-bg:                 #F7F7F7 !default;
+//** Breadcrumb text color
+$breadcrumb-color:              #ccc !default;
+//** Text color of current page in the breadcrumb
+$breadcrumb-active-color:       #ddd !default;
+//** Textual separator for between breadcrumb elements
+$breadcrumb-separator:          "/" !default;
+
+$breadcrumb-line-height:		50px;
+
+// basetable
+$table-border-color :   $border-color;
+$table-bg-color : #F7F7F7 !default;
+$table-header-height: 32px;
+$table-footer-height: 60px;
+$table-header-text-color: #999999;
+
+//nested-table
+$nt-row-height: 108px;
+$nt-child-row-height: 40px;
+
+$nt-row-bg-color: #f3f6f9;
+$nt-row-hover-color: #f3fafd;
+
+$nt-child-row-bg-color: #ffffff;
+$nt-child-row-hover-color: #f9f9f9;
+
+$nt-row-border-color: #b6bfcc;
+
+$nt-row-error-bg: #fffaf8;
+$nt-row-error-border-color: #ffa293;
+
+$nt-btn-color: $nt-row-bg-color;
+$nt-op-column-width: 32px;
+$nt-expand-btn-color: #6d7781;
+
+// grid system
+$grid-len-sx: 3px;
+$grid-len-sm: 8px;
+$grid-len:    10px;
+$grid-len-lg: 18px;
+$grid-len-xl: 24px;
+$grid-padding-h: 6px;
+
+// tabs
+$tabs-bg: #FFFFFF;
+$tabs-bg-active: rgba(255, 255, 255, 1);
+$tabs-fg: #2a2d33;
+$tabs-fg-hover: #4c97ff;
+$tabs-margin-h: 3px;
+$tabs-padding-h: 16px;
+$tabs-border-color: #4c97ff;
+$tabs-border-width: 3px;
+$tabs-height: 42px;
+
+// panel
+$panel-margin-bottom: 12px;
+$panel-header-height: 42px;
+$panel-header-bg: #f7f7f7;
+$panel-header-fg: #424343;
+$panel-font-size: 14px;
+$panel-header-padding-h: 20px;
+$panel-body-padding-h: 20px;
+$panel-body-padding-v: 20px;
+$panel-body-bg: white;
+$panel-border-width: 1px;
+$panel-border-style: solid;
+$panel-border-color: #e7e9ea;
+$panel-foot-height: 42px;
+$panel-foot-padding-h: 15px;
+$panel-foot-bg: #f7f7f7;
+$panel-foot-fg: #24344e;
+
+// scrollbar
+$scrollbar-thumb-color: rgba(238, 238, 238, 0.6);
+$scrollbar-thumb-color-fill: rgba(238, 238, 238, 0.6);

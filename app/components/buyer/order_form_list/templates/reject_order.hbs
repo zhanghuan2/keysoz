@@ -1,0 +1,25 @@
+<div class="modal">
+  <div class="modal-header">
+    <h2>拒绝接单</h2>
+  </div>
+  <form class="form form-aligned" id="js-reject-order-form">
+    <div class="modal-body">
+      <div class="control-group">
+        <h3>确认拒绝接单吗？</h3>
+      </div>
+      <div class="control-group">
+        <p>拒绝接单后交易关闭，请与采购人沟通后再操作！</p>
+      </div>
+      <div class="control-group">
+        <label for="js-reject-reason"><b class="required">*</b>拒绝理由：</label>
+        <input type="hidden" name="orderId" value="{{orderId}}">
+        <input type="text" id="js-reject-reason" name="comment" placeholder="请输入拒绝理由" required>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary btn-medium" type="submit">仍然拒绝</button>
+      &nbsp;
+      <button class="btn btn-info btn-medium close" type="button">取消</button>
+    </div>
+  </form>
+</div>

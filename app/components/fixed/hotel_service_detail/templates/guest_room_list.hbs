@@ -1,0 +1,97 @@
+<table class="table table-fixed guestroom">
+  <thead>
+  <tr>
+    <th width="26%">客房类型</th>
+    <th width="14%">客房数量(间)</th>
+    <th width="15%">客房面积(平米)</th>
+    <th width="15%">容纳人数(人)</th>
+    <th width="15%">门市价(元)</th>
+    <th width="15%">协议价(元)含早餐</th>
+  </tr>
+  </thead>
+  <tbody>
+  {{#each _HOTELROOM_}}
+    <tr class="tr-info {{#ifCond @index ">=" 5}}hide{{/ifCond}}">
+      <td class="hotel-thumbnail">
+        <div class="item-logo">
+          <img data-path="{{cdnPath hotelRoomPhotos.0.url 400 400}}" src="{{hotelRoomPhotos.0.url}}" alt="{{hotelRoomPhotos.0.name}}"><!--数组,任意显示一张即可-->
+        </div>
+        <div class="item-desc">
+          <p>{{roomName}}</p>
+          <a class="expanded-trigger"><span>查看详情</span><i class="icon-zcy icon-xiangxiazhedie"></i></a>
+        </div>
+      </td>
+      <td>{{roomCount}}</td>
+      <td>{{formatPrice floorArea}}</td>
+      <td>{{capacity}}</td>
+      <td>{{formatPrice rackRate}}</td>
+      <td>淡季：<span class="hotelOrange">{{formatPrice freeNegotiatedRate}}</span><br>旺季：<span
+          class="hotelOrange">{{formatPrice busyNegotiatedRate}}</span></td>
+    </tr>
+    <tr class="tr-detail hide">
+      <td colspan="6">
+        <div class="hotel-item-detail">
+          <div class="row-item">
+            <span class="col-item"><span>淡季协议价(元)</span><div class="val-item">{{formatPrice freeNegotiatedRate}}</div></span>
+            <span class="col-item"><span>旺季协议价(元)</span><div class="val-item">{{formatPrice busyNegotiatedRate}}</div></span>
+          </div>
+          <div class="row-item">
+            <span class="col-item"><span>序号</span><div class="val-item">{{sequence}}</div></span>
+            <span class="col-item"><span>客房类型</span><div class="val-item">{{roomName}}</div></span>
+          </div>
+          <div class="row-item">
+            <span class="col-item"><span>建筑面积(m<sup>2</sup>)</span>{{formatPrice floorArea}}</span>
+            <span class="col-item"><span>实际面积(m<sup>2</sup>)</span>{{formatPrice actualArea}}</span>
+          </div>
+          <div class="row-item">
+            <span class="col-item"><span>数量</span><div class="val-item">{{roomCount}}</div></span>
+            <span class="col-item"><span>门市价(元)</span><div class="val-item">{{formatPrice rackRate}}</div></span>
+          </div>
+          <div class="row-item">
+            <span class="col-item"><span>计价单位</span><div class="val-item">{{chargeUnit}}</div></span>
+            <span class="col-item"><span>容纳人数(人)</span><div class="val-item">{{capacity}}</div></span>
+          </div>
+          <div class="row-item">
+            <span class="col-item">
+              <span class="col-multiple-key">房间设施</span>
+              <span class="col-multiple-val">
+                <div>
+                  <span>电视：<span>{{#equals facilityTv 1}}液晶{{else}}彩色{{/equals}}</span></span>
+                  <span>卫生间：<span>{{#equals facilityToilet 1}}独立{{else}}公共{{/equals}}</span></span>
+                </div>
+                <div>
+                  <span>卫生用具：<span>{{#equals facilitySanitary 1}}进口{{/equals}}{{#equals facilitySanitary 2}}合资{{/equals}}{{#equals facilitySanitary 3}}国产{{/equals}}</span></span>
+                  <span>电话：<span>{{#equals facilityTel 1}}国内直拨{{else}}国际直播{{/equals}}</span></span>
+                </div>
+                <div>
+                  <span>保险柜：<span>{{#equals facilitySafeBox 1}}有{{else}}无{{/equals}}</span></span>
+                  <span>热水供应：<span>{{#equals facilityHotWater 1}}24小时{{else}}限时{{/equals}}</span></span>
+                </div>
+                <div>
+                  <span>英特网：<span>{{#equals facilityNetwork 1}}免费{{else}}费用另计{{/equals}}</span></span>
+                </div>
+              </span>
+            </span>
+            <span class="col-item">
+              <div><span>其他设施</span><div class="val-item">{{facilityOther}}</div></div>
+              <div><span>是否标配</span><div class="val-item">{{#equals ifStandard 1}}是{{else}}否{{/equals}}</div></div>
+            </span>
+          </div>
+        </div>
+      </td>
+    </tr>
+  {{/each}}
+  </tbody>
+  <tfoot>
+  {{#gt (size _HOTELROOM_) 5}}
+    <tr class="tr-hotel-total">
+      <td colspan="6" style="text-align:right">
+        <a class="hotel-list-all">
+          <span>查看全部</span>
+          <i class="icon-zcy icon-xiangxiazhedie"></i>
+        </a>
+      </td>
+    </tr>
+  {{/gt}}
+  </tfoot>
+</table>

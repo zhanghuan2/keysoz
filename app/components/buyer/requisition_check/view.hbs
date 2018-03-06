@@ -1,0 +1,197 @@
+{{#component "req-check trade-manage js-comp clearfix"}}
+  <p class="hide">{{json this}}</p>
+  <div class="float-hidden" hidden="hidden"></div>
+  <div class="t-breadcrumb">
+    <label>需求单管理</label>
+    <label> / </label>
+    <a href="/buyer/requisitions">需求单列表</a>
+    <label> / </label>
+    <label class="active">需求单审核</label>
+  </div>
+  <div class="req-check-body" data-reqid="{{_DATA_.requisition.id}}">
+    <div class="trade-panel">
+      <div class="trade-panel-top">
+        <div class="trade-panel-title">需求单概览</div>
+      </div>
+      <div class="trade-panel-body">
+        <div class="req-check-about" data-requisition-extra="{{_DATA_.requisition.extra}}">
+          <table class="table table-striped table-about-view">
+            <tbody>
+            {{#with _DATA_.requisition}}
+              <tr class="no-border">
+                <td class="no-border right-text" width="13%"><label class="desc-text">需求申请单号：</label></td>
+                <td class="no-border" width="20%">{{id}}</td>
+                <td class="no-border right-text" width="13%"><label class="desc-text">需求人：</label></td>
+                <td class="no-border" width="20%">{{../_DATA_.userName}}</td>
+                <td class="no-border right-text" width="13%"><label class="desc-text">采购单位：</label></td>
+                <td class="no-border left-text" width="20%">{{../_DATA_.orgName}}</td>
+              </tr>
+              <tr class="no-border">
+                <td class="no-border right-text" width="13%"><label class="desc-text">创建时间：</label></td>
+                <td class="no-border" width="20%">{{formatDate createdAt}}</td>
+                <td class="no-border right-text" width="13%"><label class="desc-text">需求单状态：</label></td>
+                <td class="no-border" width="20%">
+                {{#equals _DATA_.requisition.status 0}}草稿{{/equals}}
+                {{#equals _DATA_.requisition.status 1}}审核中{{/equals}}
+                {{#equals _DATA_.requisition.status 2}}审核通过{{/equals}}
+                {{#equals _DATA_.requisition.status 10}}已提交至预购单{{/equals}}
+                {{#equals _DATA_.requisition.status -1}}已驳回{{/equals}}
+                {{#equals _DATA_.requisition.status -2}}已取消{{/equals}}
+                </td>
+                <td class="no-border right-text" width="13%"><label class="desc-text">需求单金额(元)：</label></td>
+                <td class="no-border left-text" width="20%"><span class="css-price">{{../_CURRENCY_}}{{formatPrice price}}</span></td>
+              </tr>
+            {{/with}}
+            </tbody>
+          </table>
+        </div>
+        <hr />
+        <div class="select-address">
+          <label class="desc-text">收货地址：</label>
+          {{#with _DATA_.tradeInfo}}
+            {{receiverProvinceName}}{{receiverCityName}}{{receiverDistrictName}}{{receiverAddress}}({{receiverName}}收)&nbsp;&nbsp;&nbsp;&nbsp;{{receiverMobile}}
+          {{else}}
+            无收货地址
+          {{/with}}
+        </div>
+      </div>
+    </div>
+    <div class="trade-panel">
+      <div class="trade-panel-top">
+        <div class="trade-panel-title">商品列表</div>
+      </div>
+      <div class="trade-panel-body">
+        {{#each _DATA_.requisitionShopDetails}}
+        <table class="table  center-tex req-detail-table">
+          <thead>
+            <tr>
+              <th class="left-text" colspan="1" width="40%"> <span class="cart-title">商品</span> </th>
+              <th width="13%">商品编号</th>
+              <th width="13%">供应商</th>
+              <th width="15%">单价(元)</th>
+              <th width="13%">数量</th>
+              {{!-- <th width="110">{{i18n "freight " bundle="all_mix"}}</th> --}}
+              <th width="15%">金额(元)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-shop="{{shopId}}" class="rqu-tr shop-name">
+              <td class="left-text" colspan="1"><span class="shop-span"><strong>商家：</strong><a href="{{_HREF_.main}}/shops/{{sellerId}}" class="shop-name">{{shopName}}</a></span></td>
+              <td class="left-text" colspan="3"></td>
+            </tr>
+            {{#each requisitionItems}}
+            <tr class="item-tr {{#equals itemStatus "1"}}{{else}}off-shelf-item{{/equals}}" data-site="{{../shopId}}" data-id="{{sku.id}}">
+              <td class="left-text">
+                <div class="req-detail-item">
+                  <div class="item-logo">
+                    <img data-original="{{#cdnPath itemImage "100"}}{{/cdnPath}}" width="60" height="60" src="{{#cdnPath itemImage "100"}}{{/cdnPath}}">
+                  </div>
+                  <div class="item-description">
+                    <div  class="sku-name"><a href="/items/{{sku.itemId}}">{{itemName}}</a></div>
+                    <div class="sku-attrs">{{#each sku.attrs}}{{@attrKey}}:{{attrVal}}&nbsp;&nbsp;&nbsp;&nbsp;{{/each}}</div>
+                    <div class="js-item-services" data-services="{{json services}}"></div>
+                  </div>
+                </div>
+              </td>
+              <td>{{sku.itemId}}</td>
+              <td>{{../shopName}}</td>
+              <td>
+                <div><span class="css-price">{{_CURRENCY_}}</span><span class="price css-price">{{formatPrice sku.price}}</span></div>
+              </td>
+              <td><span class="count-number">{{#equals requisitionItem.quantity -1}}不限{{else}}{{requisitionItem.quantity}}{{/equals}}</span>
+              </td>
+              <td><span class="css-price">{{_CURRENCY_}}</span><span class="item-subtotal currency css-price"></span></td>
+            </tr>
+            {{else}}
+              <tr><td colspan="6" class="center-text">无可展示信息</td></tr>
+            {{/each}}
+            <tr class="item-comment-tr">
+              <td colspan="6" class="left-text">
+                <div class = "label-comment comment-content">补充说明:
+                  <span class="buyer-comment-content{{shopId}}" data-shop="{{shopId}}"></span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        {{else}}
+          <div class="no-message">无可展示信息</div>
+        {{/each}}
+      </div>
+    </div>
+    <div class="trade-panel">
+      <div class="trade-panel-top">
+        <div class="trade-panel-title">流转日志</div>
+      </div>
+      <div class="trade-panel-body">
+        <div class="pur-checklog">
+            <div class="checklog-timeline">
+              <div class="timeline clearfix">
+                <table class="time-line">
+                  {{#each _DATA_.requisitionCheckLogs}}
+                  <tr class="time-line">
+                    <td class="first"><div class="point success {{#if @first}}first{{/if}} {{#if @last}}last{{/if}}"></div></td>
+                    <td width="140">{{formatDate createdAt}}</td>
+                    {{!-- <td>{{checkerRole}}</td> --}}
+                    <td width="80">{{checkName}}</td>
+                    <td width="100">
+                      {{#equals status 0}}生成需求单(草稿){{/equals}}
+                      {{#equals status 1}}提交需求单{{/equals}}
+                      {{#equals status 2}}同意申请{{/equals}}
+                      {{#equals status -1}}驳回申请{{/equals}}
+                      {{#equals status -4}}撤销需求单{{/equals}}
+                    </td>
+                    <td width="35" class="{{#equals checkResult "true"}}success{{else}}error{{/equals}}">
+                      {{#of status "0,1,-4"}}{{else}}{{#equals checkResult "true"}}同意{{else}}拒绝{{/equals}}{{/of}}
+                    </td>
+                    <td class="time-line" width="60%">{{checkComment}}</td>
+                  </tr>
+                  {{else}}
+                   <tr class="time-line">
+                    <td colspan="6" class="time-line">无数据</td>
+                   </tr>
+                  {{/each}}
+                </table>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="trade-panel">
+      <div class="trade-panel-top">
+        <div class="trade-panel-title">审核审批信息(审核需求单)</div>
+      </div>
+      <div class="trade-panek-body">
+        <div class="req-check-option">
+            <table class="table table-striped checklog-table">
+              <tbody>
+                <tr class="checklog-tr">
+                  <td width="20%" class="right-text checklog-td">审核结论： </td>
+                  <td width="80%" class="left-text checklog-td">
+                    <input type="radio" name="purchaseCheck" id="agree" class="js-check-agree input-radio" checked/><label for="agree">通过</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="purchaseCheck" id="reject" class="js-check-reject input-radio"/><label for="reject">不通过</label>
+                  </td>
+                </tr>
+                <tr class="checklog-tr">
+                  <td class="right-text checklog-td">备注： </td>
+                  <td class="left-text checklog-td">
+                    <textarea placeholder="请输入备注" class="js-checklog-comment" id="taContent" rows="3" {{!--  maxlength="500" onchange="this.value=this.value.substring(0, 500)" onkeydown="this.value=this.value.substring(0, 500)" onkeyup="this.value=this.value.substring(0, 500)"  --}}></textarea>
+                    <div class="note no-href">（<div class="js-checklog-comment-count checklog-comment-count">0</div> / 500）</div>
+                    <div class="check-submit">
+                      {{#of _DATA_.requisition.status "1"}}
+                      <button class="btn btn-primary btn-small js-check-submit">提交审核意见</button>
+                      {{else}}
+                      <div class="block"><label for="" class="error-text">当前需求单状态不是"审核中"状态，所以不能提交！请检查该需求单的状态后再试！
+                      </label></div>
+                      {{#with _ERROR_}}<div class="errorInfo">错误信息提示:<br>{{json _ERROR_}}</div>{{/with}}
+                      {{/of}}
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+        </div>
+      </div>
+    </div>
+{{/component}}

@@ -1,0 +1,17 @@
+{{#partial "meta"}}
+  <title>{{_PAGE_.title}}</title>
+  <meta name="keywords" content="{{_PAGE_.keywords}}">
+  <meta name="description" content="{{_PAGE_.description}}">
+{{/partial}}
+{{#if _SITE_}}
+  {{#partial "designable"}}
+    {{designable scope=_DESIGNABLE_.scope key=_DESIGNABLE_.key path=_DESIGNABLE_.path}}
+  {{/partial}}
+{{/if}}
+{{#partial "body"}}
+  {{> header}}
+  {{{block "realBody"}}}
+  {{> footer}}
+  <script src="/lunatone/assets/scripts/echarts/echarts-all.js"></script>
+{{/partial}}
+{{> layout}}

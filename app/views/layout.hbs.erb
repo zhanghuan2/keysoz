@@ -14,7 +14,7 @@
       <meta name="keywords" content="{{seo.keywords}}">
       <meta name="description" content="{{seo.description}}">
     {{/block}}
-    <link href="/lunatone/assets/images/other-images/favicon.ico" type="image/x-icon" rel="shortcut icon">
+    <link href="/assets/images/other-images/favicon.ico" type="image/x-icon" rel="shortcut icon">
     <!-- pokeball iconfont ,修改请找端点王凯凯 -->
     <link rel="stylesheet" href="//at.alicdn.com/t/font_1466485617_047616.css" />
     <!-- zcy 前台的iconfont，请修改这个链接 -->
@@ -23,14 +23,14 @@
     <link rel="stylesheet" href="//at.alicdn.com/t/font_1456890595_0763497.css"  id="css-mewtwo-icons"/>
     <!-- v1重构字体 -->
     <link rel="stylesheet" href="//sitecdn.zcy.gov.cn/zcy-font/font_285582_x7fkwx60lbsrwwmi.css">
-    <link rel="stylesheet" href="/lunatone/assets/styles/vendor.css">
-    <link rel="stylesheet" href="/lunatone/assets/styles/app.css">
-    <link rel="stylesheet" href="/lunatone/assets/styles/common_part_a.css">
-    <link rel="stylesheet" href="/lunatone/assets/styles/common_part_b.css">
-    <link rel="stylesheet" href="/lunatone/assets/styles/ZCY_eevee.css">
-    <link rel="stylesheet" href="/lunatone/assets/styles/eevee/eevee-layout.css">
+    <link rel="stylesheet" href="/assets/styles/vendor.css">
+    <link rel="stylesheet" href="/assets/styles/app.css">
+    <link rel="stylesheet" href="/assets/styles/common_part_a.css">
+    <link rel="stylesheet" href="/assets/styles/common_part_b.css">
+    <link rel="stylesheet" href="/assets/styles/ZCY_eevee.css">
+    <link rel="stylesheet" href="/assets/styles/eevee/eevee-layout.css">
     {{#if _DESIGN_MODE_}}
-    <link rel="stylesheet" href="/lunatone/assets/styles/eevee/eevee-editable.css">
+    <link rel="stylesheet" href="/assets/styles/eevee/eevee-editable.css">
     {{/if}}
   </head>
   <body {{#if _DESIGN_MODE_}}data-design-mode="true" data-design-page-context="{{json this}}"{{/if}} data-base="{{_HREF_.base}}" data-user-type="{{_USER_.type}}" class="{{block 'bodyClass'}}">
@@ -49,14 +49,14 @@
     {{#block "body"}}
     {{/block}}
     </div>
-    <script src="/lunatone/assets/scripts/vendor.js"></script>
-    <script src="/lunatone/assets/scripts/templates.js"></script>
-    <script src="/lunatone/assets/scripts/app.js"></script>
-    <script src="/lunatone/assets/scripts/echarts/echarts-all.js"></script>
+    <script src="/assets/scripts/vendor.js"></script>
+    <script src="/assets/scripts/templates.js"></script>
+    <script src="/assets/scripts/app.js"></script>
+    <script src="/assets/scripts/echarts/echarts-all.js"></script>
     <script src="/i18n"></script>
     <script>require("app")()</script>
     {{#if _DESIGN_MODE_}}
-      <script id="configJs" src="/lunatone/assets/scripts/config.js"></script>
+      <script id="configJs" src="/assets/scripts/config.js"></script>
     {{/if}}
     {{#block "tool"}}{{/block}}
 

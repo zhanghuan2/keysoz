@@ -1,9 +1,0 @@
-{{#if attributeRule}}
-  {{#with attributeRule}}{{!商品信息中的属性分组}}
-    {{> seller/item_issue/all_templates/_real_attribute_container attrVal=../attrVal readOnlyBySeller=../readOnlyBySeller composites=../composites}}
-  {{/with}}
-{{else}}
-  {{#with categoryAttribute}}{{!类目信息中的属性分组}}
-    {{> seller/item_issue/all_templates/_real_attribute_container attrBusinessMetas=../attrBusinessMetas composites=../composites}}
-  {{/with}}
-{{/if}}

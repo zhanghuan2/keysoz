@@ -1,4 +1,6 @@
-// Color palette
+//
+// Colors
+// ----------------------------------------------------------------------------------
 $navy: #24344e !default;
 $gray: #666 !default;
 $white: #fff !default;
@@ -23,44 +25,278 @@ $darkblue: #2374e1 !default;
 $transparent: transparent !default;
 $silvergray: #adb1b6 !default;
 
-// Color primary
-$color-primary: $blue !default;
-$color-secondary: $gray !default;
 
-// Color text
-$color-text: $navy !default;
-$color-text-assist: $gray !default;
-$color-text-secondary-assist: $darkgray !default;
-$color-text-disabled: $lightgray !default;
+// link colors
+$default-link-color: #2687d0 !default;
+$default-link-hover-color: #0554ff !default;
+$default-seldom-link-color: #24344e !default;
+$default-rare-link-color: #bbb !default;
 
-// Color link
-$color-link: $stripeblue !default;
-$color-secondary-link: $navy !default;
-$color-thrid-link: $lightgray !default;
+// Hover colors
+$default-hover-color: #197aff !default;
+$default-primary-hover-color: #4c97ff !default;
 
-$color-link-visited: $color-link !default;
-$color-link-hover: $color-link !default;
-$color-link-active: $color-link !default;
+// focus colors
+$default-focus-color: #0554ff !default;
 
-$color-secondary-link-visited: $color-secondary-link !default;
-$color-secondary-link-hover: $color-secondary-link !default;
-$color-secondary-link-active: $color-secondary-link !default;
+// grayscale colors
+$default-body-color: #24344e !default;
+$default-front-body-color: #333 !default;
+$default-overlay-color: #999999 !default;
+$default-note-color: #666 !default;
+$default-font-disable-color: #bbb !default;
+$default-background-color: #ebecf0 !default;
+$default-lighten-background-color: #f7f7f7 !default;
+$default-lighten-border-color: #E5E9EE;
+$default-border-color: #ccd0d6 !default;
+$default-darken-border-color: #dddddd !default;
 
-$color-thrid-link-visited: $color-thrid-link !default;
-$color-thrid-link-hover: $color-thrid-link !default;
-$color-thrid-link-active: $color-thrid-link !default;
 
-// Color status
-$color-success: $green !default;
-$color-danger: $red !default;
-$color-warning: $orange !default;
-$color-info: $gray !default;
 
-// Color background
-$color-background: #f5f5f5 !default;
-$color-background-dark: #bbb !default;
+// various colors
+$default-danger-color: #ff2200 !default;
+$default-primary-color: #197aff !default;
+$default-stress-color: #ff7900 !default;
+$default-warning-color: #ffbb00 !default;
+$default-success-color: #2dc12d !default;
+$default-info-color: #1eb6f8 !default;
+$default-slice-color: #666 !default;
 
-// Color border
-$color-border: #dfdfdf !default;
-$color-border-dark: #bbb !default;
-$color-border-light: #f0f0f0 !default;
+// disable colors
+$default-disable-color: #eeeff0 !default;
+$default-disable-background-color: #f7f7f7 !default;
+$default-disable-border-color: #d8d8d8 !default;
+
+//
+// Typography
+// ----------------------------------------------------------------------------------
+$default-font-family-monospace: Monaco, Menlo, Consolas, "Courier New", monospace !default;
+$default-font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "SimSun", '\5b8b\4f53', "WenQuanYi Micro Hei", "Helvetica Neue", Arial, Tahoma, sans-serif !default;
+$default-header-font-family: tahoma, arial, 'Ping Fang SC', 'Hiragino Sans GB', '\5b8b\4f53', sans-serif !default;
+
+$default-font-size: 12px !default;
+$default-line-height: 1.5em !default;
+
+// border radius
+$default-border-radius: 0px !default;
+
+// caret size
+$caret-size: 5px !default;
+
+//
+// Buttons
+// ----------------------------------------------------------------------------------
+$btn-color: #197aff !default;
+$btn-border: #197aff !default;
+$btn-background-color: #fff !default;
+
+$btn-primary-color: #fff !default;
+$btn-primary-border: #197aff !default;
+$btn-primary-background-color: #197aff !default;
+
+$btn-primary-hover-color: #fff !default;
+$btn-primary-hover-border: #2374e1 !default;
+$btn-primary-hover-background-color: #2374e1 !default;
+
+$btn-primary-disable-color: #fff !default;
+$btn-primary-disable-border: #bbb !default;
+$btn-primary-disable-background-color: #bbb !default;
+
+$btn-minor-color: #666 !default;
+$btn-minor-border: #bbb !default;
+$btn-minor-background-color: #f7f7f7 !default;
+
+$btn-minor-hover-color: #197aff !default;
+$btn-minor-hover-border: #4c97ff !default;
+$btn-minor-hover-background-color: #fff !default;
+
+$btn-minor-disable-color: #bbb !default;
+$btn-minor-disable-border: #d8d8d8 !default;
+$btn-minor-disable-background-color: #f7f7f7 !default;
+
+$btn-ghost-color: #666 !default;
+$btn-ghost-border: #bbb !default;
+$btn-ghost-background-color: transparent !default;
+
+$btn-ghost-hover-color: #197aff !default;
+$btn-ghost-hover-border: #4c97ff !default;
+
+$btn-ghost-disable-color: #adb1b6 !default;
+$btn-ghost-disable-border: #adb1b6 !default;
+
+$btn-success-color: #fff !default;
+$btn-success-border: #22bb00 !default;
+$btn-success-background-color: #2dc12d !default;
+$btn-success-hover-background-color: #6dcc50 !default;
+
+$btn-info-color: #717171 !default;
+$btn-info-border: #ddd !default;
+$btn-info-background-color: #fff !default;
+
+$btn-danger-color: #fff !default;
+$btn-danger-border: #ff2200 !default;
+$btn-danger-background-color: #ff2200 !default;
+$btn-danger-hover-background-color: #ff625c !default;
+
+$btn-warning-color: #fff !default;
+$btn-warning-border: #ff7900 !default;
+$btn-warning-background-color: #ff7900 !default;
+$btn-warning-hover-background-color: #f2c200 !default;
+
+$btn-disabled-color: #000 !default;
+$btn-disabled-border: #cbcccd !default;
+$btn-disabled-background-color: #cbcccd !default;
+
+$btn-font-size: 12px !default;
+$btn-padding: 7px 10px !default;
+$btn-line-height: 18px !default;
+
+$btn-small-line-height: 18px !default;
+$btn-small-font-size: 12px !default;
+$btn-small-padding: 6px 16px !default;
+
+$btn-smaller-font-size: 12px !default;
+$btn-smaller-padding: 4px 14px !default;
+
+$btn-smallest-font-size: 12px !default;
+$btn-smallest-padding: 2px 12px !default;
+
+$btn-medium-font-size: 14px !default;
+$btn-medium-padding: 8px 20px !default;
+
+$btn-large-font-size: 18px !default;
+$btn-large-padding: 14px 40px !default;
+
+$btn-mini-line-height: 18px !default;
+$btn-mini-font-size: 12px !default;
+$btn-mini-padding: 2px 4px !default;
+
+$btn-image-upload-line-height:38px !default;
+$btn-image-upload-font-size: 12px !default;
+
+//
+// Buttons
+// ----------------------------------------------------------------------------------
+$input-search-color: $default-primary-color !default;
+$input-search-input-border-width: 3px !default;
+$input-search-input-font-size: 14px !default;
+$input-search-input-line-height: 18px !default;
+
+//
+// Radios
+//
+$radio-border-color: #ccd0d6 !default;
+$radio-hover-border-color: $default-hover-color !default;
+
+//
+// Forms
+// ----------------------------------------------------------------------------------
+$form-aligned-label-width: 120px !default;
+$form-aligned-label-right: 7px !default;
+$form-aligned-controls-left: 138px !default;
+
+$input-large-width: 462px !default;
+$input-medium-width: 232px !default;
+$input-small-width: 90px !default;
+$default-small-input-padding: 6px;
+
+$default-input-width: 190px;
+$default-input-line-height: 18px;
+$default-input-padding: 6px 10px;
+
+//
+// Tabs
+// ----------------------------------------------------------------------------------
+$tab-li-color: $default-primary-color !default;
+
+//
+// Navbars
+// ----------------------------------------------------------------------------------
+$navbar-width: 80px !default;
+$navbar-height: 40px !default;
+$navbar-padding: 10px !default;
+$navbar-collapse-width: 1000px !default;
+
+$navbar-condensed-font-size: 14px !default;
+$navbar-condensed-line-height: 40px !default;
+$navbar-condensed-padding: 0 18px !default;
+$navbar-condensed-collapse-width: 1200px !default;
+
+$navbar-top-width: auto !default;
+$navbar-top-height: 12px !default;
+$navbar-top-line-height: 30px !default;
+$navbar-top-padding: 9px 10px 9px 15px !default;
+$navbar-color: $default-primary-color !default;
+$navbar-primary-color: $default-primary-color !default;
+
+//
+// Carousels
+// ----------------------------------------------------------------------------------
+$carousel-indicator-size: 12px !default;
+$carousel-rounded-indicator-size: 25px !default;
+$carousel-squared-indicator-size: 25px !default;
+$carousel-indicator-color: $default-danger-color !default;
+
+//
+// Progresses
+// ----------------------------------------------------------------------------------
+$progress-step-height: 24px !default;
+$progress-bar-width: 100px !default;
+$progress-bar-height: 1px !default;
+$progress-step-active-color: $default-primary-color !default;
+$progress-step-color: $default-note-color !default;
+$progress-step-into-width: 128px !default;
+$progress-step-border-color: $default-disable-border-color !default;
+$progress-step-line-height: 24px !default;
+
+$progress-mini-step-height: 14px;
+$progress-mini-step-line-height: 14px;
+
+//
+// Paginations
+// ----------------------------------------------------------------------------------
+$pagination-current-color: $default-hover-color !default;
+$pagination-border-color: $default-border-color !default;
+$pagination-hover-color: $default-note-color !default;
+$pagination-danger-current-color: $default-primary-color !default;
+$pagination-unbordered-current-color: $default-hover-color !default;
+
+$default-pagination-padding: 6px 0 !default;
+$default-pagination-middle-padding: 3px 0 !default;
+$default-pagination-mini-padding: 1px 0 !default;
+
+//
+// Modals
+// ----------------------------------------------------------------------------------
+$modal-header-color: $default-primary-color !default;
+$modal-image-list-border-color: $default-primary-color !default;
+$default-modal-border-radius: 2px !default;
+$default-modal-color: #d8d8d8 !default;
+
+//
+// Menus
+// ----------------------------------------------------------------------------------
+$menu-list-padding: 8px !default;
+
+//
+// Lists
+// ----------------------------------------------------------------------------------
+$list-border-color: $default-primary-color !default;
+
+//
+// Misc
+// ----------------------------------------------------------------------------------
+$span1-width: 14% !default;
+$span2-width: 21% !default;
+$span3-width: 28% !default;
+$span-padding: 0 !default;
+$badge-color: #fff !default;
+$badge-background-color: $default-primary-color !default;
+$badge-primary-color: #fff !default;
+$badge-primary-background-color: $default-primary-color !default;
+$block-color: $default-body-color !default;
+$block-background-color: #FFF !default;
+$block-primary-color: $default-body-color !default;
+$block-primary-background-color: #f1f5fe !default;
+$heading-title-color: $default-primary-color !default;
+$suggestion-li-color: $default-primary-color !default;

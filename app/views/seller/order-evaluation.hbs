@@ -1,9 +1,0 @@
-{{#partial "realTitle"}}订单评价{{/partial}}
-{{#partial "realBody"}}
-{{inject "seller/order_evaluation"}}
-{{#equals evaluateModule "1"}}
-{{inject "seller/product_evaluation"}}
-{{else}}
-{{/equals}}
-{{/partial}}
-{{>user_layout}}

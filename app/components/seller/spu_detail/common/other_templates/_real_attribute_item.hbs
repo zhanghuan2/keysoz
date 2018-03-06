@@ -1,9 +1,0 @@
-{{#if ../composites}}
-  {{> component:seller/spu_detail/common/all_templates/_attribute_composites}}
-{{else}}
-  {{#equals property.valueType "2"}}
-    {{> component:seller/spu_detail/common/all_templates/_attribute_multi}}
-  {{else}}
-    {{> component:seller/spu_detail/common/all_templates/_attribute_dropdown}}
-  {{/equals}}
-{{/if}}

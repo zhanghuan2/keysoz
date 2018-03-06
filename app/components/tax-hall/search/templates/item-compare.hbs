@@ -1,9 +1,0 @@
-{{#each data.data}}
-  <li class="product-contrast-li js-select" data-id="{{id}}" data-item="{{itemId}}"><img class="product-img" src="{{goodsImage}}"></img><div class="right-detail"><span>{{goodsName}}</span><br><span class="sale-details currency">￥{{agreementPrice}}</span><a class="delect-selected pull-right js-delect-selected">删除</a></div>
-  </li>
-{{/each}}
-{{#each data.result}}
-<li class="product-contrast-li js-noselect">
-  <div class="product-img number-product">{{this}}</div><div class="pull-more-right font-16">尚未选择</div>
-</li>
-{{/each}}

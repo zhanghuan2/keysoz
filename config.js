@@ -132,7 +132,7 @@ module.exports = {
       },
       '../app/comz_common.tar.gz': {
         version: 'master',
-        url: ' https://git.cai-inc.com/ZCY/zcy-web-lib/raw/master/comz_zcy/common/1.0.0/comz_common.tar.gz'
+        url: ' https://git.cai-inc.com/ZCY/zcy-web-lib/raw/master/comz_zcy/common/2.0.0/comz_common.tar.gz'
       }
     },
 

@@ -22,7 +22,7 @@ module.exports = ->
         effect: "fadeIn"
 
       # support IE8,9 input placeholder
-      $('input, textarea').placeholder()
+#      $('input, textarea').placeholder()
 
       clearInterval(initializeId)
   , 10)

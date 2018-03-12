@@ -1,11 +1,11 @@
 {{#partial "realTitle"}}测试页面{{/partial}}
 {{#partial "realBody"}}
-  {{#inject "common/breadcrumb"}}
+  {{#inject "comps/common/breadcrumb"}}
     {
     "breadcrumb":
     [{
-    "crumb": "menu1",
-    "url": "#"
+    "crumb": "组件列表",
+    "url": "/test?type="
     },
     {
     "crumb": "menu2",
@@ -13,6 +13,23 @@
     }]
     }
   {{/inject}}
-  {{inject "demo"}}
+  {{#if type}}
+      {{#equals type 'gf'}}
+        {{inject "comps/demo/codeGF"}}
+      {{/equals}}
+      {{#equals type 'normaltable'}}
+        {{inject "comps/demo/normaltable"}}
+      {{/equals}}
+
+      {{#equals type 'table'}}
+        {{inject "comps/demo/table"}}
+      {{/equals}}
+      {{#equals type 'base'}}
+        {{inject "comps/demo/base"}}
+      {{/equals}}
+    {{else}}
+      {{inject "comps/demo"}}
+  {{/if}}
+
 {{/partial}}
 {{> user_layout}}

@@ -1,3 +1,7 @@
+window.Router = require("router")
+window.Router.initialize()
+window.Utils = require("tool")
+
 module.exports = ->
   initializeId = setInterval(() =>
     Pokeball = require "pokeball"
@@ -7,20 +11,18 @@ module.exports = ->
       require "extras/ajax"
       require "extras/handlebars"
       require "extras/input_amount"
-      require "extras/uploadFile"
-      require "extras/uploadFileBox"
-      require "extras/uploadImage"
       require "helpers/profile"
       require "helpers/selectric"
       require "extras/zcyDistrict"
       require "extras/zcyAddress"
       require "extras/jquery.zcySticky"
-      require "extras/wc-spin"
+      require "helpers/frontHandlebars"
       require("helpers/component").initialize()
 
       $("img[data-original]").lazyload
         effect: "fadeIn"
-
+      ZCY.setPath("comps/");
+#      ZCY.setType("sync");w
       # support IE8,9 input placeholder
 #      $('input, textarea').placeholder()
 

@@ -1,6 +1,7 @@
 /**
  *
  * Web前端自动化构建调试 配置文件
+ * author  zhanghuan
  */
 module.exports = {
 
@@ -14,126 +15,7 @@ module.exports = {
   // 构建、调试相关的任务
   chores: {
     bundles: {
-      'es5-shim.js': {
-        version: '4.5.2',
-        url: 'https://cdn.bootcss.com/es5-shim/4.5.2/es5-shim.js'
-      },
-      'es5-sham.js': {
-        version: '4.5.2',
-        url: 'https://cdn.bootcss.com/es5-shim/4.5.2/es5-sham.js'
-      },
-      // 'pokeball.js': {
-      //   version: 'master',
-      //   url: 'http://registry.terminus.io/packages/pokeball/2.0.0/pokeball.js'
-      // },
-      "pokeball.js":{
-        version: "master",
-        url: "https://git.cai-inc.com/ZCY/zcy-web-lib/raw/master/pokeball.js"
-      },
-      "pokeball.css":{
-        version: "master",
-        url: "https://git.cai-inc.com/ZCY/zcy-web-lib/raw/master/pokeball.css"
-      },
-      'moonball.css': {
-        version: 'master',
-        url: 'http://registry.terminus.io/packages/pokeball/zcy/moonball.css'
-      },
-      '../app/styles/pokeball/_variables.scss': {
-        version: 'master',
-        url: 'http://registry.terminus.io/packages/theme/master/moonball.scss'
-      },
-      'i18n.js': {
-        version: '3.0.0.rc11',
-        url: 'http://registry.terminus.io/packages/i18n/3.0.0.rc11/i18n.js'
-      },
-      'json2.js': {
-        version: '0.1.0',
-        url: 'http://registry.terminus.io/packages/json2.js/0.1.0/json2.js'
-      },
-      'bs-plugins.js': {
-        version: 'master',
-        url: 'https://git.cai-inc.com/d0409/web-solrock-vendor/raw/master/bs-plugins.js'
-      },
-      'jstree.js': {
-        version: 'master',
-        url: 'https://git.cai-inc.com/d0409/web-solrock-vendor/raw/master/jstree.js'
-      },
-      'select2.min.css': {
-        version: 'master',
-        url: 'https://git.cai-inc.com/d0409/web-solrock-vendor/raw/master/select2.min.css'
-      },
-      'select2.full.min.js': {
-        version: 'master',
-        url: 'https://git.cai-inc.com/d0409/web-solrock-vendor/raw/master/select2.full.min.js'
-      },
-      'select2.zh-CN.js': {
-        version: 'master',
-        url: 'https://git.cai-inc.com/d0409/web-solrock-vendor/raw/master/select2.zh-CN.js'
-      },
-      'aliyun-sdk.js': {
-        version: 'master',
-        url: 'https://git.cai-inc.com/d0409/web-solrock-vendor/raw/master/aliyun-sdk.js'
-      },
-      'oss-js-upload.js': {
-        version: 'master',
-        url: 'https://git.cai-inc.com/d0409/web-solrock-vendor/raw/master/oss-js-upload.js'
-      },
-      'echarts.common.min.js': {
-        version: 'master',
-        url: 'https://git.cai-inc.com/d0409/web-solrock-vendor/raw/master/echarts.common.min.js'
-      },
-      'utils.js': {
-        version: 'master',
-        url: 'https://git.cai-inc.com/ZCY/zcy-web-lib/raw/develop/comz_zcy/1.0.0/utils.js'
-      },
-      'utils.scss': {
-        version: 'master',
-        url: 'https://git.cai-inc.com/ZCY/zcy-web-lib/raw/develop/comz_zcy/1.0.0/utils.scss'
-      },
-      'jQuery.print.js': {
-        version: 'master',
-        url: 'https://git.cai-inc.com/d0409/web-solrock-vendor/raw/master/jQuery.print.js'
-      },
-      '../app/components/common/header/view.hbs': {
-        version: 'master',
-        url: 'https://git.cai-inc.com/ZCY/zcy-web-lib/raw/master/views/header/1.0.2/view.hbs'
-      },
-      '../app/components/common/header/view.jsx': {
-        version: 'master',
-        url: 'https://git.cai-inc.com/ZCY/zcy-web-lib/raw/master/views/header/1.0.2/view.jsx'
-      },
-      '../app/components/common/header/view.scss': {
-        version: 'master',
-        url: 'https://git.cai-inc.com/ZCY/zcy-web-lib/raw/master/views/header/1.0.2/view.scss'
-      },
-      '../app/components/common/header/message/view.hbs': {
-        version: 'master',
-        url: 'https://git.cai-inc.com/ZCY/zcy-web-lib/raw/master/views/header/1.0.2/message/view.hbs'
-      },
-      '../app/components/common/header/todo/view.hbs': {
-        version: 'master',
-        url: 'https://git.cai-inc.com/ZCY/zcy-web-lib/raw/master/views/header/1.0.2/todo/view.hbs'
-      },
-      '../app/components/common/sidebar/view.hbs': {
-        version: 'master',
-        url: 'https://git.cai-inc.com/ZCY/zcy-web-lib/raw/master/views/sidebar/1.0.0/view.hbs'
-      },
-      '../app/components/common/sidebar/view.jsx': {
-        version: 'master',
-        url: 'https://git.cai-inc.com/ZCY/zcy-web-lib/raw/master/views/sidebar/1.0.0/view.jsx'
-      },
-      '../app/components/common/sidebar/view.scss': {
-        version: 'master',
-        url: 'https://git.cai-inc.com/ZCY/zcy-web-lib/raw/master/views/sidebar/1.0.0/view.scss'
-      },
-      "jQuery.lazyload.js": {
-        "version": "1.9.3",
-        "url": "http://registry.terminus.io/packages/jquery.lazyload.js/1.9.3/jquery.lazyload.js"
-      },
-      '../app/comz_common.tar.gz': {
-        version: 'master',
-        url: ' https://git.cai-inc.com/ZCY/zcy-web-lib/raw/master/comz_zcy/common/2.0.0/comz_common.tar.gz'
-      }
+
     },
 
     // 拷贝
@@ -205,10 +87,10 @@ module.exports = {
         base: '/files',
         dest: '/',
         context: {
-          photohref: 'https://www.zcy.gov.cn',
-          main: 'https://www.zcy.gov.cn',
-          login: 'http://127.0.0.1:8001/login',
-          mainHref: 'https://www.zcy.gov.cn'
+          photohref: 'https://www.test.com',
+          main: 'https://www.test.com',
+          login: 'https://www.test.com/login',
+          mainHref: 'https://www.test.com'
         }
       }
     },
@@ -217,32 +99,25 @@ module.exports = {
     precompile: {
       templates: {
         dest: '/assets/scripts/templates.js',
-        globs: '/{components,components_zcy}/**/templates/*.hbs'
+        globs: '{/{components_zcy,components}/**/templates/*.hbs,/pages/**/*.hbs}'
       }
     },
 
     // 编译coffeeScript,ES6,合并JavaScript
     concatScript: {
       app: {
-        globs: '/{scripts,components,components_zcy}/**/*.{js,jsx,coffee,es6}',
+        globs: '/{scripts,components_zcy,components,router,pages}/**/*.{js,jsx,coffee,es6}',
         dest: '/assets/scripts/app.js',
         definition: true, // 可选 ,默认false
         wrapper: true, // 可选 ,默认false
         order: [ '...', 'app/scripts/app.coffee' ] // 相对于运行脚本的路径
       },
       vendor: {
-        globs: '../vendor/{bs-plugins,es5-sham,es5-shim,i18n,json2,jstree,moonball,pokeball,select2.full.min,select2.zh-CN,jQuery.print,jQuery.lazyload,timepicker,utils}.{js,jsx,coffee,es6}',
+        globs: '../{vendor,libs}/*.{js,jsx,coffee,es6}',
         dest: '/assets/scripts/vendor.js',
         definition: false, // 可选 ,默认false
         wrapper: false, // 可选 ,默认null
-        order: [ 'vendor/es5-shim.js', 'vendor/es5-sham.js', 'vendor/pokeball.js', '...' ]
-      },
-      upload: {
-        globs: '../vendor/{aliyun-sdk,oss-js-upload}.{js,jsx,coffee,es6}',
-        dest: '/assets/scripts/upload.js',
-        definition: false,
-        wrapper: false,
-        order: [ '...' ]
+        order: [ 'libs/es5-shim.js', 'libs/es5-sham.js', 'libs/pokeball.js', '...' ]
       }
     },
 
@@ -254,17 +129,9 @@ module.exports = {
         order: [ '...', 'app/components/common/header/view.scss' ]
       },
       vendor: {
-        globs: '../vendor/**/*.{css,scss,sass}',
+        globs: '../{vendor,libs}/**/*.{css,scss,sass}',
         dest: '/assets/styles/vendor.css',
-        order: [ 'vendor/moomball.css', 'vendor/base.css', '...' ]
-      }
-    },
-
-    // 打包文件
-    tar: {
-      componentVendor: {
-        globs: '/components/common/{header,sidebar}/*',
-        dest: '/components-vendor.tar.gz'
+        order: [ 'libs/moomball.css', 'libs/base.css', '...' ]
       }
     },
 
@@ -310,12 +177,9 @@ module.exports = {
 
   // 调试 Web服务相关的配置
   server: {
-    port: '8082',
+    port: '8083',
     dataFilePatterns: [
-      'test/data/**/*.js'
-    ],
-    extraHelpers: [
-      'test/helper/helpers.js'
+      'test/**/*.js'
     ],
     proxyTable: {
       '/api/district/getDistrictTree': {
@@ -336,10 +200,10 @@ module.exports = {
         },
         files: {
           context: {
-            photohref: 'https://www.zcy.gov.cn',
-            main: 'https://www.zcy.gov.cn',
-            login: 'http://127.0.0.1:8001/login',
-            mainHref: 'https://www.zcy.gov.cn'
+            photohref: 'https://www.test.com',
+            main: 'https://www.test.com',
+            login: 'https://www.test.com/login',
+            mainHref: 'https://www.test.com'
           }
         }
       },
@@ -356,10 +220,10 @@ module.exports = {
         },
         files: {
           context: {
-            photohref: 'https://demo.zcy.gov.cn',
-            main: 'https://demo.zcy.gov.cn',
-            login: 'https://login.demo.zcy.gov.cn/login',
-            mainHref: 'https://demo.zcy.gov.cn'
+            photohref: 'https://www.test.com',
+            main: 'https://www.test.com',
+            login: 'https://www.test.com',
+            mainHref: 'https://www.test.com'
           }
         }
       },
@@ -376,10 +240,10 @@ module.exports = {
         },
         files: {
           context: {
-            photohref: 'https://www.zcy.gov.cn',
-            main: 'https://www.zcy.gov.cn',
-            login: 'https://login.zcy.gov.cn/login',
-            mainHref: 'https://www.zcy.gov.cn'
+            photohref: 'https://www.test.com',
+            main: 'https://www.test.com',
+            login: 'https://www.test.com',
+            mainHref: 'https://www.test.com'
           }
         }
       },

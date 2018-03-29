@@ -15,7 +15,9 @@
   module.exports = {
     fromPathSync: function(path) {
       var template;
+      console.log(path)
       if (!fs.existsSync(path)) {
+        console.log(11);
         throw new FileNotFoundError(path);
       }
       template = fs.readFileSync(path, {

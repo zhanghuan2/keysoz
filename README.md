@@ -1,6 +1,6 @@
-# 政采云定点服务项目前端工程
+# 前端工程
 
-政采云前端项目工程,开发环境依赖node,npm,gulp,建议先安装 nrm,使用淘宝镜像安装。
+开发环境依赖node,npm,gulp,建议先安装 nrm,使用淘宝镜像安装。
 
 ## 安装依赖
 * nodejs
@@ -81,27 +81,3 @@ npm run sasslint
 // 或者
 gulp sasslint
 ```
-
-
-## 开发规范
-### 页面url命名
-视图文件(views)第一层目录都为角色名,如 supplier, purchaser,auditor。
-
-规则为 /${role}/${module}/${function}/${step}
-
-eg, 会议培训定点的联系单列表页面
-
-采购单位的为:
-```blash
-/purchaser/meeting/order
-```
-供应商为: 
-```blash
-/supplier/meeting/order
-```
-
-## 注意事项
-
-1. 文件名和目录名(README.md,LISENCE除外) 字母统一小写,单词间用 '-'分隔
-2. 没通过eslint、sasslint前请不要push到中心库
-3. 使用淘宝镜像安装或者更新依赖包

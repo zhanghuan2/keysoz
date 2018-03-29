@@ -1,9 +1,0 @@
-/.*                              :post,get
-/api/user/login.*                :post,get
-/login.*                         :post,get
-/error                           :post,get
-/assets/.*                       :get
-/index                           :get
-/server/.*                       :get
-#/orgmanage/.*                   :get
-/api/user                        :get

@@ -12,7 +12,6 @@
       user:
         hasName: true
 ###
-Language = require "locale/locale"
 
 properties =
   env: "parana"
@@ -34,8 +33,8 @@ properties =
       sellerWarehouseLevel: 4
     item:
       skuPrice: [
-        {level: 0, name: "#{Language.discountedPrice}", isRequire: true}
-        {level: 1, name: "#{Language.hotDealPrice}"}
+        {level: 0, name: "折扣价", isRequire: true}
+        {level: 1, name: "特卖价"}
       ]
       skuMostDimension: 5
       hasSkuStock: false

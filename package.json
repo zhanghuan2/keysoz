@@ -1,10 +1,9 @@
 {
-  "name": "vienna",
+  "name": "pampas_back",
   "version": "1.0.0",
-  "description": "",
+  "description": "政采云前端管理项目工程模板,开发环境依赖node,npm,gulp,建议先安装 nrm,使用淘宝镜像安装。",
   "main": "gulpfile.js",
   "directories": {
-    "doc": "docs",
     "test": "test"
   },
   "scripts": {
@@ -101,7 +100,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@git.cai-inc.com:ZCY/zcy-reverse-front.git"
+    "url": "git@git.cai-inc.com:ZCY-FE/framework/zcy-projectTemplate-front.git"
   },
   "dependencies": {}
 }

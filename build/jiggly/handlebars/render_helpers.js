@@ -35,7 +35,6 @@
   });
 
   handlebars.registerHelper("component", function(className, options) {
-    console.info('render.CONST.COMP_PATH.......', className, render.CONST.COMP_PATH)
     return new handlebars.SafeString("<div class=\"" + className + "\" data-comp-path=\"" + this[render.CONST.COMP_PATH] + "\">" + (options.fn(this)) + "</div>");
   });
 

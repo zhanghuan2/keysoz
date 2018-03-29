@@ -6,45 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=0.2">
     <meta name="baidu-site-verification" content="H4CfHlHHeo" />
-    <meta property="og:type" content="政采云"/>
-    <meta property="og:image" content="http://zcyimg.dithub.com/logo-og.jpg"/>
-    <meta property="og:description" content="{{seo.description}}" />
-    {{#block "meta"}}
-      <title>{{#if seo.title}}政采云-{{seo.title}}{{else}}政采云-{{#block "title"}}{{/block}}{{/if}}</title>
-      <meta name="keywords" content="{{seo.keywords}}">
-      <meta name="description" content="{{seo.description}}">
-    {{/block}}
-    <link href="/assets/images/other-images/favicon.ico" type="image/x-icon" rel="shortcut icon">
-    <!-- pokeball iconfont ,修改请找端点王凯凯 -->
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_1466485617_047616.css" />
-    <!-- zcy 前台的iconfont，请修改这个链接 -->
-    <link rel="stylesheet" href="https://sitecdn.zcy.gov.cn/zcy-font/font_121827_vohclti5sl9pb9.css" />
-    <!-- 依赖进来的icon, 有需要请改mewtwo -->
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_1456890595_0763497.css"  id="css-mewtwo-icons"/>
-    <!-- v1重构字体 -->
-    <link rel="stylesheet" href="//sitecdn.zcy.gov.cn/zcy-font/font_285582_x7fkwx60lbsrwwmi.css">
     <link rel="stylesheet" href="/assets/styles/vendor.css">
     <link rel="stylesheet" href="/assets/styles/app.css">
-    <link rel="stylesheet" href="/assets/styles/common_part_a.css">
-    <link rel="stylesheet" href="/assets/styles/common_part_b.css">
-    <link rel="stylesheet" href="/assets/styles/ZCY_eevee.css">
-    <link rel="stylesheet" href="/assets/styles/eevee/eevee-layout.css">
-    {{#if _DESIGN_MODE_}}
-    <link rel="stylesheet" href="/assets/styles/eevee/eevee-editable.css">
-    {{/if}}
   </head>
-  <body {{#if _DESIGN_MODE_}}data-design-mode="true" data-design-page-context="{{json this}}"{{/if}} data-base="{{_HREF_.base}}" data-user-type="{{_USER_.type}}" class="{{block 'bodyClass'}}">
-    {{#if <%= tips %>}}
-      <div class="top-warning">This is a test site, please do not pay for orders.</div>
-    {{/if}}
+  <body>
     {{#block "designable"}}{{/block}}
-    {{#unless _EDIT_TEMPLATE_}}
-      {{designPart "global-notice" scope="GLOBAL" rule="0"}}
-    {{/unless}}
-    <!--[if lt IE 7]>
-      <p class="browsehappy">您正使用<strong>过时</strong>的浏览器，因此您可能体验不到最{{i18n "Good " bundle="all_mix"}}的效果,请点击<a href="http://browsehappy.com/">这里</a> 去升级您的浏览器</p>
-    <![endif]-->
-    {{!--修复滚动条bug--}}
     <div class="root-container">
     {{#block "body"}}
     {{/block}}
@@ -52,32 +18,8 @@
     <script src="/assets/scripts/vendor.js"></script>
     <script src="/assets/scripts/templates.js"></script>
     <script src="/assets/scripts/app.js"></script>
-    <script src="/assets/scripts/echarts/echarts-all.js"></script>
-    <script src="/i18n"></script>
     <script>require("app")()</script>
-    {{#if _DESIGN_MODE_}}
-      <script id="configJs" src="/assets/scripts/config.js"></script>
-    {{/if}}
     {{#block "tool"}}{{/block}}
-
-    <script type="text/javascript">
-      var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-      document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1259303436'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1259303436' type='text/javascript'%3E%3C/script%3E"));
-
-      var _vds = _vds || [];
-      window._vds = _vds;
-      (function(){
-        _vds.push(['setAccountId', 'bc996dfc7f1b4c32']);
-        (function() {
-          var vds = document.createElement('script');
-          vds.type='text/javascript';
-          vds.async = true;
-          vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
-          var s = document.getElementsByTagName('script')[0];
-          s.parentNode.insertBefore(vds, s);
-        })();
-      })();
-    </script>
   </body>
   <!-- Powered by Terminus.io -->
 </html>
